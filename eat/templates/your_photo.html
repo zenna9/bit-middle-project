@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, initial-scale=1">
+    <title>음식 사진을 등록하세요</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/index.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 ml-auto ar-auto" style="text-align: center">
+                <img src="/static/picture/Picture1.png"/>
+            </div>
+            <div class="col-lg-2 ml-auto ar-auto" style="margin: 1em auto 1em auto">
+                <form action="http://localhost/upload.php" method="post" enctype="multipart/form-data">
+                    <input type="date" id="currentDatetime" class="form-control">
+                    <br>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>식사 종류 선택</option>
+                      <option value="1">아침</option>
+                      <option value="2">점심</option>
+                      <option value="3">저녁</option>
+                      <option value="3">기타</option>
+                    </select>
+                </form>
+            </div>
+            <div class="col-lg-5">
+                <table class="food" style="text-align: center;width: 100%">
+                    <tr>
+                        <th style="width: 70%">음식이름</th>
+                        <th style="width: 30%">중량</th>
+                    </tr>
+                    <tr>
+                        <td>오므라이스</td>
+                        <td><input type="range" class="form-range" min="0" max="5" id="customRange2"></td>
+                    </tr>
+                </table>
+                <footer style="text-align: right;margin: auto 0 0 0">
+                    <button value="오오" class="btn btn-outline-info">제출하기</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="/static/js/zen.js"></script>
+</html>
