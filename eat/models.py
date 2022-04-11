@@ -1,14 +1,17 @@
 from django.db import models
 
 class login(models.Model):
-    usr_id = models.CharField(max_length=20)
+    user_id = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
-    usr_name = models.CharField(max_length=10)
-    usr_sex = models.CharField(max_length=2)
-    usr_height = models.IntegerField(default=0)
+    user_name = models.CharField(max_length=10)
+    user_sex = models.CharField(max_length=2)
+    user_age = models.IntegerField(default=0)
+    user_height = models.FloatField(default=0.0)
     user_weight = models.FloatField(default=0.0)
+    recommend_kcal = (user_height-100)*0.9*30
 
 class diet(models.Model) :
+    user_idx = models.CharField(max_length=20, default="none")
     date = models.DateField
     time = models.CharField(max_length=10)
     kcal = models.FloatField(default=0.0)
