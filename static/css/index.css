@@ -1,0 +1,10 @@
+.ze1 {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+*{
+    border: 1px red solid;
+}
+.food * { border: 1px red solid; }
