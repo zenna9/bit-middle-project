@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from eat.models import diet, login
 
-def index(request, user_idx):
-    dietlist = get_object_or_404(diet, user_idx=user_idx)
+def index(request, user_idx, date):
+    dietlist = get_object_or_404(diet, user_idx=user_idx, date=date)
     context = {'dietlist': dietlist}
     return render(request, 'index.html', context)
 
-def upload_p(request):
-    dietlist = diet.objects.all()
-    context = {'dietlist':dietlist}
+def upload_p(request, user_idx):
+    dietlist = get_object_or_404(diet, user_idx=user_idx)
+    context = {'dietlist': dietlist}
     return render(request, 'your_photo.html', context)
 
 # def get_post(request):

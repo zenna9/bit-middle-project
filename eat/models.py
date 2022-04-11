@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class login(models.Model):
     user_id = models.CharField(max_length=20)
@@ -12,7 +13,7 @@ class login(models.Model):
 
 class diet(models.Model) :
     user_idx = models.CharField(max_length=20, default="none")
-    date = models.DateField
+    date = models.DateField(default=datetime.now())
     time = models.CharField(max_length=10)
     foodimage = models.ImageField(upload_to='eat/images/%y/%m/%d/', blank=True)
     kcal = models.FloatField(default=0.0)
