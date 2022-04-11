@@ -30,7 +30,7 @@
                     <a class="navbar-brand" href="#">Navbar</a>
                     <!-- 로그인 hello======================== -->
                     <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="color: aliceblue;margin: 0 1% 0 auto;">
-                        <strong>zenna</strong> 님 &nbsp;
+                        <strong>{{ dietlist.user_idx }}</strong> 님 &nbsp;
                         <img src="https://github.com/mdo.png" alt="" width="40" height="40" class="rounded-circle me-2">
                     </a>
                     <!-- 오른쪽 햄버거버튼============ -->
@@ -126,7 +126,9 @@
                 <div class="row" style="margin: 1% 0 0 0 ;">
                     <div class="col" style="font-size: 1em; text-align: center; border: solid 2px grey;padding: 1em">
                         데이터를 업로드하세요! <br><br>
-                        <form action="http://localhost/upload.php" method="post" enctype="multipart/form-data">
+                        <form action="parameter" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" value="zenna"/>
                             <input type="file" name="food_image" class="form-control">
                             <input type="submit" class="btn btn-outline-info" style="margin-top: 1em" value="고고">
                         </form>
