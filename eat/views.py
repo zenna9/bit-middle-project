@@ -1,9 +1,11 @@
-import datetime
-
 from django.shortcuts import render, get_object_or_404, redirect
 from eat.models import diet, login, imgs
 from django.db.models import Sum
 
+# urlpatterns = [
+#     path('', views.index, name='index'),
+#     path('<str:idx>/<slug:date>', views.logindone, name='index_login'),
+# ]
 
 def index(request):
     return render(request, 'login.html')
@@ -19,16 +21,8 @@ def logindone(request, idx, date):
 
     return render(request, 'index.html', context)
 
-
-def upload_p(request):
-    # =================================================사진을 sql에 업로드
-    img = imgs()
-    img.foodimage = request.POST['foodimage']
-    img.save()
-    # ==================================업로드 끝나면 your_photo로 이동
-    return redirect('your_photo/')
-
 def your_photo(request):
-    return render(request, 'your_photo.html')
+    return render(request, '../analysis_photo/templates/your_photo.html')
+
 
 

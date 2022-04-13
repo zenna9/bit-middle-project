@@ -1,4 +1,3 @@
-
 from pathlib import Path
 import os
 
@@ -28,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'eat.apps.EatConfig',
+    'analysis_photo.apps.AnalysisPhotoConfig',
 ]
 
 MIDDLEWARE = [
