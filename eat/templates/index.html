@@ -16,17 +16,7 @@
             text-align: center;
             line-height: 1.2;
         }
-        
-        .circlebig {
-            width: 200px;
-            height: 200px;
-            margin: 6px 6px 20px;
-            display: inline-block;
-            position: relative;
-            text-align: center;
-            line-height: 1.2;
-        }
-        
+
         table * {
             border: solid rebeccapurple 1px;
             !important;
@@ -44,10 +34,10 @@
                     <!-- 상단바 왼쪽 버튼 및 사이트버튼 ================-->
                     <a class="navbar-brand" href="#">Navbar</a>
                     <!-- 로그인 hello======================== -->
-                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="color: aliceblue;margin: 0 1% 0 auto;">
-                        <strong>{{ dietlist.user_idx }}</strong> 님 &nbsp;
+                    <div class="d-flex align-items-center link-dark text-decoration-none" style="color: aliceblue;margin: 0 1% 0 auto;">
+                        <strong>{{idx}}</strong> 님 &nbsp;
                         <img src="https://github.com/mdo.png" alt="" width="40" height="40" class="rounded-circle me-2">
-                    </a>
+                    </div>
                     <!-- 오른쪽 햄버거버튼============ -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -66,14 +56,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8" style="margin: 1% auto 1% auto;min-height: 40rem;">
+            <div class="col-lg-8 back1" style="margin: 1% auto 1% auto;min-height: 40rem;">
                 <!-- 날짜데이터 -->
-                <form action="parameter" enctype="multipart/form-data" style="background-color: #00000070; border-radius: 10px;padding: 10px ;color: white;" >
-{#                    {% csrf_token %}#}
+                <form action="parameter" enctype="multipart/form-data" style="background-color: #00000070; border-radius: 10px;padding: 10px ;color: white;">
+                    {# {% csrf_token %}#}
                     <p style="margin: auto 0 auto 0;">
-                        <label for="currentDate" style="font-size: 2em;"><strong>today</strong></label>
-                        <input type="date" name="today" id="currentDate" value="{{ dietlist.date }}" style="width: 30%;">
-                        {{ dietlist.date }}
+                        <label for="currentDate" style="font-size: 2em;"><strong>Date</strong></label>
+                        <input type="date" name="today" id="currentDate" value="{{ date }}" style="width: 30%;">
                     </p>
                 </form>
 
@@ -82,10 +71,10 @@
                     <tr>
                         <td style="width: 30%; height: 2.5em;">하루 권장량</td>
                         <td style="width: 30%;"> 탄수화물 </td>
-                        <td style="width: 12%;"> {{ tan.0.tan__sum }} </td>
+                        <td style="width: 12%;"> {{ sums.tan__sum }} </td>
                         <td>
                             <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar bg-danger " role="progressbar " style="width: {{ tan}}; " aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                <div class="progress-bar bg-danger" id="tan" role="progressbar " style="width: 20%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
                             </div>
                         </td>
                     </tr>
@@ -96,8 +85,8 @@
                             </div>
                         </td>
                         <td style="height: 2.5em;">단백질</td>
-{#                        단백질 값 들어갈 자리#}
-                        <td>{{ tan.0.dan__sum}}</td>
+                        {# 단백질 값 들어갈 자리#}
+                        <td>{{sums.dan__sum}}</td>
                         <!-- 하루 권장량 progress circle -->
                         <td>
 
@@ -108,7 +97,8 @@
                     </tr>
                     <tr>
                         <td style="height: 2.5em;">지방</td>
-                        <td><!--지방-->{{tan.0.ji__sum }}</td>
+                        <td>
+                            <!--지방-->{{sums.ji__sum }}</td>
                         <td>
                             <div class="progress " style="height: 2em; ">
                                 <div class="progress-bar bg-danger " role="progressbar " style="width: 80%; "></div>
@@ -117,7 +107,8 @@
                     </tr>
                     <tr>
                         <td style="height: 2.5em;">나트륨</td>
-                        <td><!--나트륨-->{{ tan.0.salt__sum }}</td>
+                        <td>
+                            <!--나트륨-->{{ sums.salt__sum }}</td>
                         <td>
                             <div class="progress " style="height: 2em; ">
                                 <div class="progress-bar bg-danger " role="progressbar " style="width: 80%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
@@ -126,7 +117,8 @@
                     </tr>
                     <tr>
                         <td style="height: 2.5em;">당</td>
-                        <td><!--당--> {{ tan.0.dang__sum }}</td>
+                        <td>
+                            <!--당-->{{ sums.dang__sum }}</td>
                         <td>
                             <div class="progress " style="height: 2em; ">
                                 <div class="progress-bar bg-danger " role="progressbar " style="width: 80%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
@@ -134,38 +126,63 @@
                         </td>
                     </tr>
                 </table>
+                <table class="table2">
+                    <tr>
+                        <td class="col1">칼슘</td>
+                        <td class="col2">{{ sums.kalum__sum}} </td>
+                        <td class="col3">
+                            <div class="progress " style="height: 2em; ">
+                                <div class="progress-bar " role="progressbar " style="width: 120%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">인</td>
+                        <td class="col2">{{ sums.inn__sum }} </td>
+                        <td class="col3">
+                            <div class="progress " style="height: 2em; ">
+                                <div class="progress-bar " role="progressbar " style="width: 120%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">칼륨</td>
+                        <td class="col2">{{ sums.kalum__sum }} </td>
+                        <td class="col3">
+                            <div class="progress " style="height: 2em; ">
+                                <div class="progress-bar " role="progressbar " style="width: 120%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">마그네슘</td>
+                        <td class="col2">{{ sums.magnesum__sum }} </td>
+                        <td class="col3">
+                            <div class="progress " style="height: 2em; ">
+                                <div class="progress-bar " role="progressbar " style="width: 120%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">철</td>
+                        <td class="col2">{{ sums.chul__sum }} </td>
+                        <td class="col3">
+                            <div class="progress " style="height: 2em; ">
+                                <div class="progress-bar " role="progressbar " style="width: 120%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1">아연</td>
+                        <td class="col2">{{ sums.ayeon__sum }} </td>
+                        <td class="col3">
+                            <div class="progress " style="height: 2em; ">
+                                <div class="progress-bar " role="progressbar " style="width: 120%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                            </div>
+                        </td>
+                    </tr>
 
-                칼슘 ( {{ tan.0.kalsum__sum }} )<br>
-                <div class="progress " style="height: 2em; ">
-                    <div class="progress-bar " role="progressbar " style="width: 120%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                </div>
-                <br> 인( {{ tan.0.inn__sum }} )
-                <br>
-                <div class="progress " style="height: 2em; ">
-                    <div class="progress-bar bg-info " role="progressbar " style="width: 120%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                </div>
-                <br> 칼륨( {{ tan.0.kalum__sum }} )
-                <br>
-                <div class="progress " style="height: 2em; ">
-                    <div class="progress-bar bg-info " role="progressbar " style="width: 60%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                </div>
-                <br> 마그네슘( {{ tan.0.magnesum__sum }} )
-                <br>
-                <div class="progress " style="height: 2em; ">
-                    <div class="progress-bar bg-warning " role="progressbar " style="width: 20%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                </div>
-                <br> 철 ( {{ tan.0.chul__sum }} )
-                <br>
-                <div class="progress " style="height: 2em; ">
-                    <div class="progress-bar bg-info " role="progressbar " style="width: 80%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                </div>
-                <br> 아연 ( {{ tan.0.ayeon__sum }} )
-                <br>
-                <div class="progress " style="height: 2em; ">
-                    <div class="progress-bar bg-danger " role="progressbar " style="width: 15%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                </div>
-                <br>
-
+                </table>
             </div>
             <!-- {#       사이드바 ===============================#} -->
             <div class="col-lg-3 d-flex flex-column flex-shrink-0 p-4 " style="border-radius: 2em;background-color: #00000070; color: white;margin: 1% 1% 1% auto; ">
@@ -180,20 +197,18 @@
                             <input type="file" name="foodimage" class="form-control">
                             <input type="submit" class="btn btn-outline-info" style="margin-top: 1em " value="등록하기">
                         </form>
-                        <a href="upload_p ">your photo</a>
-{#                        이게 될까?#}
+                        <a href="upload_p ">your photo</a> {# 이게 될까?#}
                         <p class="file-upload">Currently: <a href="/media/eat/images/22/04/11/KakaoTalk_20180617_222240074_dIsYBdh.jpg">eat/images/22/04/11/KakaoTalk_20180617_222240074_dIsYBdh.jpg</a>
-<span class="clearable-file-input">
+                            <span class="clearable-file-input">
 <input type="checkbox" name="foodimage-clear" id="foodimage-clear_id">
-<label for="foodimage-clear_id">Clear</label></span><br>
-Change:
-<input type="file" name="foodimage" accept="image/*" id="id_foodimage"></p>
+<label for="foodimage-clear_id">Clear</label></span><br> Change:
+                            <input type="file" name="foodimage" accept="image/*" id="id_foodimage"></p>
 
-<div class="submit-row">
-    <input type="submit" value="Save" class="default" name="_save">
-    <p class="deletelink-box"><a href="/admin/eat/diet/1/delete/" class="deletelink">Delete</a></p>
-</div>
-{#                        여기까지 붙임#}
+                        <div class="submit-row">
+                            <input type="submit" value="Save" class="default" name="_save">
+                            <p class="deletelink-box"><a href="/admin/eat/diet/1/delete/" class="deletelink">Delete</a></p>
+                        </div>
+                        {# 여기까지 붙임#}
                     </div>
                 </div>
             </div>
@@ -204,62 +219,5 @@ Change:
 <script src="/static/js/zen.js "></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js "></script>
 <script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.1/dist/circle-progress.js "></script>
-<script>
-    $('.circle1').circleProgress({
-        value: 0.8,
-        fill: {
-            gradient: [
-                ['orange', 1],
-                ['pink', 1]
-            ],
-            gradientAngle: Math.PI / 4
-        }
-    }).on('circle-animation-progress', function(event, progress, stepValue) {
-        $(this).find('b').text(stepValue.toFixed(2).substr(1) * 100 + "% ");
-    });
-
-
-
-
-    $('.circle2').circleProgress({
-        value: 0.2,
-        fill: {
-            gradient: [
-                ['blue', 1],
-                ['pink', 1]
-            ],
-        }
-    }).on('circle-animation-progress', function(event, progress, stepValue) {
-        $(this).find('b').text(stepValue.toFixed(2).substr(1) * 100 + "% ");
-    });
-
-
-
-
-    $('.circle3').circleProgress({
-        value: 0.5,
-        fill: {
-            gradient: [
-                ['yellow', 1],
-                ['pink', 1]
-            ],
-            gradientAngle: Math.PI / 4
-        }
-    }).on('circle-animation-progress', function(event, progress, stepValue) {
-        $(this).find('b').text(stepValue.toFixed(2).substr(1) * 100 + "% ");
-    });
-    $('.circle4').circleProgress({
-        value: 0.5,
-        fill: {
-            gradient: [
-                ['yellow', 1],
-                ['pink', 1]
-            ],
-            gradientAngle: Math.PI / 4
-        }
-    }).on('circle-animation-progress', function(event, progress, stepValue) {
-        $(this).find('b').text(stepValue.toFixed(2).substr(1) * 100 + "% ");
-    });
-</script>
 
 </html>

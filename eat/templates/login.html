@@ -1,15 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="static/js/zen.js"></script>
 </head>
 <body>
-    <form action="logindone/" method="GET">
-{#        {% csrf_token %}#}
-        <input type="text" name="idx" value="zenna">
-        <input type="date" name="date" value="2022-04-11"/>
-        <input type="submit" value="go!"/>
+    <form>
+        <input type="text" name="idx" value="zenna" id="idx">
+        <input type="date" name="date" value="2022-04-12" id="datex"/>
+        <input type="button" value="go!" onclick="document.location.href=getvalue()"/>
     </form>
 </body>
 </html>

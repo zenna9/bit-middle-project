@@ -13,7 +13,7 @@
 }
 
 body {
-    background: linear-gradient(#9600bb, #210027);
+    background: linear-gradient(#ce0aff, #210027);
     color: white;
 }
 
@@ -67,4 +67,25 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: calc(var(--size) / 5);
     color: var(--primary);
+}
+
+.table2 {
+    width: 100%;
+    text-align: center;
+}
+
+.col1 {
+    width: 10%;
+}
+
+.col2 {
+    width: 10%;
+}
+
+.col3 {
+    width: 80%
+}
+
+.back1 {
+    background-color: #00000070 !important;
 }
