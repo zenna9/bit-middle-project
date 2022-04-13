@@ -8,6 +8,6 @@ app_name = 'eat'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<str:idx>/<slug:date>', views.logindone, name='index_login'),
+    path('<str:idx>/<str:date>', views.logindone, name='index_login'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
