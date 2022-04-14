@@ -6,7 +6,7 @@ from eat import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.login,name="login"),
+    path('',views.logining, name="login"),
     path('ph/', include('analysis_photo.urls')),
     path('m/', include('eat.urls')),
 ]

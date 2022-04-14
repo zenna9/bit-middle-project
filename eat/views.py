@@ -8,7 +8,7 @@ from django.db.models import Sum, F, Count, Case, When
 # ]
 
 # 로그인하라는 1번 화면
-def login(request):
+def logining(request):
     return render(request, 'login.html')
 
 def index(request):
@@ -17,9 +17,10 @@ def index(request):
 # 로그인한 메인화면 ======================
 def logindone(request, idx, date):
     dietlist = get_list_or_404(diet, user_idx=idx, date=date)
-
+    loginn = get_list_or_404(login, user_id=idx)
     sums = diet.objects.filter(date=date).filter(user_idx=idx).aggregate(Sum('tan'))
     sums.update(diet.objects.filter(date=date).filter(user_idx=idx).aggregate(Sum('dang')))
+    sums.update(diet.objects.filter(date=date).filter(user_idx=idx).aggregate(Sum('kcal')))
     sums.update(diet.objects.filter(date=date).filter(user_idx=idx).aggregate(Sum('ji')))
     sums.update(diet.objects.filter(date=date).filter(user_idx=idx).aggregate(Sum('dan')))
     sums.update(diet.objects.filter(date=date).filter(user_idx=idx).aggregate(Sum('kalsum')))
@@ -43,7 +44,7 @@ def logindone(request, idx, date):
     # sumlist3 = list(sumlist2.values())
     # for i in range(0,14) :
         # sum_to_percent = dict()
-    context = {'dietlist': dietlist, 'idx':idx, 'date':date,'sums':sums}
+    context = {'dietlist': dietlist, 'idx':idx, 'date':date,'sums':sums, 'logininfo': loginn}
     return render(request, 'index.html', context)
 
 
