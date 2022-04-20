@@ -3,7 +3,7 @@
 /admin 	--> admin
 ----------------------------------------
 /ph/
-	your_photo/	--> views.your_photo
+		--> views.your_photo
 ----------------------------------------
 /m/
 			 --> index.html

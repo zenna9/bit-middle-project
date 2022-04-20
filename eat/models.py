@@ -46,4 +46,5 @@ class diet(models.Model) :
     transfat = models.FloatField(default=0.0)
 
 class imgs(models.Model) :
-    foodimage = models.ImageField(upload_to='eat/images/%y/%m/%d/', blank=True)
+    uploadedFile = models.FileField(upload_to='Uploaded Files/%y/%m/%d/', blank=True)
+    dateTimeOfUpload = models.DateField(auto_now = True)

@@ -69,7 +69,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mini2',
         'USER': 'root',
-        'PASSWORD': '000000', #-->웤벤비번
+        'PASSWORD': 'bit123', #-->웤벤비번
         'HOST': 'localhost',
         'PORT': '3306'#--> mysql디폴트 포트번호임
     }
@@ -118,4 +118,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
