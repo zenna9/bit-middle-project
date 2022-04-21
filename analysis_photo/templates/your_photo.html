@@ -6,6 +6,14 @@
     <title>음식 사진을 등록하세요</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/css/your_photo.css"/>
+    <script src="/static/js/zen.js"></script>
+
+    <style>
+        * {
+            border: 1px rebeccapurple solid;
+        }
+    </style>
 </head>
 <body>
 
@@ -40,9 +48,7 @@
         </div>
         <div class="row">
             <div class="col-lg-4 ml-auto ar-auto" style="text-align: center">
-                <img src= "/media/{{oiai.uploadedFile}}" /> 
-                {{oiai.uploadedFile}}
-                <img src="/static/picture/suleong_after.png" style="object-fit: contain;width: 90%" >
+                <img src= "/media/{{k_hc.uploadedFile}}" style="object-fit: contain; width: 90%;" /> 
             </div>
             <div class="col-lg-2 ml-auto ar-auto" style="margin: 1em auto 1em auto">
                 <form action="" method="post" enctype="multipart/form-data">
@@ -68,11 +74,43 @@
                         <td>600g</td>
                     </tr>
                 </table>
+                <button onclick="hideorseek('input_theirself')" class="btn btn-warning">직접 입력하기</button>
                 <br>
-                <footer style="text-align: right;margin: auto 3em 0 0">
-                    <button value="오오" class="btn btn-outline-info">제출하기</button>
-                </footer>
+                <div id="input_theirself" style="display: none;">
+                    <table style="border: 1px black solid;width: 100%;">
+                        <tr>
+                            <td class="one">전체 칼로리</td>
+                            <td class="two"><input type="text" name="kcal"/></td>
+                            <td class="three">kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="one">탄수화물</td>
+                            <td class="two"><input type="text" name="tan"/></td>
+                            <td class="three">g</td>
+                        </tr>
+                        <tr>
+                            <td class="one">단백질</td>
+                            <td class="two"><input type="text" name="dan"/></td>
+                            <td class="three">g</td>
+                        </tr>
+                        <tr>
+                            <td class="one">지방</td>
+                            <td class="two"><input type="text" name="ji"/></td>
+                            <td class="three">g</td>
+                        </tr>
+                        <tr>
+                            <td class="one">당</td>
+                            <td class="two"><input type="text" name="dang"/></td>
+                            <td class="three">g</td>
+                        </tr>
+                    </table>
+
+
+                </div>
             </div>
+            <footer style="text-align: right;margin: auto 3em 0 0">
+                <button value="오오" class="btn btn-outline-light btn-dark">제출하기</button>
+            </footer>
         </div>
     </div>
 </body>
