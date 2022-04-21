@@ -8,8 +8,8 @@ from django.conf.urls.static import static
 app_name = 'analysis_photo'
 
 urlpatterns = [
-    path('', views.uploadFile, name='uploadFile'),
-    path('<int:document_id>/', views.upload2, name='upload2')
+    path('', views.f_fu, name='f_fu'),
+    path('<int:b_hc_id>/', views.f_hp, name='f_hp')
 ]
 
 if settings.DEBUG : 
