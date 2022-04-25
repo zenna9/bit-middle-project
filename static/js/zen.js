@@ -1,11 +1,11 @@
-// document.getElementById('currentDatetime').value = new Date().toISOString().slice(0, -1);
+// // document.getElementById('currentDatetime').value = new Date().toISOString().slice(0, -1);
 
-document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+// document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
 
-function date(today){
-    let day = date(today);
-    document.getElementById('currentDate').value = day.toISOString().substring(0, 10);
-}
+// function date(today){
+//     let day = date(today);
+//     document.getElementById('currentDate').value = day.toISOString().substring(0, 10);
+// }
 function dopercent(idinput, sons,mother){
     var idinput = document.getElementById(idinput).style
     let son = sons ;

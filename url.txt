@@ -1,4 +1,5 @@
-//	-->eat.views.login	--> login.html
+//	-->login.views.login	--> login.html
+	submited/ --> views.submited 
 ----------------------------------------
 /admin 	--> admin
 ----------------------------------------

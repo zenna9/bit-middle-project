@@ -55,14 +55,16 @@
                 </nav>
             </div>
         </div>
+        <!-- =====================내브바 종료 =========================================-->
+        <!-- =========================본문  ===============================================-->
         <div class="row">
             <div class="col-lg-8 back1" style="margin: 1% auto 1% auto;min-height: 40rem;">
                 <!-- 날짜데이터 -->
-                <form action="parameter" enctype="multipart/form-data" style="background-color: #00000070; border-radius: 10px;padding: 10px ;color: white;">
+                <form action="parameter" enctype="multipart/form-data" >
                     {# {% csrf_token %}#}
                     <p style="margin: auto 0 auto 0;">
                         <label for="currentDate" style="font-size: 2em;"><strong>Date</strong></label>
-                        <input type="date" name="today" id="currentDate" value="{{ date }}" style="width: 30%;">
+                        <input type="date" name="today" id="currentDate" style="width: 8em;color: white;font-size: 1.2em;height:2em;" class="btn" >
                     </p>
                 </form>
 
@@ -88,7 +90,7 @@
                             <br>
                         </td>
                         <td style="height: 2.5em;">단백질</td>
-                        {# 단백질 값 들어갈 자리#}
+                        <!-- {# 단백질 값 들어갈 자리#} -->
                         <td>{{sums.dan__sum}} / {{ logininfo.0.recommend_dan }}</td>
                         <td>
                             <div class="progress " style="height: 2em; ">

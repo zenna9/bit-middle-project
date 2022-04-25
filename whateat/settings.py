@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'eat.apps.EatConfig',
     'analysis_photo.apps.AnalysisPhotoConfig',
+    'login.apps.LoginConfig'
 ]
 
 MIDDLEWARE = [
