@@ -11,6 +11,5 @@ urlpatterns = [
     # path('<str:idx>/<str:date>', views.logindone, name='index_login'),
         # 로그인과 로그아웃 회원가입
     path('', TemplateView.as_view(template_name='login.html'), name='loginindex'),
-    path('login/', views.logining, name='logining'),
-
+    path('logining/', views.logining, name='logining'),
 ]

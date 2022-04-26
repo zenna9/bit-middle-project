@@ -12,7 +12,7 @@ class login(models.Model):
     user_weight = models.FloatField(default=0.0)
     recommend_kcal = models.FloatField(default=2400.0)
     recommend_tan = models.FloatField(default=500.0)
-    recommend_dang = models.FloatField(default=0.0)
+    recommend_dang = models.FloatField(default=0.001)
     recommend_ji = models.FloatField(default=40.0)
     recommend_dan = models.FloatField(default=70.0)
     recommend_kalsum = models.FloatField(default=700)
