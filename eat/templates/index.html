@@ -55,14 +55,16 @@
                 </nav>
             </div>
         </div>
+        <!-- =====================내브바 종료 =========================================-->
+        <!-- =========================본문  ===============================================-->
         <div class="row">
             <div class="col-lg-8 back1" style="margin: 1% auto 1% auto;min-height: 40rem;">
                 <!-- 날짜데이터 -->
-                <form action="parameter" enctype="multipart/form-data" style="background-color: #00000070; border-radius: 10px;padding: 10px ;color: white;">
+                <form action="parameter" enctype="multipart/form-data" >
                     {# {% csrf_token %}#}
                     <p style="margin: auto 0 auto 0;">
                         <label for="currentDate" style="font-size: 2em;"><strong>Date</strong></label>
-                        <input type="date" name="today" id="currentDate" value="{{ date }}" style="width: 30%;">
+                        <input type="date" name="today" id="currentDate" style="width: 8em;color: white;font-size: 1.2em;height:2em;" class="btn" >
                     </p>
                 </form>
 
@@ -71,7 +73,7 @@
                     <tr>
                         <td style="width: 30%; height: 2.5em;">하루 권장량</td>
                         <td style="width: 30%;"> 탄수화물 </td>
-                        <td style="width: 12%;"> {{ sums.tan__sum }} / {{ logininfo.0.recommend_tan }} </td>
+                        <td style="width: 12%;"> {{ percent.per_tan }} </td>
                         <td>
                             <div class="progress " style="height: 2em; ">
                                 <div class="progress-bar bg-danger" id="tan" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
@@ -84,12 +86,12 @@
                             <!-- 하루 권장량 progress circle -->
                                 <div role="progresscr" aria-valuenow="67" aria-valuemin="67" aria-valuemax="100" style="--value: 67 "></div>
                             </div>
-                            {{ sums.kcal__sum }} / {{ logininfo.0.recommend_kcal }}
+                            {{ percent.per_kcal }}
                             <br>
                         </td>
                         <td style="height: 2.5em;">단백질</td>
-                        {# 단백질 값 들어갈 자리#}
-                        <td>{{sums.dan__sum}} / {{ logininfo.0.recommend_dan }}</td>
+                        <!-- {# 단백질 값 들어갈 자리#} -->
+                        <td>{{ percent.per_dan }}</td>
                         <td>
                             <div class="progress " style="height: 2em; ">
                                 <div class="progress-bar bg-danger " role="progressbar " style="width: 72%; " aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
@@ -100,96 +102,21 @@
                     <tr>
                         <td style="height: 2.5em;">지방</td>
                         <td>
-                            <!--지방-->{{sums.ji__sum }} / {{ logininfo.0.recommend_ji }}</td>
+                            <!--지방-->{{ percent.per_ji }}</td>
                         <td>
                             <div class="progress " style="height: 2em; ">
                                 <div class="progress-bar bg-danger " role="progressbar " style="width: 69%; "></div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td style="height: 2.5em;">나트륨</td>
-                        <td>
-                            <!--나트륨-->{{ sums.salt__sum }} / {{ logininfo.0.recommend_salt }}</td>
-                        <td>
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar bg-danger " role="progressbar " style="width: 20%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="height: 2.5em;">당</td>
-                        <td>
-                            <!--당-->{{ sums.dang__sum }} / {{ logininfo.0.recommend_dang }}</td>
-                        <td>
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar bg-danger " role="progressbar " style="width: 0%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
                 </table>
-                <table class="table2">
-                    <tr>
-                        <td class="col1">칼슘 (mg)</td>
-                        <td class="col2">{{ sums.kalsum__sum}} / {{ logininfo.0.recommend_kalsum }} </td>
-                        <td class="col3">
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar " role="progressbar " style="width: 61%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col1">인 (mg)</td>
-                        <td class="col2">{{ sums.inn__sum }} / {{ logininfo.0.recommend_inn }} </td>
-                        <td class="col3">
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar " role="progressbar " style="width: 121%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col1">칼륨 (mg)</td>
-                        <td class="col2">{{ sums.kalum__sum }} / {{ logininfo.0.recommend_kalum }} </td>
-                        <td class="col3">
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar " role="progressbar " style="width: 58%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col1">마그네슘 (mg)</td>
-                        <td class="col2">{{ sums.magnesum__sum }} / {{ logininfo.0.recommend_magnesum }} </td>
-                        <td class="col3">
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar " role="progressbar " style="width: 1%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col1">철 (mg)</td>
-                        <td class="col2">{{ sums.chul__sum }} / {{ logininfo.0.recommend_cul }} </td>
-                        <td class="col3">
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar " role="progressbar " style="width: 84%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col1">아연 (mg)</td>
-                        <td class="col2">{{ sums.ayeon__sum }} / {{ logininfo.0.recommend_ayeon}} </td>
-                        <td class="col3">
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar " role="progressbar " style="width: 62%; " aria-valuenow="80 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                </table>
+                    {{sums}}
             </div>
             <!-- {#       사이드바 ===============================#} -->
             <div class="col-lg-3 d-flex flex-column flex-shrink-0 p-4 " style="border-radius: 2em;background-color: #00000070; color: white;margin: 1% 1% 1% auto; ">
                 <div class="row " style="margin: 1% 0 0 0 ; ">
                     {{ dietlist.date }}
+                    {{logininfo.user_id}}
                 </div>
                 <div class="row " style="margin: 1% 0 0 0 ; ">
                     <div class="col " style="font-size: 1em; text-align: center; border: solid 2px grey;padding: 1em ">

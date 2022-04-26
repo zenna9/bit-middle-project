@@ -15,12 +15,8 @@ def f_fu(request):
 
 
         #폴더에 저장
-        # 
-        # 
         b_fj = models.imgs(
             uploadedFile = b_uf
-# 
-# 
         )
         b_fj.save()
 

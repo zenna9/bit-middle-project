@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'eat.apps.EatConfig',
     'analysis_photo.apps.AnalysisPhotoConfig',
+    'login.apps.LoginConfig'
 ]
 
 MIDDLEWARE = [
@@ -67,10 +68,10 @@ WSGI_APPLICATION = 'whateat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mini2',
-        'USER': 'root',
-        'PASSWORD': 'bit123', #-->웤벤비번
-        'HOST': 'localhost',
+        'NAME': 'bitteam2',
+        'USER': 'user1',
+        'PASSWORD': '1111', #-->웤벤비번
+        'HOST': '192.168.0.29',
         'PORT': '3306'#--> mysql디폴트 포트번호임
     }
 }
