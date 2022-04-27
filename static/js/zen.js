@@ -82,3 +82,9 @@ $('.circle4').circleProgress({
 }).on('circle-animation-progress', function(event, progress, stepValue) {
     $(this).find('b').text(stepValue.toFixed(2).substr(1) * 100 + "% ");
 });
+
+function change(){
+    var add = document.getElementById('currentDate').value;
+    window.location.pathname = "add";
+
+}

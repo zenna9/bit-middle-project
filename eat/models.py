@@ -26,7 +26,7 @@ class login(models.Model):
     recommend_transfat= models.FloatField(default=0.0)
 
 class diet(models.Model) :
-    user_idx = models.CharField(max_length=20, default="none")
+    user_id = models.CharField(max_length=20, default="none")
     date = models.DateField(default=timezone.now)
     time = models.CharField(max_length=10)
     foodimage = models.ImageField(upload_to='eat/images/%y/%m/%d/', blank=True)

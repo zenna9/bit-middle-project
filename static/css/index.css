@@ -1,12 +1,9 @@
+
 .ze1 {
     margin: 10px;
     padding: 10px;
     border: 1px solid grey;
 }
-
-/** {*/
-/*    border: 1px red solid;*/
-/*}*/
 
 .table2 {
     width: 100%;
@@ -87,6 +84,49 @@ body {
     width: 75%
 }
 
-.back1 {
-    background-color: #00000070 !important;
+.zen_back1 {
+    background-color: #e0e0e0 !important;
+    border-radius: 1em;
+    color: black;
+    margin: 1%;
+}
+
+.zen_calender{
+    position: relative;
+    top : -1;
+    width: 8em;
+    font-size: 1.7em;
+    height:2em;
+    margin: 0;
+}
+.zen_side_row { 
+    margin: 1% auto 0 auto;
+    font-size: 1em; 
+    text-align: center;
+}
+
+.no_margin {
+    margin: 0;
+    padding: 0;
+}
+.upload_button_zen{
+    font-size:0.8rem !important;
+    font-weight:600 !important;
+    color:#999c9e !important;
+}
+
+.zenbtn1 {
+    margin: 3px 0 3px 0; 
+    background-color: white;
+    width: 100%;
+    border-radius: 2px;
+    height: 2em;
+
+}
+.zenbtn1:hover {
+    background-color: rgb(255, 219, 179);
+    color: rgb(0, 0, 0);
+}
+.row_with_all{
+    height: 90%;
 }

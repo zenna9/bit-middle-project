@@ -13,7 +13,7 @@ from datetime import datetime
 def logining(request):
     user_id = request.POST.get('id')
     password = request.POST.get('password')
-    con = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='bit123', db='mini2', charset='utf8')
+    con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
     cursor = con.cursor(pymysql.cursors.DictCursor)
     stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"
     stmt = stmt.format(user_id, password)
