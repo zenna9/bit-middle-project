@@ -1,0 +1,132 @@
+
+.ze1 {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+.table2 {
+    width: 100%;
+    text-align: center;
+}
+
+.food * {
+    background-color: #00000020;
+}
+
+body {
+    background: linear-gradient(#ffffff, #fefff5);
+    color: white;
+}
+
+@keyframes progress {
+    0% {
+        --percentage: 0;
+    }
+    100% {
+        --percentage: var(--value);
+    }
+}
+
+@property --percentage {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+[role="progresscr"] {
+    --percentage: var(--value);
+    --primary: #369;
+    --secondary: #adf;
+    --size: 150px;
+    animation: progress 2s 0.5s forwards;
+    width: var(--size);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+[role="progresscr"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(var(--primary) calc(var(--percentage) * 1%), var(--secondary) 0);
+    mask: radial-gradient(white 55%, transparent 0);
+    mask-mode: alpha;
+    -webkit-mask: radial-gradient(#0000 55%, #000 0);
+    -webkit-mask-mode: alpha;
+}
+
+[role="progresscr"]::after {
+    counter-reset: percentage var(--value);
+    content: counter(percentage) '%';
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: calc(var(--size) / 5);
+    color: var(--primary);
+}
+
+
+.col1 {
+    width: 10%;
+}
+
+.col2 {
+    width: 15%;
+}
+
+.col3 {
+    width: 75%
+}
+
+.zen_back1 {
+    background-color: #e0e0e0 !important;
+    border-radius: 1em;
+    color: black;
+    margin: 1%;
+}
+
+.zen_calender{
+    position: relative;
+    top : -1;
+    width: 8em;
+    font-size: 1.7em;
+    height:2em;
+    margin: 0;
+}
+.zen_side_row { 
+    margin: 1% auto 0 auto;
+    font-size: 1em; 
+    text-align: center;
+}
+
+.no_margin {
+    margin: 0;
+    padding: 0;
+}
+.upload_button_zen{
+    font-size:0.8rem !important;
+    font-weight:600 !important;
+    color:#999c9e !important;
+}
+
+.zenbtn1 {
+    margin: 3px 0 3px 0; 
+    background-color: white;
+    width: 100%;
+    border-radius: 2px;
+    height: 2em;
+
+}
+.zenbtn1:hover {
+    background-color: rgb(255, 219, 179);
+    color: rgb(0, 0, 0);
+}
+.row_with_all{
+    height: 90%;
+}

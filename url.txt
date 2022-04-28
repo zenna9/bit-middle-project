@@ -1,0 +1,12 @@
+//	-->login.views.login	--> login.html
+	submited/ --> views.submited 
+----------------------------------------
+/admin 	--> admin
+----------------------------------------
+/ph/	(analysis_photo 앱으로 연결)
+		--> views.your_photo
+----------------------------------------
+/m/		(eat앱으로 연결)
+			 --> index.html
+	zenna/2022-04-13 --> views.logindone	-->index.html
+----------------------------------------

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, initial-scale=1">
+    <title>음식 사진을 등록하세요</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/css/your_photo.css"/>
+    <script src="/static/js/zen.js"></script>
+
+    <style>
+        * {
+            border: 1px rebeccapurple solid;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid" style="min-height: 30rem; height: 100vh;margin: 0;padding: 0;background-color: #00000050">
+        <!-- 상단바 ============================ -->
+        <div class="row" style="margin: 0;padding: 0;">
+            <div class="col-12" style="margin: 0 0 1em 0 ;padding: 0;">
+                <nav class="navbar navbar-dark bg-dark" style="margin:0; padding: 2px 0 2px 1%;">
+                    <!-- 상단바 왼쪽 버튼 및 사이트버튼 ================-->
+                    <a class="navbar-brand" href="#">food analysis</a>
+                    <!-- 로그인 hello======================== -->
+                    <div class="d-flex align-items-center link-dark text-decoration-none" style="color: aliceblue;margin: 0 1% 0 auto;">
+                        <strong>zenna</strong> 님 &nbsp;
+                        <img src="/static/picture/peng.png" alt="" width="40" height="40" class="rounded-circle me-2">
+                    </div>
+                    <!-- 오른쪽 햄버거버튼============ -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 ml-auto ar-auto" style="text-align: center">
+                <img src= "/media/{{k_hc.uploadedFile}}" style="object-fit: contain; width: 90%;" /> 
+            </div>
+            <div class="col-lg-2 ml-auto ar-auto" style="margin: 1em auto 1em auto">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <input type="date" id="currentDatetime" class="form-control">
+                    <br>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>식사 종류 선택</option>
+                      <option value="1">아침</option>
+                      <option value="2">점심</option>
+                      <option value="3">저녁</option>
+                      <option value="3">기타</option>
+                    </select>
+                </form>
+            </div>
+            <div class="col-lg-5" style="padding: 1em">
+                <table class="food" style="text-align: center;width: 90%">
+                    <tr>
+                        <th style="width: 70%">음식이름</th>
+                        <th style="width: 30%">중량</th>
+                    </tr>
+                    <tr>
+                        <td>설렁탕</td>
+                        <td>600g</td>
+                    </tr>
+                </table>
+                <button onclick="hideorseek('input_theirself')" class="btn btn-warning">직접 입력하기</button>
+                <br>
+                <div id="input_theirself" style="display: none;">
+                    <table style="border: 1px black solid;width: 100%;">
+                        <tr>
+                            <td class="one">전체 칼로리</td>
+                            <td class="two"><input type="text" name="kcal"/></td>
+                            <td class="three">kcal</td>
+                        </tr>
+                        <tr>
+                            <td class="one">탄수화물</td>
+                            <td class="two"><input type="text" name="tan"/></td>
+                            <td class="three">g</td>
+                        </tr>
+                        <tr>
+                            <td class="one">단백질</td>
+                            <td class="two"><input type="text" name="dan"/></td>
+                            <td class="three">g</td>
+                        </tr>
+                        <tr>
+                            <td class="one">지방</td>
+                            <td class="two"><input type="text" name="ji"/></td>
+                            <td class="three">g</td>
+                        </tr>
+                        <tr>
+                            <td class="one">당</td>
+                            <td class="two"><input type="text" name="dang"/></td>
+                            <td class="three">g</td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+            <footer style="text-align: right;margin: auto 3em 0 0">
+                <button value="오오" class="btn btn-outline-light btn-dark">제출하기</button>
+            </footer>
+        </div>
+    </div>
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="/static/js/zen.js"></script>
+</html>

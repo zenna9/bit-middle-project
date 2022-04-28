@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WHATYOUEAT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <script src="https://kit.fontawesome.com/d505e57471.js" crossorigin="anonymous"></script>
+    <script src="/static/js/zen.js "></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js">
+    </script>
+    <script type="text/javascript">   
+    $(document).ready( function() {
+                        $("#headers").load("/static/html/nav.html");  //헤더 인클루드
+                        $("#footers").load("/static/html/footer.html");  //푸터부분 인클루드
+                                    }
+                        );
+    </script>
+    <style>
+        table * {
+            border: solid rebeccapurple 1px !important;
+        }
+        * {
+            border: red solid 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid" style="margin: 0;padding: 0;">
+        <!-- 상단바 ============================ -->
+        <div id="headers"></div>
+        <!-- =========================본문  ===============================================-->
+        <div class="row row_with_all">
+            <div class="col-lg-8 zen_back1" style="width: 70%;margin-left: 2%;">
+                <!-- 날짜데이터 -->
+                <form action="parameter" enctype="multipart/form-data">
+                    <label for="currentDate" style="font-size: 2em;line-height: 2em;"><strong>Date</strong></label>
+                    <input type="date" name="today" id="currentDate" class="btn zen_calender" onchange="change()">
+                </form>
+                <hr>
+                <!-- {# 그래프 본문 내용====================== #} -->
+                <div style="height: 80%;text-align : center;">
+                    <div style="width: 50%;height: 150px;margin: 20% auto auto auto;">
+                        <i class="fa-solid fa-carrot fa-5x"></i>
+                        <br>아직 정보가 없어요!
+                        <br>오늘의 식사를 등록 해 주세요
+                    </div>
+                </div>
+            </div>
+            <!-- {#       사이드바 ===============================#} -->
+            <div class="col-lg-3 d-flex flex-column zen_back1" style="width: 25%;">
+                <div class="row zen_side_row">
+                    <div style="height: 20rem;">
+                        사진이 들어가고싶죠
+                    </div>
+                </div>
+                <hr>
+                <input type="button" class="zenbtn1" value="내 정보 보기"/>
+                <input type="button" class="zenbtn1" value="내 피드 보기"/>
+                <hr>
+                <footer class="row zen_side_row" style="width: 100%;margin:auto 3px 30px 3px;">
+                    <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="file">데이터를 업로드하세요!</label>
+                        <input type="file" name="i_fu" class="upload_button_zen form-control" id="file">
+                        
+                        <input type="submit" class="zenbtn1" style="margin-top: 1em " value="등록하기">
+                    </form>
+
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p " crossorigin="anonymous "></script>
+<script src="/static/js/zen.js "></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js "></script>
+<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.1/dist/circle-progress.js "></script>
+
+</html>
