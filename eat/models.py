@@ -25,6 +25,7 @@ class login(models.Model):
     recommend_ayeon = models.FloatField(default=12)
     recommend_kolest = models.FloatField(default=300)
     recommend_transfat= models.FloatField(default=0.0)
+    momentum= models.IntegerField(default=0)
 
 class diet(models.Model) :
     user_id = models.CharField(max_length=20, default="none")

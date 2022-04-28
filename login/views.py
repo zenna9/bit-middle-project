@@ -47,44 +47,58 @@ def register_submit(request):
     # stmt = stmt.format(user_id, password)
     # cursor.execute(stmt) #
     # data = cursor.fetchall() #
-    login = login()
-    login.user_id = request.POST['user_id']
-    login.password = request.POST['password']
-    login.user_name = request.POST['user_name']
-    login.user_height = request.POST['user_height']
-    login.user_weight = request.POST['user_weight']
-    login.user_age = request.POST['user_age']
-    login.wanted_weight = request.POST['wanted_weight']
-    
+    logins = login()
+    logins.user_id = request.POST['user_id']
+    logins.password = request.POST['password']
+    logins.user_name = request.POST['user_name']
+    logins.user_sex = request.POST['user_sex']
+    logins.user_height = request.POST['user_height']
+    logins.user_weight = request.POST['user_weight']
+    logins.user_age = request.POST['user_age']
+    logins.wanted_weight = request.POST['wanted_weight']
+    logins.momentum = request.POST['momentum']
 
-    return render(request, 'login.html')
+    if logins.momentum == 1 :
+        momen = 25
+    elif logins.momentum == 2 :
+        momen = 30
+    elif logins.momentum == 3 : 
+        momen = 35
+    elif logins.momentum == 4 : 
+        momen = 40
+    else : momen =30
+    logins.recommend_kcal = (float(logins.user_height)-100)*0.9*momen
+    
+    logins.save()
+
+    return redirect('/lg/success')
 
 
 def register(request):
     return render(request, 'register.html')
 
 
-def create_process(request):
-    new_user = request.POST.get('username')
-    con = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='bit123', db='dogstagram_db', charset='utf8')
-    cursor = con.cursor(pymysql.cursors.DictCursor)
-    stmt = "SELECT username FROM dogbook_users WHERE username='{}'"
-    stmt = stmt.format(new_user)
-    cursor.execute(stmt)
-    data = cursor.fetchall()
+# def create_process(request):
+#     new_user = request.POST.get('username')
+#     con = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='bit123', db='dogstagram_db', charset='utf8')
+#     cursor = con.cursor(pymysql.cursors.DictCursor)
+#     stmt = "SELECT username FROM dogbook_users WHERE username='{}'"
+#     stmt = stmt.format(new_user)
+#     cursor.execute(stmt)
+#     data = cursor.fetchall()
 
-    if not data:
-        user = users()
-        user.username = request.POST.get('username')
-        user.full_name = request.POST.get('full_name')
-        user.email = request.POST.get('email')
-        user.passwd = request.POST.get('passwd')
-        user.phoneno = request.POST.get('phoneno')
-        user.save()
-        return render(request, 'dogbook/success.html')
+#     if not data:
+#         user = users()
+#         user.username = request.POST.get('username')
+#         user.full_name = request.POST.get('full_name')
+#         user.email = request.POST.get('email')
+#         user.passwd = request.POST.get('passwd')
+#         user.phoneno = request.POST.get('phoneno')
+#         user.save()
+#         return render(request, 'dogbook/success.html')
 
-    else:
-        return render(request, 'dogbook/login_fail.html')
+#     else:
+#         return render(request, 'dogbook/login_fail.html')
 
     # if 'id_check_btn' in request.POST:
     #     user = request.POST.get('username')
