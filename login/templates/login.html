@@ -1,4 +1,5 @@
 {% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,12 +37,18 @@
         <div class="row">
             <h1 class="h3 mb-3 fw-normal">푸포 AI</h1>
         </div>
+        
+        <div th:if="${param.error}">
+            <div class="alert alert-danger" style="margin: 0 auto; width:10cm; height:1.5cm" >
+                사용자ID 또는 비밀번호를 확인해 주세요.
+            </div>
+        </div>
 
         <div class="row w-50" style="margin: 1em auto 1em auto;">
             <form action="lg/logining/" method="POST">
                 {% csrf_token %}
                 <div class="form-floating">
-                    <input type="text" class="form-control w-100" name="id" placeholder="Username">
+                    <input type="text" class="form-control w-100" name="user_id" placeholder="Username">
                     <label for="floatingInput">ID</label>
                 </div>
                 
