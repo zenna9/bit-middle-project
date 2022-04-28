@@ -34,13 +34,29 @@ def index(request):
     return render(request, 'index.html')
 
 def register_submit(request):
-    user_id = request.POST.get('user_id')
-    password = request.POST.get('password')
-    user_name = request.POST.get('user_name')
-    user_height = request.POST.get('user_height')
-    user_weight = request.POST.get('user_weight')
-    user_age = request.POST.get('user_age')
-    wanted_weight = request.POST.get('wanted_weight')
+    # user_id = request.POST.get('user_id')
+    # password = request.POST.get('password')
+    # user_name = request.POST.get('user_name')
+    # user_height = request.POST.get('user_height')
+    # user_weight = request.POST.get('user_weight')
+    # user_age = request.POST.get('user_age')
+    # wanted_weight = request.POST.get('wanted_weight')
+    # con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+    # cursor = con.cursor(pymysql.cursors.DictCursor)
+    # stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"
+    # stmt = stmt.format(user_id, password)
+    # cursor.execute(stmt) #
+    # data = cursor.fetchall() #
+    login = login()
+    login.user_id = request.POST['user_id']
+    login.password = request.POST['password']
+    login.user_name = request.POST['user_name']
+    login.user_height = request.POST['user_height']
+    login.user_weight = request.POST['user_weight']
+    login.user_age = request.POST['user_age']
+    login.wanted_weight = request.POST['wanted_weight']
+    
+
     return render(request, 'login.html')
 
 
