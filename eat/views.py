@@ -8,16 +8,15 @@ def index(request) :
 # 로그인한 메인화면 ======================
 def logindone(request, idx, date):
     try : 
-        dietlist = get_list_or_404(diet, user_idx=idx, date=date)
+        dietlist = get_list_or_404(diet, user_id=idx, date=date)
         loginn = get_object_or_404(login, user_id=idx)
-
         
-        sums = diet.objects.filter(date=date).filter(user_idx=idx).aggregate(Sum('tan'))
+        sums = diet.objects.filter(date=date).filter(user_id=idx).aggregate(Sum('tan'))
 
         need_list = ['dang', 'kcal', 'ji', 'dan']
 
         for i in need_list :
-                sums.update(diet.objects.filter(date=date).filter(user_idx=idx).aggregate(Sum(i)))
+                sums.update(diet.objects.filter(date=date).filter(user_id=idx).aggregate(Sum(i)))
         # 당, 칼로리, 지방, 단백질 총계 리스트 = sums
         # ============================================================================
 
@@ -29,6 +28,6 @@ def logindone(request, idx, date):
         context = {'dietlist': dietlist, 'idx':idx, 'date':date,'sums':sums, 'logininfo': loginn, 'percent': dict_percent}
         return render(request, 'index.html', context)
     except :
-        return render(request, 'no_data.html')
+        return render(request, 'index_null.html')
 
 

@@ -1,5 +1,6 @@
 
 from datetime import date
+from sre_constants import SUCCESS
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from eat.models import login
 import eat
@@ -13,7 +14,7 @@ from datetime import datetime
 def logining(request):
     user_id = request.POST.get('id')
     password = request.POST.get('password')
-    con = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='bit123', db='mini2', charset='utf8')
+    con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
     cursor = con.cursor(pymysql.cursors.DictCursor)
     stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"
     stmt = stmt.format(user_id, password)
@@ -24,13 +25,23 @@ def logining(request):
 
 
     if not data: #데이터가 없으면
-        # context = get_object_or_404(users, username=username)
+        # context = 
         return render(request, 'login_fail.html')
     else:
         return redirect('/m/'+user_id+'/'+date)
 
 def index(request):
     return render(request, 'index.html')
+
+def register_submit(request):
+    user_id = request.POST.get('user_id')
+    password = request.POST.get('password')
+    user_name = request.POST.get('user_name')
+    user_height = request.POST.get('user_height')
+    user_weight = request.POST.get('user_weight')
+    user_age = request.POST.get('user_age')
+    wanted_weight = request.POST.get('wanted_weight')
+    return render(request, 'login.html')
 
 
 def register(request):

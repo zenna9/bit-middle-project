@@ -10,6 +10,7 @@ class login(models.Model):
     user_age = models.IntegerField(default=0)
     user_height = models.FloatField(default=0.0)
     user_weight = models.FloatField(default=0.0)
+    wanted_weight = models.FloatField(default=0.0)
     recommend_kcal = models.FloatField(default=2400.0)
     recommend_tan = models.FloatField(default=500.0)
     recommend_dang = models.FloatField(default=0.001)
@@ -26,7 +27,7 @@ class login(models.Model):
     recommend_transfat= models.FloatField(default=0.0)
 
 class diet(models.Model) :
-    user_idx = models.CharField(max_length=20, default="none")
+    user_id = models.CharField(max_length=20, default="none")
     date = models.DateField(default=timezone.now)
     time = models.CharField(max_length=10)
     foodimage = models.ImageField(upload_to='eat/images/%y/%m/%d/', blank=True)
