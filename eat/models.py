@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+# from datetime import datetime
 from django.utils import timezone
 
 class login(models.Model):
