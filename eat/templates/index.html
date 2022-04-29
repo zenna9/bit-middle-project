@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/css/main.css" />
     <script src="https://kit.fontawesome.com/d505e57471.js" crossorigin="anonymous"></script>
     <script src="/static/js/zen.js "></script>
+    <script src="/static/js/index.js "></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js">
     </script>
     <script type="text/javascript">   
@@ -20,33 +21,124 @@
         );
     </script>
     <style>
-        table * {
+        /* table * {
             border: solid rebeccapurple 1px !important;
         }
         * {
             border: red solid 1px;
-        }
+        } */
     </style>
 </head>
 
-<body>
-    <div class="container-fluid" style="margin: 0;padding: 0;">
-        <!-- 상단바 ============================ -->
-        <div id="headers"></div>
+<body onload="onload('{{date}}')">
+    <!-- 상단바 ============================ -->
+    <div id="headers"></div>
+    <div class="container" style="margin: 0 auto 0 auto;padding: 0;">
         <!-- =========================본문  ===============================================-->
         <div class="row row_with_all">
             <div class="col-lg-8 zen_back1" style="width: 70%;margin-left: 2%;">
                 <!-- 날짜데이터 -->
                 <form action="parameter" enctype="multipart/form-data">
                     <label for="currentDate" style="font-size: 2em;line-height: 2em;"><strong>Date</strong></label>
-                    <input type="date" name="today" id="currentDate" class="btn zen_calender" onchange="change()">
+                    <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
                 </form>
                 <hr>
                 <!-- {# 그래프 본문 내용====================== #} -->
-                <div style="height: 80%;text-align : center;">
-                    <div style="width: 50%;height: 150px;margin: 20% auto auto auto;">
-                        <br><strong>인덱스 페이지야 구분해</strong>
-                        <br>
+                <div style="height: 80%;">
+                    <div style="width: 100%;height: 150px;margin: auto;">
+                        <table class="table2" style="height: 3em;">
+                            <tr>
+                                <td class="col1">
+                                    총 섭취량
+                                </td>
+                                <td class="col2">
+                                    <div class="progress " style="height: 2em; ">
+                                        <div class="progress-bar bg-danger" id="kcal" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                    </div>
+                                </td>
+                                <td class="col3">
+                                    kcal
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table2" style="text-align: left;">
+                            <tr>
+                                <td class="col33">
+                                    탄수화물
+                                </td>
+                                <td class="col10">
+
+                                </td>
+                                <td class="col33">
+                                    단백질
+                                </td>
+                                <td class="col10"></td>
+                                <td class="col33">
+                                    지방
+                                </td>
+                                <td class="col10"></td>
+
+                            </tr>
+                            <tr>
+                                <td class="col33" colspan="2">
+                                    <div class="progress" style="height: 2em;">
+                                        <div class="progress-bar bg-danger" id="tan" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                    </div>
+                                </td>
+                                <td class="col33" colspan="2">
+                                    <div class="progress" style="height: 2em;">
+                                        <div class="progress-bar bg-danger" id="dan" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                    </div>
+                                </td>
+                                <td class="col33" colspan="2">
+                                    <div class="progress" style="height: 2em;">
+                                        <div class="progress-bar bg-danger" id="ji" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                    <hr>
+                    <div style="width: 100%;height: 250px;margin: auto;" class="row">
+
+                        <div class="col col33">
+                            <div class="card shadow-sm">
+                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" focusable="false">
+                                    <img src="/static/picture/peng.png" style="object-fit: cover; width: 100%; height: 100%;"/>
+                                </div>
+                                <div class="card-body ">
+                                    <p class="card-text">아침</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col33">
+                            <div class="card shadow-sm">
+                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
+                                    <img src="/static/picture/pre-trained.jpeg" style="object-fit: cover; width: 100%; height: 100%;"/>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">점심</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col33">
+                            <div class="card shadow-sm">
+                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
+                                    <img src="/static/picture/peng.png" style="object-fit: cover; width: 100%; height: 100%;"/>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">저녁</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div style="width: 4vw;margin: 5vw auto auto auto;text-align: center;">
+                                <i class="fa-solid fa-ellipsis fa-2x"></i>
+                                <br>더보기
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
