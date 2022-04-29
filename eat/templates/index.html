@@ -7,114 +7,166 @@
     <title>WHATYOUEAT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <script src="https://kit.fontawesome.com/d505e57471.js" crossorigin="anonymous"></script>
+    <script src="/static/js/zen.js "></script>
+    <script src="/static/js/index.js "></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js">
     </script>
     <script type="text/javascript">   
     $(document).ready( function() {
-                        $("#headers").load("/static/html/nav.html");  //헤더 인클루드
-                        $("#footers").load("/static/html/footer.html");  //푸터부분 인클루드
-                                    }
-                        );
+        $("#headers").load("/static/html/nav.html");  //헤더 인클루드
+        $("#footers").load("/static/html/footer.html");  //푸터부분 인클루드
+        }
+        );
     </script>
     <style>
-        .circle {
-            width: 100px;
-            margin: 6px 6px 20px;
-            display: inline-block;
-            position: relative;
-            text-align: center;
-            line-height: 1.2;
+        /* table * {
+            border: solid rebeccapurple 1px !important;
         }
-
-        table * {
-            border: solid rebeccapurple 1px;
-            !important;
-        }
+        * {
+            border: red solid 1px;
+        } */
     </style>
 </head>
 
-<body>
-
-    <div class="container-fluid" style="min-height: 30rem; height: 100vh;margin: 0;padding: 0;">
-                <!-- 상단바 ============================ -->
-                <div id="headers"></div>
+<body onload="onload('{{date}}')">
+    <!-- 상단바 ============================ -->
+    <div id="headers"></div>
+    <div class="container" style="margin: 0 auto 0 auto;padding: 0;">
         <!-- =========================본문  ===============================================-->
-        <div class="row">
-            <div class="col-lg-8 back1" style="margin: 1% auto 1% auto;min-height: 40rem;">
+        <div class="row row_with_all">
+            <div class="col-lg-8 zen_back1" style="width: 70%;margin-left: 2%;">
                 <!-- 날짜데이터 -->
-                <form action="parameter" enctype="multipart/form-data" >
-                    {# {% csrf_token %}#}
-                    <p style="margin: auto 0 auto 0;">
-                        <label for="currentDate" style="font-size: 2em;"><strong>Date</strong></label>
-                        <input type="date" name="today" id="currentDate" style="width: 8em;color: white;font-size: 1.2em;height:2em;" class="btn" >
-                    </p>
+                <form action="parameter" enctype="multipart/form-data">
+                    <label for="currentDate" style="font-size: 2em;line-height: 2em;"><strong>Date</strong></label>
+                    <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
                 </form>
-
+                <hr>
                 <!-- {# 그래프 본문 내용====================== #} -->
-                <table style="width: 100%; text-align: center;padding: 3px;">
-                    <tr>
-                        <td style="width: 30%; height: 2.5em;">하루 권장량</td>
-                        <td style="width: 30%;"> 탄수화물 </td>
-                        <td style="width: 12%;"> {{ percent.per_tan }} </td>
-                        <td>
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar bg-danger" id="tan" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="4">
-                            <div style="width :150px ; margin: 0 auto 0 auto;">
-                            <!-- 하루 권장량 progress circle -->
-                                <div role="progresscr" aria-valuenow="67" aria-valuemin="67" aria-valuemax="100" style="--value: 67 "></div>
-                            </div>
-                            {{ percent.per_kcal }}
-                            <br>
-                        </td>
-                        <td style="height: 2.5em;">단백질</td>
-                        <!-- {# 단백질 값 들어갈 자리#} -->
-                        <td>{{ percent.per_dan }}</td>
-                        <td>
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar bg-danger " role="progressbar " style="width: 72%; " aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                            </div>
+                <div style="height: 80%;">
+                    <div style="width: 100%;height: 150px;margin: auto;">
+                        <table class="table2" style="height: 3em;">
+                            <tr>
+                                <td class="col1">
+                                    총 섭취량
+                                </td>
+                                <td class="col2">
+                                    <div class="progress " style="height: 2em; ">
+                                        <div class="progress-bar bg-danger" id="kcal" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                    </div>
+                                </td>
+                                <td class="col3">
+                                    kcal
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table2" style="text-align: left;">
+                            <tr>
+                                <td class="col33">
+                                    탄수화물
+                                </td>
+                                <td class="col10">
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="height: 2.5em;">지방</td>
-                        <td>
-                            <!--지방-->{{ percent.per_ji }}</td>
-                        <td>
-                            <div class="progress " style="height: 2em; ">
-                                <div class="progress-bar bg-danger " role="progressbar " style="width: 69%; "></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                    {{sums}}
-            </div>
-            <!-- {#       사이드바 ===============================#} -->
-            <div class="col-lg-3 d-flex flex-column flex-shrink-0 p-4 " style="border-radius: 2em;background-color: #00000070; color: white;margin: 1% 1% 1% auto; ">
-                <div class="row " style="margin: 1% 0 0 0 ; ">
-                    {{ dietlist.date }}
-                    {{logininfo.user_id}}
-                </div>
-                <div class="row " style="margin: 1% 0 0 0 ; ">
-                    <div class="col " style="font-size: 1em; text-align: center; border: solid 2px grey;padding: 1em ">
-                        데이터를 업로드하세요! <br><br>
-                        <form action="{% url 'analysis_photo:f_fu' %} " method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <input type="file" name="i_fu" class="form-control">
-                            <input type="submit" class="btn btn-outline-info" style="margin-top: 1em " value="등록하기">
-                        </form>
-                        <a href="/ph/your_photo">your photo</a>
+                                </td>
+                                <td class="col33">
+                                    단백질
+                                </td>
+                                <td class="col10"></td>
+                                <td class="col33">
+                                    지방
+                                </td>
+                                <td class="col10"></td>
 
+                            </tr>
+                            <tr>
+                                <td class="col33" colspan="2">
+                                    <div class="progress" style="height: 2em;">
+                                        <div class="progress-bar bg-danger" id="tan" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                    </div>
+                                </td>
+                                <td class="col33" colspan="2">
+                                    <div class="progress" style="height: 2em;">
+                                        <div class="progress-bar bg-danger" id="dan" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                    </div>
+                                </td>
+                                <td class="col33" colspan="2">
+                                    <div class="progress" style="height: 2em;">
+                                        <div class="progress-bar bg-danger" id="ji" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+                    <hr>
+                    <div style="width: 100%;height: 250px;margin: auto;" class="row">
+
+                        <div class="col col33">
+                            <div class="card shadow-sm">
+                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" focusable="false">
+                                    <img src="/static/picture/peng.png" style="object-fit: cover; width: 100%; height: 100%;"/>
+                                </div>
+                                <div class="card-body ">
+                                    <p class="card-text">아침</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col33">
+                            <div class="card shadow-sm">
+                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
+                                    <img src="/static/picture/pre-trained.jpeg" style="object-fit: cover; width: 100%; height: 100%;"/>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">점심</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col33">
+                            <div class="card shadow-sm">
+                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
+                                    <img src="/static/picture/peng.png" style="object-fit: cover; width: 100%; height: 100%;"/>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">저녁</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div style="width: 4vw;margin: 5vw auto auto auto;text-align: center;">
+                                <i class="fa-solid fa-ellipsis fa-2x"></i>
+                                <br>더보기
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- {#       사이드바 ===============================#} -->
+            <div class="col-lg-3 d-flex flex-column zen_back1" style="width: 25%;">
+                <div class="row zen_side_row">
+                    <div style="height: 20rem;">
+                        사진이 들어가고싶죠
+                    </div>
+                </div>
+                <hr>
+                <input type="button" class="zenbtn1" value="내 정보 보기"/>
+                <input type="button" class="zenbtn1" value="내 피드 보기"/>
+                <hr>
+                <footer class="row zen_side_row" style="width: 100%;margin:auto 3px 30px 3px;">
+                    <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="file">데이터를 업로드하세요!</label>
+                        <input type="file" name="i_fu" class="upload_button_zen form-control" id="file">
+                        
+                        <input type="submit" class="zenbtn1" style="margin-top: 1em " value="등록하기">
+                    </form>
+
+                </footer>
+            </div>
         </div>
     </div>
+    <div id="footer"></div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p " crossorigin="anonymous "></script>
 <script src="/static/js/zen.js "></script>

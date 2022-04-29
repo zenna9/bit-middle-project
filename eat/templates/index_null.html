@@ -10,14 +10,15 @@
     <link rel="stylesheet" href="/static/css/main.css" />
     <script src="https://kit.fontawesome.com/d505e57471.js" crossorigin="anonymous"></script>
     <script src="/static/js/zen.js "></script>
+    <script src="/static/js/index.js "></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js">
     </script>
     <script type="text/javascript">   
     $(document).ready( function() {
-                        $("#headers").load("/static/html/nav.html");  //헤더 인클루드
-                        $("#footers").load("/static/html/footer.html");  //푸터부분 인클루드
-                                    }
-                        );
+        $("#headers").load("/static/html/nav.html");  //헤더 인클루드
+        $("#footers").load("/static/html/footer.html");  //푸터부분 인클루드
+        }
+        );
     </script>
     <style>
         table * {
@@ -29,7 +30,7 @@
     </style>
 </head>
 
-<body>
+<body onload="onload('{{date}}')">
     <div class="container-fluid" style="margin: 0;padding: 0;">
         <!-- 상단바 ============================ -->
         <div id="headers"></div>
@@ -39,7 +40,7 @@
                 <!-- 날짜데이터 -->
                 <form action="parameter" enctype="multipart/form-data">
                     <label for="currentDate" style="font-size: 2em;line-height: 2em;"><strong>Date</strong></label>
-                    <input type="date" name="today" id="currentDate" class="btn zen_calender" onchange="change()">
+                    <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
                 </form>
                 <hr>
                 <!-- {# 그래프 본문 내용====================== #} -->

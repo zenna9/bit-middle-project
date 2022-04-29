@@ -28,6 +28,7 @@ def logindone(request, idx, date):
         context = {'dietlist': dietlist, 'idx':idx, 'date':date,'sums':sums, 'logininfo': loginn, 'percent': dict_percent}
         return render(request, 'index.html', context)
     except :
-        return render(request, 'index_null.html')
+        context = {'idx':idx,'date':date}
+        return render(request, 'index_null.html', context)
 
 

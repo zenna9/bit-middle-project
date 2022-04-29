@@ -7,6 +7,13 @@
 
 .table2 {
     width: 100%;
+    margin: 10px 0 0 0;
+    padding: 5%;
+}
+.table1 {
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 5%;
     text-align: center;
 }
 
@@ -16,7 +23,6 @@
 
 body {
     background: linear-gradient(#ffffff, #fefff5);
-    color: white;
 }
 
 @keyframes progress {
@@ -33,55 +39,26 @@ body {
     inherits: true;
     initial-value: 0;
 }
-
-[role="progresscr"] {
-    --percentage: var(--value);
-    --primary: #369;
-    --secondary: #adf;
-    --size: 150px;
-    animation: progress 2s 0.5s forwards;
-    width: var(--size);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    position: relative;
-    overflow: hidden;
-    display: grid;
-    place-items: center;
-}
-
-[role="progresscr"]::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: conic-gradient(var(--primary) calc(var(--percentage) * 1%), var(--secondary) 0);
-    mask: radial-gradient(white 55%, transparent 0);
-    mask-mode: alpha;
-    -webkit-mask: radial-gradient(#0000 55%, #000 0);
-    -webkit-mask-mode: alpha;
-}
-
-[role="progresscr"]::after {
-    counter-reset: percentage var(--value);
-    content: counter(percentage) '%';
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: calc(var(--size) / 5);
-    color: var(--primary);
-}
-
-
 .col1 {
-    width: 10%;
+    /* width: 8%; */
+    width: 1.3vw;
 }
 
 .col2 {
-    width: 15%;
+    /* width: 87%; */
+    width: 10vw;
 }
 
 .col3 {
-    width: 75%
+    /* width: 5% */
+    width: 1vw;
+}
+.col33 {
+    /* width: 22%; */
+    width: 3vw;
+}
+.col10 {
+    width: 10%;
 }
 
 .zen_back1 {
@@ -104,7 +81,6 @@ body {
     font-size: 1em; 
     text-align: center;
 }
-
 .no_margin {
     margin: 0;
     padding: 0;
@@ -114,7 +90,6 @@ body {
     font-weight:600 !important;
     color:#999c9e !important;
 }
-
 .zenbtn1 {
     margin: 3px 0 3px 0; 
     background-color: white;
@@ -125,8 +100,14 @@ body {
 }
 .zenbtn1:hover {
     background-color: rgb(255, 219, 179);
+    background-color: rgb(211, 211, 211);
     color: rgb(0, 0, 0);
 }
 .row_with_all{
     height: 90%;
+    
+}
+
+.card-body {
+    text-align: center !important;
 }
