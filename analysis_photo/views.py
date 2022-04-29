@@ -13,8 +13,6 @@ def f_fu(request):
         # uploadedFile = request.FILES["uploadedFile"]
         b_uf = request.FILES["i_fu"]
         print(type(b_uf),"==================",b_uf)
-
-
         #폴더에 저장
 
         b_fj = models.imgs(
