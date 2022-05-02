@@ -30,7 +30,7 @@
     </style>
 </head>
 
-<body onload="onload('{{date}}','{{percent.per_dan}}')">
+<body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
     <!-- 상단바 ============================ -->
     <div id="headers"></div>
     <div class="container" style="margin: 0 auto 0 auto;padding: 0;">
@@ -48,16 +48,16 @@
                     <div style="width: 100%;height: 150px;margin: auto;">
                         <table class="table2" style="height: 3em;">
                             <tr>
-                                <td class="col1">
+                                <td class="col-2" style="text-align: center;">
                                     총 섭취량
                                 </td>
-                                <td class="col2">
-                                    <div class="progress " style="height: 2em; border-radius: 3px; ">
-                                        <div class="progress-bar bg-danger" id="kcal" role="progressbar" style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                                    </div>
+                                <td class="col-8">
+                                    <div class="progress" style="height: 2em;">
+                                        <div  id="perkcal" class="progress-bar bg-danger" role="progressbar" style="width: 0%;">{{percent.per_kcal}}</div>
+                                      </div>
                                 </td>
-                                <td class="col3">
-                                    {{ percent.per_kcal }}
+                                <td class="col-2" style="text-align:right">
+                                    {{sums.kcal__sum}}/{{ logininfo.recommend_kcal }}
                                 </td>
                             </tr>
                         </table>
@@ -66,36 +66,37 @@
                                 <td class="col33">
                                     탄수화물
                                 </td>
-                                <td class="col10">
+                                <td class="col10"  style="text-align:right">
                                     {{ percent.per_tan }}
                                 </td>
                                 <td class="col33">
                                     단백질
                                 </td>
-                                <td class="col10">
+                                <td class="col10"  style="text-align:right">
                                     {{percent.per_dan}}
                                 </td>
                                 <td class="col33">
                                     지방
                                 </td>
-                                <td class="col10">{{percent.per_ji}}</td>
+                                <td class="col10" style="text-align:right">
+                                    {{percent.per_ji}}</td>
                                     
                             </tr>
                             <tr>
                                 <td class="col33" colspan="2">
-                                    <div class="bar-container">
-                                        <progress class="progressTag" value="0" max="100"/>
+                                    <div class="progress" style="height: 2em;">
+                                        <div  id="pertan" class="progress-bar bg-success" role="progressbar" style="width: 0%;">{{percent.per_tan}}</div>
                                       </div>
                                 </td>
                                 <td class="col33" colspan="2">
                                     <div class="progress" style="height: 2em;">
-                                        <div class="progress-bar bg-danger" id="dan" role="progressbar" style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                                    </div>
+                                        <div  id="perdan" class="progress-bar bg-info" role="progressbar" style="width: 0%;">{{percent.per_dan}}</div>
+                                      </div>
                                 </td>
                                 <td class="col33" colspan="2">
                                     <div class="progress" style="height: 2em;">
-                                        <div class="progress-bar bg-danger" id="ji" role="progressbar " style="width: 35%;" aria-valuenow="20 " aria-valuemin="0 " aria-valuemax="100 "></div>
-                                    </div>
+                                        <div  id="perji" class="progress-bar bg-warning" role="progressbar" style="width: 0%;">{{percent.per_ji}}</div>
+                                      </div>
                                 </td>
                             </tr>
                         </table>
@@ -104,41 +105,22 @@
                     <hr>
                     <div style="width: 100%;height: 250px;margin: auto;" class="row">
 
-                        <div class="col col33">
-                            <div class="card shadow-sm">
-                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" focusable="false">
-                                    <img src="/static/picture/peng.png" style="object-fit: cover; width: 100%; height: 100%;"/>
-                                </div>
-                                <div class="card-body ">
-                                    <p class="card-text">아침</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col33">
+                        {% for i in dietlist %}
+                        <div class="col-3">
                             <div class="card shadow-sm">
                                 <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
-                                    <img src="/static/picture/pre-trained.jpeg" style="object-fit: cover; width: 100%; height: 100%;"/>
+                                    <img src="/media/{{i.foodimage}}" style="object-fit: cover; width: 100%; height: 100%;"/>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-text">점심</p>
+                                    <p class="card-text">{{i.time}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col col33">
-                            <div class="card shadow-sm">
-                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
-                                    <img src="/static/picture/peng.png" style="object-fit: cover; width: 100%; height: 100%;"/>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">저녁</p>
-                                </div>
-                            </div>
-                        </div>
+                        {%endfor%}
 
                         <div class="col-2">
                             <div style="width: 4vw;margin: 5vw auto auto auto;text-align: center;">
-                                <i class="fa-solid fa-ellipsis fa-2x"></i>
-                                <br>더보기
+                                <a href="#"><img src="/static/picture/moreinfo.png" width="100%" style="object-fit: contain;border-radius: 50%;"></a>
                             </div>
                         </div>
                     </div>

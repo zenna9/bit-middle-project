@@ -56,9 +56,11 @@ body {
 .col33 {
     /* width: 22%; */
     width: 3vw;
+    margin: 10px;
 }
 .col10 {
     width: 10%;
+    margin: 10px;
 }
 
 .zen_back1 {

@@ -4,16 +4,12 @@ function change(idx){
     window.location.pathname = 'm/'+idx+'/'+add;
 }
 
-function onload(date, perdan){
-    document.getElementById('zen_calender').value=date;
-    tan = document.getElementById('tan').style.width;
-    console.log(date)
-    console.log(perdan)
-
-
-
-
-
+function loadfunction(date, perkcal, pertan, perdan, perji){
+  document.getElementById('zen_calender').value=date;
+  document.getElementById('perkcal').style.width=perkcal;
+  document.getElementById('pertan').style.width=pertan;
+  document.getElementById('perdan').style.width=perdan;
+  document.getElementById('perji').style.width=perji;
 }
 
 // for progress tag in HTML 
