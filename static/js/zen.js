@@ -1,6 +1,6 @@
 // document.getElementById('currentDatetime').value = new Date().toISOString().slice(0, -1);
 
-document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+// document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
 
 function date(today){
     let day = date(today);
