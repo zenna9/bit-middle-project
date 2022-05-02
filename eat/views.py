@@ -26,6 +26,7 @@ def logindone(request, idx, date):
         dict_percent.update({'per_dan': '{}%'.format(round(sums['dan__sum'] / loginn.recommend_dan*100,1))})
 
         context = {'dietlist': dietlist, 'idx':idx, 'date':date,'sums':sums, 'logininfo': loginn, 'percent': dict_percent}
+        print("==============================",dict_percent)
         return render(request, 'index.html', context)
     except :
         context = {'idx':idx,'date':date}
