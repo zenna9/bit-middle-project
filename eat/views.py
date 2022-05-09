@@ -1,6 +1,13 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
+from django.template.response import TemplateResponse
+from django.template import loader
+
 from eat.models import diet, login, imgs
 from django.db.models import Sum, F, Count, Case, When
+import json
+
+
 
 def index(request) :
     return render(request, 'login.html')
@@ -29,7 +36,17 @@ def logindone(request, idx, date):
         print("==============================",dict_percent)
         return render(request, 'index.html', context)
     except :
-        context = {'idx':idx,'date':date}
+        context = {'idx': idx, 'date': date}
         return render(request, 'index_null.html', context)
 
+def mypage_index(request, idx, date):
+    context = {'idx': idx, 'date': date}
+    return render(request, "myprofile.html", context)
 
+# def mypage_index(request, idx, date):
+#     profile_info = login.objects.all()
+#     context = {
+#         'profile_info' : profile_info,
+#         'profile_js' : json.dumps([login.json() for login in profile_info])
+#     }
+#     return render(request, 'myprofile.html', context)

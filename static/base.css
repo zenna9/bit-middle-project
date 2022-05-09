@@ -35,20 +35,6 @@ a:hover {
     margin: 0 0.5rem;
 }
 
-
 .pragmatic_header_navbar {
     margin: 1rem 0;
 }
-
-.div1{
-display:none;
-}
-
-.div2{
-display:block;
-}
-
-.div1:visited + .div2{
-display:block;
-}
-

@@ -26,9 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eat.apps.EatConfig',
-    'analysis_photo.apps.AnalysisPhotoConfig',
-    'login.apps.LoginConfig'
+    'eat',
+    'analysis_photo',
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -68,10 +68,10 @@ WSGI_APPLICATION = 'whateat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bitteam2',
-        'USER': 'user1',
-        'PASSWORD': '1111', #-->웤벤비번
-        'HOST': '192.168.0.29',
+        'NAME': 'db_study',
+        'USER': 'root',
+        'PASSWORD': 'Jesusdfm!2', #-->웤벤비번
+        'HOST': 'localhost',
         'PORT': '3306'#--> mysql디폴트 포트번호임
     }
 }
@@ -113,7 +113,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# static 파일 모아주는 구문 추가
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join("staticfiles")
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

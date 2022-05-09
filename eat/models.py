@@ -27,6 +27,13 @@ class login(models.Model):
     recommend_transfat= models.FloatField(default=0.0)
     momentum= models.IntegerField(default=0)
 
+    def to_json (self):
+        return {
+            "profile_id": self.user_id,
+            "profile_name": self.user_name
+        }
+
+
 class diet(models.Model) :
     user_id = models.CharField(max_length=20, default="none")
     date = models.DateField(default=timezone.now)
