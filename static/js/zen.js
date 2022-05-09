@@ -23,7 +23,7 @@ function getvalue(){
     return urll;
 }
 
-function hideorseek(what) {
+function zen_hideorseek(what) {
     target_x = document.getElementById(what);
     target_x.style.display = 'block';
 }

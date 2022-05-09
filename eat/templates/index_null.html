@@ -30,7 +30,7 @@
     </style>
 </head>
 
-<body onload="onload('{{date}}')">
+<body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
     <div class="container-fluid" style="margin: 0;padding: 0;">
         <!-- 상단바 ============================ -->
         <div id="headers"></div>
@@ -68,7 +68,7 @@
                         {% csrf_token %}
                         <label for="file">데이터를 업로드하세요!</label>
                         <input type="file" name="i_fu" class="upload_button_zen form-control" id="file">
-                        
+                        <input type="hidden" name="idx" value="{{idx}}" />
                         <input type="submit" class="zenbtn1" style="margin-top: 1em " value="등록하기">
                     </form>
 

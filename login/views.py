@@ -1,4 +1,3 @@
-
 from datetime import date
 from sre_constants import SUCCESS
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
@@ -14,7 +13,7 @@ from datetime import datetime
 def logining(request):
     user_id = request.POST.get('user_id')
     password = request.POST.get('password')
-    con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+    con = pymysql.connect(host='localhost', port=3306, user='root', passwd='000000', db='bitteam2', charset='utf8')
     cursor = con.cursor(pymysql.cursors.DictCursor)
     stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"
     stmt = stmt.format(user_id, password)
@@ -34,19 +33,6 @@ def index(request):
     return render(request, 'index.html')
 
 def register_submit(request):
-    # user_id = request.POST.get('user_id')
-    # password = request.POST.get('password')
-    # user_name = request.POST.get('user_name')
-    # user_height = request.POST.get('user_height')
-    # user_weight = request.POST.get('user_weight')
-    # user_age = request.POST.get('user_age')
-    # wanted_weight = request.POST.get('wanted_weight')
-    # con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
-    # cursor = con.cursor(pymysql.cursors.DictCursor)
-    # stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"
-    # stmt = stmt.format(user_id, password)
-    # cursor.execute(stmt) #
-    # data = cursor.fetchall() #
     logins = login()
     logins.user_id = request.POST['user_id']
     logins.password = request.POST['password']
@@ -68,7 +54,6 @@ def register_submit(request):
         momen = 40
     else : momen =30
     logins.recommend_kcal = (float(logins.user_height)-100)*0.9*momen
-    
     logins.save()
 
     return redirect('/lg/success')

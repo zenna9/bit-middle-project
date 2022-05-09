@@ -9,7 +9,8 @@ app_name = 'analysis_photo'
 
 urlpatterns = [
     path('', views.f_fu, name='f_fu'),
-    path('<int:b_hc_id>/', views.f_hp, name='f_hp')
+    path('f_uploading', views.f_upload_at_sql, name='f_uas'),
+    path('<int:b_hc_id>/<str:idx>', views.f_hp, name='f_hp')
 ]
 
 if settings.DEBUG : 
