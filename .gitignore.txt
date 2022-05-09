@@ -1,2 +1,0 @@
-whateat/settings.py
-media
