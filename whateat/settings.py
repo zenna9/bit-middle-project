@@ -69,10 +69,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bitteam2',
-        'USER': 'user1',
-        'PASSWORD': '1111', #-->웤벤비번
-        'HOST': '192.168.0.29',
-        'PORT': '3306'#--> mysql디폴트 포트번호임
+        'USER': 'root',
+        'PASSWORD': '000000',
+        'HOST': 'localhost',
+        'PORT': '3306'
+
     }
 }
 
