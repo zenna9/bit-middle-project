@@ -9,6 +9,7 @@ def index(request) :
 def logindone(request, idx, date):
     try : 
         dietlist = get_list_or_404(diet, user_id=idx, date=date)
+        # dietlist.kcal = round(dietlist.kcal,1)
         loginn = get_object_or_404(login, user_id=idx)
         
         sums = diet.objects.filter(date=date).filter(user_id=idx).aggregate(Sum('tan'))
