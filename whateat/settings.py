@@ -68,11 +68,12 @@ WSGI_APPLICATION = 'whateat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_study',
-        'USER': 'root',
-        'PASSWORD': 'Jesusdfm!2',
-        'HOST': 'localhost',
+        'NAME': 'bitteam2',
+        'USER': 'user1',
+        'PASSWORD': '1111',
+        'HOST': '192.168.0.29',
         'PORT': '3306'
+
 
     }
 }
@@ -115,9 +116,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join('staticfiles') #collectstatics하려고 한거
+
 
 # 0510 STATIC 파일 모아주기 구문 추가
 STATIC_ROOT = os.path.join("staticfiles")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
