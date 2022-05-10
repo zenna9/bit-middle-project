@@ -32,4 +32,7 @@ def logindone(request, idx, date):
         context = {'idx':idx,'date':date}
         return render(request, 'index_null.html', context)
 
+def mypage_index(request, idx, date):
+    context = {'idx': idx, 'date': date}
+    return render(request, "myprofile.html", context)
 
