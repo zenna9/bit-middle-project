@@ -1,2 +1,3 @@
 whateat/settings.py
-media
+media/
+.gitignore/
