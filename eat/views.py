@@ -7,7 +7,7 @@ def index(request) :
 
 # 로그인한 메인화면 ======================
 def logindone(request, idx, date):
-    try : 
+    # try : 
         dietlist = get_list_or_404(diet, user_id=idx, date=date)
         # dietlist.kcal = round(dietlist.kcal,1)
         loginn = get_object_or_404(login, user_id=idx)
@@ -29,9 +29,9 @@ def logindone(request, idx, date):
         context = {'dietlist': dietlist, 'idx':idx, 'date':date,'sums':sums, 'logininfo': loginn, 'percent': dict_percent}
         # print("==============================",dict_percent)
         return render(request, 'index.html', context)
-    except :
-        context = {'idx':idx,'date':date}
-        return render(request, 'index_null.html', context)
+    # except :
+        # context = {'idx':idx,'date':date}
+        # return render(request, 'index_null.html', context)
 
 def mypage_index(request, idx, date):
     context = {'idx': idx, 'date': date}
