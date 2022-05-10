@@ -1,3 +1,5 @@
 whateat/settings.py
 media/
 .gitignore/
+
+./whateat/settings.py
