@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
-        <!--	HEADER NAV BAR		-->
-        {% include 'nav.html' %}
-    <div class="container" style="margin: 0 auto 0 auto;padding: 0;">
+<div class="container" style="margin: 0 auto 0 auto;padding: 0;">
+
+  <!--	HEADER NAV BAR-->
+  {% include 'nav.html' %}
+
         <!-- =========================본문  ===============================================-->
         <div class="row row_with_all">
             <div class="col-lg-8 zen_back1" style="width: 70%;margin-left: 2%;">
@@ -29,7 +30,7 @@
                                       </div>
                                 </td>
                                 <td class="col-2" style="text-align:right">
-                                    {{sums.kcal__sum}}/{{ logininfo.recommend_kcal }}
+                                    {{sums.kcal__sum|floatformat}}/{{ logininfo.recommend_kcal }}
                                 </td>
                             </tr>
                         </table>
@@ -74,7 +75,7 @@
                     </div>
                     <hr>
                     <div style="width: 100%;height: 250px;margin: auto;" class="row">
-                        {% for i in dietlist %}
+                        {% for i in dietlist|slice:":3" %}
                         <div class="col-3">
                             <div class="card shadow-sm">
                                 <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
@@ -85,6 +86,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         {%endfor%}
 
                         <div class="col-2">
@@ -96,27 +98,8 @@
                 </div>
             </div>
             <!-- {#       사이드바 ===============================#} -->
-            <div class="col-lg-3 d-flex flex-column zen_back1" style="width: 25%;">
-                <div class="row zen_side_row">
-                    <div style="height: 20rem;">
-                        사진이 들어가고싶죠 {{idx}}
-                    </div>
-                </div>
-                <hr>
-                <input type="button" class="zenbtn1" value="내 정보 보기"/>
-                <input type="button" class="zenbtn1" value="내 피드 보기"/>
-                <hr>
-                <footer class="row zen_side_row" style="width: 100%;margin:auto 3px 30px 3px;">
-                    <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <label for="file">데이터를 업로드하세요!</label>
-                        <input type="file" name="i_fu" class="upload_button_zen form-control" id="file">
-                        <input type="hidden" name="idx" value="{{idx}}" />
-                        <input type="submit" class="zenbtn1" style="margin-top: 1em " value="등록하기">
-                    </form>
-
-                </footer>
-            </div>
+            {% include 'sidebar.html' %}
+          
         </div>
     </div>
     <!--	FOOTER		-->
@@ -124,3 +107,13 @@
 </body>
 
 {% endblock %}
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p " crossorigin="anonymous "></script>
+<script src="/static/js/zen.js "></script>
+<script src="/static/js/index.js "></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js "></script>
+<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.1/dist/circle-progress.js "></script>
+{% endblock %}
+

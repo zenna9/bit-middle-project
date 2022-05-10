@@ -23,27 +23,7 @@
                 </div>
             </div>
             <!-- {#       사이드바 ===============================#} -->
-            <div class="col-lg-3 d-flex flex-column zen_back1" style="width: 25%;">
-                <div class="row zen_side_row">
-                    <div style="height: 20rem;">
-                        사진이 들어가고싶죠
-                    </div>
-                </div>
-                <hr>
-                <input type="button" class="zenbtn1" value="내 정보 보기"/>
-                <input type="button" class="zenbtn1" value="내 피드 보기"/>
-                <hr>
-                <footer class="row zen_side_row" style="width: 100%;margin:auto 3px 30px 3px;">
-                    <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <label for="file">데이터를 업로드하세요!</label>
-                        <input type="file" name="i_fu" class="upload_button_zen form-control" id="file">
-                        <input type="hidden" name="idx" value="{{idx}}" />
-                        <input type="submit" class="zenbtn1" style="margin-top: 1em " value="등록하기">
-                    </form>
-
-                </footer>
-            </div>
+            {% include 'sidebar.html' %}
         </div>
     </div>
     <!--	FOOTER		-->
