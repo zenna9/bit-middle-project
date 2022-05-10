@@ -1,0 +1,48 @@
+.pragmatic_logo {
+    font-family: 'Lobster', cursive;
+}
+
+.pragmatic_footer_button {
+    font-size: .9rem;
+}
+
+.pragmatic_footer {
+    text-align:center;
+    margin-top: 2rem;
+}
+
+.pragmatic_header {
+    text-align:center;
+    margin: 2rem 0;
+}
+
+@media screen and (max-width:500px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.prgmatic_header_nav {
+    margin: 0 0.5rem;
+}
+
+.pragmatic_header_navbar {
+    margin: 1rem 0;
+}
+
+.profile_photo{
+    display:inline-block;
+    width:15rem; height:15rem;
+    overflow:hidden;
+    border-radius:10%; margin:1rem auto; color:blue; text-align:center;
+    transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;
+}
