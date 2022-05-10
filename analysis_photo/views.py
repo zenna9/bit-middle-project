@@ -1,7 +1,8 @@
 from distutils.command.upload import upload
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_list_or_404, render, get_object_or_404, redirect
 from eat import models
 from eat.models import imgs, diet
+from analysis_photo.models import menu
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -41,15 +42,43 @@ def f_upload_at_sql(request):
     idx = request.POST['idx']
     date=request.POST['date']
 
+    menulist = []
+    for i in range(1, 2):
+        try:
+            if (request.POST['ai_{}'.format(i)] != ''):
+                # print(request.POST['ai_{}'.format(i)])            
+                menulist.append([(request.POST['ai_{}'.format(i)]),int(request.POST['ai_g{}'.format(i)])])
+        except : print('첫번째가 이;상해')
+    for i in range(1, 5):
+        try:
+            if (request.POST['sl_{}'.format(i)] != ''):
+                # print(request.POST['sl_{}'.format(i)])            
+                menulist.append([(request.POST['sl_{}'.format(i)]),int(request.POST['sl_g{}'.format(i)])])
+        except : print('2번째가 이상하대')
+        
+    print('=-=-===-=-=-=-=-=-=-=',menulist)
+
     diets = diet()
     diets.user_id = request.POST['idx']
     diets.date=request.POST['date']
     diets.time = request.POST['time']
     diets.foodimage = request.POST['file_location']
+    
+    nut_list = {} #빈 딕트 선언
+    for i in range(0, len(menulist)) :
+        print('menulist',menulist[i][0])
+        newlist = get_object_or_404(menu, food_name=menulist[i][0])
+        print('newlist',newlist.kcal)
+
+
     # menu1
     # g1
     # menu2
     # g2
+
+
+    # 음식 정보 인식.. 계산...
+
     diets.save()
 
 
