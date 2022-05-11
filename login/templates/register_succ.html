@@ -29,6 +29,7 @@
     </style>
 
     <!-- Custom styles for this template -->
+    <meta name="theme-color" content="#7952b3">
     <link href="/static/css/login.css" rel="stylesheet">
   </head>
   <body class="text-center">
@@ -39,7 +40,7 @@
         </div>
         
         
-         <!-- 로그인 실패시 나올 문구  -->
+         <!-- 회원가입 성공시 나올 문구  -->
         <div th:if="${param.error}" style=" padding: 25px;">
             <div class="alert alert-success w-50" style="margin: 2px auto 2px auto; height:1.5cm;" >
                 회원가입에 성공했습니다! 로그인 해 주세요 :)
@@ -50,16 +51,22 @@
             <form action="/lg/logining/" method="POST">
                 {% csrf_token %}
                 <div class="form">
-                    <label for="user_id">ID</label>
-                    <input type="text" class="form-control w-100" name="user_id">
+                    <label for="user_id"></label>
+                    <input type="text" class="form-control w-100" name="user_id"
+                    placeholder="   ID를 입력하세요." style="height:4rem; font-size:1.1rem;"
+                    onfocus="this.placeholder=''" onblur="this.placeholder='   ID를 입력하세요.'">
                 </div>
                 
             <p></p>
 
                 <div class="form">
-                    <label for="password">비밀번호</label>
-                    <input type="password" class="form-control w-100" name="password">
+                    <input type="password" class="form-control w-100" name="password"
+                    placeholder="   비밀번호를 입력하세요" style="height:4rem; font-size:1.1rem;"
+                    onfocus="this.placeholder=''" onblur="this.placeholder='   비밀번호를 입력하세요'" >
                 </div>
+
+                <p></p>
+
         
                 <div class="checkbox mb-3">
                 <label style="height: 1em;margin: 0;">

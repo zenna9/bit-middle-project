@@ -3,9 +3,7 @@
 {% block content %}
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
 <style>
-* {
-margin: 1em;
-}
+* 
 </style>
 <meta name="theme-color" content="#7952b3">
 <link href="/static/css/login.css" rel="stylesheet">
@@ -19,7 +17,7 @@ margin: 1em;
         
          <!-- 로그인 실패시 나올 문구  -->
         <div th:if="${param.error}" style="padding: 25px;">
-            <div class="alert alert-danger w-50" style="margin: 2px auto 2px auto ;height:1.5cm;" >
+            <div class="alert alert-danger w-50" style="text-align:center; margin: 1rem auto 1rem auto; height:1.5cm;" >
                 사용자ID 또는 비밀번호를 확인해 주세요.
             </div>
         </div>  
@@ -28,19 +26,23 @@ margin: 1em;
             <form action="/lg/logining/" method="POST">
                 {% csrf_token %}
                 <div class="form">
-                    <label for="user_id">ID</label>
-                    <input type="text" class="form-control w-100" name="user_id" placeholder="Username" onfocus="this.placeholder=''" onblur="this.placeholder='Username'">
+                    <label for="user_id"></label>
+                    <input type="text" class="form-control w-100" name="user_id" 
+                    placeholder="   ID를 입력하세요." style="height:4rem; font-size:1.1rem;"
+                    onfocus="this.placeholder=''" onblur="this.placeholder='   ID를 입력하세요.'">
                 </div>
                 
             <p></p>
 
-                <div class="form">
-                    <label for="password">비밀번호</label>
-                    <input type="password" class="form-control w-100" name="password" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='password'">
+                <div class="form">                    
+                    <input type="password" class="form-control w-100" name="password"
+                    placeholder="   비밀번호를 입력하세요" style="height:4rem; font-size:1.1rem;"
+                    onfocus="this.placeholder=''" onblur="this.placeholder='   비밀번호를 입력하세요'" >
                 </div>
-        
+
+                <P></P>
                 <div class="checkbox mb-3">
-                <label style="height: 1em;margin: 0;">
+                <label style="height: 1em; margin: 0;">
                     <input type="checkbox" value="remember-me"> 로그인 상태 유지하기
                 </label>
                 </div>
