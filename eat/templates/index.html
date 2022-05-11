@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    *{
+        border: 1px solid red;
+    }
+</style>
+</head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
 <div class="container-fluid" style="margin: 0 auto 0 auto;padding: 0;">
 
@@ -83,6 +89,8 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">{{i.time}}</p>
+                                    <p class="card-text">{{i.kcal|floatformat}} kcal</p>
+                                    
                                 </div>
                             </div>
                         </div>
