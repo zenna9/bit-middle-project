@@ -10,6 +10,7 @@
     margin: 10px 0 0 0;
     padding: 5%;
 }
+
 .table1 {
     width: 100%;
     margin: 10px 0 0 0;
@@ -54,11 +55,17 @@ body {
     width: 1vw;
 }
 .col33 {
-    /* width: 22%; */
+    padding: 0 1%;
     width: 3vw;
 }
 .col10 {
     width: 10%;
+    text-align:right;padding-right: 0.5em;
+    padding: 0% 2px;
+}
+
+.zen_back0 {
+    margin: 0 auto 0 auto;padding: 0;
 }
 
 .zen_back1 {
@@ -66,6 +73,20 @@ body {
     border-radius: 1em;
     color: black;
     margin: 1%;
+    width: 68%;
+    margin-left: 2%;
+}
+.zen_back2 {
+    width: 100%;height: 250px;margin: auto;
+}
+
+.zen_back3 {
+    width: 100%;height: 150px;margin: auto;
+}
+
+.zenform1 {
+    font-size: 2em;
+    line-height: 2em;
 }
 
 .zen_calender{
@@ -133,4 +154,19 @@ body {
     /* -webkit-transition:width 2s, background-color 2s, -webkit-transform 2s;
     transition:width 2s, background-color 2s, transform 2s;
     transition-property: margin-right; */
+}
+
+.zen_cardholder {
+    width: 100% !important; height:10em !important;
+}
+.zen_cardimg {
+    object-fit: cover !important; width: 100% !important; height: 100% !important;
+}
+
+.zen_moreinfo {
+    width: 4vw;margin: 5vw auto auto auto;text-align: center;
+}
+.zen_moreinfo img {
+    width: 100%;
+    object-fit: contain; border-radius: 50%;
 }
