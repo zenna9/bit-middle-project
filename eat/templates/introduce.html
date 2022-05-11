@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/teampage.css" />
+</head>
+<body>
+{% include 'nav.html' %}
+<div class="wrapper">
+            <ul class="team">
+                <li class="team-item">
+                    <div class="profile profile_red">
+                        <img src="/static/picture/sung.png">
+                        <div class="profile-contents">
+                            <h2>SUNG KYUN <span>Leader</span></h2>
+                            <p>팀원의 브래인 역할을 맡았다 어쩌고 저쩌고</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="team-item">
+                    <div class="profile profile_beige">
+                        <img src="/static/picture/jjun.jpg">
+                        <div class="profile-contents">
+                            <h2>Coco <span>Mood Maker</span></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="team-item">
+                    <div class="profile profile_green">
+                        <img src="/static/picture/zenna.png">
+                        <div class="profile-contents">
+                            <h2>Olivia <span>Designer</span></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="team-item">
+                    <div class="profile profile_pink">
+                        <img src="/static/picture/donn.jpg">
+                        <div class="profile-contents">
+                            <h2>James <span>Front-end</span></h2>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </body>
+{% include 'footer.html' %}
+</body>
+{% endblock %}

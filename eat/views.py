@@ -39,3 +39,5 @@ def mypage_index(request, idx, date):
     context = {'idx': idx, 'date': date, 'logininfo': loginn, 'dietlist': dietlist}
     return render(request, "myprofile.html", context)
 
+def team_index(request):
+    return render(request, 'introduce.html')
