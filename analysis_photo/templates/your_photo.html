@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
+
+<link rel="stylesheet" href="/static/css/your_photo.css" />
+<link rel="stylesheet" href="/static/css/index.css" />
+
+<style> 
+        /* * {
+            border: 1px rgb(8, 8, 8) solid;
+        } */
+        </style>
+
+</head>
+<body style="overflow: hidden;">
+<!--	HEADER NAV BAR		-->
+{% include 'nav.html' %}
+    <div class="container-fluid" style=" min-height: 30rem; height: 100vh;margin: 0;padding: 0; background-color: #faf8f8">
+        <!-- 상단바 ============================ -->
+        <div class="row" style="margin: 0;padding: 0;"></div>
+        <div class="row">
+            <div class="col-md-4 ml-auto ar-auto" style="text-align: center;height: 25em;">
+                <img src="/media/{{k_hc.uploadedFile}}" style="object-fit: contain;width: 90%;height: 95%;" />
+            
+            </div>
+            
+
+
+            <!-- 화면 반 나누기 -->
+            <div class="col-md-8 ">
+                <div class="row d-flex flex-column h-100">
+                    <!-- ============폼 시작================ -->
+                    <form action="/ph/f_uploading" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <!-- 연도 월일 식사 종류 선택 -->
+                            <div class="col-md-3 ml-auto ar-auto" style="margin: 1em auto 1em auto">
+                                <input name="date" type="date" id="currentDate" class="form-control"/>
+                            
+                                <script>
+                                document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+                                </script>
+
+                                <br>
+                                <select name="time" class="form-select" aria-label="Default select example">
+                                    <option value=" " selected>식사 종류 선택</option>
+                                    <option value="아침">아침</option>
+                                    <option value="점심">점심</option>
+                                    <option value="저녁">저녁</option>
+                                    <option value="기타">기타</option>
+                                </select>
+                            </div>
+
+                            <!-- 사진 찍은 음식 저장 -->
+                            <div class="col-md-9" style="padding: 15px;">
+                                <table class="food" style="text-align: center; width: 87%">
+                                    <tr>
+                                        <th style="width: 20%">NO.</th>
+                                        <th style="width: 50%">음식이름</th>
+                                        <th style="width: 30%">중량</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <input type="text" name="ai_1" value="설렁탕"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="ai_g1" value="600" style="width:80%"/>g
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        
+                        </div>
+                        <!-- 아래 위로 공간 나누기 -->
+                        <div class="row">
+                            <div class="col-md-12 h-100">
+
+                                <!-- 부족한 음식 입력 -->
+                                <!-- <button onclick="zen_hideorseek('input_theirself')" class="btn btn-outline-light btn-dark" style="float: right;">
+                                    직접 입력하기
+                                </button> -->
+                                <br>
+                                <div id="input_theirself" style="display: block;">
+                                    <table style="border: 1px rgb(14, 13, 13) solid; width: 90%; color: black; text-align: center;">
+                                        <tr>
+                                                <th style="width: 10%">NO.</td>
+                                                <th style="width: 50%">음식 이름</td>
+                                                <th style="width: 40%">중량(g)</td>
+                                                <!-- <th style="width: 25%">Value</td> -->
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><input type="text" name="sl_1"></td>
+                                            <td><input type="number" name="sl_g1">g</td>
+                                            <!-- <td></td> -->
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><input type="text" name="sl_2"></td>
+                                            <td><input type="number" name="sl_g2">g</td>
+                                            <!-- <td></td> -->
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><input type="text" name="sl_3"></td>
+                                            <td><input type="number" name="sl_g3">g</td>
+                                            <!-- <td></td> -->
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><input type="text" name="sl_4"></td>
+                                            <td><input type="number" name="sl_g4">g</td>
+                                            <!-- <td></td> -->
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 다 작성하고 제출하기 -->
+                        <div class="row">
+                            <div class="col-md-12 h-100">
+                                <footer style="text-align: right;">
+                                    <input name='file_location' type="hidden" value="{{k_hc.uploadedFile}}">
+                                    <input type="hidden" value="{{idx}}" name="idx"/>
+                                    <input type="submit" value="작성완료" class="btn btn-outline-light btn-dark"/>
+                                </footer>
+                            </div>
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--	FOOTER		-->
+    {% include 'footer.html' %}
+</body>
+{% endblock %}

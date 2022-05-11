@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
+<meta name="theme-color" content="#7952b3">
+<style>
+* {
+margin: 1em;
+}
+</style>
+</head>
+  <body class="text-center">
+
+    <div class="form-signin container justify-content-center">
+        <div class="row">
+            <h1 class="h3 mb-3 fw-normal">푸포 AI</h1>
+        </div>
+
+        <div class="row w-50" style="margin: 1em auto 1em auto;">
+            <form action="lg/logining/" method="POST">
+                {% csrf_token %}
+                <div class="form-floating">
+                    <input type="text" class="form-control w-100" name="user_id" placeholder="Username" onfocus="this.placeholder=''" onblur="this.placeholder='Username'">
+                    <label for="floatingInput">ID</label>
+                </div>
+                
+            <p></p>
+
+                <div class="form-floating">
+                    <input type="password" class="form-control w-100" name="password" placeholder="Password"  onfocus="this.placeholder=''" onblur="this.placeholder='password'" >
+                    <label for="floatingPassword">비밀번호</label>
+                </div>
+        
+                <div class="checkbox mb-3">
+                <label style="height: 1em;margin: 0;">
+                    <input type="checkbox" value="remember-me"> 로그인 상태 유지하기
+                </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-dark btn-outline-light" type="submit">로그인</button><br>
+            
+
+            </form>
+        </div>
+
+
+        <div class="row w-50" style="margin: 0 auto 0 auto; padding: 0;">
+            <div class="col-7 text-center" style="line-height: 2em;">
+                아직 계정이 없으신가요? 
+            </div>
+            
+            <div class="col-3">
+                <a href="/lg/register" class="btn btn-lignt btn-outline-secondary" style="width:4cm; height:1cm" >회원가입하기</a>
+            </div>
+        </div>
+
+
+    </div>
+      <!--	FOOTER		-->
+    {% include 'footer.html' %}
+  </body>
+
+{% endblock %}
