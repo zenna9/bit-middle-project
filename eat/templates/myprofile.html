@@ -24,10 +24,10 @@
 					<!-- SIDEBAR USER TITLE -->
 					<div class="profile-usertitle" style="text-align:center;">
 						<div class="profile-usertitle-name">
-							<h4 style="margin:0.4rem">이름{{ idx }} </h4>
+							<h4 style="margin:0.4rem">아이디 : {{ idx }} </h4>
 						</div>
 						<div class="profile-usertitle-job">
-							<h4 style="margin:0.4rem">닉네임{{ date }}</h4>
+							<h4 style="margin:0.4rem">날짜 : {{ date }}</h4>
 						</div>
 					</div>
 					<!-- END SIDEBAR USER TITLE -->
@@ -41,31 +41,31 @@
 					<div class="profile-usermenu">
 						<ul class="nav">
 							<li class="active">
-								<div style="margin: 0.4rem">
-									<a href="#">
-									<i class="glyphicon glyphicon-home"></i>
-								메인메뉴로 가기 </a>
-								</div>
-
-							</li>
-						<li>
-							<div style="margin: 0.4rem">
-								<a href="#">
-								<i class="glyphicon glyphicon-user"></i>
-								회원정보 수정하기 </a>
+							<div class="glyphicon" style="margin: 0.4rem">
+								<a href="#" target="">
+							<input type="button" clss="zenbtn1" value="개인 정보 수정하기">
+								</a>
 							</div>
 						</li>
-						<li>
+							<li>
 							<div style="margin: 0.4rem">
-								<a href="#" target="_blank">
-								<i class="glyphicon glyphicon-ok"></i>
-								건강정보 분석페이지 </a>
+								<a href="#" target="">
+							<input type="button" clss="zenbtn1" value="나의 정보 보기">
+								</a>
 							</div>
-
 						</li>
-						<li>
+							<li>
 							<div style="margin: 0.4rem">
-							<input type="button" clss="zenbtn1" value="내 정보 보기">
+								<a href="#" target="">
+							<input type="button" clss="zenbtn1" value="메인 페이지로 가기">
+								</a>
+							</div>
+						</li>
+							<li>
+							<div style="margin: 0.4rem">
+								<a href="#" target="">
+							<input type="button" clss="zenbtn1" value="메인 페이지로 가기">
+								</a>
 							</div>
 						</li>
 					</ul>
@@ -73,91 +73,18 @@
 				<!-- END MENU -->
 			</div>
 		</div>
+
 <!--	이미지불러오기	-->
-		<div class="col-md-8 col-profile-content" style="padding:1rem 1rem 1rem 1.5rem;"z>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
+			<div class="col-md-8 col-profile-content" style="padding:1rem 1rem 1rem 1.5rem;">
+				{% for i in dietlist|slice:":3" %}
+				<div class="profile_photo">
+					<figure>
+						<figcaption>{{i.time}} 사진</figcaption>
+						<img style="width:100%; height:100%; object-fit:cover;" src="/media/{{i.foodimage}}" alt="receltly_photo1">
+					</figure>
+				</div>
+				{%endfor%}
 			</div>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
-			</div>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
-			</div>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
-			</div>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
-			</div>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
-			</div>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
-			</div>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
-			</div>
-			<div style="display:inline-block; width:15rem; height:15rem; overflow:hidden;
-			border-radius:10%; margin:1rem auto; color:blue; text-align:center;
-			transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-				<figure>
-					<figcaption>2022년 5월 3일 사진</figcaption>
-					<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/peng.png" alt="receltly_photo1">
-
-				</figure>
-			</div>
-		</div>
-
 </div>
     {% include 'footer.html' %}
 </body>
