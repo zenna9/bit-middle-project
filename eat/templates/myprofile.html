@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
+<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요-->
+<!--<style>-->
+<!--    *{-->
+<!--        border: 1px solid red;-->
+<!--    }-->
+<!--</style>-->
 </head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
 
@@ -12,80 +17,86 @@
 	<div class="container">
 		<div class="row profile">
 			<div class="col-md-4">
-				<div class="profile-sidebar">
-					<!-- SIDEBAR USERPIC -->
-					<div class="profile-userpic" style="height:15rem; width:15rem; margin:auto;
-					transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-						<img style="width:100%; height:100%; object-fit:cover;
-					transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;" src="/static/picture/peng.png" class="img-responsive" alt="">
-					</div>
+				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
+					<div class="profile-sidebar">
+						<!-- SIDEBAR USERPIC -->
+						<div class="profile-userpic" style="height:15rem; width:15rem; margin:auto;
+						transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
+							<img style="width:100%; height:100%; object-fit:cover;
+						transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;" src="/static/picture/peng.png" class="img-responsive" alt="">
+						</div>
+						<!-- END SIDEBAR USERPIC -->
 
-					<!-- END SIDEBAR USERPIC -->
-					<!-- SIDEBAR USER TITLE -->
-					<div class="profile-usertitle" style="text-align:center;">
-						<div class="profile-usertitle-name">
-							<h4 style="margin:0.4rem">아이디 : {{ idx }} </h4>
+						<!-- SIDEBAR USER TITLE -->
+						<div class="profile-usertitle" style="text-align:center;">
+							<div class="profile-usertitle-name">
+								<h4 style="margin:0.4rem">아이디 : {{ idx }} </h4>
+							</div>
+							<div class="profile-usertitle-job">
+								<h4 style="margin:0.4rem">날짜 : {{ date }}</h4>
+							</div>
 						</div>
-						<div class="profile-usertitle-job">
-							<h4 style="margin:0.4rem">날짜 : {{ date }}</h4>
+						<!-- END SIDEBAR USER TITLE -->
+
+						<!-- SIDEBAR BUTTONS -->
+						<div class="profile-userbuttons" >
+							<button type="button"  style="margin: 0.5rem auto;" class="btn btn-success btn-sm">Setting</button>
+							<button type="button"  style="margin: 0.5rem auto;" class="btn btn-danger btn-sm">Message</button>
 						</div>
+						<!-- END SIDEBAR BUTTONS -->
+
+						<!-- SIDEBAR MENU -->
+						<div class="profile-usermenu">
+							<ul class="nav">
+								<li class="active">
+									<div style="margin: 0.4rem">
+										<a href="#" target="">
+											<input type="button" clss="zenbtn1" value="개인 정보 수정하기">
+										</a>
+									</div>
+								</li>
+								<li>
+									<div style="margin: 0.4rem">
+										<a href="#" target="">
+											<input type="button" clss="zenbtn1" value="나의 정보 보기">
+										</a>
+									</div>
+								</li>
+								<li>
+									<div style="margin: 0.4rem">
+										<a href="#" target="">
+											<input type="button" clss="zenbtn1" value="메인 페이지로 가기">
+										</a>
+									</div>
+								</li>
+								<li>
+									<div style="margin: 0.4rem">
+										<a href="#" target="">
+											<input type="button" clss="zenbtn1" value="메인 페이지로 가기">
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- END MENU -->
 					</div>
-					<!-- END SIDEBAR USER TITLE -->
-				<!-- SIDEBAR BUTTONS -->
-					<div class="profile-userbuttons" >
-						<button type="button"  style="margin: 0.5rem auto;" class="btn btn-success btn-sm">Setting</button>
-						<button type="button"  style="margin: 0.5rem auto;" class="btn btn-danger btn-sm">Message</button>
-					</div>
-					<!-- END SIDEBAR BUTTONS -->
-					<!-- SIDEBAR MENU -->
-					<div class="profile-usermenu">
-						<ul class="nav">
-							<li class="active">
-							<div class="glyphicon" style="margin: 0.4rem">
-								<a href="#" target="">
-							<input type="button" clss="zenbtn1" value="개인 정보 수정하기">
-								</a>
-							</div>
-						</li>
-							<li>
-							<div style="margin: 0.4rem">
-								<a href="#" target="">
-							<input type="button" clss="zenbtn1" value="나의 정보 보기">
-								</a>
-							</div>
-						</li>
-							<li>
-							<div style="margin: 0.4rem">
-								<a href="#" target="">
-							<input type="button" clss="zenbtn1" value="메인 페이지로 가기">
-								</a>
-							</div>
-						</li>
-							<li>
-							<div style="margin: 0.4rem">
-								<a href="#" target="">
-							<input type="button" clss="zenbtn1" value="메인 페이지로 가기">
-								</a>
-							</div>
-						</li>
-					</ul>
 				</div>
-				<!-- END MENU -->
 			</div>
+			<!--	이미지 불러오기    -->
+			<div class="col-md-8 col-profile-content">
+				<div style="margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; text-align:center;">
+					{% for i in dietlist|slice:":3" %}
+						<div class="profile_photo">
+						<figure>
+							<figcaption>{{i.time}} 사진</figcaption>
+							<img style="width:100%; height:100%; object-fit:cover;" src="/media/{{i.foodimage}}" alt="receltly_photo1">
+						</figure>
+					</div>
+					{%endfor%}
+				</div>
 		</div>
-
-<!--	이미지불러오기	-->
-			<div class="col-md-8 col-profile-content" style="padding:1rem 1rem 1rem 1.5rem;">
-				{% for i in dietlist|slice:":3" %}
-				<div class="profile_photo">
-					<figure>
-						<figcaption>{{i.time}} 사진</figcaption>
-						<img style="width:100%; height:100%; object-fit:cover;" src="/media/{{i.foodimage}}" alt="receltly_photo1">
-					</figure>
-				</div>
-				{%endfor%}
-			</div>
-</div>
+		</div>
+	</div>
     {% include 'footer.html' %}
 </body>
 

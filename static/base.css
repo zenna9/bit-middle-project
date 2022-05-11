@@ -40,15 +40,12 @@ a:hover {
 }
 
 .profile_photo{
-    display:inline-block; width:15rem; height:15rem;
-    overflow:hidden; border-radius:10%; margin:1rem;
+    display:inline-block; width:14rem; height:14rem;
+    overflow:hidden; border-radius:10%; margin:0.5rem;
     color:blue; text-align:center;
     transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;
 }
 
-.profile_content{
-    padding:1rem 1rem 1rem 1.5rem
-}
 
 /* 프로필 페이지 메뉴 CSS */
 /***
