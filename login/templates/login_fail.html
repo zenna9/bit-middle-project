@@ -51,14 +51,14 @@
                 {% csrf_token %}
                 <div class="form">
                     <label for="user_id">ID</label>
-                    <input type="text" class="form-control w-100" name="user_id">
+                    <input type="text" class="form-control w-100" name="user_id" placeholder="Username" onfocus="this.placeholder=''" onblur="this.placeholder='Username'">
                 </div>
                 
             <p></p>
 
                 <div class="form">
                     <label for="password">비밀번호</label>
-                    <input type="password" class="form-control w-100" name="password">
+                    <input type="password" class="form-control w-100" name="password" placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='password'">
                 </div>
         
                 <div class="checkbox mb-3">
