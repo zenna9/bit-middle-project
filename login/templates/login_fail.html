@@ -38,15 +38,12 @@
             <h1 class="h3 mb-3 fw-normal">푸포 AI</h1>
         </div>
         
-        <!-- margin: 2px auto 2px auto; height:1.5cm; -->
         
          <!-- 로그인 실패시 나올 문구  -->
-        <div th:if="${param.error}" style="padding: 25px;" >
-          
-            <div class="alert alert-danger w-50" style="margin: 2px auto 2px auto; height: 60px; " >
+        <div th:if="${param.error}" style="padding: 25px;">
+            <div class="alert alert-danger w-50" style="margin: 2px auto 2px auto ;height:1.5cm;" >
                 사용자ID 또는 비밀번호를 확인해 주세요.
             </div>
-            
         </div>  
 
         <div class="row w-50" style="margin: 1em auto 1em auto;">
