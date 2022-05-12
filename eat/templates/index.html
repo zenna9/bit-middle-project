@@ -1,34 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!--<style>-->
-<!--    *{-->
-<!--        border: 1px solid red;-->
-<!--    }-->
-<!--</style>-->
+<!-- <style>
+    *{
+        border: 1px solid red;
+    }
+    table * {
+        border: 1px solid blueviolet;
+    }
+</style> -->
+<link rel="stylesheet" href="/static/css/index.css" />
 </head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
-<div class="container-fluid" style="margin: 0 auto 0 auto;padding: 0;">
+<div class="container-fluid zen_back0">
 
   <!--	HEADER NAV BAR-->
   {% include 'nav.html' %}
-
+</div>
+<div class="container">
         <!-- =========================본문  ===============================================-->
         <div class="row row_with_all">
-            <div class="col-lg-8 zen_back1" style="width: 70%;margin-left: 2%;">
+            <div class="col-lg-8 zen_back1">
                 <!-- 날짜데이터 -->
                 <form action="parameter" enctype="multipart/form-data">
-                    <label for="currentDate" style="font-size: 2em;line-height: 2em;"><strong>Date</strong></label>
+                    <label for="currentDate" class="zenform1"><strong>Date</strong></label>
                     <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
                 </form>
                 <hr>
                 <!-- {# 그래프 본문 내용====================== #} -->
                 <div style="height: 80%;">
-                    <div style="width: 100%;height: 150px;margin: auto;">
+                    <div class="zen_back3">
                         <table class="table2" style="height: 3em;">
                             <tr>
-                                <td class="col-2" style="text-align: center;">
-                                    총 섭취량
+                                <td class="col-2">
+                                    &nbsp;&nbsp; 총 섭취량
                                 </td>
                                 <td class="col-8">
                                     <div class="progress" style="height: 2em;">
@@ -45,20 +50,20 @@
                                 <td class="col33" style="padding-left: 0.7em;">
                                     탄수화물
                                 </td>
-                                <td class="col10"  style="text-align:right;padding-right: 0.5em;">
-                                    {{ percent.per_tan }}
+                                <td class="col10">
+                                    {{ sums.kcal__sum|floatformat }}g &nbsp;
                                 </td>
                                 <td class="col33" style="padding-left: 0.7em;">
                                     단백질
                                 </td>
-                                <td class="col10"  style="text-align:right;padding-right: 0.5em;">
-                                    {{percent.per_dan}}
+                                <td class="col10">
+                                    {{ sums.dan__sum|floatformat }}g &nbsp;
                                 </td>
                                 <td class="col33" style="padding-left: 0.7em;">
                                     지방
                                 </td>
-                                <td class="col10" style="text-align:right;padding-right: 0.5em;">
-                                    {{percent.per_ji}}</td>
+                                <td class="col10">
+                                    {{ sums.ji__sum|floatformat }}g &nbsp;</td>
                             </tr>
                             <tr>
                                 <td class="col33" colspan="2">
@@ -80,12 +85,12 @@
                         </table>
                     </div>
                     <hr>
-                    <div style="width: 100%;height: 250px;margin: auto;" class="row">
+                    <div class="row zen_back2">
                         {% for i in dietlist|slice:":3" %}
                         <div class="col-3">
                             <div class="card shadow-sm">
-                                <div class="bd-placeholder-img card-img-top" style="width: 100%; height:10em;" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
-                                    <img src="/media/{{i.foodimage}}" style="object-fit: cover; width: 100%; height: 100%;"/>
+                                <div class="bd-placeholder-img card-img-top zen_cardholder" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
+                                    <img class="zen_cardimg" src="/media/{{i.foodimage}}"/>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">{{i.time}}</p>
@@ -98,8 +103,8 @@
                         {%endfor%}
 
                         <div class="col-2">
-                            <div style="width: 4vw;margin: 5vw auto auto auto;text-align: center;">
-                                <a href="#"><img src="/static/picture/moreinfo.png" width="100%" style="object-fit: contain;border-radius: 50%;"></a>
+                            <div class="zen_moreinfo">
+                                <a href="#"><img src="/static/picture/moreinfo.png" ></a>
                             </div>
                         </div>
                     </div>
@@ -115,3 +120,7 @@
 </body>
 
 {% endblock %}
+<!-- 0511 test -->
+<!-- 0511 test -->
+<!-- 0511 test -->
+<!-- 0511 test -->

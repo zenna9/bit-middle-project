@@ -2,16 +2,21 @@
 
 {% block content %}
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
+<link rel="stylesheet" href="/static/css/index.css" />
 </head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
-        <!--	HEADER NAV BAR		-->
+    <div class="container-fluid zen_back0">
+
+        <!--	HEADER NAV BAR-->
         {% include 'nav.html' %}
+      </div>
+      <div class="container">
         <!-- =========================본문  ===============================================-->
         <div class="row row_with_all">
-            <div class="col-lg-8 zen_back1" style="width: 70%;margin-left: 2%;">
+            <div class="col-lg-8 zen_back1">
                 <!-- 날짜데이터 -->
                 <form action="parameter" enctype="multipart/form-data">
-                    <label for="currentDate" style="font-size: 2em;line-height: 2em;"><strong>Date</strong></label>
+                    <label for="currentDate" class="zenform1"><strong>Date</strong></label>
                     <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
                 </form>
                 <hr>
