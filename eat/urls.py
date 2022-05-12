@@ -8,6 +8,7 @@ app_name = 'eat'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('<str:idx>/mypage', views.profile_allphoto, name='my_photos'),
     path('<str:idx>/<str:date>', views.logindone, name='index_login'),
     path('<str:idx>/<str:date>/mypage', views.mypage_index, name='myprofile'),
     path('teampage', views.team_index, name='teampage')

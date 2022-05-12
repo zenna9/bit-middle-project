@@ -46,21 +46,7 @@ def mypage_index(request, idx, date):
         context = {'idx':idx,'date':date}
         return render(request, 'myprofile_null.html', context)
 
-def mypage_index(request, idx, date):
-    try : # 사진이 있으면서 날짜를 선택하지 않았을경우
-        dietlist = get_list_or_404(diet, user_id=idx, date=date)
-        context = {'idx': idx, 'date': date, 'dietlist': dietlist}
-        return render(request, "myprofile.html", context)
-    except : # 사진이 없을경우
-        context = {'idx':idx,'date':date}
-        return render(request, 'myprofile_null.html', context)
-
-#  날짜 선택에 따른 사진 출력을 해주는 함수
-# def datefilter(request, idx, date):
-#     # 사진이 있으면서 달력에서 날짜를 선택했을 경우
-#     cal_date = request.GET.get('#') # 사용자가 달력에서 선택한 날짜
-#     if len(cal_date) > 0:
-#     photo_filter = get_list_or_404(diet, user_id=idx, date=cal_date).order_by('-time')
-#     context = {'idx': idx, 'date': date, 'cal_date':cal_date ,'photo_filtert': photo_filter}
-#     return render(request, 'myprogile.html', context)
-# else # 날짜를 선택하지 않았을경우
+def profile_allphoto(request, idx):
+    dietlist = get_list_or_404(diet, user_id=idx)
+    context = {'idx': idx, 'dietlist': dietlist}
+    return render(request, "myprofile_all.html", context)
