@@ -3,12 +3,11 @@
 {% block content %}
 
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요-->
-<style>
-    *{
-        border: 1px solid red;
-    }
-</style>
-
+<!--<style>-->
+<!--    *{-->
+<!--        border: 1px solid red;-->
+<!--    }-->
+<!--</style>-->
 </head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
 
@@ -20,52 +19,7 @@
 		<div class="row profile">
 			<div class="col-md-4">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
-					<div class="profile-sidebar">
-						<!-- SIDEBAR USERPIC -->
-						<div class="profile-userpic" style="height:15rem; width:15rem; margin:auto;
-						transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-							<img style="width:100%; height:100%; object-fit:cover;
-						transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;" src="/static/picture/peng.png" class="img-responsive" alt="">
-						</div>
-						<!-- END SIDEBAR USERPIC -->
-
-						<!-- SIDEBAR USER TITLE -->
-						<div class="profile-usertitle">
-							<div class="profile-usertitle-name">
-								<div style="font-size:1.3rem; margin:0.4rem 0.4rem 0 0.4rem;">아이디 : {{ idx }} </div>
-							</div>
-							<div class="profile-usertitle-job" style="margin-bottom:0;">
-								<div style="font-size:1.3rem; margin:0 0.4rem 0.4rem 0.4rem;">날짜 : {{ date }}</div>
-							</div>
-						</div>
-						<!-- END SIDEBAR USER TITLE -->
-
-						<!-- SIDEBAR BUTTONS -->
-						<div class="profile-userbuttons" >
-							<button type="button"  style="margin: 0.5rem 0.5rem 0.5rem auto;" class="btn btn-success btn-sm">Setting</button>
-							<button type="button"  style="margin: 0.5rem auto 0.5rem 0.5rem;" class="btn btn-danger btn-sm">Message</button>
-						</div>
-						<!-- END SIDEBAR BUTTONS -->
-
-						<!-- SIDEBAR MENU -->
-						<div class="profile-usermenu" style="margin-top:1rem;">
-						<!-- 날짜별 데이터 -->
-                		<form style='text-align:center;' action="parameter" enctype="multipart/form-data">
-                    		<label for="currentDate" style="font-size:1.3em; line-height:1.5em;"><strong>Date</strong></label>
-                    		<input style='font-size:1.3rem;'type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
-                		</form>
-							<ul class="nav">
-								<li>
-									<div style="margin:0.3rem;">
-										<input type="button" class="zenbtn1" value="개인 정보 수정하기">
-									</div>
-								</li>
-							</ul>
-
-						</div>
-
-						<!-- END MENU -->
-					</div>
+					{% include 'myprofile_sidebar.html' %}
 				</div>
 			</div>
 			<!--	이미지 불러오기    -->
@@ -81,7 +35,7 @@
 					{%endfor%}
 
 					<details>
-						<summary style="font-size:1.5rem;">피드 더보기</summary>
+						<summary style="font-size:1.5rem; ">피드 더보기</summary>
 						{% for i in dietlist|slice:"2:" %}
 							<div class="profile_photo">
 						<figure>
@@ -92,10 +46,9 @@
 						{%endfor%}
 					</details>
 				</div>
-		</div>
+			</div>
 		</div>
 	</div>
     {% include 'footer.html' %}
 </body>
-
 {% endblock %}
