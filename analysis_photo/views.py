@@ -26,7 +26,7 @@ def f_fu(request):
     b_hc= get_object_or_404(imgs, uploadedFile=b_fuw)
     b_foodlist = menu.objects.all()
     b_hc_id = b_hc.id
-    return HttpResponseRedirect(reverse('analysis_photo:f_hp', args=(b_hc_id,idx,b_foodlist)))
+    return HttpResponseRedirect(reverse('analysis_photo:f_hp', args=(b_hc_id,idx)))
 
 def f_hp(request, b_hc_id,idx):
     b_hc = get_object_or_404(imgs, id=b_hc_id)
