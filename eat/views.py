@@ -34,10 +34,14 @@ def logindone(request, idx, date):
         return render(request, 'index_null.html', context)
 
 def mypage_index(request, idx, date):
-    dietlist = get_list_or_404(diet, user_id=idx, date=date)
-    loginn = get_object_or_404(login, user_id=idx)
-    context = {'idx': idx, 'date': date, 'logininfo': loginn, 'dietlist': dietlist}
-    return render(request, "myprofile.html", context)
+    try :
+        dietlist = get_list_or_404(diet, user_id=idx, date=date)
+        loginn = get_object_or_404(login, user_id=idx)
+        context = {'idx': idx, 'date': date, 'logininfo': loginn, 'dietlist': dietlist}
+        return render(request, "myprofile.html", context)
+    except :
+        context = {'idx':idx,'date':date}
+        return render(request, 'myprofile.html', context)
 
 def team_index(request):
     return render(request, 'introduce.html')
