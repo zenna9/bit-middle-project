@@ -33,9 +33,20 @@ def logindone(request, idx, date):
         context = {'idx':idx,'date':date}
         return render(request, 'index_null.html', context)
 
-def mypage_index(request, idx, date):
-    dietlist = get_list_or_404(diet, user_id=idx, date=date)
-    loginn = get_object_or_404(login, user_id=idx)
-    context = {'idx': idx, 'date': date, 'logininfo': loginn, 'dietlist': dietlist}
-    return render(request, "myprofile.html", context)
 
+def team_index(request):
+    return render(request, 'introduce.html')
+
+def mypage_index(request, idx, date):
+    try : # 사진이 있으면서 날짜를 선택하지 않았을경우
+        dietlist = get_list_or_404(diet, user_id=idx, date=date)
+        context = {'idx': idx, 'date': date, 'dietlist': dietlist}
+        return render(request, "myprofile.html", context)
+    except : # 사진이 없을경우
+        context = {'idx':idx,'date':date}
+        return render(request, 'myprofile_null.html', context)
+
+def profile_allphoto(request, idx):
+    dietlist = get_list_or_404(diet, user_id=idx)
+    context = {'idx': idx, 'dietlist': dietlist}
+    return render(request, "myprofile_all.html", context)

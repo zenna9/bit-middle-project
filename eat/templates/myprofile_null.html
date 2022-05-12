@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
+
+<!--    *{-->
+<!--        border: 1px solid red;-->
+<!--    }-->
+<!-- DIV HOVER EFFECT STYLE-->
+<style>
+.span{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.span a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+
+}
+.span a:before,
+.span a:after{
+  font-family: 'Jeju Gothic';
+  position: absolute;
+  content: "사진 업로드하기";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.span a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.span a:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.span a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+</style>
+</head>
+<body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
+
+<!--	HEADER NAV BAR		-->
+{% include 'nav.html' %}
+
+<!--	본문 CONTENTS		-->
+	<div class="container">
+		<div class="row profile">
+			<div class="col-md-4">
+				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
+					{% include 'myprofile_sidebar.html' %}
+				</div>
+			</div>
+			<!--	이미지 불러오기    -->
+			<div class="col-md-8 col-profile-content" style="text-align:center;">
+				<div class="profile_photo" style="width:30rem; height:30rem; margin:1rem auto 0 auto;">
+					<figure>
+						<figcaption class="pragmatic_logo" style="color:black">No Image Avalation</figcaption>
+						<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/no-image.jpg" alt="receltly_photo1">
+					</figure>
+				</div>
+				<div style="text-align:center; margin:1rem auto;">
+					<span class="span"><a href="#"></a></span>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% include 'footer.html' %}
+</body>
+
+{% endblock %}

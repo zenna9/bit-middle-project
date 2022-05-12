@@ -1,14 +1,24 @@
 .pragmatic_logo {
     font-family: 'Lobster', cursive;
+    font-size : 2rem;
+    color:white;
+    text-decoration-line: none;
+}
+
+.footer_pragmatic_logo {
+    font-family: 'Lobster', cursive;
+    font-size : 2rem;
+    color:black;
+    text-decoration-line: none;
 }
 
 .pragmatic_footer_button {
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 .pragmatic_footer {
     text-align:center;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .pragmatic_header {
@@ -20,15 +30,6 @@
     html {
         font-size: 13px;
     }
-}
-
-a {
-    color: black;
-}
-
-a:hover {
-    color: black;
-    text-decoration: none;
 }
 
 .prgmatic_header_nav {
@@ -163,4 +164,51 @@ body {
   padding: 20px;
   background: #fff;
   min-height: 460px;
+}
+
+
+/*    프로필페이지 사진 더보기    */
+details {
+    margin-bottom: 1rem;
+}
+
+details > summary {
+    background: rgba(150, 255, 150);
+    padding: 1rem;
+    outline: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+details > summary::-webkit-details-marker {
+    background: url(https://marshall-storage.tistory.com/attachment/cfile29.uf@993E16335F785C0037CB43.svg) no-repeat center;
+    background-size: contain;
+    color: transparent;
+    transform: rotate3d(0, 0, 1, 90deg);
+    transition: transform 0.25s;
+}
+
+details[open] > summary::-webkit-details-marker {
+    transform: rotate3d(0, 0, 1, 180deg);
+}
+
+details[open] > summary {
+    background: rgba(100, 255, 100);
+}
+
+details[open] > summary ~ * {
+    animation: reveal 0.5s;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -10px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
