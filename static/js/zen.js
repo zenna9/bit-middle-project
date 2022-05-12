@@ -6,6 +6,7 @@ function date(today){
     let day = date(today);
     document.getElementById('currentDate').value = day.toISOString().substring(0, 10);
 }
+
 function dopercent(idinput, sons,mother){
     var idinput = document.getElementById(idinput).style
     let son = sons ;
