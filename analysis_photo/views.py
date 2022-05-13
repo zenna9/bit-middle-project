@@ -21,6 +21,7 @@ def f_fu(request):
             uploadedFile = b_uf
         )
         b_fj.save()
+        # ㄹ새로추가할거야아앗
 
         b_fuw =  b_fj.uploadedFile
     b_hc= get_object_or_404(imgs, uploadedFile=b_fuw)
