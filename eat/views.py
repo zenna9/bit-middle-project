@@ -2,10 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect, get_list_or_40
 from eat.models import diet, login, imgs
 from django.db.models import Sum, F, Count, Case, When
 
+# zenna. 페이지 접속 시 최초화면
 def index(request) :
     return render(request, 'login.html')
 
-# 로그인한 메인화면 ======================
+# zenna : 로그인한 메인화면 ==(데이터 있는 경우 try, 없는 경우 except)====================
 def logindone(request, idx, date):
     try : 
         dietlist = get_list_or_404(diet, user_id=idx, date=date)

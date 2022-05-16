@@ -6,7 +6,9 @@ from analysis_photo.models import menu
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-# def uploadFile(request):
+
+# zenna : 메인 페이지에서 사진 업로드 버튼을 눌렀을 경우, 
+#   sql photo 테이블에 사진 정보 저장 
 def f_fu(request):
 
     if request.method =="POST":
@@ -21,7 +23,6 @@ def f_fu(request):
             uploadedFile = b_uf
         )
         b_fj.save()
-        # ㄹ새로추가할거야아앗
 
         b_fuw =  b_fj.uploadedFile
     b_hc= get_object_or_404(imgs, uploadedFile=b_fuw)
@@ -29,16 +30,19 @@ def f_fu(request):
     b_hc_id = b_hc.id
     return HttpResponseRedirect(reverse('analysis_photo:f_hp', args=(b_hc_id,idx)))
 
+
+# zenna : 사진 인덱스를 받아와 인식결과, 추가등록을 할 수 있는 페이지로 이동
 def f_hp(request, b_hc_id,idx):
     b_hc = get_object_or_404(imgs, id=b_hc_id)
     context = {'k_hc': b_hc, 'idx':idx}
     return render(request, 'your_photo.html', context)
 
+# zenna : 
+# def f_uploading_photo (request):
+#     idx = request.POST['idx']
+#     return redirect('이동할 url')
 
-def f_uploading_photo (request):
-    idx = request.POST['idx']
-    return redirect('이동할 url')
-
+# zenna : AI 인식 결과, 사용자가 추가한 메뉴 계산하여 sql 저장 -> 완료 후 메인 페이지로 이동
 def f_upload_at_sql(request):
     idx = request.POST['idx']
     date=request.POST['date']
@@ -66,15 +70,7 @@ def f_upload_at_sql(request):
     diets.foodimage = request.POST['file_location']
     
     nutrlist = {'kcal':0,'tan':0,'dang':0,'ji':0,'dan':0,'kalsum':0,'inn':0,'salt':0,'kalum':0, 'magnesum':0, 'chul':0,'ayeon':0,'kolest':0,'transfat':0} #빈 딕트 선언
-    # ==============================listx 방법 실패=======================================
-    # listx = ['kcal','tan','dang','ji','dan','kalsum','inn','salt','kalum', 'magnesum', 'chul','ayeon','kolest','transfat']
-    # for i in range(0, len(menulist)) :
-    #     # print('menulist',menulist[i][0])
-    #     datalist = get_object_or_404(menu, food_name=menulist[i][0])
-    #     nutrlist['kcal'] = nutrlist['kcal'] + (datalist.kcal / datalist.basic_g * menulist[i][1])
 
-    #     print('제대로 계산이 될까? ========',nutrlist)
-    # ================================   =================================================
     for i in range(0, len(menulist)) :
         # print('menulist',menulist[i][0])
         datalist = get_object_or_404(menu, food_name=menulist[i][0])
@@ -93,7 +89,6 @@ def f_upload_at_sql(request):
         nutrlist['kolest'] = nutrlist['kolest'] + (datalist.kolest / datalist.basic_g * menulist[i][1])
         nutrlist['transfat'] = nutrlist['transfat'] + (datalist.transfat / datalist.basic_g * menulist[i][1])
 
-        # print('제대로 계산이 될까? ========',nutrlist)
     
     diets.kcal = nutrlist['kcal']
     diets.tan = nutrlist['tan']
