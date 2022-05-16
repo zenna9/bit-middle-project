@@ -31,14 +31,14 @@
     <div class="profile-usermenu" style="margin-top:1rem;">
         <!-- 날짜별 데이터 -->
         <form style='text-align:center;' action="parameter" enctype="multipart/form-data">
-            <label for="currentDate" style="font-size:1em; line-height:1.5em;"><strong>날짜 선택</strong></label>
+            <label for="currentDate" style="font-size:1em; line-height:1.5em;"><strong>날짜별 사진 보기</strong></label>
             <input style='font-size:1.3rem;'type="date" name="today" id="kj_calender" class="btn zen_calender" onchange="change_cal('{{idx}}')">
         </form>
 
         <!-- 전체 사진 보기 -->
         <form style='text-align:center;' action="parameter" enctype="multipart/form-data">
         	<label for="currentDate" style="font-size:1em; line-height:1.5em;"><strong>전체 사진</strong></label>
-        	<input style='border-radius:10%; font-size:1rem; width:9rem; margin:0.4rem auto 0.4rem 1rem;' type="button" class="zenbtn1" value="전체 사진보기">
+        	<input style='border-radius:10%; font-size:1rem; width:9rem; margin:0.4rem auto 0.4rem 1rem;' type="button" class="zenbtn1" value="전체 사진보기" onClick="location.href='/m/rhrudwnszoq/mypage'">
         </form>
 
         <ul class="nav">
