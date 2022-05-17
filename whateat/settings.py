@@ -68,13 +68,11 @@ WSGI_APPLICATION = 'whateat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_study',
-        'USER': 'root',
-        'PASSWORD': 'Jesusdfm!2',
-        'HOST': 'localhost',
-        'PORT': '3306'
-
-
+        'NAME': 'bitteam2',
+        'USER': 'user1',
+        'PASSWORD': '1111',
+        'HOST': '192.168.0.29',
+        'PORT': '3306',
     }
 }
 
@@ -100,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'Asia/Seoul'
 
