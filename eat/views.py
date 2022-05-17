@@ -8,13 +8,11 @@ def index(request) :
 
 # zenna : 로그인한 메인화면 ==(데이터 있는 경우 try, 없는 경우 except)====================
 def logindone(request, idx, date):
-    try : 
+    try :
         dietlist = get_list_or_404(diet, user_id=idx, date=date)
         # dietlist.kcal = round(dietlist.kcal,1)
         loginn = get_object_or_404(login, user_id=idx)
-        
         sums = diet.objects.filter(date=date).filter(user_id=idx).aggregate(Sum('tan'))
-
         need_list = ['dang', 'kcal', 'ji', 'dan']
 
         for i in need_list :
@@ -38,6 +36,7 @@ def logindone(request, idx, date):
 def team_index(request):
     return render(request, 'introduce.html')
 
+#  날짜별 나의 사진을 선택할수 있는 링크
 def mypage_index(request, idx, date):
     try : # 사진이 있으면서 날짜를 선택하지 않았을경우
         dietlist = get_list_or_404(diet, user_id=idx, date=date)
@@ -47,6 +46,7 @@ def mypage_index(request, idx, date):
         context = {'idx':idx,'date':date}
         return render(request, 'myprofile_null.html', context)
 
+# 내 모든 사진을 볼수있는 링크 / 내가 올린사진이 없으면 except
 def profile_allphoto(request, idx):
     try:
         dietlist = get_list_or_404(diet, user_id=idx)

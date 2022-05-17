@@ -1,3 +1,5 @@
+{% load staticfiles %}
+{% load static %}
 
 function scroll_to(clicked_link, nav_height) {
 	var element_class = clicked_link.attr('href').replace('#', '.');
@@ -29,9 +31,9 @@ jQuery(document).ready(function() {
     /*
         Background slideshow
     */
-    $('.top-content').backstretch("assets/img/backgrounds/1.jpg");
-    $('.call-to-action-container').backstretch("assets/img/backgrounds/1.jpg");
-    $('.testimonials-container').backstretch("assets/img/backgrounds/1.jpg");
+    $('.top-content').backstretch("/static/picture/backgrounds/1.jpg");
+    $('.call-to-action-container').backstretch("/static/picture/backgrounds/1.jpg");
+    $('.testimonials-container').backstretch("/static/picture/backgrounds/1.jpg");
     
     $('#top-navbar-1').on('shown.bs.collapse', function(){
     	$('.top-content').backstretch("resize");
