@@ -1,6 +1,10 @@
 media/
-./whateat/settings.py
-
+whateat/settings.py
+analysis_photo/__pycache__/
+whateat/__pycache__/
+login/__pycache__/
+eat/__pycache__/
+analysis_photo/migrations/__pycache__/
 
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,pycharm,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,pycharm,python
