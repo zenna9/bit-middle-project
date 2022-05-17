@@ -212,3 +212,32 @@ details[open] > summary ~ * {
         transform: translate3d(0, 0, 0);
     }
 }
+
+/* NAV BAR HOBER EFFRECT CSS STYLE */
+
+ .nav-item::after {
+     content: '';
+     display: block;
+     width: 0px;
+     height: 3px;
+     background: #fec400;
+     transition: 0.3s
+ }
+
+ .nav-item:hover::after {
+     width: 100%
+ }
+
+ .navbar-dark .navbar-nav .active>.nav-link,
+ .navbar-dark .navbar-nav .nav-link.active,
+ .navbar-dark .navbar-nav .nav-link.show,
+ .navbar-dark .navbar-nav .show>.nav-link,
+ .navbar-dark .navbar-nav .nav-link:focus,
+ .navbar-dark .navbar-nav .nav-link:hover {
+     color: #fec400
+ }
+
+ .nav-link {
+     padding: 5px 5px;
+     transition: 0.2s
+ }

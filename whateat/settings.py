@@ -72,6 +72,7 @@ DATABASES = {
         'USER': 'user1',
         'PASSWORD': '1111',
         'HOST': 'ec2-15-164-212-102.ap-northeast-2.compute.amazonaws.com',
+
         'PORT': '3306'
 
 

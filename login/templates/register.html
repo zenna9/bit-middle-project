@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="ko">
+{% extends 'base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>푸포AI</title>
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+{% block content %}
+<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
   <style>
     body {
       min-height: 100vh;
@@ -203,6 +194,8 @@
       });
     }, false);
   </script>
-</body>
+      <!--	FOOTER		-->
+    {% include 'footer.html' %}
+  </body>
 
-</html>
+{% endblock %}
