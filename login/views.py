@@ -17,12 +17,21 @@ def logining(request):
     user_id = request.POST.get('user_id')
     password = request.POST.get('password')
 <<<<<<< HEAD
+<<<<<<< HEAD
     con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
 =======
 
     con = pymysql.connect(host='ec2-15-164-212-102.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
 
 >>>>>>> 2cb526a1b98e235bbf3b920f7986ba1749300348
+=======
+
+    con = pymysql.connect(host='ec2-15-164-212-102.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+
+=======
+    con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+>>>>>>> 57d6ce61456ddcd781c2abc202f5258640018183
+>>>>>>> e66e9084105e134531133c4766c5847666bf0db7
     cursor = con.cursor(pymysql.cursors.DictCursor)
     stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"
     stmt = stmt.format(user_id, password)
