@@ -48,6 +48,13 @@ def mypage_index(request, idx, date):
         return render(request, 'myprofile_null.html', context)
 
 def profile_allphoto(request, idx):
-    dietlist = get_list_or_404(diet, user_id=idx)
-    context = {'idx': idx, 'dietlist': dietlist}
-    return render(request, "myprofile_all.html", context)
+    try:
+        dietlist = get_list_or_404(diet, user_id=idx)
+        context = {'idx': idx, 'dietlist': dietlist}
+        return render(request, "myprofile_all.html", context)
+    except:
+        context = {'idx': idx}
+        return render(request, 'myprofile_null.html', context)
+
+def tutorial_page(request):
+    return render(request, 'tutorial.html')

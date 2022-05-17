@@ -68,10 +68,10 @@ WSGI_APPLICATION = 'whateat.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bitteam2',
-        'USER': 'user1',
-        'PASSWORD': '1111',
-        'HOST': '192.168.0.29',
+        'NAME': 'db_study',
+        'USER': 'root',
+        'PASSWORD': 'Jesusdfm!2',
+        'HOST': 'localhost',
         'PORT': '3306'
 
 
