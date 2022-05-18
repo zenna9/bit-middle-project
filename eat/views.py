@@ -46,7 +46,7 @@ def mypage_index(request, idx, date):
         context = {'idx':idx,'date':date}
         return render(request, 'myprofile_null.html', context)
 
-# 내 모든 사진을 볼수있는 링크 / 내가 올린사진이 없으면 except
+# 전체 사진 보기 /내 모든 사진을 볼수있는 링크 / 내가 올린사진이 없으면 except
 def profile_allphoto(request, idx):
     try:
         dietlist = get_list_or_404(diet, user_id=idx)
