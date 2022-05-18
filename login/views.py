@@ -1,56 +1,53 @@
 from datetime import date
 from sre_constants import SUCCESS
+
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
-from eat.models import login
-import eat
-from eat import views
 # from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import pymysql
 from datetime import datetime
+from eat.models import login
+
+from django.contrib.auth import authenticate
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 
 # zenna : 로그인, Mysql과 데이터 비교
+@csrf_exempt
 def logining(request):
     user_id = request.POST.get('user_id')
     password = request.POST.get('password')
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
-=======
-
-    con = pymysql.connect(host='ec2-15-164-212-102.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
-
->>>>>>> 2cb526a1b98e235bbf3b920f7986ba1749300348
-=======
-
-    con = pymysql.connect(host='ec2-15-164-212-102.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
-
-=======
-    con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
->>>>>>> 57d6ce61456ddcd781c2abc202f5258640018183
->>>>>>> e66e9084105e134531133c4766c5847666bf0db7
     cursor = con.cursor(pymysql.cursors.DictCursor)
+
     stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"
     stmt = stmt.format(user_id, password)
-    cursor.execute(stmt) #
-    data = cursor.fetchall() #
+    cursor.execute(stmt)
+    data = cursor.fetchall()  #
+    date = datetime.today().strftime("%Y-%m-%d") # 날짜데이터 전처리
 
-    date = datetime.today().strftime("%Y-%m-%d")
-
-
-    if not data: #데이터가 없으면
-        # context = 
+    if not data:  # 데이터가 없으면 로그인 실패 페이지
         return render(request, 'login_fail.html')
     else:
-        return redirect('/m/'+user_id+'/'+date)
+        return redirect ('/m/'+user_id+'/'+date)
+
+        # return redirect('my_photos') 0517 경준 연습 (지울예정)
+        # return redirect('/m/'+user_id+'/mypage') 0517 경준 연습 (지울예정)
 
 
-# zenna : 최초 접속
+
+
+# zenna : 최초 접속 로그인 페이지
 def index(request):
     return render(request, 'index.html')
+
+# zenna : 회원가입 버튼 눌렀을 경우
+def register(request):
+    return render(request, 'register.html')
 
 # zenna : 회원가입 폼 제출 시 , sql에 정보 저장
 def register_submit(request):
@@ -78,8 +75,3 @@ def register_submit(request):
     logins.save()
 
     return redirect('/lg/success')
-
-# zenna : 회원가입 버튼 눌렀을 경우
-def register(request):
-    return render(request, 'register.html')
-
