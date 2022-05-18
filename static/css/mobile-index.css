@@ -1,0 +1,42 @@
+/* PC환경================ */
+@media (max-width: 768px) {
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1px peru solid;
+
+  }
+  .card
+    .zen_cardholder {
+        width: 100% !important;
+        height: 10em;
+    }
+    .zen_cardimg {
+        object-fit: cover !important; width: 100% !important; height: 100% !important;
+    }
+    .card {
+        width: 400%;
+        margin: 1em auto 0em auto !important;
+    }
+    .card-body{
+        width: 100%;
+    }
+    .z-mb-form1 {
+        width: 100%;
+    }
+    .zen_back_PC {
+        display: none !important;
+    }
+    .zen_back_PC {
+        display: block;
+        background-color: #e0e0e0 !important;
+        border-radius: 1em;
+        color: black;
+        margin: 1%;
+        width: 68%;
+        margin-left: 2%;
+    }
+    .zen_back_PC * {
+        display: block !important;
+    }
+}
