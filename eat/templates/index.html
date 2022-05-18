@@ -11,14 +11,14 @@
     <!--	HEADER NAV BAR-->
     {% include 'nav.html' %}
     </div>
-    <div class="container">
+    <div class="container-fluid">
             <!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
-            <div class="col-lg-3 flex-column zen_back_mobile" style="width: 25%;">
+            <div class="flex-column zen_back_mobile">
                 {% include 'sidebar.html' %}
             </div>
             <!-- =========================본문  ===============================================-->
-            <div class="row row_with_all">
-                <div class="col-lg-8 zen_back1">
+            <div class="row">
+                <div class="zen_back_main">
                     <!-- 날짜데이터 -->
                     <form action="parameter" enctype="multipart/form-data" class="z-mb-form1">
                         <label for="currentDate" class="zenform1"><strong>Date</strong></label>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <!-- {#       사이드바(PC화면일 때) ===============================#} -->
-                <div class="col-lg-3 d-flex flex-column zen_back1 zen_back_PC" style="width: 25%;">
+                <div class="d-flex flex-column zen_back1 zen_back_PC" style="width: 25%;">
                 {% include 'sidebar.html' %}
                 </div>
             </div>

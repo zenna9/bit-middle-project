@@ -1,13 +1,17 @@
-@media (min-width: 768.1px) {
+@media (min-width: 768px) {
     *{ border: 1px green solid !important;}
+    .container {
+        width: 100% !important;
+    }
     .zen_cardholder {
         width: 100% !important; height:10em !important;
     }
     .zen_cardimg {
         object-fit: cover !important; width: 100% !important; height: 100% !important;
     }
+    /* 모바일 사이드바 숨김 */
     .zen_back_mobile{
-        display: none !important;
+        display: none;
 
     }
     .zen_back_PC {
@@ -19,14 +23,21 @@
         width: 68%;
         margin-left: 2%;
     }
-    .zen_back_PC * {
-        display: block !important;
+    .zen_back_main {
+        width: 70%;
+        background-color: #e0e0e0 !important;
+        border-radius: 1em;
+        color: black;
+        margin: 1%;
     }
 }
+
+/* ============미디어쿼리 종료============= */
 .ze1 {
     margin: 10px;
     padding: 10px;
     border: 1px solid grey;
+    width: 100%;
 }
 
 .table2 {
@@ -115,7 +126,6 @@ body {
     margin: 0;
 }
 .zen_side_row { 
-    margin: 1% auto 0 auto;
     font-size: 1em; 
     text-align: center;
 }

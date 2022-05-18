@@ -1,12 +1,11 @@
-/* PC환경================ */
+/* 모바일환경================ */
 @media (max-width: 768px) {
-  * {
+    * {
     margin: 0 !important;
     padding: 0 !important;
     border: 1px peru solid;
 
-  }
-  .card
+    }
     .zen_cardholder {
         width: 100% !important;
         height: 10em;
@@ -24,19 +23,35 @@
     .z-mb-form1 {
         width: 100%;
     }
-    .zen_back_PC {
-        display: none !important;
-    }
-    .zen_back_PC {
-        display: block;
+    .zen_back_main {
+        /* width: 70%; */
         background-color: #e0e0e0 !important;
         border-radius: 1em;
         color: black;
         margin: 1%;
-        width: 68%;
+    }
+    
+    /* 본문 종료=========== */
+    /* 사이드바============== */
+    /* PC sidebar숨김 */
+        .zen_back_PC {
+            display: none !important;
+        }
+    /* 모바일 사이드바 */
+    .zen_back_mobile * {
+        display: block !important;
+        background-color: #e0e0e0 !important;
+        border-radius: 1em;
+        color: black;
+        margin: 1%;
+        width: 100%;
         margin-left: 2%;
     }
-    .zen_back_PC * {
-        display: block !important;
+    .zen_side_row {
+        width: 15%;
+    }
+    .zen_side_right {
+        width: 50%;
+           
     }
 }
