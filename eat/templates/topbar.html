@@ -1,6 +1,6 @@
 <!-- zenna : 메인페이지 사이드바 -->
 <div>
-    <div  class="zen-top-photo" style="text-align:center;padding: 5.5em 0 !important;">
+    <div  class="zen-top-photo" style="text-align:center;padding: 2.7em 0 !important;">
         <div>프로필사진</div>
     </div>
     <div class="zen_top-buttons" style="text-align:center;margin: 1em;">
@@ -13,13 +13,14 @@
 
 
         <footer class="zen-side-footer">
-            <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
+            <form action="{% url 'analysis_photo:f_fu' %}" id="form_to_upload" class="no_margin" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <label for="file" class="ment">사진찍기/앨범에서 선택</label>
-                <input type="file" onchange="gosubmit()" name="i_fu" class="upload_button_zen form-control" id="file" style="display:none">
+                <label for="file" class="ment">
+                    <img src="/static/picture/camera.png" style="object-fit:contain ;width: 100%;" class="zenbtn5"/>
+                </label>
+                <input type="file" name="i_fu" onchange="gosubmit()" class="upload_button_zen form-control" id="file" style="display:none">
                 <input type="hidden" name="idx" value="{{idx}}" />
                 <div style="height: 10px;"></div>
-                <input type="submit" class="zenbtn1" style="margin-top: 1em " value="업로드">
             </form>
         </footer>
     </div>

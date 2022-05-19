@@ -34,8 +34,6 @@ function tag () {
     }, updatesPerSecond)
   }
   
-  tag()
-
 // function getpercent(per) {
 //     let pers = per;
 //     console.log(per);
@@ -44,5 +42,8 @@ function tag () {
 //     // console.log('pers');
 // }
 function gosubmit() {
-  document.getElementById('form_to_upload').onsubmit
+  console.log('접근은 함');
+  let dd = document.getElementById('form_to_upload');
+  console.log(dd);
+  dd.submit();
 }
