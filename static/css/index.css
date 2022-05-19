@@ -1,14 +1,15 @@
 @media (min-width: 769px) {
     *{ border: 1px green solid !important;}
-    .container {
-        width: 100% !important;
-    }
     .zen_cardholder {
         width: 100% !important; height:10em !important;
     }
     .zen_cardimg {
-        object-fit: cover !important; width: 100% !important; height: 100% !important;
+        object-fit: cover !important; width: 100% !important; height: 7em !important;
     }
+    #zen-cont {
+        max-width: 70rem;
+    }
+
     /* 모바일 사이드바 숨김 */
     .zen_back_mobile{
         display: none;
@@ -42,7 +43,11 @@
         height: 80%;
     }
     .zen-td-1{
-        width: 3vw;
+        width: 60%;
+    }
+    .zen-td-2{
+        width:35%;
+        text-align: right;
     }
 
     .width-full {
@@ -54,13 +59,6 @@
         white-space: nowrap;
         margin: 0 1.3% 0 0;
         clear: both;
-    }
-    .zen-nutri-td1n{
-        width: 60%;
-    }
-    .zen-nutri-td2n{
-        width:35%;text-align: right;
-
     }
     .zen_moreinfo {
         width: 4vw;margin: 5vw auto auto auto;text-align: center;
@@ -75,6 +73,14 @@
     .zen_back2 {
         width: 100%;height: 250px;margin: auto;
     }
+    .z_side_photo{
+        margin: 2rem 1rem 2rem 1rem;
+        border-bottom: 1px grey solid;
+    }
+    .zen_seek_mobile {
+        display: none;
+    }
+
 }
 
 /* ============미디어쿼리 종료============= */
@@ -116,11 +122,11 @@ body {
     }
 }
 
-@property --percentage {
+/* @property --percentage {
     syntax: '<number>';
     inherits: true;
     initial-value: 0;
-}
+} */
 .col1 {
     /* width: 8%; */
     width: 1.3vw;
@@ -181,7 +187,6 @@ body {
 }
 .zenbtn1:hover {
     background-color: rgb(255, 219, 179);
-    background-color: rgb(211, 211, 211);
     color: rgb(0, 0, 0);
 }
 .row_with_all{

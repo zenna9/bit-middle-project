@@ -9,6 +9,7 @@
     border: 1px peru solid;
 
     }
+ 
     .zen_cardholder {
         width: 100% !important;
         height: 10em;
@@ -37,9 +38,24 @@
         width: 100%;
     }
     .zen_back2 {
-        width: 100%;margin: auto;
+        width: 100%;
+        margin: auto;
+        clear:both;
+        position: relative;
+        top: 50px;
     }
-    
+    .zen-td-1{
+        width: 60%;
+        padding-left:2px ;
+    }
+    .zen-td-2{
+        width:35%;
+        text-align: right;
+    }
+
+    .zen_seek_pc {
+        display: none;
+    }
     /* 본문 종료=========== */
     /* 사이드바============== */
     /* PC sidebar숨김 */
@@ -50,24 +66,30 @@
     .zen_back_mobile * {
         display: block !important;
         background-color: #e0e0e0 !important;
-        border-radius: 1em;
+        /* border-radius: 1em; */
         color: black;
         margin: 1%;
         width: 100%;
-        margin-left: 2%;
+    }
+    .ment {
+        background-color: white !important;
+    }
+    .upload_button_zen {
+        margin: auto 0 auto 0 !important;
+        text-align: center !important;
+        width: 90%;
     }
     .zen-top-photo {
         display:inline-block;
-        width: 20%;
+        width: 40% !important;
         float: left;
-        margin: 5rem;
+
     }
     .zen_top-buttons {
         display:inline-block;
-        width: 70%;
+        width: 60%;
         float: right;
-        margin: 5rem;
-        padding: 5px;
+        padding: 15px !important;
     }
     .zen-side-footer {
         width: 100%;
@@ -76,18 +98,25 @@
 
     }
     .zenbtn1 {
-        margin: 5px auto 5px auto; 
-        width: 95%;
-        height: 2em;
+        background-color: white !important;
+        border-radius: 2px;
+    
+    }
+    .zenbtn1:hover {
+        background-color: rgb(255, 219, 179) !important;
+        color: rgb(0, 0, 0);
     }
 
     /* 더보기버트 구역 */
-    .zen_moreinfo {
-        width: 4vw;margin: 5vw auto auto auto;text-align: center;
-    }
-    .zen_moreinfo img {
-        width: 50px;
-        object-fit: contain; border-radius: 50%;
-    }
+    .going-top {
+        float: right;
+        position: fixed;
+        bottom: 1em;
+        width: 4em;
+        height: 4em;
+        right: 1em;
+        background-color: white;
+        border-radius: 50%;
 
+    }
 }
