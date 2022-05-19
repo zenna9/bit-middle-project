@@ -1,0 +1,20 @@
+<!-- zenna : 메인페이지 사이드바 -->
+<div>
+    <div  class="zen-top-photo" style="text-align:center;">
+        사진쓰
+    </div>
+    <div class="zen_top-buttons" style="text-align:center;">
+        <input type="button" class="zenbtn1" value="내 정보 보기" onClick="location.href='/m/{{idx}}/mypage'"/>
+        <input type="button" class="zenbtn1" value="내 피드 보기"/>
+        <footer class="zen-side-footer">
+            <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="file" class="ment">사진찍기/앨범에서 선택</label>
+                <input type="file" name="i_fu" class="upload_button_zen form-control" id="file" style="display:none">
+                <input type="hidden" name="idx" value="{{idx}}" />
+                <input type="submit" class="zenbtn1" style="margin-top: 1em " value="업로드">
+            </form>
+        </footer>
+    </div>
+    
+</div>

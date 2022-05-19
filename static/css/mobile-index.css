@@ -1,5 +1,8 @@
 /* 모바일환경================ */
-@media (max-width: 768px) {
+@media (max-width: 769px) {
+    body {
+        height: fit-content;
+    }
     * {
     margin: 0 !important;
     padding: 0 !important;
@@ -14,7 +17,7 @@
         object-fit: cover !important; width: 100% !important; height: 100% !important;
     }
     .card {
-        width: 400%;
+        width: 95%;
         margin: 1em auto 0em auto !important;
     }
     .card-body{
@@ -25,10 +28,16 @@
     }
     .zen_back_main {
         /* width: 70%; */
-        background-color: #e0e0e0 !important;
+        background-color: #ffffff !important;
         border-radius: 1em;
         color: black;
         margin: 1%;
+    }
+    .zen_col_1_4 {
+        width: 100%;
+    }
+    .zen_back2 {
+        width: 100%;margin: auto;
     }
     
     /* 본문 종료=========== */
@@ -47,11 +56,38 @@
         width: 100%;
         margin-left: 2%;
     }
-    .zen_side_row {
-        width: 15%;
+    .zen-top-photo {
+        display:inline-block;
+        width: 20%;
+        float: left;
+        margin: 5rem;
     }
-    .zen_side_right {
-        width: 50%;
-           
+    .zen_top-buttons {
+        display:inline-block;
+        width: 70%;
+        float: right;
+        margin: 5rem;
+        padding: 5px;
     }
+    .zen-side-footer {
+        width: 100%;
+        margin: 1rem;
+        border: 1px grey solid;
+
+    }
+    .zenbtn1 {
+        margin: 5px auto 5px auto; 
+        width: 95%;
+        height: 2em;
+    }
+
+    /* 더보기버트 구역 */
+    .zen_moreinfo {
+        width: 4vw;margin: 5vw auto auto auto;text-align: center;
+    }
+    .zen_moreinfo img {
+        width: 50px;
+        object-fit: contain; border-radius: 50%;
+    }
+
 }
