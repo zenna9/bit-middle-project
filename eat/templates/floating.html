@@ -12,7 +12,7 @@
 <div class="zen_seek_mobile">
     <form action="{% url 'analysis_photo:f_fu' %}" id="form_to_upload" class="no_margin" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="file" class="ment">
+        <label for="file" class="zen-floating-camera">
             <img src="/static/picture/camera.png" style="object-fit:contain ;width: 100%;"/>
         </label>
         <input type="file" name="i_fu" onchange="gosubmit()" class="all-hidden form-control" id="file" style="display:none">
