@@ -69,9 +69,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bitteam2',
-        'USER': 'user1',
-        'PASSWORD': '1111',
-        'HOST': '192.168.0.29',
+        'USER': 'root',
+        'PASSWORD': '000000',
+        'HOST': '127.0.0.1',
         'PORT': '3306'
 
     }
