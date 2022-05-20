@@ -6,7 +6,7 @@
     * {
     margin: 0 !important;
     padding: 0 !important;
-    /* border: 1px peru solid; */
+    border: 1px peru solid;
 
     }
  
@@ -64,14 +64,16 @@
         }
     /* 모바일 사이드바 */
     .zen_back_mobile * {
-        display: block ;
-        /* background-color: #e0e0e0; */
+        display: block !important;
+        background-color: #e0e0e0 !important;
         /* border-radius: 1em; */
         color: black;
         margin: 1%;
         width: 100%;
     }
-
+    .ment {
+        background-color: white !important;
+    }
     .upload_button_zen {
         margin: auto 0 auto 0 !important;
         text-align: center !important;
@@ -89,12 +91,12 @@
         float: right;
         padding: 15px !important;
     }
-    /* .zen-side-footer {
+    .zen-side-footer {
         width: 100%;
         margin: 1rem;
         border: 1px grey solid;
 
-    } */
+    }
     .zenbtn1 {
         background-color: white !important;
         border-radius: 2px;
@@ -105,33 +107,29 @@
         color: rgb(0, 0, 0);
     }
 
-    /* 더보기버트 구역 ===========================*/
+    /* 더보기버트 구역 */
     .going-top {
-        float: right;
-        position: fixed;
-        bottom: 6em;
-        width: 4em;
-        height: 4em;
-        right: 1em;
-        background-color: white;
-        border-radius: 50%;
-        border: 1px rgb(255, 193, 123) solid;
-    }
-    .all-hidden {
-        display: none;
-    }
-    .ment {
         float: right;
         position: fixed;
         bottom: 1em;
         width: 4em;
         height: 4em;
         right: 1em;
-        background-color: rgb(255, 231, 166) !important;
+        background-color: white;
         border-radius: 50%;
-        z-index: 1;
+
     }
-    .zenbtn5:hover{
-        border: 2px rgb(255, 193, 123) solid;
+    /* ==index_null 적용부분 ============*/
+    .zen-null-background {
+        height: 80%;text-align : center;
     }
+    .zen-null-main {
+        width: 50%;
+        height: 270px;
+        margin: 20% auto auto auto;
+    }
+
+
+
+    /* ==index_null 적용 끝 ============*/
 }

@@ -6,8 +6,8 @@ from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('ph/', include('analysis_photo.urls')),
+    path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='tutorial.html'), name='tutorial'),
     path('lg/', include ('login.urls')),
     path('m/', include('eat.urls')),

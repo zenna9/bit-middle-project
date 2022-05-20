@@ -1,40 +1,57 @@
 {% extends 'base.html' %}
 <!-- zenna -->
+
 {% block content %}
-<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
-<link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/mobile-index.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        table *{
+            border: 1px purple solid;
+        }
+    </style>
 </head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
-    <div class="container-fluid zen_back0">
+    <div class="container-fluid zen_back0" id="top">
 
-        <!--	HEADER NAV BAR-->
-        {% include 'nav.html' %}
-      </div>
-      <div class="container">
-        <!-- =========================본문  ===============================================-->
-        <div class="row row_with_all">
-            <div class="col-lg-8 zen_back1">
-                <!-- 날짜데이터 -->
-                <form action="parameter" enctype="multipart/form-data">
-                    <label for="currentDate" class="zenform1"><strong>Date</strong></label>
-                    <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
-                </form>
+    <!--	HEADER NAV BAR-->
+    {% include 'nav.html' %}
+    </div>
+    <div class="container-fluid" id="zen-cont">
+            <!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
+            <div class="flex-column zen_back_mobile row">
+                {% include 'topbar.html' %}
                 <hr>
-                <!-- {# 그래프 본문 내용====================== #} -->
-                <div style="height: 80%;text-align : center;">
-                    <div style="width: 50%;height: 150px;margin: 20% auto auto auto;">
+            </div>
+            <!-- =========================본문  ===============================================-->
+            <div class="row">
+                <div class="zen_back_main">
+                    <!-- 날짜데이터 -->
+                    <form action="parameter" enctype="multipart/form-data" class="z-mb-form1">
+                        <label for="currentDate" class="zenform1"><strong>Date</strong></label>
+                        <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
+                    </form>
+                    <hr>
+                    <!-- {# 그래프 본문 내용====================== #} -->
+                    <div class ="zen-null-background" style="width: 100%;">
+                    <div class = "zen-null-main" style="margin: 0 auto;">
                         <i class="fa-solid fa-carrot fa-5x"></i>
                         <br>아직 정보가 없어요!
                         <br>오늘의 식사를 등록 해 주세요
                     </div>
                 </div>
             </div>
-            <!-- {#       사이드바 ===============================#} -->
-            {% include 'sidebar.html' %}
+            <!-- {#       사이드바(PC화면일 때) ===============================#} -->
+
+            <div class="d-flex flex-column zen_back1 zen_back_PC" style="width: 25%;">
+                {% include 'sidebar.html' %}
+            </div>
         </div>
+
+        <!--	FOOTER		-->
+        {% include 'footer.html' %}
     </div>
-    <!--	FOOTER		-->
-    {% include 'footer.html' %}
 </body>
 
 {% endblock %}
+<!-- 0511 test -->

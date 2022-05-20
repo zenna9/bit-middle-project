@@ -81,6 +81,19 @@
     .zen_seek_mobile {
         display: none;
     }
+        /* ==index_null 적용부분 ============*/
+    .zen-null-background {
+        height: 80%;text-align : center;
+    }
+    .zen-null-main {
+        width: 50%;
+        height: 270px;
+        margin: 20% auto auto auto;
+    }
+
+
+
+    /* ==index_null 적용 끝 ============*/
 
 }
 
