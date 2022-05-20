@@ -1,5 +1,5 @@
 @media (min-width: 769px) {
-    *{ border: 1px green solid !important;}
+    /* *{ border: 1px green solid !important;} */
     .zen_cardholder {
         width: 100% !important; height:10em !important;
     }
@@ -27,6 +27,7 @@
     .zen_back_main {
         display: inline-block;
         width: 70%;
+        height: 30em;
         background-color: #e0e0e0 !important;
         border-radius: 1em;
         color: black;
@@ -83,14 +84,13 @@
     }
         /* ==index_null 적용부분 ============*/
     .zen-null-background {
-        height: 80%;text-align : center;
+        height: 25em;text-align : center;
     }
     .zen-null-main {
         width: 50%;
-        height: 270px;
-        margin: 20% auto auto auto;
+        height: 10em;
+        margin: 12% auto auto auto !important;
     }
-
 
 
     /* ==index_null 적용 끝 ============*/
