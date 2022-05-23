@@ -30,7 +30,7 @@
         <div class="row w-50" style="margin: 1em auto 1em auto;">
 
 
-            <form action="/lg/logining/" method="POST">
+            <form action="{% url 'login:logining' %}" method="POST">
                 {% csrf_token %}
                 <div class="form">
                     <label for="user_id"></label>
