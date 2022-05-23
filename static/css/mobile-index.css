@@ -6,7 +6,7 @@
     * {
     margin: 0 !important;
     padding: 0 !important;
-    border: 1px peru solid;
+    /* border: 1px peru solid; */
 
     }
  
@@ -135,8 +135,8 @@
 
     }
     /* ==index_null 적용부분 ============*/
-    .zen-null-background {
-        height: 35em;text-align : center;
+    .zen-null-background-mobile {
+        height: 36vh;text-align : center;
     }
     .zen-null-main {
         width: 100%;
