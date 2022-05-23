@@ -30,10 +30,3 @@ function zen_hideorseek(what) {
 }
 
 // var newfood = document.getElementById("zen-btn-82");
-// newfood.onclick = function(){
-//     console.log("mii");
-// }
-function newfood() {
-    console.log("ddd")
-    document.getElementById('jikil').style.display = "block"
-}
