@@ -1,0 +1,58 @@
+/* placeholder 아이디와 비밀번호 정렬 */
+/* login.html  */
+@media screen and (min-width:1000px){ 
+    input[type="text"] {
+        margin: auto 0em auto 0em; width: 80%; height: 4rem; font-size:1.1rem; 
+
+    }
+}
+
+@media screen and (min-width:1000px){ 
+    input[type="password"] {
+        margin: auto 0em auto 0em; width: 80%; height: 4rem; font-size:1.1rem; 
+       
+    }
+}
+
+
+@media screen and (max-width:760px){ 
+    input[type="text"] {
+        margin: auto 0em auto -8.5em; width: 255%; height: 4rem; font-size:1.1rem; text-align: center;
+        
+    }
+}
+
+@media screen and (max-width:760px){ 
+    input[type="password"] {
+        margin: auto 0em auto  -8.5em; width: 255%; height: 4rem; font-size:1.1rem; text-align: center;
+        
+        
+    }
+}
+
+/* 로그인 상태 유지하기 */
+@media screen and (max-width:760px){ 
+    input[type="checkbox"] {
+        
+        margin: auto 0em auto -1em;  font-size:1.1rem; text-align: center;
+        
+        
+    }
+}
+
+/* 로그인 버튼 */
+@media screen and (max-width:760px){ 
+    button[type="submit"] {
+        
+        margin: auto 0em auto -1em; width: 300%; font-size:1.1rem; text-align: center;
+        
+        
+    }
+}
+
+/* 회원가입 */
+@media screen and (max-width:760px){ 
+    #register {
+        margin: auto 0em auto 1em; width:130%; font-size:1.1rem; text-align: center;
+    }
+}
