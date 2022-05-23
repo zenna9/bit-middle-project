@@ -1,6 +1,5 @@
-/* 채은 */
 @media (min-width: 769px) {
-    /* *{ border: 1px green solid !important;} */
+    *{ border: 1px green solid !important;}
     .zen_cardholder {
         width: 100% !important; height:10em !important;
     }
@@ -17,7 +16,7 @@
 
     }
     .zen_back_PC {
-        display: inline-block;
+        display: block;
         background-color: #e0e0e0 !important;
         border-radius: 1em;
         color: black;
@@ -26,9 +25,7 @@
         margin-left: 2%;
     }
     .zen_back_main {
-        display: inline-block;
         width: 70%;
-        height: 30em;
         background-color: #e0e0e0 !important;
         border-radius: 1em;
         color: black;
@@ -77,24 +74,12 @@
         width: 100%;height: 250px;margin: auto;
     }
     .z_side_photo{
-        /* margin: 2rem 1rem 2rem 1rem; */
+        margin: 2rem 1rem 2rem 1rem;
         border-bottom: 1px grey solid;
     }
     .zen_seek_mobile {
         display: none;
     }
-        /* ==index_null 적용부분 ============*/
-    .zen-null-background {
-        height: 25em;text-align : center;
-    }
-    .zen-null-main {
-        width: 50%;
-        height: 10em;
-        margin: 12% auto auto auto !important;
-    }
-
-
-    /* ==index_null 적용 끝 ============*/
 
 }
 
