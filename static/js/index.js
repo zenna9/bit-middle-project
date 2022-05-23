@@ -6,10 +6,11 @@ function change(idx){
 
 function loadfunction(date, perkcal, pertan, perdan, perji){
   document.getElementById('zen_calender').value=date;
-  document.getElementById('perkcal').style.width=perkcal;
+  document.getElementById('perkcal1').style.width=perkcal;
   document.getElementById('pertan').style.width=pertan;
   document.getElementById('perdan').style.width=perdan;
   document.getElementById('perji').style.width=perji;
+  document.getElementById('perkcal2').style.width=perkcal;
 }
 
 // for progress tag in HTML 
@@ -33,8 +34,6 @@ function tag () {
     }, updatesPerSecond)
   }
   
-  tag()
-
 // function getpercent(per) {
 //     let pers = per;
 //     console.log(per);
@@ -42,3 +41,23 @@ function tag () {
 //     // thiss.width = pers;
 //     // console.log('pers');
 // }
+function gosubmit() {
+  console.log('접근은 함');
+  let dd = document.getElementById('form_to_upload');
+  console.log(dd);
+  dd.submit();
+}
+
+
+// var obj = document.getElementById('newfood')
+// obj.onclick = function(){
+
+//   console.log("mii");
+// }
+function newfood() {
+  document.getElementById('jikil').style.display = "block";
+}
+function addfood(nu){
+  var obj = document.getElementById(nu)
+  obj.style.display="block";
+}

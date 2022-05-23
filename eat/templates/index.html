@@ -1,122 +1,169 @@
 {% extends 'base.html' %}
-<!-- zenna -->
+<!-- 채은 -->
+
 {% block content %}
-<!-- <style>
-    *{
-        border: 1px solid red;
-    }
-    table * {
-        border: 1px solid blueviolet;
-    }
-</style> -->
-<link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/mobile-index.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="/static/js/index.js "></script>
+    <script src="/static/js/zen.js "></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        /* table *{ */
+            /* border: 1px purple solid; */
+        /* } */
+    </style>
 </head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
-<div class="container-fluid zen_back0">
+    <div class="container-fluid zen_back0" id="top">
 
-  <!--	HEADER NAV BAR-->
-  {% include 'nav.html' %}
-</div>
-<div class="container">
-        <!-- =========================본문  ===============================================-->
-        <div class="row row_with_all">
-            <div class="col-lg-8 zen_back1">
-                <!-- 날짜데이터 -->
-                <form action="parameter" enctype="multipart/form-data">
-                    <label for="currentDate" class="zenform1"><strong>Date</strong></label>
-                    <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
-                </form>
+    <!--	HEADER NAV BAR-->
+    {% include 'nav.html' %}
+    </div>
+    <div class="container-fluid" id="zen-cont">
+            <!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
+            <div class="flex-column zen_back_mobile row">
+                {% include 'topbar.html' %}
                 <hr>
-                <!-- {# 그래프 본문 내용====================== #} -->
-                <div style="height: 80%;">
-                    <div class="zen_back3">
-                        <table class="table2" style="height: 3em;">
-                            <tr>
-                                <td class="col-2">
-                                    &nbsp;&nbsp; 총 섭취량
-                                </td>
-                                <td class="col-8">
-                                    <div class="progress" style="height: 2em;">
-                                        <div  id="perkcal" class="progress-bar bg-danger" role="progressbar" style="width: 0%;">{{percent.per_kcal}}</div>
-                                      </div>
-                                </td>
-                                <td class="col-2" style="text-align:right">
-                                    {{sums.kcal__sum|floatformat}}/{{ logininfo.recommend_kcal }}
-                                </td>
-                            </tr>
-                        </table>
-                        <table class="table2" style="text-align: left;">
-                            <tr>
-                                <td class="col33" style="padding-left: 0.7em;">
-                                    탄수화물
-                                </td>
-                                <td class="col10">
-                                    {{ sums.kcal__sum|floatformat }}g &nbsp;
-                                </td>
-                                <td class="col33" style="padding-left: 0.7em;">
-                                    단백질
-                                </td>
-                                <td class="col10">
-                                    {{ sums.dan__sum|floatformat }}g &nbsp;
-                                </td>
-                                <td class="col33" style="padding-left: 0.7em;">
-                                    지방
-                                </td>
-                                <td class="col10">
-                                    {{ sums.ji__sum|floatformat }}g &nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td class="col33" colspan="2">
-                                    <div class="progress" style="height: 2em;">
-                                        <div  id="pertan" class="progress-bar bg-success" role="progressbar" style="width: 0%;">{{percent.per_tan}}</div>
-                                      </div>
-                                </td>
-                                <td class="col33" colspan="2">
-                                    <div class="progress" style="height: 2em;">
-                                        <div  id="perdan" class="progress-bar bg-info" role="progressbar" style="width: 0%;">{{percent.per_dan}}</div>
-                                      </div>
-                                </td>
-                                <td class="col33" colspan="2">
-                                    <div class="progress" style="height: 2em;">
-                                        <div  id="perji" class="progress-bar bg-warning" role="progressbar" style="width: 0%;">{{percent.per_ji}}</div>
-                                      </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+            </div>
+            <!-- =========================본문
+                  ===============================================-->
+            <div class="row">
+                <div class="zen_back_main">
+                    <!-- 날짜데이터 -->
+                    <form action="parameter" enctype="multipart/form-data" class="z-mb-form1">
+                        <label for="currentDate" class="zenform1"><strong>Date</strong></label>
+                        <input type="date" name="today" id="zen_calender" class="btn zen_calender" onchange="change('{{idx}}')">
+                    </form>
                     <hr>
-                    <div class="row zen_back2">
-                        {% for i in dietlist|slice:":3" %}
-                        <div class="col-3">
-                            <div class="card shadow-sm">
-                                <div class="bd-placeholder-img card-img-top zen_cardholder" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
-                                    <img class="zen_cardimg" src="/media/{{i.foodimage}}"/>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">{{i.time}}</p>
-                                    <p class="card-text">{{i.kcal|floatformat}} kcal</p>
-                                    
-                                </div>
+                    <!-- {# 그래프 본문 내용====================== #} -->
+                    <div class="zen-main-div">
+                        <div class="zen_back3" style="width:100%;">
+                            <!-- PC 용 총 섭취량 -->
+                            <table class="table2 zen_seek_pc" style="height: 3em;">
+                                <tr>
+                                    <td class="col-2">
+                                        &nbsp;&nbsp; 총 섭취량
+                                    </td>
+                                    <td class="col-8">
+                                        <div class="progress" style="height: 2em;">
+                                            <div id="perkcal1" class="progress-bar bg-danger" role="progressbar" style="width: 0%;">{{percent.per_kcal}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="col-2" style="text-align:right">
+                                        {{sums.kcal__sum|floatformat}}/{{ logininfo.recommend_kcal }}
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="row width-full">
+                                <!-- 모바일용 총 섭취량 -->
+                                <table class="zen-nutri-table zen_seek_mobile">
+                                    <tr>
+                                        <td class="zen-td-1">
+                                            총 섭취량
+                                        </td>
+                                        <td class="zen-td-2">
+                                            {{sums.kcal__sum|floatformat}}g &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="progress" style="height: 2em;">
+                                                <div id="perkcal2" class="progress-bar bg-danger" role="progressbar" style="width: 0%;">{{percent.per_kcal}}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="zen-nutri-table">
+                                    <tr>
+                                        <td class="zen-td-1">
+                                            탄수화물
+                                        </td>
+                                        <td class="zen-td-2">
+                                            {{ sums.tan__sum|floatformat }}g &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="progress" style="height: 2em;">
+                                                <div  id="pertan" class="progress-bar bg-success" role="progressbar" style="width: 0%;">{{percent.per_tan}}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="zen-nutri-table">
+                                    <tr>
+                                        <td class="zen-td-1">
+                                            단백질
+                                        </td>
+                                        <td class="zen-td-2">
+                                            {{ sums.dan__sum|floatformat }}g &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="progress" style="height: 2em;">
+                                                <div id="perdan" class="progress-bar bg-success" role="progressbar" style="width: 0%;">{{percent.per_dan}}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="zen-nutri-table" style="margin: 0;">
+                                    <tr>
+                                        <td class="zen-td-1">
+                                            지방
+                                        </td>
+                                        <td class="zen-td-2">
+                                            {{ sums.ji__sum|floatformat }}g &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="progress" style="height: 2em;">
+                                                <div id="perji" class="progress-bar bg-success" role="progressbar" style="width: 0%;">{{percent.per_ji}}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-                        
-                        {%endfor%}
-
-                        <div class="col-2">
-                            <div class="zen_moreinfo">
-                                <a href="#"><img src="/static/picture/moreinfo.png" ></a>
+                        <div class="row zen_back2 text-center">
+                            {% for i in dietlist|slice:":3" %}
+                            <div class="zen_col_1_4">
+                                <div class="card shadow-sm">
+                                    <div class="bd-placeholder-img card-img-top zen_cardholder" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%"/>
+                                        <img class="zen_cardimg" src="/media/{{i.foodimage}}"/>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text">{{i.time}}</p>
+                                        <p class="card-text">{{i.kcal|floatformat}} kcal</p>
+                                        
+                                    </div>
+                                </div>
                             </div>
+                            
+                            {%endfor%}
+                            <!-- 더보기버튼  -->
+                            <div class="col-2 zen_seek_pc">
+                                <div class="zen_moreinfo">
+                                    <a href="#"><img src="/static/picture/moreinfo.png" ></a>
+                                </div>
+                            </div>
+                            {% include 'floating.html' %}
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- {#       사이드바 ===============================#} -->
-            {% include 'sidebar.html' %}
-          
+            <!-- {#       사이드바(PC화면일 때) ===============================#} -->
+
+            <div class="d-flex flex-column zen_back1 zen_back_PC" style="width: 25%;">
+                {% include 'sidebar.html' %}
+            </div>
         </div>
+
+        <!--	FOOTER		-->
+        {% include 'footer.html' %}
     </div>
-    <!--	FOOTER		-->
-    {% include 'footer.html' %}
 </body>
 
 {% endblock %}

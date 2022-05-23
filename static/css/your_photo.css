@@ -1,15 +1,145 @@
-.one {
-    width: 20%;
-    text-align: center;
-}
-
-.two {
-    width: 40%;
-}
-.three {
-    width: 5%;
-}
+/* 채은 */
 body {
     background: linear-gradient(#ffffff, #fefff5);
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+table * {
+    /* border: 1px red solid; */
+}
+.row {
+    --bs-gutter-x : 0 !important;
+
+}
+.zen-box81{
+    text-align: center;
     color: white;
+    width: 90%;
+}
+.zen-box82{
+    text-align: center;
+    color: white;
+    width: 90%;
+}
+.zen-btn-81 {
+    margin: 3px auto 3px auto;
+    background-color: rgb(255, 238, 217);
+    width: 91.5%;
+    border-radius: 5px;
+    border: 1px solid burlywood;
+}
+.zen-btn-81:hover {
+    background-color: rgb(255, 210, 158);
+}
+.zen-btn-82{
+    margin: 3px auto 3px auto;
+    background-color: rgb(255, 255, 255);
+    width: 90%;
+    border-radius: 5px;
+    border: 1px solid burlywood;
+    height: 2.5em;
+}
+.zen-btn-82:hover {
+    background-color: rgb(255, 210, 158);
+}
+.zen-row-84 {
+    width: 100%;
+    text-align: center;
+}
+#nu2, #nu3, #nu4 {
+    display: none;
+}
+.zen-table-81 td:nth-child(1){
+    width: 10%;
+}
+.zen-table-81 td:nth-child(2){
+    width: 50%;
+}
+.zen-table-81 td:nth-child(4){
+    width: 20%;
+}
+.zen-table-81 td:nth-child(4){
+    width: 20%;
+}
+.zen-table-81 input {
+    width: 85%;
+}
+
+/* ===============PC화면================== */
+@media (min-width: 769px) {
+    /* * {
+        border: 1px rgb(255, 27, 27) solid;
+    } */
+    .zen-container-81 {
+        margin: 0;padding: 0; background-color: #faf8f8;
+    }
+    .zen-row-81{
+        height: 25em;
+        text-align: center;
+    }
+    .zen-row-82{
+        padding: 15px;width: 60%;
+        text-align: center;
+    }
+    .zen-row-83{
+        margin: 1em auto 1em auto;width: 30%;
+    }
+
+    .zen-img-81 {
+        object-fit: contain;width: 90%;height: 95%;
+    }
+    .food {
+        text-align: center; width: 100%;
+        color:white;
+        margin: 0 auto;
+    }
+    .zen-table-81 {
+        border: 1px rgb(14, 13, 13) solid; width: 90%; color: black; text-align: center;margin: 0 auto;
+    }
+    .zen-food-g {
+        width: 30%;
+    }
+
+}
+
+
+/* ==============모바일환경================ */
+@media (max-width: 769px) {
+    /* * {
+        border: 1px rgb(189, 255, 114) solid;
+    } */
+    .zen-container-81 {
+        margin: 0;padding: 0; background-color: #faf8f8;
+        min-height: fit-content;
+    }
+    .zen-row-81{
+        height: 15em;
+        text-align: center;
+    }
+    .zen-row-82{
+        padding: 15px;width: 100%;
+        text-align: center;
+    }
+    .zen-row-83{
+        margin: 1em auto 1em auto;width: 95%;
+    }
+    .zen-img-81 {
+        object-fit: contain;width: 90%;height: 95%;
+    }
+    .food {
+        text-align: center; width: 100%;
+        color:white;
+        margin: 0 auto;
+    }
+    .zen-food-name{
+        width: 97%;
+    }
+    .zen-food-g {
+        width: 30%;
+    }
+    .zen-table-81 {
+        border: 1px rgb(14, 13, 13) solid; width: 90%; color: black; text-align: center;margin: 0 auto;
+    }
+    
 }
