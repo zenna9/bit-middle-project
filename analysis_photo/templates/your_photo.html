@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
+<!-- 최초작업 : 덕현 
+    반응형 CSS 적용 : 채은 -->
 
 <link rel="stylesheet" href="/static/css/your_photo.css" />
 <link rel="stylesheet" href="/static/css/index.css" />
@@ -44,11 +45,10 @@
 
                                 <br>
                                 <select name="time" class="form-select" aria-label="Default select example">
-                                    <option value=" " selected>식사 종류 선택</option>
                                     <option value="아침">아침</option>
                                     <option value="점심">점심</option>
                                     <option value="저녁">저녁</option>
-                                    <option value="기타">기타</option>
+                                    <option value="기타" selected>기타</option>
                                 </select>
                             </div>
 
