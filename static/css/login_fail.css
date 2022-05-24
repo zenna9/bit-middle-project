@@ -3,14 +3,14 @@
 /* 아이디와 비밀번호 placeholder */
 @media screen and (min-width:1000px){ 
     input[type="text"] {
-        margin: auto 0em auto -5em; width: 130%; height: 4rem; font-size:1.1rem; 
+        margin: auto 0em auto -6em; width: 130%; height: 4rem; font-size:1.1rem; 
 
     }
 }
 
 @media screen and (min-width:1000px){ 
     input[type="password"] {
-        margin: auto 0em auto -5em; width: 130%; height: 4rem; font-size:1.1rem; 
+        margin: auto 0em auto -6em; width: 130%; height: 4rem; font-size:1.1rem; 
        
     }
 }
