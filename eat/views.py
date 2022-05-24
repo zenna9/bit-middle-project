@@ -71,8 +71,6 @@ def helthinfo(request, idx):
 
 # def helthinfo_chart(request):
 #
-#
-#
 #     import pymysql
 #     dbCon = pymysql.connect(host='localhost', port='3306', user='user1', passwd='1111', db='bitteam2')
 #     cursor = dbCon.cursor()
