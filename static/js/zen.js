@@ -29,4 +29,11 @@ function zen_hideorseek(what) {
     target_x.style.display = 'block';
 }
 
-
+// var newfood = document.getElementById("zen-btn-82");
+// newfood.onclick = function(){
+//     console.log("mii");
+// }
+function newfood() {
+    console.log("ddd")
+    document.getElementById('jikil').style.display = "block"
+}

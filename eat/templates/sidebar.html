@@ -5,8 +5,8 @@
         </div>
     </div>
     <div class="zen_side_right">
-        <input type="button" class="zenbtn1" value="내 정보 보기" onClick="location.href='/m/{{idx}}/mypage'"/>
-        <br><input type="button" class="zenbtn1" value="내 피드 보기"/>
+        <input type="button" class="zenbtn1" value="내 사진 보기" onClick="location.href='/m/{{idx}}/mypage'"/>
+        <br><input type="button" class="zenbtn1" value="나의 건강정보" onClick="location.href='/m/{{idx}}/helthinfo'"/>
         <hr>
         <footer class="row zen_side_row" style="width: 100%;margin:auto 3px 30px 3px;">
             <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
@@ -16,5 +16,5 @@
                 <input type="hidden" name="idx" value="{{idx}}" />
                 <input type="submit" class="zenbtn1" style="margin-top: 1em " value="사진 찍기/업로드">
             </form>
+        </footer>
     </div>
-    </footer>

@@ -19,17 +19,17 @@
         <pre>
 
 
-
         </pre>
             <div class="form-signin container justify-content: center">
                 <div class="row">
                     <h1 class="h3 mb-3 fw-normal pragmatic_logo" style="color:black; font-size: 5em;">AI FooPo</h1>
                 </div>
 
-                <div class="row w-50" style="margin: 1em auto 1em auto;">
-                
-                    <form action="lg/logining/" method="POST">
-                        {% csrf_token %}             
+               <div class="row w-50" style="margin: 1em auto 1em auto;">
+            <form action="{% url 'login:logining' %}" method="POST">
+                {% csrf_token %}  
+                        
+                        
                         <div class="form" >
                             <input type="text" class="form-control-lg" name="user_id"
                             placeholder="   ID를 입력하세요" 

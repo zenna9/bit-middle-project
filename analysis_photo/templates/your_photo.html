@@ -2,31 +2,30 @@
 
 {% block content %}
 <!-- 최초작업 : 덕현 
-    반응형 CSS 적용 : 채은 -->
+    반응형 CSS 적용 : 채은 - 8 -->
 
 <link rel="stylesheet" href="/static/css/your_photo.css" />
 <link rel="stylesheet" href="/static/css/index.css" />
-<style> 
-        /* * {
-            border: 1px rgb(8, 8, 8) solid;
+<script src="/static/js/index.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style> 
+        /* *{
+            border: 1px solid red;
         } */
-        </style>
+    </style>
 
 </head>
-<body style="overflow: hidden;">
+<body>
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
-    <div class="container-fluid" style=" min-height: 30rem; height: 100vh;margin: 0;padding: 0; background-color: #faf8f8">
+    <div class="container-fluid zen-container-81" style="">
         <!-- 상단바 ============================ -->
         <div class="row" style="margin: 0;padding: 0;"></div>
         <div class="row">
-            <div class="col-md-4 ml-auto ar-auto" style="text-align: center;height: 25em;">
-                <img src="/media/{{k_hc.uploadedFile}}" style="object-fit: contain;width: 90%;height: 95%;" />
-            
+            <div class="col-md-4 ml-auto ar-auto zen-row-81">
+                <img src="/media/{{k_hc.uploadedFile}}" class="zen-img-81"/>
             </div>
             
-
-
             <!-- 화면 반 나누기 -->
             <div class="col-md-8 ">
                 <div class="row d-flex flex-column h-100">
@@ -36,7 +35,7 @@
 
                         <div class="row">
                             <!-- 연도 월일 식사 종류 선택 -->
-                            <div class="col-md-3 ml-auto ar-auto" style="margin: 1em auto 1em auto">
+                            <div class="zen-row-83" style="">
                                 <input name="date" type="date" id="currentDate" class="form-control"/>
                             
                                 <script>
@@ -53,8 +52,9 @@
                             </div>
 
                             <!-- 사진 찍은 음식 저장 -->
-                            <div class="col-md-9" style="padding: 15px;">
-                                <table class="food" style="text-align: center; width: 87%">
+                            <div class="zen-row-82">
+                                사진 인식 완료! 결과는 직접 수정 가능합니다
+                                <table class="food">
                                     <tr>
                                         <th style="width: 20%">NO.</th>
                                         <th style="width: 50%">음식이름</th>
@@ -63,10 +63,10 @@
                                     <tr>
                                         <td>1</td>
                                         <td>
-                                            <input type="text" name="ai_1" value="설렁탕"/>
+                                            <input type="text" name="ai_1" value="설렁탕" class ="zen-box81"/>
                                         </td>
                                         <td>
-                                            <input type="text" name="ai_g1" value="600" style="width:80%"/>g
+                                            <input type="text" name="ai_g1" value="600" class ="zen-box82"/>g
                                         </td>
                                     </tr>
                                 </table>
@@ -74,45 +74,54 @@
                         
                         </div>
                         <!-- 아래 위로 공간 나누기 -->
+
                         <div class="row">
-                            <div class="col-md-12 h-100">
+                            <div class="zen-row-84">
+                                <button type="button" class="zen-btn-82" onclick="newfood()">직접 메뉴 추가하기</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="zen-row-84" id="jikil" style="display: none;">
 
                                 <!-- 부족한 음식 입력 -->
-                                <!-- <button onclick="zen_hideorseek('input_theirself')" class="btn btn-outline-light btn-dark" style="float: right;">
-                                    직접 입력하기
-                                </button> -->
                                 <br>
-                                <div id="input_theirself" style="display: block;">
-                                    <table style="border: 1px rgb(14, 13, 13) solid; width: 90%; color: black; text-align: center;">
+                                <div>
+                                    <table class="zen-table-81">
                                         <tr>
-                                                <th style="width: 10%">NO.</td>
-                                                <th style="width: 50%">음식 이름</td>
-                                                <th style="width: 40%">중량(g)</td>
-                                                <!-- <th style="width: 25%">Value</td> -->
+                                                <th>NO</td>
+                                                <th>음식 이름</td>
+                                                <th>중량(g)</td>
+                                                <th></td>
                                         </tr>
                                         <tr>
                                             <td>1</td>
-                                            <td><input type="text" name="sl_1"></td>
-                                            <td><input type="number" name="sl_g1">g</td>
-                                            <!-- <td></td> -->
+                                            <td><input type="text" name="sl_1" class="zen-food-name"></td>
+                                            <td><input type="number" name="sl_g1" class="zen-food-g" >g</td>
+                                            <td><button type="button" class="zen-btn-81" onclick="addfood('nu2')">추가</button></td>
                                         </tr>
+                                    </table>
+                                    <table class="zen-table-81" id="nu2">
                                         <tr>
-                                            <td>2</td>
-                                            <td><input type="text" name="sl_2"></td>
-                                            <td><input type="number" name="sl_g2">g</td>
-                                            <!-- <td></td> -->
+                                                <td>2</td>  
+                                                <td><input type="text" name="sl_2" class="zen-food-name"></td>
+                                                <td><input type="number" name="sl_g2" class="zen-food-g">g</td>
+                                                <td><button type="button" class="zen-btn-81" onclick="addfood('nu3')">추가</button></td>
                                         </tr>
+                                    </table>
+                                    <table class="zen-table-81" id="nu3">
                                         <tr>
                                             <td>3</td>
-                                            <td><input type="text" name="sl_3"></td>
-                                            <td><input type="number" name="sl_g3">g</td>
-                                            <!-- <td></td> -->
+                                            <td><input type="text" name="sl_3" class="zen-food-name"></td>
+                                            <td><input type="number" name="sl_g3" class="zen-food-g">g</td>
+                                            <td><button type="button" class="zen-btn-81" onclick="addfood('nu4')">추가</button></td>
                                         </tr>
+                                    </table>
+                                    <table class="zen-table-81" id="nu4">
                                         <tr>
                                             <td>4</td>
-                                            <td><input type="text" name="sl_4"></td>
-                                            <td><input type="number" name="sl_g4">g</td>
-                                            <!-- <td></td> -->
+                                            <td><input type="text" name="sl_4" class="zen-food-name"></td>
+                                            <td><input type="number" name="sl_g4" class="zen-food-g">g</td>
+                                            <td></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -122,10 +131,10 @@
                         <!-- 다 작성하고 제출하기 -->
                         <div class="row">
                             <div class="col-md-12 h-100">
-                                <footer style="text-align: right;">
+                                <footer style="text-align:center;padding:5px;">
                                     <input name='file_location' type="hidden" value="{{k_hc.uploadedFile}}">
                                     <input type="hidden" value="{{idx}}" name="idx"/>
-                                    <input type="submit" value="작성완료" class="btn btn-outline-light btn-dark"/>
+                                    <input type="submit" value="작성완료" class="btn zen-btn-81"/>
                                 </footer>
                             </div>
                         </div>  

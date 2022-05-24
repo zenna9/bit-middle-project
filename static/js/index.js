@@ -47,3 +47,17 @@ function gosubmit() {
   console.log(dd);
   dd.submit();
 }
+
+
+// var obj = document.getElementById('newfood')
+// obj.onclick = function(){
+
+//   console.log("mii");
+// }
+function newfood() {
+  document.getElementById('jikil').style.display = "block";
+}
+function addfood(nu){
+  var obj = document.getElementById(nu)
+  obj.style.display="block";
+}
