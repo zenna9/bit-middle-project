@@ -1,4 +1,4 @@
-<!-- {% extends 'base.html' %} -->
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -150,23 +150,27 @@
             <select id="momentum" name="momentum">
                 <option value="0">하루 운동량을 선택하세요</option>
                 <option value="1">가벼운 활동 (일반 사무직)</option>
-                <option value="2">보통의 활동 (서서 하는 일)</option>
+                <option value="2">보통의 활동 (서서 하는 일, 어린 자녀가 있는 주부의 정도)</option>
                 <option value="3">많은 활동</option>
                 <option value="4">높은 강도의 운동 활동</option>
-            </select>-
+            </select>
           
+<!--      이메일 기능 사용안하기 때문에 주석처리      -->
           <!--<div class="mb-3">
             <label for="email">이메일</label>
             <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
             <div class="invalid-feedback">
               이메일을 입력해주세요.
             </div>
-          </div> --><!-- 
+          </div> -->
+          <!-- 
           <div class="mb-3">
             <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
             <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
           </div> -->
-
+<!--      이메일 기능 사용안하기 때문에 주석처리      -->
+          
+          
           <hr class="mb-4">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="aggrement" required>
@@ -199,7 +203,7 @@
     }, false);
   </script>
       	<!-- FOOTER		-->
-    <!-- {% include 'footer.html' %} -->
+    {% include 'footer.html' %}
   </body>
 
 {% endblock %}
