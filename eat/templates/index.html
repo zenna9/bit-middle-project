@@ -37,12 +37,12 @@
                     <hr>
                     <!-- {# 그래프 본문 내용====================== #} -->
                     <div class="zen-main-div">
-                        <div class="zen_back3" style="width:100%;">
+                        <div class="zen_back3" style="width:100%;padding: 0 13px !important;">
                             <!-- PC 용 총 섭취량 -->
                             <table class="table2 zen_seek_pc" style="height: 3em;">
                                 <tr>
                                     <td class="col-2">
-                                        &nbsp;&nbsp; 총 섭취량
+                                        총 섭취량
                                     </td>
                                     <td class="col-8">
                                         <div class="progress" style="height: 2em;">
@@ -126,6 +126,7 @@
                                 </table>
                             </div>
                         </div>
+                        <hr>
                         <div class="row zen_back2 text-center">
                             {% for i in dietlist|slice:":3" %}
                             <div class="zen_col_1_4">
@@ -143,9 +144,9 @@
                             
                             {%endfor%}
                             <!-- 더보기버튼  -->
-                            <div class="col-2 zen_seek_pc">
+                            <div class="zen_more zen_seek_pc">
                                 <div class="zen_moreinfo">
-                                    <a href="#"><img src="/static/picture/moreinfo.png" ></a>
+                                    <a href="/m/{{idx}}/mypage"><img src="/static/picture/moreinfo.png" ></a>
                                 </div>
                             </div>
                             {% include 'floating.html' %}
