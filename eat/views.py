@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from eat.models import diet, login, imgs
 from django.db.models import Sum, F, Count, Case, When
+from django.http import Http404
+import urllib.request
 
-# zenna. 페이지 접속 시 최초화면
+# 채은 : 페이지 접속 시 최초화면
 def index(request) :
     return render(request, 'login.html')
 
-# zenna : 로그인한 메인화면 ==(데이터 있는 경우 try, 없는 경우 except)====================
+# 채은 : 로그인한 메인화면 ==(데이터 있는 경우 try, 없는 경우 except)====================
 def logindone(request, idx, date):
     try :
         dietlist = get_list_or_404(diet, user_id=idx, date=date)
@@ -32,10 +34,11 @@ def logindone(request, idx, date):
         context = {'idx':idx,'date':date}
         return render(request, 'index_null.html', context)
 
-
+# 경준
 def team_index(request):
     return render(request, 'introduce.html')
 
+# 경준
 #  날짜별 나의 사진을 선택할수 있는 링크
 def mypage_index(request, idx, date):
     try : # 사진이 있으면서 날짜를 선택하지 않았을경우
@@ -46,6 +49,7 @@ def mypage_index(request, idx, date):
         context = {'idx':idx,'date':date}
         return render(request, 'myprofile_null.html', context)
 
+#경준
 # 전체 사진 보기 /내 모든 사진을 볼수있는 링크 / 내가 올린사진이 없으면 except
 def profile_allphoto(request, idx):
     try:

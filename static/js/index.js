@@ -55,9 +55,9 @@ function gosubmit() {
 //   console.log("mii");
 // }
 function newfood() {
-  document.getElementById('jikil').style.display = "block";
+  document.getElementById('jikil').style.display = "inline-table";
 }
 function addfood(nu){
   var obj = document.getElementById(nu)
-  obj.style.display="block";
+  obj.style.display="inline-table";
 }

@@ -80,9 +80,9 @@
 }
 
 footer {
-	height: 500; /* 내용물에 따라 알맞는 값 설정 */
-	position: relative;
-    transform: translateY(225.5%);
+	/* height: 500; 내용물에 따라 알맞는 값 설정 */
+	/* position: relative; */
+    transform: translateY(0%);
 }
 }
 
