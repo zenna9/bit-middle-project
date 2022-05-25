@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from eat.models import diet, login, imgs
 from django.db.models import Sum, F, Count, Case, When
+from django.http import Http404
+import urllib.request
 
 # zenna. 페이지 접속 시 최초화면
 def index(request) :
