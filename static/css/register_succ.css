@@ -1,29 +1,28 @@
 /* register_succ.html */
 /* 아이디와 비밀번호 placeholder */
-@media screen and (min-width:1000px){ 
-    input[type="text"] {
+/* @media screen and (min-width:1000px){ 
+     {
         margin: auto 0em auto -5em; width: 130%; height: 4rem; font-size:1.1rem; 
 
     }
 }
 
 @media screen and (min-width:1000px){ 
-    input[type="password"] {
-        margin: auto 0em auto -5em; width: 130%; height: 4rem; font-size:1.1rem; 
+    input[type="password"]       margin: auto 0em auto -5em; width: 130%; height: 4rem; font-size:1.1rem; 
        
     }
 }
 @media screen and (max-width:760px){ 
-    input[type="text"] {
+     {
         margin: auto 0em auto 0em; width: 90%; height: 4rem; font-size:1.1rem; text-align: center;
         
     }
 }
 
 @media screen and (max-width:760px){ 
-    input[type="password"] {
+       {
         margin: auto 0em auto 0em; width: 90%; height: 4rem; font-size:1.1rem; text-align: center;
         
         
     }
-}
+} */
