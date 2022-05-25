@@ -1,13 +1,13 @@
-/* placeholder 아이디와 비밀번호 정렬 */
-/* login.html  */
+/* placeholder 아이디와 비밀번호 정렬
+login.html 
 @media screen and (min-width:1000px){ 
-    input[type="text"] {
-        margin: auto 0em auto -5.5em; width: 130%; height: 4rem; font-size:1.1rem; 
+    .inputid {
+       width: 100%; height: 4rem; font-size:1.1rem; 
     }
 }
 
 @media screen and (min-width:1000px){ 
-    input[type="password"] {
+    .inputpassword{
         margin: auto 0em auto -5.5em; width: 130%; height: 4rem; font-size:1.1rem; 
         
     }
@@ -15,31 +15,31 @@
 
 
 @media screen and (max-width:760px){ 
-    input[type="text"] {
+    .inputid {
         margin: auto 0em auto -6.5em; width: 210%; height: 4rem; font-size:1.1rem; text-align: center;
         
     }
 }
 
 @media screen and (max-width:760px){ 
-    input[type="password"] {
+    .inputpassword {
         margin: auto 0em auto -6.5em; width: 210%; height: 4rem; font-size:1.1rem; text-align: center;
         
         
     }
 }
+ */
 
-/* 로그인 상태 유지하기 */
+
+ /* 로그인 상태 유지하기
 @media screen and (max-width:760px){ 
-    input[type="checkbox"] {
-        
+    .checkbox {        
         margin: auto 0em auto -1em;  font-size:1.1rem; text-align: center;
-        
-        
+                
     }
 }
 
-/* 로그인 버튼 */
+로그인 버튼
 @media screen and (max-width:760px){ 
     button[type="submit"] {
         
@@ -49,14 +49,14 @@
     }
 }
 
-/* 회원가입 */
+회원가입
 @media screen and (max-width:760px){ 
     #register {
         margin: auto 0em auto 0em; width:100%; font-size:1.3rem; text-align: center;
     }
-}
+} */
 
-@media screen and (max-width:760px){
+/* @media screen and (max-width:760px){
     #footer.html 
 
     {
@@ -73,14 +73,14 @@
 .wrapper{
     /* line-height: 500%;
     vertical-align: middle;  */
-    height: 100;
+    /* height: 100; 
     min-height: 100%;
-    padding-bottom: 500;
+    padding-bottom: 500; 
 
-}
+}*/
 
-footer {
-	height: 500; /* 내용물에 따라 알맞는 값 설정 */
+/* footer {
+	{height: 500; 
 	position: relative;
     transform: translateY(225.5%);
 }
@@ -95,7 +95,7 @@ footer {
 }
 .wrapper{
     /* line-height: 500%;
-    vertical-align: middle;  */
+    vertical-align: middle;  
     height: 100;
     min-height: 100%;
     padding-bottom: 500;
@@ -103,7 +103,7 @@ footer {
 }
 
 footer {
-	height: 500; /* 내용물에 따라 알맞는 값 설정 */
+	height: 500; 내용물에 따라 알맞는 값 설정
 	position: relative;
     transform: translateY(25%);
 }

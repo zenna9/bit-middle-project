@@ -4,19 +4,22 @@
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-</style>
+
+<!-- <style>
+    *{
+            border: 1px solid red;
+        }
+        </style> -->
 
 <meta name="theme-color" content="#7952b3">
 <link rel="stylesheet" href="/static/css/login_fail.css">
 </head>
 
-<pre>
-
-
-
-</pre>
 <body class="text-center">
+    <pre>
+
+
+    </pre>
     <div class="form-signin container justify-content: center">
         <div class="row">
             <h1 class="h3 mb-1 fw-normal pragmatic_logo" style="color:black; font-size: 5em;">AI FooPo</h1>
@@ -25,7 +28,7 @@
         
         
          <!-- 로그인 실패시 나올 문구 -->
-        <div th:if="${param.error}" style="padding: 0px;">
+        <div th:if="${param.error}" style="padding: 3px;">
             <div class="alert alert-danger w-50 mb-2" style="text-align: center; margin: 1rem auto -1.2rem auto; height:1.5cm;" >
                 사용자ID 또는 비밀번호를 확인해 주세요.
             </div>
@@ -34,9 +37,9 @@
         <div class="row w-50" style="margin: 1em auto 1em auto;">
             <form action="{% url 'login:logining' %}" method="POST">
                 {% csrf_token %}
+
                 <div class="form">
-                    <label for="user_id"></label>
-                    <input type="text" class="form-control-lg" name="user_id" 
+                    <input type="text" class="form-control-lg" name="user_id"  
                     placeholder="   ID를 입력하세요." 
                     onfocus="this.placeholder=''" onblur="this.placeholder='   ID를 입력하세요.'">
                 </div>
@@ -50,29 +53,26 @@
                     onfocus="this.placeholder=''" onblur="this.placeholder='   비밀번호를 입력하세요'" >
                 </div>
 
-
-
-                
                 <P></P>
-                <div class="checkbox mb-2">
-                <label style="height: 1em; margin: 0;">
+             <div class="checkbox mb-2">
+                <label style="height: 1em;">
                     <input type="checkbox" value="remember-me"> 로그인 상태 유지하기
                 </label>
-                </div>
-                <style> </style>
+              </div>
+                
                 <button class="w-100 mb-2 btn btn-lg btn-dark btn-outline-light" type="submit">로그인</button>
             </form>
         </div>
 
 
-        <div class="row w-100" >
+        <div class="row w-150" >
 
             <div class="col-50 text-center mb-1" style="line-height: 2em; ">
                 아직 계정이 없으신가요? 
             </div>
             
-            <div class="col-50" id="register">
-                <a href="/lg/register" class="btn btn-lignt btn-outline-secondary" style="width: 40%; margin: auto -2em auto 0em;">회원가입하기</a>
+            <div class="col-50">
+                <a href="/lg/register" class="btn btn-lignt btn-outline-secondary" style="width: 40%; height: 1cm; ">회원가입하기</a>
             </div>
         </div>
 
@@ -80,6 +80,6 @@
     </div>
       <!--	FOOTER		-->
     {% include 'footer.html' %}
-  </body>
+</body>
 
 {% endblock %}
