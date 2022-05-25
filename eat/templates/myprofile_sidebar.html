@@ -1,11 +1,15 @@
 <!-- MYPROFILE PAGE SIDE BAR-->
-<div class="profile-sidebar">
+<!--<style>-->
+<!-- *{-->
+<!-- border:0.5px solid red;}-->
+<!--</style>-->
+<div class="profile-sidebar" style="border-radius:20px;">
 
     <!-- SIDEBAR 프로필 사진 -->
-    <div class="profile-userpic" style="height:15rem; width:15rem; margin:auto;
-						transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;">
-        <img style="width:100%; height:100%; object-fit:cover;
-						transition: width 1s ease 0.2s, margin-top 1s ease-out 0.2s;" src="/static/picture/no_profile.jpg" class="img-responsive" alt="">
+    <div id='profile_image' class="profile-userpic" style="height:50%; width:50%; margin:auto;
+						transition: width 0.5s ease 0.1s, margin-top 0.5s ease-out 0.1s;">
+        <img style="width:100%; height:auto !important; object-fit:cover;
+						transition: width 0.5s ease 0.1s, margin-top 0.5s ease-out 0.1s;" src="/static/picture/no_profile.jpg" class="img-responsive" alt="">
     </div>
     <!-- END SIDEBAR 프로필 사진 END -->
 
@@ -21,32 +25,59 @@
     <!-- END SIDEBAR USER 회원정보 END -->
 
     <!-- SIDEBAR BUTTONS -->
-    <div class="profile-userbuttons" >
-        <button type="button"  style="margin: 0.5rem 0.5rem 0.5rem auto;" class="btn btn-success btn-sm">Setting</button>
-        <button type="button"  style="margin: 0.5rem auto 0.5rem 0.5rem;" class="btn btn-danger btn-sm">Message</button>
-    </div>
+<!--    <div class="profile-userbuttons" >-->
+<!--        <button type="button"  style="margin: 0.5rem 0.5rem 0.5rem auto;" class="btn btn-success btn-sm">Setting</button>-->
+<!--        <button type="button"  style="margin: 0.5rem auto 0.5rem 0.5rem;" class="btn btn-danger btn-sm">Message</button>-->
+<!--    </div>-->
     <!-- END SIDEBAR BUTTONS -->
 
     <!-- SIDEBAR MENU -->
     <div class="profile-usermenu" style="margin-top:1rem;">
         <!-- 날짜별 데이터 -->
         <form style='text-align:center;' action="parameter" enctype="multipart/form-data">
-            <label for="currentDate" style="font-size:1em; line-height:1.5em;"><strong>날짜별 사진 보기</strong></label>
-            <input style='font-size:1.3rem;'type="date" name="today" id="kj_calender" class="btn zen_calender" onchange="change_cal('{{idx}}')">
+            <label for="currentDate" style="font-size:1em; line-height:1.5em;"><strong>날짜별 보기</strong></label>
+            <input style='font-size:1rem;'type="date" name="today" id="kj_calender" class="btn zen_calender" onchange="change_cal('{{idx}}')">
         </form>
 
         <!-- 전체 사진 보기 -->
         <form style='text-align:center;' action="parameter" enctype="multipart/form-data">
         	<label for="currentDate" style="font-size:1em; line-height:1.5em;"><strong>전체 사진</strong></label>
-        	<input style='border-radius:10%; font-size:1rem; width:9rem; margin:0.4rem auto 0.4rem 1rem;' type="button" class="zenbtn1" value="전체 사진보기" onClick="location.href='/m/{{idx}}/mypage';" style="cursor:pointer;">
+        	<input style='border-radius:5px; font-size:1rem; width:9rem; margin:0.4rem auto 0.4rem 1rem;' type="button" class="zenbtn1" value="전체 사진보기" onClick="location.href='/m/{{idx}}/mypage';" style="cursor:pointer;">
         </form>
-        <ul class="nav">
-            <li>
-                <div style="margin:0.3rem;">
-                    <input type="button" class="zenbtn1" value="개인 정보 수정하기">
-                    <input type="button" class="zenbtn1" value="사진 분석하러가기">
-				</div>
-			</li>
+<!--        나머지 사이드메뉴 -->
+        <ul style='padding:0; list-style:none;'>
+            <div style="margin:0.3px auto; width:80%; height:80%;">
+            <li style="padding:0.3rem 1rem;" class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">
+                    <?xml version="1.0" ?>
+                        <svg style="width:2rem; height:2rem;" fill="none" height="64" viewBox="0 0 64 64" width="64" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M31.205 14.728C31.6914 14.424 32.3086 14.424 32.795 14.728L48.795 24.728C49.4975 25.1671 49.7111 26.0925 49.272 26.795C48.8329 27.4975 47.9075 27.7111 47.205 27.272L32 17.7689L16.795 27.272C16.0925 27.7111 15.1671 27.4975 14.728 26.795C14.2889 26.0925 14.5025 25.1671 15.205 24.728L31.205 14.728Z" fill="black"/>
+                            <path clip-rule="evenodd" d="M18.5 27.9752V45C18.5 47.4853 20.5147 49.5 23 49.5H41C43.4853 49.5 45.5 47.4853 45.5 45V27.9752L42.5 26.1002V45C42.5 45.8284 41.8284 46.5 41 46.5H37.5V38C37.5 37.1716 36.8284 36.5 36 36.5H28C27.1716 36.5 26.5 37.1716 26.5 38V46.5H23C22.1716 46.5 21.5 45.8284 21.5 45V26.1002L18.5 27.9752ZM29.5 46.5H34.5V39.5H29.5V46.5Z" fill="black" fill-rule="evenodd"/>
+                        </svg>
+                메인 메뉴</h6>
+                    <span class="text-secondary">
+                        <input style="border-radius:5px;" type="button" class="zenbtn1" value="시작하기">
+                    </span>
+            </li></div>
+            <div style="margin:0.3px auto; width:80%; height:80%;">
+            <li style="padding:0.3rem 1rem;" class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">
+                    <?xml version="1.0" ?>
+                        <svg style="width:2rem; height:2rem;" fill="none" height="64" viewBox="0 0 64 64" width="64" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M31.205 14.728C31.6914 14.424 32.3086 14.424 32.795 14.728L48.795 24.728C49.4975 25.1671 49.7111 26.0925 49.272 26.795C48.8329 27.4975 47.9075 27.7111 47.205 27.272L32 17.7689L16.795 27.272C16.0925 27.7111 15.1671 27.4975 14.728 26.795C14.2889 26.0925 14.5025 25.1671 15.205 24.728L31.205 14.728Z" fill="black"/>
+                            <path clip-rule="evenodd" d="M18.5 27.9752V45C18.5 47.4853 20.5147 49.5 23 49.5H41C43.4853 49.5 45.5 47.4853 45.5 45V27.9752L42.5 26.1002V45C42.5 45.8284 41.8284 46.5 41 46.5H37.5V38C37.5 37.1716 36.8284 36.5 36 36.5H28C27.1716 36.5 26.5 37.1716 26.5 38V46.5H23C22.1716 46.5 21.5 45.8284 21.5 45V26.1002L18.5 27.9752ZM29.5 46.5H34.5V39.5H29.5V46.5Z" fill="black" fill-rule="evenodd"/>
+                        </svg>
+                메인 메뉴</h6>
+                    <span class="text-secondary">
+                        <input style="border-radius:5px;" type="button" class="zenbtn1" value="시작하기">
+                    </span>
+            </li></div>
+<!--            <li style="margin:0.3rem 0;">-->
+<!--                <div style="text-align:center;">-->
+<!--                    	&lt;!&ndash; SIDEBAR MENU &ndash;&gt;-->
+<!--                    <input style="border-radius:5px;" type="button" class="zenbtn1" value="메인으로 가기">-->
+<!--				</div>-->
+<!--			</li>-->
 		</ul>
     </div>
 </div>
