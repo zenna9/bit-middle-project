@@ -50,16 +50,16 @@ table * {
 #nu2, #nu3, #nu4 {
     display: none;
 }
-.zen-table-81 td:nth-child(1){
+.zen-table-81 td:first-child, th:first-child{
     width: 10%;
 }
-.zen-table-81 td:nth-child(2){
+.zen-table-81 td:nth-child(2), th:nth-child(2){
     width: 50%;
 }
-.zen-table-81 td:nth-child(4){
+.zen-table-81 td:nth-child(3), th:nth-child(3){
     width: 20%;
 }
-.zen-table-81 td:nth-child(4){
+.zen-table-81 td:last-child, th:last-child{
     width: 20%;
 }
 .zen-table-81 input {
@@ -72,14 +72,18 @@ table * {
         border: 1px rgb(255, 27, 27) solid;
     } */
     .zen-container-81 {
-        margin: 0;padding: 0; background-color: #faf8f8;
+        margin: 0;
+        background-color: #faf8f8;
+        padding-top: 13vh;
+        padding-bottom: 13vh;
     }
     .zen-row-81{
         height: 25em;
         text-align: center;
     }
     .zen-row-82{
-        padding: 15px;width: 60%;
+        padding: 15px 5% 15px 15px;
+        width: 60%;
         text-align: center;
     }
     .zen-row-83{
@@ -95,8 +99,9 @@ table * {
         margin: 0 auto;
     }
     .zen-table-81 {
-        border: 1px rgb(14, 13, 13) solid; width: 90%; color: black; text-align: center;margin: 0 auto;
+        border: 1px #faf8f8 solid; width: 90%; color: black; text-align: center;margin: 0 auto;
     }
+
     .zen-food-g {
         width: 30%;
     }
@@ -139,7 +144,7 @@ table * {
         width: 30%;
     }
     .zen-table-81 {
-        border: 1px rgb(14, 13, 13) solid; width: 90%; color: black; text-align: center;margin: 0 auto;
+        border: 1px rgb(158, 158, 158) solid; width: 90%; color: black; text-align: center;margin: 0 auto;
     }
     
 }

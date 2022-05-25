@@ -2,13 +2,20 @@
 /* 모바일환경================ */
 @media (max-width: 769px) {
     body {
-        height: fit-content;
+        height: 100vh;
+
     }
     * {
     margin: 0 !important;
     padding: 0 !important;
     /* border: 1px peru solid; */
 
+    }
+    .z-mb-form1{
+        padding-left: 11px !important;
+    }
+    #zen-cont {
+        height: 100vh;
     }
  
     .zen_cardholder {
@@ -25,6 +32,9 @@
     .card-body{
         width: 100%;
     }
+    .zen_back3{
+        height: 183px;
+    }
     .z-mb-form1 {
         width: 100%;
     }
@@ -35,23 +45,33 @@
         color: black;
         margin: 1%;
     }
+    .zen-row-11 {
+        height: 82%;
+    }
     .zen_col_1_4 {
         width: 100%;
     }
     .zen_back2 {
         width: 100%;
-        margin: auto;
+        height: fit-content;
+        margin-bottom: 17px !important;
         clear:both;
         position: relative;
-        top: 50px;
+        top: 7%;
     }
     .zen-td-1{
         width: 60%;
         padding-left:2px ;
     }
+    .noblock {
+        height: 0 !important;
+    }
     .zen-td-2{
         width:35%;
         text-align: right;
+    }
+    .zen-main-div {
+        padding-top: 13px !important;
     }
 
     .zen_seek_pc {
@@ -110,12 +130,23 @@
         background-color: rgb(255, 219, 179) !important;
         color: rgb(0, 0, 0);
     }
+    .zen-top-photo {
+        height: 10vh;
+        margin-bottom: 20px;
+        padding: 1.2em 0 !important;
+    }
+    .zen_side_profile{
+        /* padding-right: 5%; */
+        /* padding-left: 5%; */
+        width:4em; height:4em; object-fit:cover;border-radius: 50%;
+        margin: 0 auto 0 auto !important;
+    }
 
     /* 플로팅버튼 구역 */
     .going-top {
         float: right;
         position: fixed;
-        bottom: 6em;
+        bottom: 10em;
         width: 4em;
         height: 4em;
         right: 1em;
@@ -127,7 +158,7 @@
     .zen-floating-camera {
         float: right;
         position: fixed;
-        bottom: 1em;
+        bottom: 6em;
         width: 4em;
         height: 4em;
         right: 1em;
@@ -142,7 +173,7 @@
     .zen-null-main {
         width: 100%;
         height: 10em;
-        margin: 45% auto auto auto !important;
+        margin: 20vh auto 20vh auto !important;
     }
 
 
