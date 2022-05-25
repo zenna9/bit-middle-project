@@ -11,26 +11,28 @@
 <link rel="stylesheet" href="/static/css/login_fail.css">
 </head>
 
-<p></p>
+<pre>
+
+
+
+</pre>
 <body class="text-center">
     <div class="form-signin container justify-content: center">
         <div class="row">
-            <h1 class="h3 mb-3 fw-normal pragmatic_logo" style="color:black;">AI FooPo</h1>
+            <h1 class="h3 mb-1 fw-normal pragmatic_logo" style="color:black; font-size: 5em;">AI FooPo</h1>
         </div>
        
         
         
-         <!-- 로그인 실패시 나올 문구  -->
-        <div th:if="${param.error}" style="padding: 25px;">
-            <div class="alert alert-danger w-50" style="text-align: center; margin: 1rem auto 1rem auto; height:1.7cm;" >
+         <!-- 로그인 실패시 나올 문구 -->
+        <div th:if="${param.error}" style="padding: 0px;">
+            <div class="alert alert-danger w-50 mb-2" style="text-align: center; margin: 1rem auto -1.2rem auto; height:1.5cm;" >
                 사용자ID 또는 비밀번호를 확인해 주세요.
             </div>
-        </div>  
+        </div>
 
         <div class="row w-50" style="margin: 1em auto 1em auto;">
-
-
-            <form action="/lg/logining/" method="POST">
+            <form action="{% url 'login:logining' %}" method="POST">
                 {% csrf_token %}
                 <div class="form">
                     <label for="user_id"></label>
@@ -52,27 +54,25 @@
 
                 
                 <P></P>
-                <div class="checkbox mb-3">
+                <div class="checkbox mb-2">
                 <label style="height: 1em; margin: 0;">
                     <input type="checkbox" value="remember-me"> 로그인 상태 유지하기
                 </label>
                 </div>
                 <style> </style>
-                <button class="w-100 mb-5 btn btn-lg btn-dark btn-outline-light" type="submit">로그인</button><br>
-            
-
+                <button class="w-100 mb-2 btn btn-lg btn-dark btn-outline-light" type="submit">로그인</button>
             </form>
         </div>
 
 
         <div class="row w-100" >
 
-            <div class="col-50 text-center" style="line-height: 2em;">
+            <div class="col-50 text-center mb-1" style="line-height: 2em; ">
                 아직 계정이 없으신가요? 
             </div>
             
             <div class="col-50" id="register">
-                <a href="/lg/register" class="btn btn-lignt btn-outline-secondary" style="width: 40%;">회원가입하기</a>
+                <a href="/lg/register" class="btn btn-lignt btn-outline-secondary" style="width: 40%; margin: auto -2em auto 0em;">회원가입하기</a>
             </div>
         </div>
 

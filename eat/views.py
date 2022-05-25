@@ -60,3 +60,63 @@ def profile_allphoto(request, idx):
 
 def tutorial_page(request):
     return render(request, 'tutorial.html')
+
+def helthinfo(request, idx):
+    try:
+        dietlist = get_list_or_404(diet, user_id=idx)
+        context = {'idx': idx, 'dietlist': dietlist}
+        return render(request, 'helth.html', context)
+    except:
+        context = {'idx': idx}
+        return render(request, 'helth.html', context)
+
+
+# def helthinfo_chart(request):
+#
+#     import pymysql
+#     dbCon = pymysql.connect(host='localhost', port='3306', user='user1', passwd='1111', db='bitteam2')
+#     cursor = dbCon.cursor()
+#     cursor.execute("SELECT*FROM table")
+#     dailyinfo = cursor.fetchall()
+#     cursor.close()
+#     dbCon.close()
+#
+#     return render(request,'helth.html',{
+#         'title':'하루 총 칼로리량',
+#         'dtitle1' : '아침',
+#         'dtitle2' : '점심',
+#         'dtitle3' : '저녁',
+#         'dailyinfo' : dailyinfo
+#     })
+#
+#
+# # 템플레이트 코드
+# title:{
+#     display:true,
+#     text:'{{title}}'
+# }
+#
+# label: '{{dtitle1}}',
+# label: '{{dtitle1}}',
+# labels: [{% for i in dailyinfo %}}'{{i.O}}',{% endfor %}],
+#
+# data: [{% for i in dailyinfo %}}'{{i.2}}',{% endfor %}],
+# data: [{% for i in dailyinfo %}}'{{i.2}}',{% endfor %}],
+#
+#
+# var color = Cart.helpers.color;
+# var barChartData = (
+#     labels : [{% for i in daily_info %}]'{{i.0}}',{{% endfor %}},
+#     datasets:[(
+#         label : '{{dtitle1}}';
+#         backgrountColor : color (window.chartColor.red).alpha(0,5).rgbstring(),
+#         borderWidth: 1;
+#         data : [{% for i in dbinfo %}]'{{i.}}',(% endfor %)
+# ),(     label : '{{dtitle1}}',
+# ),(     label : '{{dtitle2}}',
+# ),(     label : '{{dtitle3}}',
+#
+#
+#
+# )]
+# )

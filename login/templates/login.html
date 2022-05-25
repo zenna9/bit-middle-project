@@ -7,66 +7,72 @@
 <meta name="theme-color" content="#7952b3">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/static/css/login.css">
-
 <style>
-* {
-margin: 1em;
-}
+    /* * {
+    margin: 1em;
+    } */
 </style>
 </head>
 
 <body class="text-center">
-
-    <div class="form-signin container justify-content: center">
-        <div class="row">
-            <h1 class="h3 mb-3 fw-normal pragmatic_logo" style="color:black; font: ;">AI FooPo</h1>
-        </div>
+    <div class='wrapper'>
+        <pre>
 
 
-        <div class="row w-50" style="margin: 1em auto 1em auto;">
-            <form action="lg/logining/" method="POST">
-                {% csrf_token %}
-
-             
-                <div class="form" >
-                    <input type="text" class="form-control-lg" name="user_id"
-                    placeholder="   ID를 입력하세요" 
-                    onfocus="this.placeholder=''" onblur="this.placeholder='   ID를 입력하세요.'">
+        </pre>
+            <div class="form-signin container justify-content: center">
+                <div class="row">
+                    <h1 class="h3 mb-3 fw-normal pragmatic_logo" style="color:black; font-size: 5em;">AI FooPo</h1>
                 </div>
 
-                <div class="form">
-                        <input type="password" class="form-control-lg" name="password"
-                        placeholder="   비밀번호를 입력하세요"
-                        onfocus="this.placeholder=''" onblur="this.placeholder='   비밀번호를 입력하세요'" >
+               <div class="row w-50" style="margin: 1em auto 1em auto;">
+            <form action="{% url 'login:logining' %}" method="POST">
+                {% csrf_token %}  
+                        
+                        
+                        <div class="form" >
+                            <input type="text" class="form-control-lg" name="user_id"
+                            placeholder="   ID를 입력하세요" 
+                            onfocus="this.placeholder=''" onblur="this.placeholder='   ID를 입력하세요.'">
+                        </div>
+                        
+                    <p></p>
+
+                        <div class="form">
+                                <input type="password" class="form-control-lg" name="password"
+                                placeholder="   비밀번호를 입력하세요"
+                                onfocus="this.placeholder=''" onblur="this.placeholder='   비밀번호를 입력하세요'" >
+                        </div>
+
+                    <p></p>
+
+
+                        <div class="checkbox mb-3">
+                        <label style="height: 1em; margin: 0;">
+                            <input type="checkbox" value="remember-me"> 로그인 상태 유지하기
+                        </label>
+                        </div>
+                        <style> </style>
+                        <button class="w-100 mb-5 btn btn-lg btn-dark btn-outline-light " type="submit" >로그인</button><br>
+
+                    </form>
                 </div>
 
 
-                <div class="checkbox mb-3">
-                <label style="height: 1em; margin: 0;">
-                    <input type="checkbox" value="remember-me"> 로그인 상태 유지하기
-                </label>
+                <div class="row w-100">
+
+                    <div class="col-50 text-center mb-1" style="line-height: 2em;" id="sign-up">
+                        아직 계정이 없으신가요? 
+                    </div>
+
+                    <div class="col-50" id="register">
+                        <a href="/lg/register" class="btn btn-lignt btn-outline-secondary" style="width: 40%;">회원가입하기</a>
+                    </div>
                 </div>
-                <style> </style>
-                <button class="w-100 mb-5 btn btn-lg btn-dark btn-outline-light " type="submit" >로그인</button><br>
-
-            </form>
-        </div>
 
 
-        <div class="row w-100">
-
-            <div class="col-50 mb-1 " id="sign-up">
-                아직 계정이 없으신가요? 
             </div>
-            <div class="col-50" id="register">
-                <a href="/lg/register" class="btn btn-lignt btn-outline-secondary" style="width: 40%;">회원가입하기</a>
-            </div>
-        </div>
-
-
     </div>
-      <!--	FOOTER	-->
-    {% include 'footer.html' %}
-  </body>
-
+  {% include 'footer.html' %}
+</body>
 {% endblock %}

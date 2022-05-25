@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
   <style>
     body {
@@ -16,8 +17,8 @@
     .input-form {
       max-width: 680px;
 
-      margin-top: 80px;
-      padding: 32px;
+      margin-top: 5px;
+      padding: 15px;
 
       background: #fff;
       -webkit-border-radius: 10px;
@@ -28,6 +29,7 @@
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
   </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
 <body>   
@@ -151,8 +153,9 @@
                 <option value="2">보통의 활동 (서서 하는 일, 어린 자녀가 있는 주부의 정도)</option>
                 <option value="3">많은 활동</option>
                 <option value="4">높은 강도의 운동 활동</option>
-            </select>-
+            </select>
           
+<!--      이메일 기능 사용안하기 때문에 주석처리      -->
           <!--<div class="mb-3">
             <label for="email">이메일</label>
             <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
@@ -160,19 +163,24 @@
               이메일을 입력해주세요.
             </div>
           </div> -->
-<!-- 
+          <!-- 
           <div class="mb-3">
             <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
             <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
           </div> -->
-
+<!--      이메일 기능 사용안하기 때문에 주석처리      -->
+          
+          
           <hr class="mb-4">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="aggrement" required>
             <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
           </div>
+       
           <div class="mb-4"></div>
           <input class="btn btn-secondary btn-lg btn-block" type="submit" value="가입하기">
+
+
         </form>
       </div>
     </div>
@@ -194,7 +202,7 @@
       });
     }, false);
   </script>
-      <!--	FOOTER		-->
+      	<!-- FOOTER		-->
     {% include 'footer.html' %}
   </body>
 
