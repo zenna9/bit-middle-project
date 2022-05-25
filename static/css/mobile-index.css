@@ -11,6 +11,9 @@
     /* border: 1px peru solid; */
 
     }
+    .z-mb-form1{
+        padding-left: 11px !important;
+    }
     #zen-cont {
         height: 100vh;
     }
@@ -28,6 +31,9 @@
     }
     .card-body{
         width: 100%;
+    }
+    .zen_back3{
+        height: 183px;
     }
     .z-mb-form1 {
         width: 100%;
@@ -47,10 +53,11 @@
     }
     .zen_back2 {
         width: 100%;
-        margin: auto;
+        height: fit-content;
+        margin-bottom: 17px !important;
         clear:both;
         position: relative;
-        top: 50px;
+        top: 7%;
     }
     .zen-td-1{
         width: 60%;

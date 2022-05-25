@@ -11,8 +11,19 @@
         max-width: 79rem;
         height: 70vh;
     }
+    .card-body {
+        padding: 2%;
+        font-size: 0.9rem !important;
+    }
     .zen-row-11 {
         /* min-height: 80vh; */
+    }
+    .zen-row-12 {
+        height: 74vh;
+        min-height: 589px;
+    }
+    .zen-back-12 {
+        height: 25% !important;
     }
     /* 모바일 사이드바 숨김 */
     .zen_back_mobile{
@@ -45,7 +56,10 @@
     .zenbtn1 {
         margin: 3px 0 3px 0; 
         width: 100%;
-        height: 2.6em;
+        height: 12%;
+    }
+    .zenbtn83{
+        min-height: 33px;
     }
     .zen-main-div {
         height: 80%;
@@ -94,6 +108,8 @@
         /* padding-right: 5%; */
         /* padding-left: 5%; */
         width:10em; height:10em; object-fit:cover;border-radius: 50%;
+        max-width: 149px;
+        max-height: 149px;
     }
     .zen_seek_mobile {
         display: none;
@@ -109,8 +125,9 @@
         font-size: 1.5rem;
     }
     .zen_back3 {
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin: 18px auto 11px auto;
+        height: 150px;
     }
     .progress {
         font-size: 0.9rem !important;
@@ -194,8 +211,7 @@ body {
 
 
 .zen_back3 {
-    width: 100%;height: 150px;
-
+    width: 100%;
     padding: 0 13px;
 }
 
@@ -242,7 +258,8 @@ body {
 
 .card-body {
     text-align: center !important;
-    line-height: 1rem;
+    line-height: 0.7rem;
+    font-size: 0.2rem;
 }
 .card-text {
     margin-top: 1rem !important;
