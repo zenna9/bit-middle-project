@@ -1,76 +1,84 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
-<!-- 뷰포트에 맞게 콘텐츠 크기 조정  -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
+        <link rel="stylesheet" href="/static/css/login.css">
 
-<meta name="theme-color" content="#7952b3">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/static/css/login.css">
-<style>
-/* *{
-    border: 1px solid red;
-    }  */
-</style>
+        <title>Document</title>
 
-</head>
+        <style>
+            /* *{
+                border: 1px solid red;
+                }  */
 
-<body class="text-center">
-  
-        <pre>
+                
+        </style>
+    </head>
+
+    <body>
 
 
-
-
-        </pre>
-    <div class="form-signin container justify-content: center">
-        <div class="row">
-            <h1 class="h3 mb-3 fw-normal pragmatic_logo" style="color:black; font-size: 5em;">AI FooPo</h1>
-        </div>
-
-        <div class="row" style="margin: 1em auto 1em auto;">
-            <form action="{% url 'login:logining' %}" method="POST">
+        <div class="container_donn centered">
+            
+       
+          <h1 class="h3 mb-3 fw-normal pragmatic_logo centered text-center" style="color:black; font-size: 3.5em;">AI FooPo</h1>
+          
+              
+            
+             <!-- 아이디와 비밀번호  -->
+            <div class="row">
+              <form action="{% url 'login:logining' %}" method="POST">
                 {% csrf_token %}
-                <div class="form">
-                    <input type="text" class="form-control-lg" name="user_id"
-                    placeholder="   ID를 입력하세요" 
-                    onfocus="this.placeholder=''" onblur="this.placeholder='   ID를 입력하세요.'">
+                <div class="w-75 mb-3 centered">
+                    <input class="form-control form-control-lg text-center" type="text" name="user_id" 
+                        placeholder="ID를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='ID를 입력하세요.'">
                 </div>
-                        
-               <p></p>
-
-                <div class="form" id="password">
-                    <input type="password" class="form-control-lg" name="password" 
-                    placeholder="   비밀번호를 입력하세요"
-                    onfocus="this.placeholder=''" onblur="this.placeholder='   비밀번호를 입력하세요'" >
+                <div class="w-75 mb-3 centered">
+                    <input class="form-control form-control-lg text-center" type="password" name="password" 
+                        placeholder="비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'" >
                 </div>
+              
+            </div>
+                 
 
-               <p></p>
 
+             <!-- 로그인 상태 유지와 버튼  -->
+            <div class="row">
 
-                <div class="checkbox mb-3">
-                    <label style="height: 1em;">
-                        <input type="checkbox" value="remember-me"> 로그인 상태 유지하기</label>
+                <div class="w-75 mb-3 centered" style="text-align: center;">
+                    <label style="text-align: center;"><input class=" " type="checkbox"  value="remember-me">로그인 상태 유지하기</label>
                 </div>
-                <button class="w-50 mb-5 btn btn-lg btn-dark btn-outline-light" type="submit">로그인</button>
+ 
+                <div class="w-75 mb-3 centered" style="text-align: center;">
+                    <button class="btn btn-lg btn-dark btn-outline-light w-100" type="submit">로그인</button> 
 
-            </form>
-        </div>
-
-
-        <div class="row w-100">
-
-            <div class="col-50 text-center mb-1" style="line-height: 2em;" id="sign-up">
-                아직 계정이 없으신가요? 
+                </div>
+              </form>
             </div>
 
-            <div class="col-100" id="register">
-                <a href="/lg/register" class="btn btn-lignt btn-outline-secondary" style="width: 30%;">회원가입하기</a>
+            <!-- 회원가입 권유와 회원가입  -->
+            <div class="row">
+
+                <div class="w-75 mb-3 centered" style="text-align: center;" >
+                    아직 계정이 없으신가요? 
+                </div>
+
+                <div class="w-75 mb-3 centered" style="text-align: center;">
+                    <a href="/lg/register" class="btn btn-lignt btn-outline-secondary w-100">회원가입하기</a>
+                </div>
+
             </div>
+
         </div>
 
-
-    </div>
-  {% include 'footer.html' %}
-</body>
+        
+    </body>
+    {% include 'footer.html' %}
+</html> 
 {% endblock %}
