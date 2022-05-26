@@ -77,12 +77,12 @@ login.html
     min-height: 100%;
     padding-bottom: 500; 
 
-}*/
+}
 
 
 footer {
-	/* height: 500; 내용물에 따라 알맞는 값 설정 */
-	/* position: relative; */
+	 height: 500; 내용물에 따라 알맞는 값 설정 
+	 position: relative; 
     transform: translateY(0%);
 }
 }
@@ -109,3 +109,43 @@ footer {
     transform: translateY(25%);
 }
 }*/
+
+.centered {
+    display: table;
+    width: 80%;
+    margin-left: auto; 
+    margin-right: auto;
+    /* vertical-align: middle; */
+    /* margin-top: 0.5%; */
+
+}
+.container_donn {
+    /* display: table; */
+    /* margin-left: 25%; 
+    margin-right: 25%; */
+    margin-top: 120px;
+
+  }
+
+
+
+@media screen and (min-width:760px){
+    .container_donn{
+        width: 70%;
+    }
+
+}
+@media screen and (min-width:1250px){
+    .container_donn{
+        width: 60%;
+    }
+
+  }
+
+
+@media screen and (max-width:760px){
+    .container_donn{
+        width: 100%
+    }
+
+}
