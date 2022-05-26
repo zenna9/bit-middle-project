@@ -1,4 +1,4 @@
-<!--{% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -7,58 +7,65 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
+        <link rel="stylesheet" href="/static/css/login.css">
+
         <title>Document</title>
 
         <style>
-            *{
+            /* *{
                 border: 1px solid red;
-                } 
+                }  */
+
+                
         </style>
     </head>
 
     <body>
 
 
-        <div class="wrapper">
-            <h1 class="h3 mb-3 fw-normal pragmatic_logo" style="color:black; font-size: 5em;">AI FooPo</h1>
+        <div class="container_donn centered">
             
-             아이디와 비밀번호 
-            <div class="row mb-3">
-
-                <div class=" id " >
-                    <input type="text" name="user_id" placeholder="   ID를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='   ID를 입력하세요.'">
+       
+          <h1 class="h3 mb-3 fw-normal pragmatic_logo centered text-center" style="color:black; font-size: 3.5em;">AI FooPo</h1>
+          <p></p>
+              
+            
+             <!-- 아이디와 비밀번호  -->
+            <div class="row">
+                <div class="w-75 mb-3 centered">
+                    <input class="form-control form-control-lg text-center" type="text" name="user_id" 
+                        placeholder="ID를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='ID를 입력하세요.'">
                 </div>
+                <div class="w-75 mb-3 centered">
+                    <input class="form-control form-control-lg text-center" type="password" name="password" 
+                        placeholder="비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'" >
+                </div>
+            </div>
 
-                
-                <div class="pw">
-                    <input type="password" name="password" placeholder="   비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='   비밀번호를 입력하세요'" >
+
+             <!-- 로그인 상태 유지와 버튼  -->
+            <div class="row">
+
+                <div class="w-75 mb-3 centered" style="text-align: center;">
+                    <label style="text-align: center;"><input class=" " type="checkbox"  value="remember-me">로그인 상태 유지하기</label>
+                </div>
+ 
+                <div class="w-75 mb-3 centered" style="text-align: center;">
+                    <button class="btn btn-lg btn-dark btn-outline-light w-100" type="submit">로그인</button>                
                 </div>
 
             </div>
 
-
-             로그인 상태 유지와 버튼 
+            <!-- 회원가입 권유와 회원가입  -->
             <div class="row">
 
-                <div class="keeplogin">
-                 <input type="checkbox" value="remember-me">로그인 상태 유지하기</label>
-                </div>
-
-                <div class="loginbutton">
-                    <button class="btn btn-lg btn-dark btn-outline-light" type="submit">로그인</button>
-                </div>
-
-            </div>
-
-            회원가입 권유와 회원가입 
-            <div class="row">
-
-                <div class="noregister" >
+                <div class="w-75 mb-3 centered" style="text-align: center;" >
                     아직 계정이 없으신가요? 
                 </div>
 
-                <div class="goregister">
-                    <a href="" class="btn btn-lignt btn-outline-secondary">회원가입하기</a>
+                <div class="w-75 mb-3 centered" style="text-align: center;">
+                    <a href="" class="btn btn-lignt btn-outline-secondary w-100">회원가입하기</a>
                 </div>
 
             </div>
@@ -66,4 +73,6 @@
         </div>
         
     </body>
+    {% include 'footer.html' %}
 </html> 
+{% endblock %}
