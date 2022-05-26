@@ -9,7 +9,6 @@
 <!-- CHART JS CDN LINK -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <!--차트 js -->
-<script src="/static/js/kjchart.js "></script>
 </head>
 
 <body>
@@ -33,16 +32,35 @@
 					</div>
 <!--				그래프 컨텐트-->
 					<div class="row" style="padding-left:1rem; padding-right:1rem;">
-						<div class="col-md-4" style="height:20rem;">
-							<canvas id="chartone"></canvas>
+<!--						그래프 메뉴바 -->
+
+<!--							첫번째 차트 들어가는 div-->
+						<ul class="nav nav-tabs korea_graph_tab">
+							<li class="nav-item">
+								<a class="nav-link">메뉴1</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link">메뉴2</a>
+							</li>
+						</ul>
+<!--						class="tab-pane fade in show active"-->
+						<div class="tab-pane fade in show active col-md-4" style="height:20rem;">
+							<canvas id='chartone'></canvas>
 						</div>
-						<div class="col-md-4" style="height:20rem;">
-							<canvas id="charttwo"></canvas>
+							<div class="col-md-4" style="height:20rem;">
+							<canvas id='charttwo'></canvas>
 						</div>
-						<div class="col-md-4" style="height:20rem;">
-							<canvas id="chartthree"></canvas>
+							<div class="col-md-4" style="height:20rem;">
+							<canvas id='chartthree'></canvas>
 						</div>
-					</div>
+						</div>
+<!--						차트가 끝나면서 하고싶었던 얘기하고싶어서요-->
+						<p>
+							<span>
+								내소신발언한마디
+							</span>
+						</p>
+
 <!--			한끼 식사비율-->
 					<div style="height:2rem;">당신의 한끼 식사비율은</div>
 <!--			부족한 영양소 멘트-->
@@ -80,9 +98,36 @@
 		</div>
     {% include 'footer.html' %}
 <!--chart 변수-->
+			<!-- const config = {-->
+<!--        type:'bar',-->
+<!--        data:{-->
+<!--            datasets:[{-->
+<!--                data:{{daily_kcal|safe}},-->
+<!--                backgoundColor:[-->
+<!--                    'red','orange','blue','yellow','green'-->
+<!--                ],-->
+<!--                label:'Label'-->
+<!--            }],-->
+<!--            labels: {{labels|safe}}-->
+<!--        },-->
+<!--        options:{-->
+<!--            scales:{-->
+<!--                responsive:true,-->
+<!--                y:{-->
+<!--                    beginAtZero:true-->
+<!--                }-->
+<!--            }-->
+<!--        },-->
+<!--    };-->
+
+<!--	window.onload = function() {-->
+<!--        const bar-chart = document.getElementById('bar-chart').getContext('2d');-->
+<!--        window.myBar = new Chart(bar-chart, config);-->
+<!--    };-->
 <script>
 	let chartone = document.getElementById('chartone').getContext('2d');
 	let charttwo = document.getElementById('charttwo').getContext('2d');
+	let chartthree = document.getElementById('chartthree').getContext('2d');
 
 	let barChart = new Chart(chartone, {
 		type : 'bar',
@@ -147,44 +192,65 @@
 			}
 		}
 	})
-
-		let barChartthree = new Chart(chartthree, {
-		type : 'pie',
+	let barChartthree = new Chart (chartthree, {
+		type : 'bar',
 		data : {
-			labels : ['비타민', '무기질', '콜레스테롤'],
-			datasets : [{
-				label : '부 영양소 비율',
-				data : [
-					300,
-					100,
-					200
-				],
-				backgroundColor:[
-					'skyblue',
-					'orange',
-					'mint']
-			}]
-		},
-		options : {
-			plugins : {
-				title : {
-					display : true,
-					text : '나의 영양소',
-					fontSize : 16,
-					fontColor : 'red',
-					position:'bottom'
-				},
-				layout : {
-					padding: {
-						left : 10,
-						right : 10,
-						top: 40,
-						bottom : 0
-					}
-				}
-			}
-		}
-	})
+			labels : {{labels|safe}},
+            datasets : [{
+            	label : 'Label',
+            	data : {{kcal_data|safe}},
+                backgoundColor : [
+                    'red','orange','blue','yellow','green'
+                ],
+            }],
+        },
+        options : {
+            scales : {
+                responsive : true,
+                y : {
+                    beginAtZero:true
+                }
+            }
+        }
+    });
 </script>
+
+			<!--		let barChartthree = new Chart(chartthree, {-->
+<!--		type : 'pie',-->
+<!--		data : {-->
+<!--			labels : ['비타민', '무기질', '콜레스테롤'],-->
+<!--			datasets : [{-->
+<!--				label : '부 영양소 비율',-->
+<!--				data : [-->
+<!--					300,-->
+<!--					100,-->
+<!--					200-->
+<!--				],-->
+<!--				backgroundColor:[-->
+<!--					'skyblue',-->
+<!--					'orange',-->
+<!--					'mint']-->
+<!--			}]-->
+<!--		},-->
+<!--		options : {-->
+<!--			plugins : {-->
+<!--				title : {-->
+<!--					display : true,-->
+<!--					text : '나의 영양소',-->
+<!--					fontSize : 16,-->
+<!--					fontColor : 'red',-->
+<!--					position:'bottom'-->
+<!--				},-->
+<!--				layout : {-->
+<!--					padding: {-->
+<!--						left : 10,-->
+<!--						right : 10,-->
+<!--						top: 40,-->
+<!--						bottom : 0-->
+<!--					}-->
+<!--				}-->
+<!--			}-->
+<!--		}-->
+<!--	})-->
 </body>
 {% endblock %}
