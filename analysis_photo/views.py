@@ -26,15 +26,16 @@ def f_fu(request):
 
         b_fuw =  b_fj.uploadedFile
     b_hc= get_object_or_404(imgs, uploadedFile=b_fuw)
-    b_foodlist = menu.objects.all()
+    # b_foodlist = menu.objects.all()
     b_hc_id = b_hc.id
-    return HttpResponseRedirect(reverse('analysis_photo:f_hp', args=(b_hc_id,idx)))
+    request.session['idx']=idx
+    return HttpResponseRedirect(reverse('analysis_photo:f_hp', args=(b_hc_id,)))
 
 
 # zenna : 사진 인덱스를 받아와 인식결과, 추가등록을 할 수 있는 페이지로 이동
-def f_hp(request, b_hc_id,idx):
+def f_hp(request, b_hc_id):
     b_hc = get_object_or_404(imgs, id=b_hc_id)
-    context = {'k_hc': b_hc, 'idx':idx}
+    context = {'k_hc': b_hc, 'idx':request.session['idx']}
     return render(request, 'your_photo.html', context)
 
 # zenna : 
@@ -106,5 +107,5 @@ def f_upload_at_sql(request):
     diets.transfat =nutrlist['transfat']
 
     diets.save()
-    
-    return redirect('/m/'+idx+'/'+date)
+    request.session['idx']=idx
+    return redirect('/m/ain/'+date)
