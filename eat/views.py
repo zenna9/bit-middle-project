@@ -16,7 +16,6 @@ def logindone(request,date):
         dietlist = diet.objects.filter(user_id=idx, date=date)
         print("this is dietlist : =========", dietlist)
         if dietlist.exists():
-            print("dietlist has something-================")
             loginn = get_object_or_404(login, user_id=idx)
             sums = diet.objects.filter(date=date).filter(user_id=idx).aggregate(Sum('tan'))
             need_list = ['dang', 'kcal', 'ji', 'dan']
@@ -34,7 +33,6 @@ def logindone(request,date):
             context = {'dietlist': dietlist, 'idx':idx, 'date':date,'sums':sums, 'logininfo': loginn, 'percent': dict_percent}
             return render(request, 'index.html', context)
         else : 
-            print("===============dietlist is null==================")
             context = {'idx':idx,'date':date}
             return render(request, 'index_null.html', context)
     # except :
