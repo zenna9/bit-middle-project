@@ -1,6 +1,5 @@
 from datetime import date
 from sre_constants import SUCCESS
-
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 # from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -8,7 +7,6 @@ from django.urls import reverse
 import pymysql
 from datetime import datetime
 from eat.models import login
-
 from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
 
@@ -32,10 +30,8 @@ def logining(request):
     if not data:  # 데이터가 없으면 로그인 실패 페이지
         return render(request, 'login_fail.html')
     else:
-        return redirect ('/m/'+user_id+'/'+date)
-
-        # return redirect('my_photos') 0517 경준 연습 (지울예정)
-        # return redirect('/m/'+user_id+'/mypage') 0517 경준 연습 (지울예정)
+        request.session['idx']= user_id
+        return redirect ('/m/ain/'+date)
 
 
 
