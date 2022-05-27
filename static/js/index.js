@@ -1,7 +1,7 @@
 function change(idx){
     console.log(idx);
     var add = document.getElementById('zen_calender').value;
-    window.location.pathname = 'm/'+idx+'/'+add;
+    window.location.pathname = 'm/ain/'+add;
 }
 
 function loadfunction(date, perkcal, pertan, perdan, perji){
