@@ -32,6 +32,9 @@
     .card-body{
         width: 100%;
     }
+    .card-text {
+        font-size: 1.2rem;
+    }
     .zen_back3{
         height: 183px;
     }
