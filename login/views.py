@@ -5,8 +5,6 @@ from django.urls import reverse
 import pymysql
 from eat.models import login
 
-from django.views.decorators.csrf import csrf_exempt
-
 
 
 # 채은 : 로그인, Mysql과 데이터 비교
