@@ -3,10 +3,10 @@
 {% block content %}
 {% load static %}
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요 -->
-<style>
-	*{
-	border:red solid 1px;}
-</style>
+<!--<style>-->
+<!--	*{-->
+<!--	border:red solid 1px;}-->
+<!--</style>-->
 
 
 		<!-- Required meta tags -->
@@ -15,7 +15,8 @@
         <!-- CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
         <link rel="stylesheet" href="/static/css/animate.css">
         <link rel="stylesheet" href="/static/css/style.css">
@@ -27,17 +28,16 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
-
     </head>
 
     <body>
-	{% include 'nav.html'%}
-
         <!-- Javascript -->
         <script src="/static/js/jquery-3.2.1.min.js"></script>
         <script src="/static/js/jquery-migrate-3.0.0.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+				integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+				integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="/static/js/jquery.backstretch.min.js"></script>
         <script src="/static/js/wow.min.js"></script>
         <script src="/static/js/retina-1.1.0.min.js"></script>
@@ -46,12 +46,13 @@
 
 
         <!-- Top content -->
-        <div class="top-content" style="backgroud-image:url('/static/picture/backgrounds/1.jpg">
+        <div class="top-content" style="backgroud-image:url('/static/picture/backgrounds/1.jpg')">
             <div class="container">
 
                 <div class="row">
                     <div class="col-md-8 offset-md-2 text">
-                        <h1 class="wow fadeInLeftBig t_font" style="color:black;">AI FooPo 자동 식단관리</h1>
+                        <h1 class="wow fadeInLeftBig t_font" style="color:black;">AI Food Photo</h1>
+						<h4 class="wow fadeInLeftBig t_font" style="color:black;">자동 식단관리 웹-앱 어플리케이션 서비스</h4>
                         <div class="description wow fadeInLeftBig">
                         	<p style="color:black;">
                          	This is a free responsive one page template made with the Bootstrap framework.
@@ -261,35 +262,35 @@
 	        <div class="container">
 	            <div class="row">
 	                <div class="col portfolio section-description wow fadeIn">
-	                    <h2>Our Portfolio</h2>
+	                    <h2>How To USE</h2>
 	                    <div class="divider-1 wow fadeInUp"><span></span></div>
-	                    <p>We've completed 537 projects since we started back in 2010. Check them out!</p>
+	                    <p>음식 사진을 업로드해서 자동으로 식단을 기록해보세요</p>
 	                </div>
 	            </div>
 	            <div class="row">
                 	<div class="col-md-4 portfolio-box wow fadeInUp">
 	                	<div class="portfolio-box-image">
-	                		<img src="/static/picture/portfolio/1.jpg" alt="" data-at2x="/static/picture/portfolio/1.jpg">
+	                		<img src="/static/picture/portfolio/tuto1.jpg" alt="" data-at2x="/static/picture/portfolio/tuto1.jpg">
 	                	</div>
-                		<h3><a href="#">Acme branding</a> <i class="fas fa-angle-right"></i></h3>
+                		<h3><a href="#">음식 사진을 찍어 올려주세요!</a> <i class="fas fa-angle-right"></i></h3>
                 		<div class="portfolio-box-date"><i class="far fa-calendar"></i> March 2018</div>
-                		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                		<p>한 상이 수직 위치에서 카메라에 가득 담길 수록 분석 효과가 높아집니다</p>
                     </div>
                     <div class="col-md-4 portfolio-box wow fadeInDown">
 	                	<div class="portfolio-box-image">
-	                		<img src="/static/picture/portfolio/2.jpg" alt="" data-at2x="/static/picture/portfolio/2.jpg">
+	                		<img src="/static/picture/portfolio/tuto2.jpg" alt="" data-at2x="/static/picture/portfolio/tuto2.jpg">
 	                	</div>
-                		<h3><a href="#">WordPress design</a> <i class="fas fa-angle-right"></i></h3>
+                		<h3><a href="#">AI Foodphoto</a> <i class="fas fa-angle-right"></i></h3>
                 		<div class="portfolio-box-date"><i class="far fa-calendar"></i> February 2018</div>
-                		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                		<p>인공지능의 당신의 음식의 종류와 양, 영양 성분을 자동으로 분석합니다</p>
                     </div>
                     <div class="col-md-4 portfolio-box wow fadeInUp">
 	                	<div class="portfolio-box-image">
-	                		<img src="/static/picture/portfolio/3.jpg" alt="" data-at2x="/static/picture/portfolio/3.jpg">
+	                		<img style='margin-bottom:1rem;' src="/static/picture/portfolio/tuto3.jpg" alt="" data-at2x="/static/picture/portfolio/tuto3.jpg">
 	                	</div>
-                		<h3><a href="#">Created 150 flyers</a> <i class="fas fa-angle-right"></i></h3>
+                		<h3><a href="#">자동 음식 추천 기능</a> <i class="fas fa-angle-right"></i></h3>
                 		<div class="portfolio-box-date"><i class="far fa-calendar"></i> January 2018</div>
-                		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                		<p>분석된 식단에 따라 일일 권장량에 맞춘 영양 밸런스 음식을 추천합니다</p>
                     </div>
 	            </div>
 	            <div class="row">
