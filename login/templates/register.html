@@ -13,7 +13,6 @@
       background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
       background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
     }
-
     .input-form {
       max-width: 680px;
 
@@ -28,23 +27,123 @@
       -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
+    /* 팝업관련 */
+    #dimmed {
+        content: '';
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(255,255,255, 0.30);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        display: none;
+      }
+      #dimmed * {
+      font-size: 1rem;    
+
+      }
+    .popup {
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            min-width: 300px;
+            max-width: 600px;
+            background-color: #92b5db;
+            border-radius: 15px;
+            box-shadow: 0 2px 40px -15px rgb(0 0 0 / 100%);
+            
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .popup > .title{
+            border-radius: 15px 15px 0 0;
+            min-height: 40px;
+            color: rgb(255, 255, 255);
+            background-color: #1d466c;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            font-weight: bold;
+            text-align: center;
+
+        }
+        .popup > .zen-content {
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .zen-content input[type='text'] {
+            height: 25px;
+            margin: 2px 15px 20px 15px;
+            text-align: center;
+        }
+        #zen-checkbtn {
+            width: 40%;
+        }
+        #zen-possi2 {
+          width: 40%;
+        }
+        #zen-possi1, #zen-possi2 {
+            color: green;
+            display: none;
+            text-align: center;
+            margin: 0 auto 5px auto;
+        }
+        #zen-impos1 , #zen-impos2 {
+            color: red;
+            display: none;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .padtop30{
+            height: 30px;padding-top: 10px;
+        }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<body>   
+<body>
+  <div id="dimmed">
+    <div class="popup">
+      <div class="title">
+        id 중복 체크
+        <div style="float: right;" onclick="hideordisplay([],['dimmed'])" >
+          <i class="fas fa-solid fa-x"></i>
+        </div>
+      </div>
+      <div class="zen-content">
+          사용하실 아이디를 입력 해 주세요
+          <div class="padtop30">
+              <p id="zen-possi1">사용 가능한 아이디입니다</p>
+              <p id="zen-impos1">사용중인 아이디입니다</p>
+              <p id="zen-impos2">아이디를 4자 이상 입력 해 주세요</p>
+          </div>
+          <form name="idcheck">
+              <input type="text" id="inputid">
+              <div id="idlist" style="display: none;">{{idxs}}</div>
+              <br><input type="button" id="zen-checkbtn" value="중복체크"/>
+              <div class="padtop30">
+                  <input type="button" id="zen-possi2" value="사용하기">
+              </div>
+          </form>
+
+      </div>
+    </div>
+  </div>   
   <div class="container">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">회원가입</h4>
-
-
         <form class="validation-form" novalidate action="submit" method="POST">
           {% csrf_token %}
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="username">아이디</label>
-              <input type="text" class="form-control" id="username" name="user_id" placeholder="" required>
+              <input type="text" onclick="hideordisplay(['dimmed'],[])" class="form-control" id="username" name="user_id" placeholder="" required autocomplete="off" >
               <div class="invalid-feedback">
                 아이디를 입력해주세요.
               </div>
@@ -204,5 +303,5 @@
   </script>
       	<!-- FOOTER		-->
   </body>
-
+  <script src="/static/js/id_check.js"></script>
 {% endblock %}

@@ -5,7 +5,7 @@ from eat.models import imgs, diet
 from analysis_photo.models import menu
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from analysis_photo.yolo.yolos import yolo
 
 # zenna : 메인 페이지에서 사진 업로드 버튼을 눌렀을 경우, 
 #   sql photo 테이블에 사진 정보 저장 
@@ -26,15 +26,17 @@ def f_fu(request):
 
         b_fuw =  b_fj.uploadedFile
     b_hc= get_object_or_404(imgs, uploadedFile=b_fuw)
-    b_foodlist = menu.objects.all()
+    # b_foodlist = menu.objects.all()
     b_hc_id = b_hc.id
-    return HttpResponseRedirect(reverse('analysis_photo:f_hp', args=(b_hc_id,idx)))
+    request.session['idx']=idx
+    return HttpResponseRedirect(reverse('analysis_photo:f_hp', args=(b_hc_id,)))
 
 
 # zenna : 사진 인덱스를 받아와 인식결과, 추가등록을 할 수 있는 페이지로 이동
-def f_hp(request, b_hc_id,idx):
+def f_hp(request, b_hc_id):
     b_hc = get_object_or_404(imgs, id=b_hc_id)
-    context = {'k_hc': b_hc, 'idx':idx}
+    yolo_return = yolo('/media/photo/36')
+    context = {'k_hc': b_hc, 'idx':request.session['idx'], 'yolo':yolo_return}
     return render(request, 'your_photo.html', context)
 
 # zenna : 
@@ -106,5 +108,5 @@ def f_upload_at_sql(request):
     diets.transfat =nutrlist['transfat']
 
     diets.save()
-    
-    return redirect('/m/'+idx+'/'+date)
+    request.session['idx']=idx
+    return redirect('/m/ain/'+date)
