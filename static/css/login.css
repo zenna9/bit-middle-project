@@ -101,7 +101,7 @@ footer {
 
 }
 
-input[type=password] ::placeholder{ 
+input[type=password] { 
     font-family: 'NanumSquare', sans-serif; 
 
 }
