@@ -5,7 +5,6 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404, redirec
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import pymysql
-from datetime import 
 from eat.models import login
 from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
