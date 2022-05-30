@@ -9,17 +9,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
         <link rel="stylesheet" href="/static/css/login.css">
+        
 
         <title>Document</title>
 
         <style>
             /* *{
                 border: 1px solid red;
-                }  */
+                } */
+
+            footer{
+             float: auto; padding-top: 5px;;
+             position: relative;
+             
+                       
+            } 
+
+            /* footer {
+                float: left;
+                position: relative;
+                left: 50%;
+            } */
 
                 
         </style>
-    </head>
+    </head>ss
 
     <body>
 
@@ -35,10 +49,12 @@
             <div class="row">
               <form action="{% url 'login:logining' %}" method="POST">
                 {% csrf_token %}
-                <div class="w-75 mb-3 centered">
-                    <input class="form-control form-control-lg text-center" type="text" name="user_id" 
+                
+                <div class="w-75 mb-3 centered" id="userlogin">
+                    <input class="form-control form-control-lg text-center"  type="text" name="user_id" 
                         placeholder="ID를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='ID를 입력하세요.'">
                 </div>
+
                 <div class="w-75 mb-3 centered">
                     <input class="form-control form-control-lg text-center" type="password" name="password" 
                         placeholder="비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'" >
@@ -72,13 +88,11 @@
                 <div class="w-75 mb-3 centered" style="text-align: center;">
                     <a href="/lg/register" class="btn btn-lignt btn-outline-secondary w-100">회원가입하기</a>
                 </div>
-
             </div>
-
         </div>
 
         
     </body>
-    {% include 'footer.html' %}
+   {% include 'footer.html' %} 
 </html> 
 {% endblock %}

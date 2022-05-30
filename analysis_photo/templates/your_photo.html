@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="/static/css/index.css" />
 <script src="/static/js/index.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <style> 
-        /* *{
+    <!-- <style> 
+        *{
             border: 1px solid red;
-        } */
-    </style>
+        }
+    </style> -->
 
 </head>
 <body>
@@ -131,11 +131,11 @@
                         <!-- 다 작성하고 제출하기 -->
                         <div class="row">
                             <div class="col-md-12 h-100">
-                                <footer style="text-align:center;padding:5px;">
+                                <div style="text-align:center;padding:5px;">
                                     <input name='file_location' type="hidden" value="{{k_hc.uploadedFile}}">
                                     <input type="hidden" value="{{idx}}" name="idx"/>
                                     <input type="submit" value="작성완료" class="btn zen-btn-81"/>
-                                </footer>
+                                </div>
                             </div>
                         </div>  
                     </form>
@@ -144,7 +144,14 @@
         </div>
 
     </div>
+    <pre>
+
+      
+        
+    </pre>
     <!--	FOOTER		-->
     {% include 'footer.html' %}
+
 </body>
+
 {% endblock %}
