@@ -7,6 +7,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
         <link rel="stylesheet" href="/static/css/login.css">
 
@@ -27,7 +28,7 @@
         <div class="container_donn centered">
                            
              
-          <h1 class="h3 mb-3 fw-normal pragmatic_logo centered text-center" style="color:black; font-size: 3.5em;">AI FooPo</h1>              
+          <h1 class="h3 mb-3 fw-normal pragmatic_logo centered text-center" style="color: black; font-size: 3.5em;">AI FooPo</h1>              
             
              <!-- 아이디와 비밀번호  -->
             <div class="row">
@@ -37,11 +38,13 @@
                    회원가입에 성공했습니다! 로그인 해주세요.
                   </div>
                 {% csrf_token %}
+
                 
                 <div class="w-75 mb-3 centered">
                     <input class="form-control form-control-lg text-center" type="text" name="user_id" 
                         placeholder="ID를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='ID를 입력하세요.'">
                 </div>
+
                 <div class="w-75 mb-3 centered">
                     <input class="form-control form-control-lg text-center" type="password" name="password" 
                         placeholder="비밀번호를 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'" >
