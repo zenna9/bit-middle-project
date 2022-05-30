@@ -14,7 +14,7 @@
         <p style="line-height: 1em;"></p>
         <hr>
         <p style="line-height: 1em;"></p>
-        <footer class="row zen_side_row" style="width: 100%;margin:auto 3px 30px 3px;">
+        <div class="row zen_side_row" style="width: 100%;margin:auto 3px 30px 3px;">
             <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="file" class="ment">데이터를 업로드하세요!</label>
@@ -22,5 +22,5 @@
                 <input type="hidden" name="idx" value="{{idx}}" />
                 <input type="submit" class="zenbtn1 zenbtn83" style="margin-top: 1em " value="사진 찍기/업로드">
             </form>
-        </footer>
+        </div>
     </div>

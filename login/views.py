@@ -1,6 +1,6 @@
 from datetime import date
 from sre_constants import SUCCESS
-
+from winreg import QueryInfoKey
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 # from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -8,14 +8,13 @@ from django.urls import reverse
 import pymysql
 from datetime import datetime
 from eat.models import login
-
 from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
 
 
 
 
-# zenna : 로그인, Mysql과 데이터 비교
+# 채은 : 로그인, Mysql과 데이터 비교
 @csrf_exempt
 def logining(request):
     user_id = request.POST.get('user_id')
@@ -32,23 +31,25 @@ def logining(request):
     if not data:  # 데이터가 없으면 로그인 실패 페이지
         return render(request, 'login_fail.html')
     else:
-        return redirect ('/m/'+user_id+'/'+date)
-
-        # return redirect('my_photos') 0517 경준 연습 (지울예정)
-        # return redirect('/m/'+user_id+'/mypage') 0517 경준 연습 (지울예정)
+        request.session['idx']= user_id
+        return redirect ('/m/ain/'+date)
 
 
 
 
-# zenna : 최초 접속 로그인 페이지
+# 채은 : 최초 접속 로그인 페이지
 def index(request):
     return render(request, 'index.html')
 
-# zenna : 회원가입 버튼 눌렀을 경우
+# 채은 : 회원가입 버튼 눌렀을 경우
 def register(request):
-    return render(request, 'register.html')
+    query_ids = login.objects.all().values('user_id')
+    idxs = []
+    for i in range(len(query_ids)):
+        idxs.append(query_ids[i]['user_id'])
+    return render(request, 'register.html', {'idxs' : idxs})
 
-# zenna : 회원가입 폼 제출 시 , sql에 정보 저장
+# 채은 : 회원가입 폼 제출 시 , sql에 정보 저장
 def register_submit(request):
     logins = login()
     logins.user_id = request.POST['user_id']
