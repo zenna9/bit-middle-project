@@ -2,10 +2,40 @@
 {% block content %}
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요-->
 <style>
-*{
-        border: 1px solid red;
-    }
-    </style>
+<!--*{-->
+<!--        border: 1px solid red;-->
+<!--    }-->
+
+/* Style the tab buttons */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 50%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Style each tab content individually */
+#London {background-color:#64D6FF;}
+#Paris {background-color:#73EAA8;}
+</style>
 <!-- CHART JS CDN LINK -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <!--차트 js -->
@@ -17,49 +47,47 @@
 <!--	본문 CONTENTS		-->
 	<div class="container">
 		<div class="row profile">
-<!--			사이드바-->
+<!--	프로필 사이드바 col-md-3 -->
 			<div class="col-md-3">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
 					{% include 'myprofile_sidebar.html' %}
 				</div>
 			</div>
-<!--			사이드바 마무리-->
-				<!--	컨텐츠 들어가는 칸 col-md-8 -->
+<!--	건강정보 컨텐츠 col-md-8 -->
 			<div class="col-md-9">
 <!--			회원정보 텍스트-->
+				<div class="row">
 					<div style="height:auto; margin-top:1rem;">
-						<strong style="font-size:2rem;">고경준님의 건강 정보입니다.</strong>
+						<strong style="font-size:2rem;">{{name}}님의 건강 정보입니다.</strong>
 					</div>
-<!--				그래프 컨텐트-->
-					<div class="row" style="padding-left:1rem; padding-right:1rem;">
-<!--						그래프 메뉴바 -->
+				</div>
 
-<!--							첫번째 차트 들어가는 div-->
-						<ul class="nav nav-tabs korea_graph_tab">
-							<li class="nav-item">
-								<a class="nav-link">메뉴1</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link">메뉴2</a>
-							</li>
-						</ul>
-<!--						class="tab-pane fade in show active"-->
-						<div class="tab-pane fade in show active col-md-4" style="height:20rem;">
-							<canvas id='chartone'></canvas>
+<!--				그래프 컨텐트 메뉴바 -->
+				<div class="row">
+					<div id="London" class="tabcontent">
+						<h1>하루그래프</h1>
+						<p style="margin-bottom:1rem;">하룻동안 먹은 식사량의 탄단지 비율을 알려주어요</p>
+					</div>
+
+					<div id="Paris" class="tabcontent">
+						<h1>주간/월간 그래프</h1>
+						<p style="margin-bottom:1rem;">주간, 월간 먹은 식사량의 나트륨, 칼로리량을 알려주어요</p>
+					</div>
+					<button class="tablink" onclick="openCity('London', this, '#64D6FF')" id="defaultOpen">일간 그래프</button>
+					<button class="tablink" onclick="openCity('Paris', this, '#73EAA8')">주간/월간 그래프</button>
+				</div>
+<!--				그래프 컨텐트 차트 -->
+				<div class="row" style="padding: 1rem;">
+					<div class="tab-pane fade in show active col-md-4" style="height:20rem;">
+						<canvas id='chartone'></canvas>
+					</div>
+					<div class="col-md-4" style="height:20rem;">
+							<canvas id='chartfour'></canvas>
 						</div>
-							<div class="col-md-4" style="height:20rem;">
-							<canvas id='charttwo'></canvas>
-						</div>
-							<div class="col-md-4" style="height:20rem;">
-							<canvas id='chartthree'></canvas>
-						</div>
-						</div>
-<!--						차트가 끝나면서 하고싶었던 얘기하고싶어서요-->
-						<p>
-							<span>
-								내소신발언한마디
-							</span>
-						</p>
+					<div class="col-md-4" style="height:20rem;">
+						<canvas id='chartthree'></canvas>
+					</div>
+				</div>
 
 <!--			한끼 식사비율-->
 					<div style="height:2rem;">당신의 한끼 식사비율은</div>
@@ -97,36 +125,10 @@
 <!--		컨텐츠바 마무리-->
 		</div>
     {% include 'footer.html' %}
-<!--chart 변수-->
-			<!-- const config = {-->
-<!--        type:'bar',-->
-<!--        data:{-->
-<!--            datasets:[{-->
-<!--                data:{{daily_kcal|safe}},-->
-<!--                backgoundColor:[-->
-<!--                    'red','orange','blue','yellow','green'-->
-<!--                ],-->
-<!--                label:'Label'-->
-<!--            }],-->
-<!--            labels: {{labels|safe}}-->
-<!--        },-->
-<!--        options:{-->
-<!--            scales:{-->
-<!--                responsive:true,-->
-<!--                y:{-->
-<!--                    beginAtZero:true-->
-<!--                }-->
-<!--            }-->
-<!--        },-->
-<!--    };-->
-
-<!--	window.onload = function() {-->
-<!--        const bar-chart = document.getElementById('bar-chart').getContext('2d');-->
-<!--        window.myBar = new Chart(bar-chart, config);-->
-<!--    };-->
+<!-- 차트 컨텐츠 JS-->
 <script>
 	let chartone = document.getElementById('chartone').getContext('2d');
-	let charttwo = document.getElementById('charttwo').getContext('2d');
+	let chartfour = document.getElementById('chartfour').getContext('2d');
 	let chartthree = document.getElementById('chartthree').getContext('2d');
 
 	let barChart = new Chart(chartone, {
@@ -157,50 +159,17 @@
 				}
 			}
 		}
-	})
+	});
 
-	let barCharttwo = new Chart(charttwo, {
-		type : 'line',
-		data : {
-			labels : ['탄수화물', '단백질', '지방'],
-			datasets : [{
-				label : '영양분 비율',
-				data : [
-					300,
-					100,
-					200
-				]
-			}]
-		},
-		options : {
-			plugins : {
-				title : {
-					display : true,
-					text : '권장 섭취량',
-					fontSize : 16,
-					fontColor : 'red',
-					position:'bottom'
-				},
-				layout : {
-					padding: {
-						left : 10,
-						right : 10,
-						top: 40,
-						bottom : 0
-					}
-				}
-			}
-		}
-	})
-	let barChartthree = new Chart (chartthree, {
+    let barChartfour = new Chart (chartfour, {
 		type : 'bar',
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
-            	label : 'Label',
-            	data : {{kcal_data|safe}},
-                backgoundColor : [
-                    'red','orange','blue','yellow','green'
+            	label : '최근 3일간 먹은 염분양',
+            	data : {{salt_data|safe}},
+                backgroundColor : [
+                    'red','orange','blue'
                 ],
             }],
         },
@@ -213,44 +182,57 @@
             }
         }
     });
-</script>
 
-			<!--		let barChartthree = new Chart(chartthree, {-->
-<!--		type : 'pie',-->
-<!--		data : {-->
-<!--			labels : ['비타민', '무기질', '콜레스테롤'],-->
-<!--			datasets : [{-->
-<!--				label : '부 영양소 비율',-->
-<!--				data : [-->
-<!--					300,-->
-<!--					100,-->
-<!--					200-->
-<!--				],-->
-<!--				backgroundColor:[-->
-<!--					'skyblue',-->
-<!--					'orange',-->
-<!--					'mint']-->
-<!--			}]-->
-<!--		},-->
-<!--		options : {-->
-<!--			plugins : {-->
-<!--				title : {-->
-<!--					display : true,-->
-<!--					text : '나의 영양소',-->
-<!--					fontSize : 16,-->
-<!--					fontColor : 'red',-->
-<!--					position:'bottom'-->
-<!--				},-->
-<!--				layout : {-->
-<!--					padding: {-->
-<!--						left : 10,-->
-<!--						right : 10,-->
-<!--						top: 40,-->
-<!--						bottom : 0-->
-<!--					}-->
-<!--				}-->
-<!--			}-->
-<!--		}-->
-<!--	})-->
+	let barChartthree = new Chart (chartthree, {
+		type : 'bar',
+		data : {
+			labels : {{labels|safe}},
+            datasets : [{
+            	label : '최근 3일간 먹은 칼로리양',
+            	data : {{kcal_data|safe}},
+                backgroundColor : [
+                    'yellow','green','purple'
+                ],
+            }],
+        },
+        options : {
+            scales : {
+                responsive : true,
+                y : {
+                    beginAtZero:true
+                }
+            }
+        }
+    });
+
+</script>
+<!-- 차트 컨텐츠 메뉴바 JS -->
+<script>
+function openCity(cityName, elmnt, color) {
+// Hide all elements with class="tabcontent" by default */
+
+	var i, tabcontent, tablinks;
+	tabcontent = document.getElementsByClassName("tabcontent");
+  	for (i = 0; i < tabcontent.length; i++) {
+    	tabcontent[i].style.display = "none";
+  	}
+
+// Remove the background color of all tablinks/buttons
+
+	tablinks = document.getElementsByClassName("tablink");
+	for (i = 0; i < tablinks.length; i++) {
+    	tablinks[i].style.backgroundColor = "";
+  	}
+
+// Show the specific tab content
+  document.getElementById(cityName).style.display = "block";
+
+// Add the specific color to the button used to open the tab content
+	elmnt.style.backgroundColor = color;
+	}
+
+// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+</script>
 </body>
 {% endblock %}
