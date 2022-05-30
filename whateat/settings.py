@@ -14,7 +14,8 @@ SECRET_KEY = 'django-insecure-j-cz@$2yr4uk5@m%0+b*_=w3vn7&%k!@po%0-83d*#y)26+x_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'localhost']
+# ALLOWED_HOSTS = ['*', 'localhost']
+ALLOWED_HOSTS = ['43.200.16.33']
 
 
 # Application definition
@@ -71,7 +72,7 @@ DATABASES = {
         'NAME': 'bitteam2',
         'USER': 'user1',
         'PASSWORD': '1111',
-        'HOST': '192.168.0.29',
+        'HOST': 'ec2-43-200-16-33.ap-northeast-2.compute.amazonaws.com',
         'PORT': '3306'
 
 
