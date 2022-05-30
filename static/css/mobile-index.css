@@ -32,6 +32,9 @@
     .card-body{
         width: 100%;
     }
+    .card-text {
+        font-size: 1.2rem;
+    }
     .zen_back3{
         height: 183px;
     }
@@ -153,7 +156,7 @@
         background-color: white;
         border-radius: 50%;
         border: rgb(255, 219, 179);
-
+        
     }
     .zen-floating-camera {
         float: right;
@@ -166,6 +169,7 @@
         border-radius: 50%;
 
     }
+    
     /* ==index_null 적용부분 ============*/
     .zen-null-background-mobile {
         height: 36vh;text-align : center;

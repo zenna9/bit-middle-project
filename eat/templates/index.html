@@ -7,11 +7,11 @@
     <script src="/static/js/index.js "></script>
     <script src="/static/js/zen.js "></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <style>
-        /* table *{ */
-            /* border: 1px purple solid; */
-        /* } */
-    </style>
+    <!-- <style>
+        *{ 
+            border: 1px purple solid;
+         }
+    </style> -->
 </head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
     <div class="container-fluid zen_back0" id="top">
@@ -161,6 +161,10 @@
                 {% include 'sidebar.html' %}
             </div>
         </div>
+        <pre>
+
+            
+        </pre>
 
         <!--	FOOTER		-->
         {% include 'footer.html' %}
