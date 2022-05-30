@@ -2,9 +2,40 @@
 {% block content %}
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요-->
 <style>
-*{
-        border: 1px solid red;
-    }
+<!--*{-->
+<!--        border: 1px solid red;-->
+<!--    }-->
+<!--    -->
+/* Style the tab buttons */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 50%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Style each tab content individually */
+#London {background-color:#64D6FF;}
+#Paris {background-color:#73EAA8;}
+
     </style>
 <!-- CHART JS CDN LINK -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
@@ -48,22 +79,25 @@
 				</div>
 <!--				그래프 컨텐트 차트 -->
 				<div class="row" style="padding: 1rem;">
-					<div class="tab-pane fade in show active col-md-4" style="height:20rem;">
+					<div class="tab-pane fade in show active col-md-4" style="height:10rem;">
 						<canvas id='chartone'></canvas>
 					</div>
-					<div class="col-md-4" style="height:20rem;">
+					<div class="col-md-4" style="height:10rem;">
 							<canvas id='chartfour'></canvas>
 						</div>
-					<div class="col-md-4" style="height:20rem;">
+					<div class="col-md-4" style="height:10rem;">
 						<canvas id='chartthree'></canvas>
 					</div>
 				</div>
 
 <!--			한끼 식사비율-->
-					<div style="height:2rem;">당신의 한끼 식사비율은</div>
+					<div style="height:2rem; margin-top:0; margin-bottom:1rem; ">
+						<h4>당신의 식사중 탄단지의 비율은?</h4>
+<!--						<img src="/static/picture/bar.png">-->
+					</div>
 <!--			부족한 영양소 멘트-->
-				<div class='row' style="margin:0 1rem 0 1rem; height:auto; text-align:center;">
-							<strong style="font-size:1.5rem;">당신은 채소류 섭취가더 필요하네요</strong>
+				<div class='row' style="border-radius:20px; background-color:#E0E0E0; padding:1rem; margin:0 1rem 0 1rem; height:auto; text-align:center;">
+							<strong style="font-size:1.5rem; margin-bottom:1rem;">당신은 채소류 섭취가더 필요하네요</strong>
 					<p>싱싱한 채소 섭취가 건강에 좋다는 건 누구나 아는 사실이지만
 						바쁜 일상 속에서 골고루 챙겨 먹기란 쉽지 않은 일이다.
 						하지만 육류나 인스턴트식품의 섭취 비율은 높은 반면
@@ -71,23 +105,23 @@
 				</div>
 <!--			추천음식 정보 -->
 				<div class='row' style="text-align:center;">
-					<div style="margin:0 auto 0 auto;">
-						<div style="display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
-						<figure>
-							<figcaption>추천음식 1</figcaption>
-							<img style="width:10rem; height:10rem; object-fit:cover;" src="/static/picture/jjun.jpg" alt="receltly_photo1">
+					<div style="margin:1rem; auto 0 auto;">
+						<div style="border-radius:20px; display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
+						<figure >
+							<figcaption style="margin:0.3rem auto;">추천음식 1</figcaption>
+							<img style="border-radius:20px;  width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food1.jpg" alt="receltly_photo1">
 						</figure>
 					</div>
-						<div style="display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
+						<div style="border-radius:20px; display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
 						<figure>
-							<figcaption>추천음식 1</figcaption>
-							<img style="width:10rem; height:10rem; object-fit:cover;" src="/static/picture/jjun.jpg" alt="receltly_photo1">
+							<figcaption style="margin:0.3rem auto;">추천음식 2</figcaption>
+							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food2.jpg" alt="receltly_photo1">
 						</figure>
 					</div>
-						<div style="display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
+						<div style="border-radius:20px; display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
 						<figure>
-							<figcaption>추천음식 1</figcaption>
-							<img style="width:10rem; height:10rem; object-fit:cover;" src="/static/picture/jjun.jpg" alt="receltly_photo1">
+							<figcaption style="margin:0.3rem auto;">추천음식 3</figcaption>
+							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food3.jpg" alt="receltly_photo1">
 						</figure>
 					</div>
 					</div>

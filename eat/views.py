@@ -7,6 +7,7 @@ from django.http import Http404
 import urllib.request
 import pandas as pd
 import pymysql
+import numpy as np
 
 # 채은 : 페이지 접속 시 최초화면
 def index(request) :
@@ -112,7 +113,7 @@ def helthinfo(request, idx):
 
 
         # MySQL 데이터 가져오기
-        conn = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+        conn = pymysql.connect(host='ec2-43-200-16-33.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
         curs = conn.cursor()
         # 첫번째 쿼리문 : 그날 하루 먹었던 음식의 총 칼로리, 소금양
         sql = "SELECT `user_id`, date_format(`date`,'%m-%d') as `date`, TRUNCATE(SUM(`kcal`),-1) AS 'daily_kcal', TRUNCATE(SUM(`salt`),-1) AS 'daily_salt'  FROM eat_diet WHERE `user_id` = '" + idx + "' GROUP BY `date` ORDER BY -`date`;"
@@ -179,6 +180,7 @@ def helthinfo(request, idx):
 #
 # lista=["date","kcal","salt"]
 # values=[dict[a] for a in lista]
+
 
     # context = {'idx':idx, 'labels':food_labels,'kcal_data':food_kcal, 'salt_data':food_salt}
     context = {'mydata': daily_data, 'idx': idx, 'name': name_list, 'labels':date_list, 'kcal_data':kcal_list, 'salt_data':salt_list}
