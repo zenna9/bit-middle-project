@@ -1,6 +1,4 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 import pymysql
 from datetime import datetime
 from eat.models import login

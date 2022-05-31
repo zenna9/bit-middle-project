@@ -103,6 +103,7 @@ def helthinfo(request, idx):
             # 아이디의 날짜별 데이터
             # MySQL Connectrion 연결
             conn = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+            # conn = pymysql.connect(host='ec2-43-200-16-33.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
             # Connection 으로부터 결과를 얻어올때 사용할 cursor 생성
             curs = conn.cursor()
             # 쿼리문 작성
