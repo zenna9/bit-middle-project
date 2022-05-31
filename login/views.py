@@ -3,7 +3,8 @@ import pymysql
 from datetime import datetime
 from eat.models import login
 from django.views.decorators.csrf import csrf_exempt
-
+# mysql 계정정보
+from whateat.mysql import oursql
 
 
 
@@ -12,7 +13,8 @@ from django.views.decorators.csrf import csrf_exempt
 def logining(request):
     user_id = request.POST.get('user_id')
     password = request.POST.get('password')
-    con = pymysql.connect(host='ec2-43-200-16-33.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+
+    con = pymysql.connect(host=oursql.s_host, port=3306, user=oursql.s_user, passwd=oursql.s_passwd, db='bitteam2', charset='utf8')
     cursor = con.cursor(pymysql.cursors.DictCursor)
 
     stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"
