@@ -1,14 +1,14 @@
 from datetime import date
 from sre_constants import SUCCESS
-from winreg import QueryInfoKey
+# from winreg import QueryInfoKey
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+# from django.urls import reverse
 import pymysql
 from datetime import datetime
 from eat.models import login
-from django.contrib.auth import authenticate
+# from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
 
 

@@ -108,11 +108,11 @@ footer {
     font-family: 'NanumSquare', sans-serif !important; 
 } */
 
-.inputpasswd ::placeholder[type=password] {
+.inputpasswd  ::placeholder[type=password] {
     font-family: 'NanumSquare', sans-serif !important; 
 }
 
-.inputpasswd:focus[type=password] {
+.inputpasswd:focus  [type=password] {
     font-family: 'NanumSquare', sans-serif !important; 
 }
 

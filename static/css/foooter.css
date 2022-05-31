@@ -1,7 +1,8 @@
 
 footer{
     float: right;
-    position: fixed;
+    position: fixed; 
+    margin-top: 0px;
     bottom: 0em;
     width: 100%;
     right: 0%;
