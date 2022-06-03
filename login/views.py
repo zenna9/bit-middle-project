@@ -1,16 +1,11 @@
-from datetime import date
-from sre_constants import SUCCESS
-# from winreg import QueryInfoKey
+
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
-from django.contrib import messages
-from django.http import HttpResponseRedirect
-# from django.urls import reverse
 import pymysql
 from datetime import datetime
 from eat.models import login
-# from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
-
+# mysql 계정정보
+from whateat.mysql import oursql
 
 
 
@@ -19,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 def logining(request):
     user_id = request.POST.get('user_id')
     password = request.POST.get('password')
-    con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+    con = pymysql.connect(host=oursql.s_host, port=3306, user=oursql.s_user, passwd=oursql.s_passwd, db='bitteam2', charset='utf8')
     cursor = con.cursor(pymysql.cursors.DictCursor)
 
     stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"

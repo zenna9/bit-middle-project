@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+# mysql 계정정보
+from whateat.mysql import oursql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +16,8 @@ SECRET_KEY = 'django-insecure-j-cz@$2yr4uk5@m%0+b*_=w3vn7&%k!@po%0-83d*#y)26+x_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'localhost']
+# ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = oursql.serverhost
 
 
 # Application definition
@@ -69,9 +72,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bitteam2',
-        'USER': 'user1',
-        'PASSWORD': '1111',
-        'HOST': '192.168.0.29',
+        'USER': oursql.s_user,
+        'PASSWORD': oursql.s_passwd,
+        'HOST': oursql.s_host,
         'PORT': '3306'
 
 
@@ -115,12 +118,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 STATIC_ROOT = os.path.join('staticfiles') #collectstatics하려고 한거
-
-
-# 0510 STATIC 파일 모아주기 구문 추가
-STATIC_ROOT = os.path.join("staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

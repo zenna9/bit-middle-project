@@ -1,216 +1,226 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요-->
+<!--*{-->
+<!--        border: 1px solid red;-->
+<!--    }-->
+<!--    -->
 <style>
+.graph_container{
+  display:block;
+  width:600px;
+}
 *{
         border: 1px solid red;
     }
+/* Style the tab buttons */
+.tablink {
+  background-color: gray;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 17px;
+  width: 50%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Style each tab content individually */
+#London {background-color:#64D6FF;}
+#Paris {background-color:#73EAA8;}
+
     </style>
 <!-- CHART JS CDN LINK -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-<!--차트 js -->
+<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+
+<!-- 모바일 CSS적용 태그 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body>
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
 <!--	본문 CONTENTS		-->
-	<div class="container">
+	<div class="container" style="height:120vh">
 		<div class="row profile">
-<!--			사이드바-->
+<!--	프로필 사이드바 col-md-3 -->
 			<div class="col-md-3">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
 					{% include 'myprofile_sidebar.html' %}
 				</div>
 			</div>
-<!--			사이드바 마무리-->
-				<!--	컨텐츠 들어가는 칸 col-md-8 -->
+<!--	건강정보 컨텐츠 col-md-8 -->
 			<div class="col-md-9">
 <!--			회원정보 텍스트-->
-					<div style="height:auto; margin-top:1rem;">
-						<strong style="font-size:2rem;">고경준님의 건강 정보입니다.</strong>
+				<div class="row">
+					<div style="margin-top:1rem;">
+						<strong style="font-size:1.5rem;">{{name}}님의 건강 정보입니다.</strong>
 					</div>
-<!--				그래프 컨텐트-->
-					<div class="row" style="padding-left:1rem; padding-right:1rem;">
-<!--						그래프 메뉴바 -->
+				</div>
 
-<!--							첫번째 차트 들어가는 div-->
-						<ul class="nav nav-tabs korea_graph_tab">
-							<li class="nav-item">
-								<a class="nav-link">메뉴1</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link">메뉴2</a>
-							</li>
-						</ul>
-<!--						class="tab-pane fade in show active"-->
-						<div class="tab-pane fade in show active col-md-4" style="height:20rem;">
-							<canvas id='chartone'></canvas>
-						</div>
-							<div class="col-md-4" style="height:20rem;">
-							<canvas id='charttwo'></canvas>
-						</div>
-							<div class="col-md-4" style="height:20rem;">
-							<canvas id='chartthree'></canvas>
-						</div>
-						</div>
-<!--						차트가 끝나면서 하고싶었던 얘기하고싶어서요-->
-						<p>
-							<span>
-								내소신발언한마디
-							</span>
-						</p>
+<!--				그래프 컨텐트 메뉴바 -->
+				<div class="row">
+					<div id="London" class="tabcontent" style="padding:1rem; color:black;">
+						<h2>하루그래프</h2>
+						<p style="margin-bottom:0;">하룻동안 먹은 식사량의 탄단지 비율을 알려주어요</p>
+					</div>
 
-<!--			한끼 식사비율-->
-					<div style="height:2rem;">당신의 한끼 식사비율은</div>
+					<div id="Paris" class="tabcontent" style="padding:1rem; color:black;">
+						<h2>주간/월간 그래프</h2>
+						<p style="margin-bottom:0;">주간, 월간 먹은 식사량의 나트륨, 칼로리량을 알려주어요</p>
+					</div>
+					<button class="tablink" onclick="openCity('London', this, '#64D6FF')" id="defaultOpen">일간 그래프</button>
+					<button class="tablink" onclick="openCity('Paris', this, '#73EAA8')">주간/월간 그래프</button>
+				</div>
+<!--				그래프 컨텐트 차트 -->
+				<div class="row" style="padding: 1rem;">
+					<div class="tab-pane fade in show active col-md-4" >
+						<canvas id='chartone' style="width:20vw; height:20vh;"></canvas>
+					</div>
+					<div class="col-md-4" style="height:20vh;">
+							<canvas id='chartfour'></canvas>
+					</div>
+					<div class="col-md-4" style="height:20vh;">
+						<canvas id='chartthree'></canvas>
+					</div>
+				</div>
+<!--			한끼 식사비율 -->
+				<div class="row" style="padding:1rem;">
+					<div>
+						<h4>당신의 식사중 탄단지의 비율은?</h4>
+						<div style="display:block; width:100%; height:200px;">
+							<canvas id="myChart"></canvas>
+  						</div>
+					</div>
+				</div>
 <!--			부족한 영양소 멘트-->
-				<div class='row' style="margin:0 1rem 0 1rem; height:auto; text-align:center;">
-							<strong style="font-size:1.5rem;">당신은 채소류 섭취가더 필요하네요</strong>
+				<div class='row' style="border-radius:20px; background-color:#D3D3D3; padding:1rem; margin:0 1rem 0 1rem; height:auto; text-align:center;">
+							<strong style="font-size:1.5rem; margin-bottom:1rem;">당신은 채소류 섭취가더 필요하네요</strong>
 					<p>싱싱한 채소 섭취가 건강에 좋다는 건 누구나 아는 사실이지만
 						바쁜 일상 속에서 골고루 챙겨 먹기란 쉽지 않은 일이다.
 						하지만 육류나 인스턴트식품의 섭취 비율은 높은 반면
 						채소 섭취의 비율이 적어지게 되면 각종 질병에 노출되기 쉽다.</p>
 				</div>
 <!--			추천음식 정보 -->
-				<div class='row' style="text-align:center;">
-					<div style="margin:0 auto 0 auto;">
-						<div style="display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
-						<figure>
-							<figcaption>추천음식 1</figcaption>
-							<img style="width:10rem; height:10rem; object-fit:cover;" src="/static/picture/jjun.jpg" alt="receltly_photo1">
-						</figure>
+				<div class='row' style="text-align:center; margin-top:1rem;">
+					<div class="col-md-6">
+						<div style="border-radius:20px; background-color:#F5F5DC; width:100%; height:15rem;">
+							<div style="display:flex; float:left; flex-direction:column; justify-content:flex-start; padding-top:0.5rem; padding-left:0.5rem; ">
+								<strong style="margin-top:0.5rem;">먹은음식: 깻잎나물볶음</strong>
+								<strong style="margin-top:0.5rem;">권장량대비 섭취영양(%) :</strong>
+								<strong style="margin-top:0.5rem;">권장량대비 부족영양(%) :</strong>
+								<strong style="margin-top:0.5rem;">나에게 부족한 영양소 :</strong>
+								<strong style="margin-top:0.5rem;">부족한 영양소 추천음식: </strong>
+							</div>
+						</div>
 					</div>
-						<div style="display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
-						<figure>
+					<div class="col-md-3" style="display:flex; justify-content:center; align-items:center; ">
+						<div style="border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
+						<figure style="padding-top:0.5rem; padding-bottom:0.5rem;">
 							<figcaption>추천음식 1</figcaption>
-							<img style="width:10rem; height:10rem; object-fit:cover;" src="/static/picture/jjun.jpg" alt="receltly_photo1">
+							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food1.jpg" alt="receltly_photo1">
 						</figure>
+						</div>
 					</div>
-						<div style="display:inline-block; margin:1rem 2rem 1rem 1rem; width:15rem; height:auto; border:3px solid black;">
-						<figure>
-							<figcaption>추천음식 1</figcaption>
-							<img style="width:10rem; height:10rem; object-fit:cover;" src="/static/picture/jjun.jpg" alt="receltly_photo1">
+					<div class="col-md-3" style="display:flex; justify-content:center; align-items:center; ">
+						<div style="border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
+						<figure style="padding-top:0.5rem; padding-bottom:0.5rem;">
+							<figcaption>추천음식 2</figcaption>
+							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food2.jpg" alt="receltly_photo2">
 						</figure>
-					</div>
+						</div>
 					</div>
 				</div>
-<!--		컨텐츠바 마무리-->
+<!--			추천음식 정보 끝 -->
+			</div>
 		</div>
-		<pre>
-
-
-			
-
-		</pre>
+	</div>
+<!--	본문 CONTENTS 마무리  -->
     {% include 'footer.html' %}
-<!--chart 변수-->
-			<!-- const config = {-->
-<!--        type:'bar',-->
-<!--        data:{-->
-<!--            datasets:[{-->
-<!--                data:{{daily_kcal|safe}},-->
-<!--                backgoundColor:[-->
-<!--                    'red','orange','blue','yellow','green'-->
-<!--                ],-->
-<!--                label:'Label'-->
-<!--            }],-->
-<!--            labels: {{labels|safe}}-->
-<!--        },-->
-<!--        options:{-->
-<!--            scales:{-->
-<!--                responsive:true,-->
-<!--                y:{-->
-<!--                    beginAtZero:true-->
-<!--                }-->
-<!--            }-->
-<!--        },-->
-<!--    };-->
 
-<!--	window.onload = function() {-->
-<!--        const bar-chart = document.getElementById('bar-chart').getContext('2d');-->
-<!--        window.myBar = new Chart(bar-chart, config);-->
-<!--    };-->
+<!-- 차트 컨텐츠 JS-->
 <script>
 	let chartone = document.getElementById('chartone').getContext('2d');
-	let charttwo = document.getElementById('charttwo').getContext('2d');
+	let chartfour = document.getElementById('chartfour').getContext('2d');
 	let chartthree = document.getElementById('chartthree').getContext('2d');
 
 	let barChart = new Chart(chartone, {
-		type : 'bar',
-		data : {
-			labels : ['아침', '점심', '저녁'],
-			datasets : [{
-				label : '총 먹은 열량',
-				data : [
-					100,
-					200,
-					100
-				],
-				backgroundColor:[
-					'red',
-					'black',
-					'green']
-			}]
-		},
-		options : {
-			plugins : {
-				title : {
-					display : true,
-					text : '권장 섭취량',
-					fontSize : 16,
-					fontColor : 'red',
-					position:'bottom'
-				}
-			}
-		}
-	})
-
-	let barCharttwo = new Chart(charttwo, {
-		type : 'line',
+		type : 'pie',
 		data : {
 			labels : ['탄수화물', '단백질', '지방'],
 			datasets : [{
-				label : '영양분 비율',
-				data : [
-					300,
-					100,
-					200
-				]
+				label : '총 먹은 열량',
+				data : [100,200,100],
+				backgroundColor:["#F88FB2", "#ED5C8B", "#D5255E"]
 			}]
 		},
 		options : {
+			responsive:true,
+		 	maintainAspectRatio: false,
+			legend: {
+      			display: false  // <- the important part
+    		},
 			plugins : {
 				title : {
 					display : true,
-					text : '권장 섭취량',
+					text : '일일 영양균형',
 					fontSize : 16,
 					fontColor : 'red',
 					position:'bottom'
-				},
-				layout : {
-					padding: {
-						left : 10,
-						right : 10,
-						top: 40,
-						bottom : 0
-					}
 				}
 			}
 		}
-	})
+	});
+
+    let barChartfour = new Chart (chartfour, {
+		type : 'bar',
+		data : {
+			labels : {{labels|safe}},
+            datasets : [{
+            	label : '최근 업로드한 날짜의 염분 섭취양',
+            	data : {{salt_data|safe}},
+                backgroundColor : ["#97A1D9", "#6978C9", "#4A5596"],
+            }],
+        },
+        options : {
+		 	maintainAspectRatio: false,
+            scales : {
+                responsive : true,
+                y : {
+                    beginAtZero:true
+                }
+            }
+        }
+    });
+
 	let barChartthree = new Chart (chartthree, {
 		type : 'bar',
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
-            	label : 'Label',
+            	label : '최근 업로드한 날짜의 염분 칼로리양',
             	data : {{kcal_data|safe}},
-                backgoundColor : [
-                    'red','orange','blue','yellow','green'
-                ],
+                backgroundColor : ["#62BEB6", "#0B9A8D", "#077368"],
             }],
         },
         options : {
+        	maintainAspectRatio: false,
             scales : {
                 responsive : true,
                 y : {
@@ -220,43 +230,71 @@
         }
     });
 </script>
+<!--		하루 탄단지 비율 -->
+<script>
+	// setup block #all data
+	const labels =  ['당', '칼슘','마그네슘', '철', '아연', '콜레스트롤'];
+	const data = {
+		labels: labels,
+		datasets: [{
+			label: '오늘 하루 섭취한 나의영양분',
+			data: [12, 19, 3, 5, 2, 3, 8],
+			backgroundColor: ["#619ED6", "#6BA547", "#F7D027", "#E48F1B", "#B77EA3", "#E64345"],
+			borderColor: ["#619ED6", "#6BA547", "#F7D027", "#E48F1B", "#B77EA3", "#E64345"],
+			borderWidth: 1
+		}]
+	};
 
-			<!--		let barChartthree = new Chart(chartthree, {-->
-<!--		type : 'pie',-->
-<!--		data : {-->
-<!--			labels : ['비타민', '무기질', '콜레스테롤'],-->
-<!--			datasets : [{-->
-<!--				label : '부 영양소 비율',-->
-<!--				data : [-->
-<!--					300,-->
-<!--					100,-->
-<!--					200-->
-<!--				],-->
-<!--				backgroundColor:[-->
-<!--					'skyblue',-->
-<!--					'orange',-->
-<!--					'mint']-->
-<!--			}]-->
-<!--		},-->
-<!--		options : {-->
-<!--			plugins : {-->
-<!--				title : {-->
-<!--					display : true,-->
-<!--					text : '나의 영양소',-->
-<!--					fontSize : 16,-->
-<!--					fontColor : 'red',-->
-<!--					position:'bottom'-->
-<!--				},-->
-<!--				layout : {-->
-<!--					padding: {-->
-<!--						left : 10,-->
-<!--						right : 10,-->
-<!--						top: 40,-->
-<!--						bottom : 0-->
-<!--					}-->
-<!--				}-->
-<!--			}-->
-<!--		}-->
-<!--	})-->
+	// config block #options
+	const config ={
+		type: 'bar',
+		data,
+		options:{
+		 	responsive: true,
+			maintainAspectRatio: false,
+			indexAxis:'y',
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			},
+		}
+	};
+
+	// render block
+	const myChart = new Chart(
+		document.getElementById('myChart'),
+		config
+	);
+</script>
+
+<!-- 차트 컨텐츠 메뉴바 JS -->
+<script>
+function openCity(cityName, elmnt, color) {
+// Hide all elements with class="tabcontent" by default */
+
+	var i, tabcontent, tablinks;
+	tabcontent = document.getElementsByClassName("tabcontent");
+  	for (i = 0; i < tabcontent.length; i++) {
+    	tabcontent[i].style.display = "none";
+  	}
+
+// Remove the background color of all tablinks/buttons
+
+	tablinks = document.getElementsByClassName("tablink");
+	for (i = 0; i < tablinks.length; i++) {
+    	tablinks[i].style.backgroundColor = "";
+  	}
+
+// Show the specific tab content
+  document.getElementById(cityName).style.display = "block";
+
+// Add the specific color to the button used to open the tab content
+	elmnt.style.backgroundColor = color;
+	}
+
+// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+</script>
 </body>
 {% endblock %}

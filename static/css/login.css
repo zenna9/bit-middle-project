@@ -101,16 +101,19 @@ footer {
 
 }
 
+
 /* 비밀번호 클릭하기 전 CSS
 
-비밀번호 클릭했을때CSS
-.inputpasswd[type=password] :focus {
-    font-family: 'NanumSquare', sans-serif !important; 
-} */
+비밀번호 클릭했을때CSS */
+
 
 .inputpasswd  ::placeholder[type=password] {
     font-family: 'NanumSquare', sans-serif !important; 
 }
+
+/* input[type=password] { 
+    font-family: 'NanumSquare', sans-serif; 
+ */
 
 .inputpasswd:focus  [type=password] {
     font-family: 'NanumSquare', sans-serif !important; 
