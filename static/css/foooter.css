@@ -2,10 +2,11 @@
 footer{
     float: right;
     position: fixed; 
-    margin-top: 0px;
+    box-sizing: border-box;
     bottom: 0em;
     width: 100%;
     right: 0%;
+    padding: 1em 0em 0em 0em;
     background: white;
 
 }
