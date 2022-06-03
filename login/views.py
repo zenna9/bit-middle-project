@@ -3,7 +3,9 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404, redirec
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import pymysql
+from django.views.decorators.csrf import csrf_exempt
 from eat.models import login
+from datetime import datetime,date
 
 
 
@@ -12,7 +14,7 @@ from eat.models import login
 def logining(request):
     user_id = request.POST.get('user_id')
     password = request.POST.get('password')
-    con = pymysql.connect(host='ec2-43-200-16-33.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+    con = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
     cursor = con.cursor(pymysql.cursors.DictCursor)
 
     stmt = "SELECT user_id FROM eat_login WHERE user_id='{}' and password='{}'"

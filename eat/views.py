@@ -1,10 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
-
-import eat.models
-from eat.models import diet, login, imgs
-from django.db.models import Sum, F, Count, Case, When
-from django.http import Http404
-import urllib.request
+from django.shortcuts import render, get_object_or_404, get_list_or_404
+from eat.models import diet, login
+from django.db.models import Sum
 import pandas as pd
 import pymysql
 import numpy as np
@@ -72,6 +68,8 @@ def profile_allphoto(request, idx):
 
 def tutorial_page(request):
     return render(request, 'tutorial.html')
+
+
 def helthinfo(request, idx):
     chart_data = get_list_or_404(diet, user_id=idx)[:5]
     # 1. 어떤 아이디의 모든 영양 정보값 추출
@@ -87,23 +85,22 @@ def helthinfo(request, idx):
     food_salt= [] #salt 데이터
     all_data= [] #모든 데이터(테스트용)
 
+    #  연습1. 특정 아이디의 최근 입력한 데이터의 data, kcal, salt
     for foodinfo in chart_data:
         # 데이터 전처리
         # 날짜 데이터의 date타입을 str으로 변환
-        # after_date = (foodinfo.date).strftime('%Y-%m-%d')
         after_date = (foodinfo.date).strftime('%m-%d')
-        print(after_date, type(after_date))
 
         # kcal, salt 데이터 1의 자리 숫자 반올림
         food_data2 = round(foodinfo.kcal, -1)
         food_data3 = round(foodinfo.salt, -1)
 
-        # list append
+        # 테스트용 차트에 띄울 data
         food_labels.append(after_date)
         food_kcal.append(food_data2)
         food_salt.append(food_data3)
 
-        # alldata = 해당 아이디에 해당하는 최근 입력값
+        # alldata = 특정 아이디의 최근 식단 입력값
         all_data.append({
             "id": idx,
            "date": after_date,
@@ -111,49 +108,50 @@ def helthinfo(request, idx):
            "s_salt": food_data3,
         });
 
-
-        # MySQL 데이터 가져오기
-        conn = pymysql.connect(host='ec2-43-200-16-33.ap-northeast-2.compute.amazonaws.com', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+        # 연습2. MySQL 쿼리문으로 특정 아이디의 최근날짜 3일간 소금, 칼로리합
+        conn = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
         curs = conn.cursor()
         # 첫번째 쿼리문 : 그날 하루 먹었던 음식의 총 칼로리, 소금양
         sql = "SELECT `user_id`, date_format(`date`,'%m-%d') as `date`, TRUNCATE(SUM(`kcal`),-1) AS 'daily_kcal', TRUNCATE(SUM(`salt`),-1) AS 'daily_salt'  FROM eat_diet WHERE `user_id` = '" + idx + "' GROUP BY `date` ORDER BY -`date`;"
         curs.execute(sql)
-        # 실행결과 모두 읽어보기 fetch all
+        # 실행결과 모두 조회해서 dailyinfo에 저장
         dailyinfo = curs.fetchall()
+        # tuple => list 변환
+        data_list = [list(row) for row in dailyinfo]
+        # list => array 변환
+        data_list_np = np.array(data_list)  # ARRAY 자료구조
 
-        # 두번째 쿼리문 : 그날 하루 먹었던 음식의 총 칼로리, 소금양
+
+        # 두번째 쿼리문 : 특정 아이디의 이름값
         sql1 = "SELECT `user_name` FROM eat_login WHERE `user_id` = '" + idx + "';"
         curs.execute(sql1)
-        # 이름데이터 저장 네임테스트로 이름 저장
+        # 이름데이터 name test로 저장
         name_test = curs.fetchone()
         curs.close()
         conn.close()
-        # 이름데이터 tuple 에서 str 변환
+        # 이름데이터 tuple => str 변환
         name_list = ''.join(name_test)
-        # tuple 형태 데이터 list 변환
-        data_list=[list(row) for row in dailyinfo]
-        # list를 array 로 변환
-        data_list_np = np.array(data_list)
 
-        # 특정 아이디의 그날 먹은 총 칼로리와 염분섭취량
+        # 특정 아이디의 영양정보(칼로리, 염분섭취량) 와 이름 합치기
         daily_data = []
         a = len(data_list_np)
         b = range(a)
 
-        for i in b : # range(len(data_list_np) 데이터의 갯수
+        # 특정아이디의 가장 최근 3일의 영양데이터
+        for i in b : # range(len(data_list_np)
             if i > 2 :
-                break # 3개까지만 반복하고 나오기
+                break # 최대 3개까지 반복
             daily_data.append({
                 "id:": data_list_np[i][0],
                 "name": name_list,
                 "date": data_list_np[i][1],
                 "d_kcal": data_list_np[i][2],
                 "d_salt": data_list_np[i][3],
-            }) # 하루총 칼로리 소금 Dict형 데이터
-        print(daily_data, type(daily_data))
+            })
+        print('daily_data: ',daily_data, type(daily_data))
 
         # 차트에 반영할 데이터 따로 뽑기위한 코드
-        df=pd.DataFrame(daily_data)
+        df = pd.DataFrame(daily_data)
         # 날짜데이터
         date_list = df['date'].values.tolist()
         # kcal 데이터
@@ -161,28 +159,9 @@ def helthinfo(request, idx):
         # salt 데이터
         salt_list = df['d_salt'].values.tolist()
 
-#         # 한날짜의 데이터리스트
-#         어떤 한날짜의 총 염분, 칼로리 합친양을 보여주고싶으니까
-#         label을 날짜 하루로하고,
-#         data를 염분 칼로리로 해야되는데,
-#         첫번째 인덱스의 두번째 행을 찾고자 할때
-#         1. 특정 행의 데이터 찾기
-#         list[0],
-#
-#         2. 딕셔너리 리스트에서 특정 값 찾기 반복문
-#         for chartdata in  daily_data[0].values():
-#             print('차트데이터: ', chartdata)
-#
-#             3. 날짜 리스트를 만들어놓고 데이터 추가하기
-#             list = ["","",""]
-#  내가 찾으려는 키값을 리스트로 만들어놓고
-# 그거에 해당하는 dict를 만들수 있다.
-#
-# lista=["date","kcal","salt"]
-# values=[dict[a] for a in lista]
-
 
     # context = {'idx':idx, 'labels':food_labels,'kcal_data':food_kcal, 'salt_data':food_salt}
+    #  기존에 임시로 띄어놓은 차트에 해당하는 데이터 가져오기
     context = {'mydata': daily_data, 'idx': idx, 'name': name_list, 'labels':date_list, 'kcal_data':kcal_list, 'salt_data':salt_list}
     print(context, type(context))
     return render(request, 'helth.html', context)
