@@ -13,7 +13,6 @@ from whateat.mysql import oursql
 def logining(request):
     user_id = request.POST.get('user_id')
     password = request.POST.get('password')
-
     con = pymysql.connect(host=oursql.s_host, port=3306, user=oursql.s_user, passwd=oursql.s_passwd, db='bitteam2', charset='utf8')
     cursor = con.cursor(pymysql.cursors.DictCursor)
 
