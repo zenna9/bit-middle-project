@@ -102,32 +102,29 @@ footer {
 }
 
 
-/* 비밀번호 클릭하기 전 CSS
 
-비밀번호 클릭했을때CSS */
-
-
-.inputpasswd  ::placeholder[type=password] {
-    font-family: 'NanumSquare', sans-serif !important; 
-}
-
-/* input[type=password] { 
-    font-family: 'NanumSquare', sans-serif; 
- */
-
-.inputpasswd:focus  [type=password] {
-    font-family: 'NanumSquare', sans-serif !important; 
-}
 
 /* 변경전 CSS */
 /* input[type=password] { 
-    font-family: 'NanumSquare', sans-serif; 
+    font-family: NanumSquare, sans-serif; 
+}  */
+
+
+/* 비밀번호 클릭하기 전 CSS*/
+/* .inputpasswd ::placeholder [type=password] {
+    font-family: 'NanumSquare', sans-serif !important ; 
 } */
 
-/* footer{ position: ;
-    left:0px; 
-    bottom: 0px;
-    height:60px; 
-    width: 100%;}  */
+/* 비밀번호 클릭했을때CSS */
+/* .inputpasswd :focus [type=password] {
+    font-family: 'NanumSquare', sans-serif !important ; 
+} */
 
+
+input[type=password] {font-family:'Malgun gothic', dotum, sans-serif;}
+
+::placeholder { 
+    font-family: 'NanumSquare', sans-serif;
+    color: #888
+    }
   
