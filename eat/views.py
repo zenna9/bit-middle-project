@@ -1,9 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
-import eat.models
 from eat.models import diet, login, imgs
 from django.db.models import Sum, F, Count, Case, When
-from django.http import Http404
-import urllib.request
 import pandas as pd
 import pymysql
 import numpy as np
@@ -13,14 +10,11 @@ from whateat.mysql import oursql  # mysql 계정정보
 def index(request) :
     return render(request, 'login.html')
 
-# 채은 : 로그인한 메인화면 ==(데이터 있는 경우 try, 없는 경우 except)====================
-
+# 채은 : 로그인한 메인화면 ==(if 데이터 있는 경우 , 없는경우)===================
 def logindone(request,date):
-    # try :
         idx = request.session['idx']
         # dietlist = get_list_or_404(diet, user_id=idx, date=date)
         dietlist = diet.objects.filter(user_id=idx, date=date)
-        print("this is dietlist : =========", dietlist)
         if dietlist.exists():
             loginn = get_object_or_404(login, user_id=idx)
             sums = diet.objects.filter(date=date).filter(user_id=idx).aggregate(Sum('tan'))

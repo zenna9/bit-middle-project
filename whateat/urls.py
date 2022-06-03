@@ -11,5 +11,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='tutorial.html'), name='tutorial'),
     path('lg/', include ('login.urls')),
     path('m/', include('eat.urls')),
+    # path('accounts/', include('allauth.urls')), #채은 : 구글 로그인기능
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

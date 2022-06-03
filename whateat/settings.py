@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from telnetlib import AUTHENTICATION
 # mysql 계정정보
 from whateat.mysql import oursql
 
@@ -19,9 +20,6 @@ DEBUG = True
 # ALLOWED_HOSTS = ['*', 'localhost']
 ALLOWED_HOSTS = oursql.serverhost
 
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -33,7 +31,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'eat.apps.EatConfig',
     'analysis_photo.apps.AnalysisPhotoConfig',
-    'login.apps.LoginConfig'
+    'login.apps.LoginConfig',
+    # # 채은 : 로그인기능 구현을 위한 앱==
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
+    # #
 ]
 
 MIDDLEWARE = [
@@ -134,3 +139,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# 채은 : 구글로그인 기능을 위한 구문 추가
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend', 
+#     'allauth.account.auth_backends.AuthenticationBackend',
+
+# )
+# SITE_ID = 1
+
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
+# LOGIN_REDIRECT_URL = 'm/ain'
+# ======================================
