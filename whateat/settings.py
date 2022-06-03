@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+# mysql 계정정보
+from whateat.mysql import oursql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,8 +16,8 @@ SECRET_KEY = 'django-insecure-j-cz@$2yr4uk5@m%0+b*_=w3vn7&%k!@po%0-83d*#y)26+x_t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['*', 'localhost']
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+# ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = oursql.serverhost
 
 
 # Application definition
@@ -70,9 +72,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bitteam2',
-        'USER': 'user1',
-        'PASSWORD': '1111',
-        'HOST': '192.168.0.29',
+        'USER': oursql.s_user,
+        'PASSWORD': oursql.s_passwd,
+        'HOST': oursql.s_host,
         'PORT': '3306'
 
 

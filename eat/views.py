@@ -1,9 +1,13 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404
-from eat.models import diet, login
-from django.db.models import Sum
+from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
+import eat.models
+from eat.models import diet, login, imgs
+from django.db.models import Sum, F, Count, Case, When
+from django.http import Http404
+import urllib.request
 import pandas as pd
 import pymysql
 import numpy as np
+from whateat.mysql import oursql  # mysql 계정정보
 
 # 채은 : 페이지 접속 시 최초화면
 def index(request) :
@@ -37,8 +41,6 @@ def logindone(request,date):
         else : 
             context = {'idx':idx,'date':date}
             return render(request, 'index_null.html', context)
-    # except :
-    # except diet.objects.filter(user_id=idx, date=date).DoesNotExist:
 
 # 경준
 def team_index(request):
@@ -106,10 +108,12 @@ def helthinfo(request, idx):
            "date": after_date,
            "s_kcal": food_data2,
            "s_salt": food_data3,
-        });
+        })
 
-        # 연습2. MySQL 쿼리문으로 특정 아이디의 최근날짜 3일간 소금, 칼로리합
-        conn = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+        # 경준 MySQL 쿼리문으로 특정 아이디의 최근날짜 3일간 소금, 칼로리합
+        # conn = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+        # MySQL 데이터 가져오기
+        conn = pymysql.connect(host=oursql.s_host, port=3306, user=oursql.s_user, passwd=oursql.s_passwd, db='bitteam2', charset='utf8')
         curs = conn.cursor()
         # 첫번째 쿼리문 : 그날 하루 먹었던 음식의 총 칼로리, 소금양
         sql = "SELECT `user_id`, date_format(`date`,'%m-%d') as `date`, TRUNCATE(SUM(`kcal`),-1) AS 'daily_kcal', TRUNCATE(SUM(`salt`),-1) AS 'daily_salt'  FROM eat_diet WHERE `user_id` = '" + idx + "' GROUP BY `date` ORDER BY -`date`;"
