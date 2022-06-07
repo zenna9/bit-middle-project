@@ -105,7 +105,6 @@ def helthinfo(request, idx):
         })
 
         # 경준 MySQL 쿼리문으로 특정 아이디의 최근날짜 3일간 소금, 칼로리합
-        # conn = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
         # MySQL 데이터 가져오기
         conn = pymysql.connect(host=oursql.s_host, port=3306, user=oursql.s_user, passwd=oursql.s_passwd, db='bitteam2', charset='utf8')
         curs = conn.cursor()

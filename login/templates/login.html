@@ -17,9 +17,9 @@
         <title>Document</title>
 
         <style>
-            *{
+            /* *{
                 border: 1px solid red;
-                }
+                } */
 
             footer{
              float: auto; padding-top: 5px;;
@@ -79,33 +79,6 @@
               </form>
             </div>
 
-            <div class="row">
-
-                <!-- 구글 아이디로 로그인 -->
-                {% load socialaccount %}
-                <div class="row">
-                    <a role="button" class="btn btn-outline-dark btn-block btn-lg" href="{%provider_login_url 'google' %}">
-                        구글 계정으로 로그인하기
-                    </a>
-                </div>
-                <div class="g-signin2 w-75 mb-3 centered" data-onsuccess="onSignIn" data-theme="dark"></div>
-                <script>
-                function onSignIn(googleUser) {
-                    // Useful data for your client-side scripts:
-                    var profile = googleUser.getBasicProfile();
-                    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                    // console.log('Full Name: ' + profile.getName());
-                    // console.log('Given Name: ' + profile.getGivenName());
-                    // console.log('Family Name: ' + profile.getFamilyName());
-                    // console.log("Image URL: " + profile.getImageUrl());
-                    // console.log("Email: " + profile.getEmail());
-            
-                    // The ID token you need to pass to your backend:
-                    var id_token = googleUser.getAuthResponse().id_token;
-                    // console.log("ID Token: " + id_token);
-                }
-                </script>
-            </div>
             <!-- 회원가입 권유와 회원가입  -->
             <div class="row">
 
