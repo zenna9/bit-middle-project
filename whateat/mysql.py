@@ -20,6 +20,6 @@ class oursql():
     # s_host = '127.0.0.1'
     # s_port = 3306
     # s_user = 'root'
-    # s_passwd='00000'
+    # s_passwd='000000'
 
 

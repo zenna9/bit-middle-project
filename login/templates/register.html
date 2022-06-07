@@ -53,9 +53,11 @@
               <p id="zen-impos2">아이디를 4자 이상 입력 해 주세요</p>
           </div>
           <form name="idcheck">
+            <input hidden="hidden"/>
               <input type="text" id="inputid">
               <div id="idlist" style="display: none;">{{idxs}}</div>
-              <br><input type="button" id="zen-checkbtn" value="중복체크"/>
+
+              <br><button type="button" id="zen-checkbtn">중복체크</button>
               <div class="padtop30">
                   <input type="button" id="zen-possi2" value="사용하기">
               </div>
