@@ -255,26 +255,3 @@ details[open] > summary ~ * {
      transition: 0.2s
  }
 
-/* TUTORIAL 영어글씨 페이지 */
-
-.k_font {
-    font-family: 'Lobster', cursive;
-    }
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Source+Serif+Pro:ital@1&display=swap');
-@font-face {
-    font-family: 'GowunBatang-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-.k_font1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-family: 'Source Serif Pro', serif;
-    }
-
-.k_font2 {
-    font-family: 'GowunBatang-Regular';
-    font-weight: 1000;
-
-}

@@ -1,0 +1,58 @@
+/* TUTORIAL 페이지 */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Source+Serif+Pro:ital@1&display=swap');
+
+.t_font {
+    font-family: 'Jeju Gothic';
+    }
+
+.k_font {
+    font-family: 'Lobster', cursive;
+    }
+
+@font-face {
+    font-family: 'GowunBatang-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.k_font1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Source Serif Pro', serif;
+    }
+
+.k_font2 {
+    font-family: 'GowunBatang-Regular';
+    font-weight: 1000;
+    font-size:2rem;
+    color:black;
+}
+
+
+.profile_content{
+    padding:1rem 1rem 1rem 1.5rem
+}
+
+.tutorial_font {
+    font-size:5rem;
+    font-weight:1000;
+    color:black !important;
+    margin-bottom:2rem;
+}
+
+@media (max-width: 769px) {
+    .tutorial_font {
+        font-size:4rem;
+        font-weight:1000;
+        margin-bottom:2rem;
+    }
+
+    .k_font2 {
+        font-family: 'GowunBatang-Regular';
+        font-weight: 1000;
+        font-size:2rem;
+        color:black;
+        text-align:center;
+        word-break: keep-all;
+    }
+}
