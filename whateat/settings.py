@@ -136,16 +136,3 @@ STATIC_ROOT = os.path.join('staticfiles') #collectstatics하려고 한거
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# 채은 : 구글로그인 기능을 위한 구문 추가
-# AUTHENTICATION_BACKENDS = (
-#     'django.contrib.auth.backends.ModelBackend', 
-#     'allauth.account.auth_backends.AuthenticationBackend',
-
-# )
-# SITE_ID = 1
-
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_EMAIL_VERIFICATION = 'none'
-# LOGIN_REDIRECT_URL = 'm/ain'
-# ======================================

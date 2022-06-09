@@ -1,18 +1,11 @@
 from distutils.command.upload import upload
-from mmap import mmap
 from django.shortcuts import get_list_or_404, render, get_object_or_404, redirect
 from eat import models
 from eat.models import imgs, diet
 from analysis_photo.models import menu
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from pathlib import Path
-from analysis_photo.yolo.foopoDetect import runs
-from django.urls import resolve
-import types
-import os
-
-DL_DIR = Path(__file__).resolve().parent.parent
+from analysis_photo.yolo.yolos import yolo
 
 # 채은 : 메인 페이지에서 사진 업로드 버튼을 눌렀을 경우, 
 #   sql photo 테이블에 사진 정보 저장 
@@ -37,7 +30,7 @@ def f_fu(request):
 # 채은 : 사진 인덱스를 받아와 인식결과, 추가등록을 할 수 있는 페이지로 이동
 def f_hp(request, b_hc_id):
     b_hc = get_object_or_404(imgs, id=b_hc_id)
-    
+
     # 성균 yolo + resnet 백엔드
     previous_url = request.META['HTTP_REFERER'] # 이전 경로의 url가져오기 
     # current_url = request.path
