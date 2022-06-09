@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- 최초작업 : 덕현 
-    반응형 CSS 적용 : 채은 - 8 -->
+<!--최초작업 : 채은
+    중간수정 : 덕현 
+    반응형 CSS 적용 : 채은 - css no.8 -->
 
 <link rel="stylesheet" href="/static/css/your_photo.css" />
 <link rel="stylesheet" href="/static/css/index.css" />
 <script src="/static/js/index.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- <style> 
-        *{
+<script src="/static/js/food_check.js"></script>
+    <style> 
+        /* *{
             border: 1px solid red;
-        }
-    </style> -->
+        } */
+    </style>
 
 </head>
 <body>
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
-    <div class="container-fluid zen-container-81" style="">
+    <div class="container-fluid zen-container-81">
         <!-- 상단바 ============================ -->
         <div class="row" style="margin: 0;padding: 0;"></div>
         <div class="row">
@@ -65,10 +66,10 @@
                                     <tr>
                                         <td>{{forloop.counter}}</td>
                                         <td>
-                                            <input type="text" name='ai_'+{{forloop.counter|stringformat:"s"}}, value={{key}} class ="zen-box81"/>
+                                            <input type="text" name='ai_{{forloop.counter|stringformat:"s"}}', value={{key}} class ="zen-box81"/>
                                         </td>
                                         <td>
-                                            <input type="text" name='ai_g'+{{forloop.counter|stringformat:"s"}}, value={{value}} class ="zen-box82"/>g
+                                            <input type="text" name='ai_g{{forloop.counter|stringformat:"s"}}', value={{value}} class ="zen-box82"/>g
                                         </td>
                                     </tr>
                                     {% endfor %}
@@ -147,11 +148,6 @@
         </div>
 
     </div>
-    <pre>
-
-      
-        
-    </pre>
     <!--	FOOTER		-->
     {% include 'footer.html' %}
 

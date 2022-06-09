@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from telnetlib import AUTHENTICATION
 # mysql 계정정보
 from whateat.mysql import oursql
 
@@ -19,7 +20,6 @@ DEBUG = True
 # ALLOWED_HOSTS = ['127.0.0.1','localhost']
 ALLOWED_HOSTS = oursql.serverhost
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -31,7 +31,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'eat.apps.EatConfig',
     'analysis_photo.apps.AnalysisPhotoConfig',
-    'login.apps.LoginConfig'
+    'login.apps.LoginConfig',
+    # # 채은 : 로그인기능 구현을 위한 앱==
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
+    # #
 ]
 
 MIDDLEWARE = [
@@ -129,4 +136,3 @@ STATIC_ROOT = os.path.join('staticfiles') #collectstatics하려고 한거
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-

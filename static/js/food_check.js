@@ -1,0 +1,5 @@
+function checkme(){
+
+    alert('why....')
+}
+
