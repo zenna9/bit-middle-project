@@ -61,7 +61,10 @@ def f_hp(request, b_hc_id):
         # 생성시간 역순으로 정렬하고, 
     sorted_file_lst = sorted(file_name_and_time_lst, key=lambda x: x[1])
     # 가장 앞에 이는 놈을 넣어준다.
-    recent_file = sorted_file_lst[-1][0]
+    if len(sorted_file_lst) !=0:
+        recent_file = sorted_file_lst[-1][0]
+    else:
+        recent_file=''
     
     
     opt=types.SimpleNamespace()
