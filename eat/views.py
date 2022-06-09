@@ -9,6 +9,7 @@ import pymysql
 import numpy as np
 from whateat.mysql import oursql  # mysql 계정정보
 from datetime import datetime # 경준-0607 건강정보 페이지에서 Footer 이동하려고 만든거
+from eat.recommend import recommend_food
 
 # 채은 : 페이지 접속 시 최초화면
 def index(request) :
@@ -212,11 +213,20 @@ def helthinfo(request):
     percent_data =list(food_percent_data[0].values())
     print('percent_label', percent_label, type(percent_label))
     print('percent_data',percent_data, type(percent_data))
-
-
-    # 추천음식 데이터 recommend_data={{yolo}}
+    percent_data = [round(float(percent_data[i])) for i in range(len(percent_data))]
+    lack_percent = [round(100-(percent_data[i])) for i in range(len(percent_data))]
+    
+    # 성균 : 음식추천 모듈 가져와서 리턴값에 업데이트
+    rcfoodsinfo=recommend_food()
+    # 리턴값: {영양성분 이름 / 권장량대비 섭취영양 / 권장량대비 부족영양 / 부족영양소 (2종) / 부족영양소 별 추천읍식 (2종)}
+    # 리턴값구성 - recommend_data= {'nameAndEatNf': nameAndEatNf, 'nameAndLackNf': nameAndLackNf, \
+    #      'lackNf_dec':[r1,r2], 'recommend_p': [r1_recommend.index[0],r2_recommend.index[0]]}
+    
+    # 추천음식 데이터 recommend_data={{ key값 }}
     # context = {'idx':idx, 'labels':food_labels,'kcal_data':food_kcal, 'salt_data':food_salt}
     #  기존에 임시로 띄어놓은 차트에 해당하는 데이터 가져오기
     context = {'mydata': daily_data, 'date':date,'idx': idx, 'name': name_list, 'labels':date_list, 'kcal_data':kcal_list,
-               'salt_data':salt_list, 'chart_data':percent_data,'chart_label':percent_label,'name':username}
+               'salt_data':salt_list, 'chart_data':f'탄({percent_data[0]}), 단({percent_data[1]}), 지({percent_data[2]})',
+               'chart_label':percent_label,'name':username, 'lack_data': f'탄({lack_percent[0]}), 단({lack_percent[1]}), 지({lack_percent[2]})'}
+    context.update(rcfoodsinfo)
     return render(request, 'helth.html', context)
