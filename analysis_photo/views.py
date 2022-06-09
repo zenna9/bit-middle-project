@@ -1,12 +1,18 @@
 from distutils.command.upload import upload
+from mmap import mmap
 from django.shortcuts import get_list_or_404, render, get_object_or_404, redirect
 from eat import models
 from eat.models import imgs, diet
 from analysis_photo.models import menu
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from analysis_photo.yolo.yolos import yolo
+from pathlib import Path
+from analysis_photo.yolo.foopoDetect import runs
+from django.urls import resolve
+import types
+import os
 
+DL_DIR = Path(__file__).resolve().parent.parent
 # 채은 : 메인 페이지에서 사진 업로드 버튼을 눌렀을 경우, 
 #   sql photo 테이블에 사진 정보 저장 
 def f_fu(request):
