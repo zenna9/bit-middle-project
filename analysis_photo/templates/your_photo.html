@@ -60,15 +60,18 @@
                                         <th style="width: 50%">음식이름</th>
                                         <th style="width: 30%">중량</th>
                                     </tr>
+                                    <!-- 성균: 딥러닝 분석결과 for문 쿼리 -->
+                                    {% for key,value in yolo.items %}
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{forloop.counter}}</td>
                                         <td>
-                                            <input type="text" name="ai_1" value="김치볶음밥" class ="zen-box81"/>
+                                            <input type="text" name='ai_'+{{forloop.counter|stringformat:"s"}}, value={{key}} class ="zen-box81"/>
                                         </td>
                                         <td>
-                                            <input type="text" name="ai_g1" value="230" class ="zen-box82"/>g
+                                            <input type="text" name='ai_g'+{{forloop.counter|stringformat:"s"}}, value={{value}} class ="zen-box82"/>g
                                         </td>
                                     </tr>
+                                    {% endfor %}
                                 </table>
                             </div>
                         
