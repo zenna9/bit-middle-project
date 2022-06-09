@@ -5,7 +5,6 @@ from analysis_photo.models import menu
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-
 # 채은 : 메인 페이지에서 사진 업로드 버튼을 눌렀을 경우, 
 #   sql photo 테이블에 사진 정보 저장 
 def f_fu(request):
@@ -44,13 +43,13 @@ def f_upload_at_sql(request):
             if (request.POST['ai_{}'.format(i)] != ''):
                 # print(request.POST['ai_{}'.format(i)])            
                 menulist.append([(request.POST['ai_{}'.format(i)]),int(request.POST['ai_g{}'.format(i)])])
-        except : print('첫번째가 이;상해')
+        except : print('입력값 받아오는 중 오류 발생')
     for i in range(1, 5):
         try:
             if (request.POST['sl_{}'.format(i)] != ''):
                 # print(request.POST['sl_{}'.format(i)])            
                 menulist.append([(request.POST['sl_{}'.format(i)]),int(request.POST['sl_g{}'.format(i)])])
-        except : print('2번째가 이상하대')
+        except : print('입력값 받아오는 중 오류 발생')
 
     diets = diet()
     diets.user_id = request.POST['idx']
@@ -64,7 +63,6 @@ def f_upload_at_sql(request):
     for i in range(0, len(menulist)) :
         datalist = get_object_or_404(menu, food_name=menulist[i][0])
         datalistToList = [datalist.kcal,datalist.tan,datalist.dang,datalist.ji,datalist.dan,datalist.kalsum,datalist.inn,datalist.salt,datalist.kalum, datalist.magnesum, datalist.chul,datalist.ayeon,datalist.kolest,datalist.transfat]
-
         for k in range(len(nutrlist)):
             nutrlist[nuKeyList[k]]= nutrlist[nuKeyList[k]] + (datalistToList[k] / datalist.basic_g * menulist[i][1])
 
