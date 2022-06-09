@@ -63,6 +63,7 @@ def f_hp(request, b_hc_id):
     # 가장 앞에 이는 놈을 넣어준다.
     recent_file = sorted_file_lst[-1][0]
     
+    
     opt=types.SimpleNamespace()
     opt.agnostic_nms=False
     opt.augment=False
