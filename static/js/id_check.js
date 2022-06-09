@@ -1,3 +1,4 @@
+// 채은 : 아이디 중복체크 팝업 띄우는 js
 function hideordisplay(display, hide){
     let t1 = display;
     let f1 = hide;
@@ -10,27 +11,20 @@ function hideordisplay(display, hide){
         f.style.display = 'none';
     }
 }
+
+// 채은 : 아이디 중복체크하는 js
 var arr = document.getElementById('idlist').innerText;
-// function letsdoidcheck(arr){
 document.getElementById("zen-checkbtn").onclick=function(){
-    // console.log("진입")
-    console.log("어레이리스트는",arr);
     let yourid = String(document.idcheck.inputid.value);
     if (arr.indexOf("'"+yourid+"'")>=0) {
-        console.log("입력한 아이디는",yourid);
-        console.log(arr.indexOf("'"+yourid+"'"));
         hideordisplay(['zen-impos1'],['zen-impos2','zen-possi1', 'zen-possi2'])
-        
     } else if (yourid.length <=3) {
-        // document.getElementById('zen-impos2').style.display = 'block';
         hideordisplay(['zen-impos2'],['zen-impos1','zen-possi1', 'zen-possi2'])
     } else {
         hideordisplay(['zen-possi1', 'zen-possi2'],['zen-impos1','zen-impos2'])
-        // document.getElementById('zen-possi1').style.display = 'block';
-        // document.getElementById('zen-possi2').style.display = 'block';
     }
 }
-
+//채은 : 중복체크 끝난 아이디를 회원가입 폼에 다시 가져다주는 js
 document.getElementById("zen-possi2").onclick=function(){
     willbeyourid= document.getElementById('inputid').value;
     document.getElementById('username').value = willbeyourid
