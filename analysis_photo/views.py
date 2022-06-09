@@ -63,7 +63,7 @@ def f_hp(request, b_hc_id):
     opt.agnostic_nms=False
     opt.augment=False
     opt.classes=None
-    opt.conf_thres=0.1  # prediction 정확도 threshold를 조절가능하다
+    opt.conf_thres=0.2  # prediction 정확도 threshold를 조절가능하다
     opt.data= DL_DIR / 'analysis_photo/yolo/data.yaml'
     opt.device=''
     opt.dnn=False
@@ -104,12 +104,14 @@ def f_upload_at_sql(request):
             if (request.POST['ai_{}'.format(i)] != ''):
                 # print(request.POST['ai_{}'.format(i)])            
                 menulist.append([(request.POST['ai_{}'.format(i)]),int(request.POST['ai_g{}'.format(i)])])
+            else : break
         except : print('첫번째가 이;상해',menulist)
     for i in range(1, 10):
         try:
             if (request.POST['sl_{}'.format(i)] != ''):
                 # print(request.POST['sl_{}'.format(i)])            
                 menulist.append([(request.POST['sl_{}'.format(i)]),int(request.POST['sl_g{}'.format(i)])])
+            else : break
         except : print('입력값 받아오는 중 오류 발생')
 
     diets = diet()

@@ -66,10 +66,10 @@
                                     <tr>
                                         <td>{{forloop.counter}}</td>
                                         <td>
-                                            <input type="text" name='ai_'+{{forloop.counter|stringformat:"s"}}, value={{key}} class ="zen-box81"/>
+                                            <input type="text" name='ai_{{forloop.counter|stringformat:"s"}}', value={{key}} class ="zen-box81"/>
                                         </td>
                                         <td>
-                                            <input type="text" name='ai_g'+{{forloop.counter|stringformat:"s"}}, value={{value}} class ="zen-box82"/>g
+                                            <input type="text" name='ai_g{{forloop.counter|stringformat:"s"}}', value={{value}} class ="zen-box82"/>g
                                         </td>
                                     </tr>
                                     {% endfor %}
