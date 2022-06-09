@@ -57,7 +57,7 @@
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
 <!--	본문 CONTENTS		-->
-	<div class="container" style="height:120vh">
+	<div class="container" style="height:150vh">
 		<div class="row profile">
 <!--	프로필 사이드바 col-md-3 -->
 			<div class="col-md-3">
@@ -123,10 +123,10 @@
 						<div style="border-radius:20px; background-color:#F5F5DC; width:100%; height:15rem;">
 							<div style="display:flex; float:left; flex-direction:column; justify-content:flex-start; padding-top:0.5rem; padding-left:0.5rem; ">
 								<h5 style="margin-top:0.5rem;">하루 탄단지 비율 : {{chart_data}}</h5>
-								<h5 style="margin-top:0.5rem;">권장량대비 섭취영양(%) : </h5>
-								<h5 style="margin-top:0.5rem;">권장량대비 부족영양(%) :</h5>
-								<h5 style="margin-top:0.5rem;">나에게 부족한 영양소 : </h5>
-								<h5 style="margin-top:0.5rem;">부족한 영양소 추천음식: </h5>
+								<h5 style="margin-top:0.5rem;">권장량대비 섭취영양(%) : {{chart_data}}</h5>
+								<h5 style="margin-top:0.5rem;">권장량대비 필요영양(%) : {{lack_data}}</h5>
+								<h5 style="margin-top:0.5rem;">나에게 부족한 영양소 : {{lackNf_dec}}</h5>
+								<h5 style="margin-top:0.5rem;">부족한 영양소 추천음식: {{recommend_p}}</h5>
 							</div>
 						</div>
 					</div>
