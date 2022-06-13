@@ -1,12 +1,13 @@
 import pandas as pd
 import numpy as np
 import random
+from pathlib import Path
+DB_DIR = Path(__file__).resolve().parent.parent
 
 # 성균: sql연동전이며 그전까지 랜덤매뉴의 연산으로 대체함
 def recommend_food():
     # 영양DB와 분류정보 음식명 일치
-    db_file='E:/food_dataset1/음식 이미지 및 영양정보 텍스트/칼로리데이터셋/영양DB.csv'
-    df_nDB = pd.read_csv(db_file,dtype=str)
+    df_nDB = pd.read_csv(DB_DIR /'analysis_photo/yolo/nutrient_DB.csv',dtype=str)
 
     N_DB_lst=df_nDB.values.tolist()
     
