@@ -41,10 +41,8 @@ function tag () {
 //     // thiss.width = pers;
 //     // console.log('pers');
 // }
-function gosubmit() {
-  console.log('접근은 함');
+function gosubmit() { // topbar의 사진업로드 실행
   let dd = document.getElementById('form_to_upload');
-  console.log(dd);
   dd.submit();
 }
 
@@ -61,3 +59,35 @@ function addfood(nu){
   var obj = document.getElementById(nu)
   obj.style.display="inline-table";
 }
+
+// 3-1: sidebar submit시 사진 없으면 경고하는 부분
+const submitform = document.querySelector("#photoform");
+
+submitform.addEventListener("submit",submitPhoto)
+
+function changeFormText(ment){ // if false이면 박스에 멘트 띄우는 내용
+  const formText = submitform.querySelector("#ment");
+  formText.innerHTML = ment
+  formText.style.backgroundColor = '#FA5882';
+  formText.style.color = "#ffffff"
+}
+
+function submitPhoto(event){
+  event.preventDefault();
+  const imgInput = submitform.querySelector("#file").value;
+  const urllen = (imgInput).indexOf(".")+1;
+
+  //파일의 확장자 자른거
+  const fileFormat = imgInput.substr(urllen,imgInput.length);
+
+  //사용가능한 포맷 리스트
+  const possibleFormat = ['bmp', 'dng', 'jpeg', 'jpg', 'mpo', 'png', 'tif', 'tiff', 'webp']
+  if(imgInput=== ""){
+    changeFormText("사진을 먼저 첨부해주세요");
+  }else if(!(possibleFormat.includes(fileFormat))){
+    changeFormText("분석 가능한 확장자 : <br>bmp, dng, jpeg, jpg, mpo, png, tif, tiff, webp");
+  }else {
+    submitform.submit();
+  }
+}
+//종료 3-1
