@@ -114,7 +114,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         
 
 def predict2(image_path, model, topk=5):
-    img = Image.open(image_path)
+    img = Image.open(image_path).convert('RGB')
     img = process_image(img)
 
     img = np.expand_dims(img, 0)
