@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from pathlib import Path
 from analysis_photo.yolo.foopoDetect import runs
+from analysis_photo.resnet.resnet_test_t import classPred
 import types
 import os
 
@@ -54,7 +55,7 @@ def f_hp(request, b_hc_id):
     # 가장 앞에 이는 놈을 넣어준다.
     recent_file = sorted_file_lst[-1][0]
     
-    
+    #yolov5s
     opt=types.SimpleNamespace()
     opt.agnostic_nms=False
     opt.augment=False
@@ -86,6 +87,13 @@ def f_hp(request, b_hc_id):
 
     yolo_return=runs(**vars(opt))
     
+    #resnet-18
+    resnet_return = classPred(recent_file)
+
+    for i in range(len(list(yolo_return.keys()))):
+        f_weight=round(list(yolo_return.values())[i]*resnet_return[0][i]*0.25)
+        yolo_return[list(yolo_return.keys())[i]]=f_weight
+    # print(resnet_return)
     context = {'k_hc': b_hc, 'idx':request.session['idx'], 'yolo':yolo_return}
     return render(request, 'your_photo.html', context)
 

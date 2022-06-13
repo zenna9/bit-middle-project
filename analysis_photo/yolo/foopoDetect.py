@@ -111,7 +111,9 @@ def runs(
                     # s += f"{names[int(c)]}{'s' * (n > 1)}, "  # add to string
                     if n >= 1:
                         k.append(names[int(c)])
-    
+    if len(k)>5:
+        k[5:]=[]
+        
     df_m = pd.read_csv(ROOT / 'foodlist.csv',dtype=str)
     df_n = pd.read_csv(ROOT / 'nutrients.csv',dtype=str)
     
@@ -128,13 +130,12 @@ def runs(
         q4_weight=round(float(w_lst[0]))
         q4_weights.append(q4_weight)
         
-    import random
-    rList = [2, 3, 4]
-    
+    rList = [4] # 기본값인 Q4로 고정, 이후 resnet 리턴값으로 업데이트
+
     result={}
     for i in range(len(k)):
-        r = random.choices(rList, weights=(40, 70 , 40), k=1)
-        f_weight=round(0.25*r[0]*q4_weights[i])
+        r = rList[0]
+        f_weight=round(0.25*r*q4_weights[i])
         anal={foodname[i]:f_weight}
         result.update(anal)
     LOGGER.info(f'분류음식: {result}')
