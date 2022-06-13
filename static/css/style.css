@@ -180,9 +180,10 @@ img { max-width: 100%; }
 .navbar-expand-md .navbar-nav .nav-link { padding-left: 1rem; padding-right: 1rem; }
 
 .navbar-brand {
-	width: 136px;
-	background: url(/static/picture/logo.png) left center no-repeat;
+	width: 200px;
+	background: url(/static/picture/logo@2x.png) left center no-repeat ;
 	border: 0;
+	background-size: contain;
 	text-indent: -99999px;
 }
 

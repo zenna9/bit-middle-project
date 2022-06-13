@@ -6,9 +6,9 @@
     <div class="zen_top-buttons" style="text-align:center;margin: 1em;">
 
 
-        <input type="button" class="zenbtn1" value="내 사진 보기" onClick="location.href='/m/{{idx}}/mypage'"/>
+        <input type="button" class="zenbtn1" value="내 사진 보기" onClick="location.href='/m/ain/mypage'"/>
         <div style="height: 10px;"></div>
-        <input type="button" class="zenbtn1" value="나의 건강정보" onClick="location.href='/m/{{idx}}/helthinfo'"/>
+        <input type="button" class="zenbtn1" value="나의 건강정보" onClick="location.href='/m/ain/helthinfo'"/>
         <div style="height: 10px;"></div>
 
 
@@ -18,7 +18,8 @@
                 <label for="file" class="ment">
                     <img src="/static/picture/camera.png" style="object-fit:contain ;width: 100%;" class="zenbtn5"/>
                 </label>
-                <input type="file" name="i_fu" onchange="gosubmit()" class="upload_button_zen form-control" id="file" style="display:none">
+                <input type="file" name="i_fu" onchange="gosubmit()" 
+                class="upload_button_zen form-control" id="file" style="display:none">
                 <input type="hidden" name="idx" value="{{idx}}" />
                 <div style="height: 10px;"></div>
             </form>
