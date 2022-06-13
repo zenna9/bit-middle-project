@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
-from eat.models import diet, login, imgs
-from django.db.models import Sum, F, Count, Case, When
+from django.shortcuts import render, get_object_or_404, get_list_or_404
+from eat.models import diet, login
+from django.db.models import Sum
 import pandas as pd
 import pymysql
 import numpy as np

@@ -1,6 +1,4 @@
-from distutils.command.upload import upload
-from mmap import mmap
-from django.shortcuts import get_list_or_404, render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from eat import models
 from eat.models import imgs, diet
 from analysis_photo.models import menu
@@ -9,7 +7,6 @@ from django.urls import reverse
 from pathlib import Path
 from analysis_photo.yolo.foopoDetect import runs
 from analysis_photo.resnet.resnet_test_t import classPred
-from django.urls import resolve
 import types
 import os
 

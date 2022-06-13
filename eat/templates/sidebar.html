@@ -1,4 +1,4 @@
-<!-- zenna : 메인페이지 사이드바 -->
+<!-- 채은 : 메인페이지 사이드바(3) -->
     <div class="zen_side_row">
         <div class="z_side_photo">
             <img class = "zen_side_profile" src="/static/picture/no_profile.jpg" style=""/>
@@ -15,12 +15,16 @@
         <hr>
         <p style="line-height: 1em;"></p>
         <div class="row zen_side_row" style="width: 100%;margin:auto 3px 30px 3px;">
-            <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" method="post" enctype="multipart/form-data">
+            <form action="{% url 'analysis_photo:f_fu' %}" class="no_margin" id="photoform" 
+                method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <label for="file" class="ment">데이터를 업로드하세요!</label>
-                <input type="file" name="i_fu" class="upload_button_zen form-control" id="file">
-                <input type="hidden" name="idx" value="{{idx}}" />
-                <input type="submit" class="zenbtn1 zenbtn83" style="margin-top: 1em " value="사진 찍기/업로드">
+                <label for="file" class="ment" id="ment">데이터를 업로드하세요!</label>
+                <input type="file" name="i_fu" class="upload_button_zen form-control" 
+                    id="file">
+                <input type="hidden" name="idx" value="{{idx}}" id="idx"/>
+                <input type="submit" class="zenbtn1 zenbtn83" 
+                    style="margin-top: 1em " value="사진 찍기/업로드">
+                <!-- submit = index.js 3-1 :  -->
             </form>
         </div>
     </div>
