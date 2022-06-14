@@ -9,8 +9,8 @@ app_name = 'login'
 
 urlpatterns = [
     # path('<str:idx>/<str:date>', views.logindone, name='index_login'),
-        # 로그인과 로그아웃 회원가입
-    path('', TemplateView.as_view(template_name='login.html'), name='loginindex'),
+    # 로그인과 로그아웃 회원가입
+    path('', TemplateView.as_view(template_name='login/login.html'), name='loginindex'),
     path('logining/', views.logining, name='logining'),
     path('register/', views.register, name='register'),
     path('register/submit', views.register_submit, name='register_submit'),

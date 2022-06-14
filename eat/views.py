@@ -12,7 +12,7 @@ from datetime import datetime # 경준-0607 건강정보 페이지에서 Footer 
 
 # 채은 : 페이지 접속 시 최초화면
 def index(request) :
-    return render(request, 'login.html')
+    return render(request, 'eat/login.html')
 
 # 채은 : 로그인한 메인화면 ==(데이터 있는 경우 try, 없는 경우 except)====================
 
@@ -38,14 +38,14 @@ def logindone(request,date):
             dict_percent.update({'per_dan': '{}%'.format(round(sums['dan__sum'] / loginn.recommend_dan*100,1))})
 
             context = {'dietlist': dietlist, 'idx':idx, 'date':date,'sums':sums, 'logininfo': loginn, 'percent': dict_percent}
-            return render(request, 'index.html', context)
+            return render(request, 'eat/index.html', context)
         else : 
             context = {'idx':idx,'date':date}
-            return render(request, 'index_null.html', context)
+            return render(request, 'eat/index_null.html', context)
 
 # 경준
 def team_index(request):
-    return render(request, 'introduce.html')
+    return render(request, 'eat/introduce.html')
 
 # 경준
 #  날짜별 나의 사진을 볼 수 있는 링크
@@ -55,10 +55,10 @@ def mypage_index(request, date):
         username = get_object_or_404(login, user_id=idx).user_name  # USER_NAME
         dietlist = get_list_or_404(diet, user_id=idx, date=date)
         context = {'idx': idx, 'date': date, 'dietlist': dietlist,'name':username}
-        return render(request, "myprofile.html", context)
+        return render(request, "eat/myprofile.html", context)
     except : # 사진이 없을경우
         context = {'idx':idx,'date':date, 'name':username}
-        return render(request, 'myprofile_null.html', context)
+        return render(request, 'eat/myprofile_null.html', context)
 
 #경준
 # 전체 사진 보기/ 내 모든 사진을 볼 수 있는 링크/ 내가 올린사진이 없으면 except
@@ -68,13 +68,13 @@ def profile_allphoto(request):
         dietlist = get_list_or_404(diet, user_id=idx)
         username= get_object_or_404(login, user_id=idx).user_name #USER_NAME
         context = {'idx': idx, 'dietlist': dietlist, 'date': '나의 모든 사진','name':username}
-        return render(request, "myprofile_all.html", context)
+        return render(request, "eat/myprofile_all.html", context)
     except:
         context = {'idx': idx,'name':username}
-        return render(request, 'myprofile_null.html', context)
+        return render(request, 'eat/myprofile_null.html', context)
 
 def tutorial_page(request):
-    return render(request, 'tutorial.html')
+    return render(request, 'eat/tutorial.html')
 
 
 def helthinfo(request):
@@ -124,7 +124,8 @@ def helthinfo(request):
     conn = pymysql.connect(host=oursql.s_host, port=3306, user=oursql.s_user, passwd=oursql.s_passwd, db='bitteam2', charset='utf8')
     curs = conn.cursor()
     # 첫번째 쿼리문 : 그날 하루 먹었던 음식의 총 칼로리, 소금양
-    sql = "SELECT `user_id`, date_format(`date`,'%m-%d') as `date`, TRUNCATE(SUM(`kcal`),-1) AS 'daily_kcal', TRUNCATE(SUM(`salt`),-1) AS 'daily_salt'  FROM eat_diet WHERE `user_id` = '" + idx + "' GROUP BY `date` ORDER BY -`date`;"
+    sql = "SELECT `user_id`, date_format(`date`,'%m-%d') as `date`, TRUNCATE(SUM(`kcal`),-1) AS 'daily_kcal', TRUNCATE(SUM(`salt`),-1) AS 'daily_salt' " \
+          "FROM eat_diet WHERE `user_id` = '" + idx + "' GROUP BY `date` ORDER BY -`date`;"
     curs.execute(sql)
     # 실행결과 모두 조회해서 dailyinfo에 저장
     dailyinfo = curs.fetchall()
@@ -219,4 +220,19 @@ def helthinfo(request):
     #  기존에 임시로 띄어놓은 차트에 해당하는 데이터 가져오기
     context = {'mydata': daily_data, 'date':date,'idx': idx, 'name': name_list, 'labels':date_list, 'kcal_data':kcal_list,
                'salt_data':salt_list, 'chart_data':percent_data,'chart_label':percent_label,'name':username}
-    return render(request, 'helth.html', context)
+    return render(request, 'eat/helth.html', context)
+
+def home(request):
+    context = {}
+
+    if request.session.has_key ('member_no'):
+        memberno = request.session['member_no']
+        membername = request.session['member_name']
+    else:
+        memberno = None
+        membername = None
+
+    context["member_no"] = memberno
+    context["member_name"] = membername
+
+    return render(request, 'user/login.html', context)

@@ -7,6 +7,7 @@
 <!--    *{-->
 <!--        border: 1px solid red;-->
 <!--    }-->
+<!--</style>-->
 <!-- Required meta tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -20,12 +21,12 @@
 		<div class="row profile">
 			<div class="col-md-4">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:20px; ">
-					{% include 'myprofile_sidebar.html' %}
+					{% include 'eat/myprofile_sidebar.html' %}
 				</div>
 			</div>
 			<!--	이미지 불러오기    -->
 			<div class="col-md-8 col-profile-content">
-				<div style="margin:1rem 0 ; background-color:#e0e0e0; border-radius:20px; text-align:center;">
+				<div style="margin:1rem 0 ; background-color:#e0e0e0; border-radius:30px; text-align:center;">
 					{% for i in dietlist|slice:":2" %}
 						<div class="profile_photo">
 						<figure>
@@ -50,11 +51,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-	<pre></pre>
-
     {% include 'footer.html' %}
 </body>
 {% endblock %}

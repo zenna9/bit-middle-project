@@ -37,7 +37,7 @@ def f_hp(request, b_hc_id):
     b_hc = get_object_or_404(imgs, id=b_hc_id)
     yolo_return = yolo('/media/photo/36')
     context = {'k_hc': b_hc, 'idx':request.session['idx'], 'yolo':yolo_return}
-    return render(request, 'your_photo.html', context)
+    return render(request, 'analysis_photo/your_photo.html', context)
 
 # zenna : 
 # def f_uploading_photo (request):

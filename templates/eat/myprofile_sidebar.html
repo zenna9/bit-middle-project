@@ -80,6 +80,9 @@ $menu-link-active-colors: var(--primary-color), var(--info-color),
   }
 }
 
+
+active
+
 </style>
 <div class="profile-sidebar" style="border-radius:20px; height:100%;">
 
@@ -117,9 +120,9 @@ $menu-link-active-colors: var(--primary-color), var(--info-color),
         	<input style='border-radius:5px; font-size:1rem; width:9rem; margin:0.4rem auto 0.4rem 1rem;' type="button" class="zenbtn1" value="전체 사진보기" onClick="location.href='/m/ain/mypage';" style="cursor:pointer;">
         </form>
         <div class="list-group" style="margin-top:2rem; margin-bottom:1rem;">
-            <a href="/m/ain/{{date}}" class="list-group-item list-group-item-action">메인으로 가기</a>
-            <a href="/m/ain/{{date}}" class="list-group-item list-group-item-action active">업로드 하기</a>
-            <a href="/m/ain/mypage" class="list-group-item list-group-item-action">나의 사진 보기</a>
+            <a href="/m/ain/{{date}}" class="list-group-item list-group-item-action" id="sidebar_menu1">메인으로 가기</a>
+            <a href="/m/ain/{{date}}" class="list-group-item list-group-item-action" id="sidebar_menu2">업로드 하기</a>
+            <a href="/m/ain/mypage" class="list-group-item list-group-item-action" id="sidebar_menu3">나의 사진 보기</a>
         </div>
     </div>
 </div>

@@ -44,7 +44,9 @@
 #London {background-color:#64D6FF;}
 #Paris {background-color:#73EAA8;}
 
-    </style>
+
+</style>
+
 <!-- CHART JS CDN LINK -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
@@ -62,7 +64,7 @@
 <!--	프로필 사이드바 col-md-3 -->
 			<div class="col-md-3">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
-					{% include 'myprofile_sidebar.html' %}
+					{% include 'eat/myprofile_sidebar.html' %}
 				</div>
 			</div>
 <!--	건강정보 컨텐츠 col-md-8 -->
@@ -103,7 +105,7 @@
 <!--			한끼 식사비율 -->
 				<div class="row" style="padding:1rem;">
 					<div>
-						<h4>당신의 식사중 탄단지의 비율은?</h4>
+						<h4>당신의 식사중 세부영양소의 비율은?</h4>
 						<div style="display:block; width:100%; height:200px;">
 							<canvas id="myChart"></canvas>
   						</div>
