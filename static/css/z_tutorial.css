@@ -1,0 +1,69 @@
+
+/* borderzone */
+/* .conta{border: 1px rgb(142, 214, 34) solid;}
+.toleft{border: 1px rgb(253, 193, 104) solid;}
+.toright{border: 1px rgb(252, 185, 98) solid;}
+.content{border: 1px rgb(188, 152, 255) solid;}
+.slide{border: 2px rgb(99, 224, 255) solid;}
+#slides{border: 2px rgb(2, 75, 47) solid;}
+.z-text0{border: 1px red solid;} */
+
+
+/* ===================== */
+
+.conta{
+    width: 80%;
+    height: 50em;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+
+}
+@media (max-width: 769px) {
+    .conta{
+        width: 100%;
+    }
+}
+.slide{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* .slide * {display: inline-block;} */
+.toleft, .toright {
+    width: 10%;
+    text-align: center;
+    padding-top: 24em;
+    cursor:pointer;
+}
+.toleft{float: left;}
+.toright{float: right;}
+
+.content{
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.slides {
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    transition:all .5s;
+}
+.slides img {
+    object-fit: contain;
+    width:fit-content;
+    height: 100%;
+    background-color: white;
+}
+.z-text0{
+  white-space: normal;
+  position: relative;
+  top: -70%;
+  left: 5%;
+  background-color: white;
+  z-index: 2;
+  width: 90%;
+}
