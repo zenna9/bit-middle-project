@@ -1,4 +1,4 @@
-<!-- zenna : 메인페이지 사이드바 -->
+<!-- 채은 : 모바일 메인페이지 탑바 (8)-->
 <div>
     <div  class="zen-top-photo" style="text-align:center;">
         <img class = "zen_side_profile" src="/static/picture/no_profile.jpg" style=""/>
@@ -13,6 +13,7 @@
 
 
         <footer class="all-hidden">
+            <!-- form제출 : index.js 8-1 -->
             <form action="{% url 'analysis_photo:f_fu' %}" id="form_to_upload" class="no_margin" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="file" class="ment">
@@ -24,6 +25,17 @@
                 <div style="height: 10px;"></div>
             </form>
         </footer>
+    </div>
+    <!-- 인식 불가 사진 업로드 시 팝업구간 : index-mobile.css / indes.js 8-2 -->
+    <div class="modalBackground all-hidden">
+        <div class="modalType">
+            <div class="textModal">
+                <i class="fa-solid fa-face-frown"></i>
+                <br>
+                <p><strong>지원되는 파일 형식이 아닙니다 </strong></p>
+                bmp, dng, jpeg, jpg, mpo, png,<br>tif, tiff, webp 파일만 가능합니다
+            </div>
+        </div>
     </div>
     
 </div>

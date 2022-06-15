@@ -1,7 +1,7 @@
 function change(idx){
-    console.log(idx);
-    var add = document.getElementById('zen_calender').value;
-    window.location.pathname = 'm/ain/'+add;
+  console.log(idx);
+  var add = document.getElementById('zen_calender').value;
+  window.location.pathname = 'm/ain/'+add;
 }
 
 function loadfunction(date, perkcal, pertan, perdan, perji){
@@ -15,10 +15,10 @@ function loadfunction(date, perkcal, pertan, perdan, perji){
 
 // for progress tag in HTML 
 function tag () {
-    let progress = document.querySelector('.progressTag')
-    let interval = 1
-    let updatesPerSecond = 1000 / 60
-    let end = progress.max * 0.8
+  let progress = document.querySelector('.progressTag')
+  let interval = 1
+  let updatesPerSecond = 1000 / 60
+  let end = progress.max * 0.8
   
     function animator () {
       progress.value = progress.value + interval
@@ -32,26 +32,32 @@ function tag () {
     setTimeout(() => {
       animator()
     }, updatesPerSecond)
-  }
-  
-// function getpercent(per) {
-//     let pers = per;
-//     console.log(per);
-//     // let thiss = document.getElementById(tan).style;
-//     // thiss.width = pers;
-//     // console.log('pers');
-// }
-function gosubmit() { // topbar의 사진업로드 실행
-  let dd = document.getElementById('form_to_upload');
-  dd.submit();
 }
 
+//사용가능한 포맷 리스트
+const possibleFormat = ['bmp', 'dng', 'jpeg', 'jpg', 'mpo', 'png', 'tif', 'tiff', 'webp'];
 
-// var obj = document.getElementById('newfood')
-// obj.onclick = function(){
+// 8-1 : topbar의 사진업로드 실행
+function gosubmit() { 
+  console.log("진입")
+  let mobileFoodForm = document.getElementById('form_to_upload');
+  const imgInput = mobileFoodForm.querySelector("#file").value;
+  const urllen = (imgInput).indexOf(".")+1;
 
-//   console.log("mii");
-// }
+  //파일의 확장자 자른거
+  const fileFormat = imgInput.substr(urllen,imgInput.length);
+
+  if(!(possibleFormat.includes(fileFormat))){
+    console.log("확장자에러 감지")
+    // 8-2
+    document.querySelector(".modalBackground").classList.remove("all-hidden")
+    
+  }else {
+    mobileFoodForm.submit();
+  }
+}
+// 종료 8-1
+
 function newfood() {
   document.getElementById('jikil').style.display = "inline-table";
 }
@@ -80,8 +86,6 @@ function submitPhoto(event){
   //파일의 확장자 자른거
   const fileFormat = imgInput.substr(urllen,imgInput.length);
 
-  //사용가능한 포맷 리스트
-  const possibleFormat = ['bmp', 'dng', 'jpeg', 'jpg', 'mpo', 'png', 'tif', 'tiff', 'webp']
   if(imgInput=== ""){
     changeFormText("사진을 먼저 첨부해주세요");
   }else if(!(possibleFormat.includes(fileFormat))){

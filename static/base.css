@@ -4,6 +4,12 @@
     color:white;
     text-decoration-line: none;
 }
+.pragmatic_logo:hover {
+  font-size: 2rem;
+  background: linear-gradient(to bottom, #F56E4C, #FFB479);
+  color: transparent;
+  -webkit-background-clip: text;
+}
 
 .footer_pragmatic_logo {
     font-family: 'Lobster', cursive;
