@@ -25,11 +25,15 @@
 <link rel="stylesheet" href="/static/css/media-queries.css">
 
 <!-- Favicon and touch icons -->
-<link rel="shortcut icon" href="/static/ico/favicon.png">
+
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
+<link rel="stylesheet" href="/static/css/z_tutorial.css">
+<style>
+	/* *{		border: 1px green solid;	} */
+</style>
 </head>
 
 <body>
@@ -37,7 +41,7 @@
 <!-- Top menu -->
 	<nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
 	<div class="container">
-		<a class="navbar-brand" href="">Bootstrap 4 One Page Website Tutorial</a>
+		<a class="navbar-brand" href="">ai foodphoto</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -68,20 +72,20 @@
 
 <!--style='background-image: url("/static/picture/backgrounds/1.jpg")text-shadow:2px 2px 2px black;;-->
 	<div class="top-content" style="overflow:hidden;">
-		<div class="container">
+		<div class="container" id="maincontainer">
 			<div class="row" >
 				<div class="col-md-8 offset-md-2 text">
 					<h1 class="wow fadeInLeftBig k_font tutorial_font">AI Food Photo</h1>
 					<h4 class="wow fadeInLeftBig k_font2" >자동 식단관리 웹-앱 어플리케이션 서비스</h4>
 					<div class="description wow fadeInLeftBig">
 						<p style="color:black;">
-                        사용자가 업로드한 음식 사진을 딥러닝 모델로 자동으로 음식을 식별하여서 자동으로 식단을 기록하고, <br>
+                        사용자가 업로드한 음식 사진을 딥러닝 모델로 자동으로 음식을 식별하여 자동으로 식단을 기록하고, <br>
 						사용자의 건강정보와 분석하여서 영양정보를 제공해주는 웹-앱 어플리케이션 입니다.
 						</p>
 					</div>
 					<div class="top-big-link wow fadeInUp">
                        	<a class="btn btn-primary btn-link-1" href="/lg">시작 하기</a>
-                       	<a class="btn btn-primary btn-link-2 scroll-link" href="">사용방법 알아보기</a>
+                       	<a class="btn btn-primary btn-link-2" href="#howToUse">사용방법 알아보기</a>
 					</div>
 				</div>
 			</div>
@@ -93,240 +97,55 @@
 <!--<img src="/static/picture/backgrounds/1.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 915px; height: 610px; max-height: none; max-width: none; z-index: -999999; left: -197px; top: 0px;">-->
 <!--</div>-->
 
-<!-- 프로젝트 기능 소개 -->
-	<div class="services-container section-container">
-
-	        <div class="container">
-	            <div class="row">
-	                <div class="col services section-description wow fadeIn">
-	                    <h2 style="color:black;" class="t_font">프로젝트 기능 소개</h2>
-	                    <div class="divider-1 wow fadeInUp"><span></span></div>
-	                </div>
-	            </div>
-	            <div class="row">
-                	<div class="col-md-4 services-box wow fadeInUp">
-                		<div class="row">
-                			<div class="col-md-4">
-			                	<div class="services-box-icon">
-			                		<i class="fas fa-magic"></i>
-			                	</div>
-		                	</div>
-	                		<div class="col-md-8">
-	                    		<h3>Web Design</h3>
-	                    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-	                    	</div>
-	                    </div>
-                    </div>
-                    <div class="col-md-4 services-box wow fadeInDown">
-	                	<div class="row">
-                			<div class="col-md-4">
-			                	<div class="services-box-icon">
-			                		<i class="fas fa-cog"></i>
-			                	</div>
-		                	</div>
-	                		<div class="col-md-8">
-	                    		<h3>UI / UX</h3>
-	                    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-	                    	</div>
-	                    </div>
-                    </div>
-                    <div class="col-md-4 services-box wow fadeInUp">
-	                	<div class="row">
-                			<div class="col-md-4">
-			                	<div class="services-box-icon">
-			                		<i class="fab fa-google"></i>
-			                	</div>
-		                	</div>
-	                		<div class="col-md-8">
-	                    		<h3>Marketing</h3>
-	                    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-	                    	</div>
-	                    </div>
-                    </div>
-	            </div>
-	        </div>
-        </div>
-
-<!-- About us -->
-	<div class="about-us-container section-container section-container-gray-bg">
-	        <div class="container">
-	            <div class="row">
-	            	<div class="col-12 col-lg-7 about-us-box wow fadeInLeft">
-	                    <div class="about-us-box-text">
-	                    	<h3 style="color:black" class="t_font">프로젝트 상세 설명</h3>
-	                    	<p class="medium-paragraph">
-	                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-	                    		sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.
-	                    	</p>
-	                    	<p>
-	                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-	                    		Ut wisi enim ad minim veniam, quis nostrud.
-	                    		Exerci tation ullamcorper suscipit <a href="#">lobortis nisl</a> ut aliquip ex ea commodo consequat.
-	                    		Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl.
-	                    	</p>
-	                    	<p>
-	                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-	                    		Ut wisi enim ad minim veniam, quis nostrud.
-	                    	</p>
-	                    </div>
-	                </div>
-	                <div class="col-12 col-lg-5 about-us-box wow fadeInUp">
-	                	<div class="about-us-box-img">
-	                    	<img src="/static/picture/about/1.jpg" alt="about" data-at2x="/static/picture/about/1.jpg">
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-        </div>
-
 <!-- More services -->
 	<div class="more-services-container section-container">
-	        <div class="container">
+		<div class="container" name="howToUse" id="howToUse">
 
-	            <div class="row">
-	                <div class="col more-services section-description wow fadeIn">
-	                    <h2 style="color:black" class="t_font">프로젝트 소개2</h2>
-	                    <div class="divider-1 wow fadeInUp"><span></span></div>
-	                </div>
-	            </div>
+			<div class="row">
+				<div class="col more-services section-description wow fadeIn">
+					<h2 style="color:black" class="t_font">사용 방법</h2>
+					<div class="divider-1 wow fadeInUp"><span></span></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="conta">
+					<div class="slide">
+						<div class="toleft">
+							<i class="fa-solid fa-angle-left fa-2xl"></i>
+						</div>
 
-	            <div class="row">
-	                <div class="col-md-6 more-services-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-md-3">
-	                			<div class="more-services-box-icon">
-	                				<i class="fab fa-twitter"></i>
-	                			</div>
-	                		</div>
-	                		<div class="col-md-9">
-	                			<h3>Ut wisi enim ad minim</h3>
-		                    	<p>
-		                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-		                    		Ut wisi enim ad minim veniam, quis nostrud.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	                <div class="col-md-6 more-services-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-md-3">
-	                			<div class="more-services-box-icon">
-	                				<i class="fas fa-pencil-alt"></i>
-	                			</div>
-	                		</div>
-	                		<div class="col-md-9">
-	                			<h3>Sed do eiusmod tempor</h3>
-		                    	<p>
-		                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-		                    		Ut wisi enim ad minim veniam, quis nostrud.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	            </div>
+						<div class="content">
+							<div class="slides" id="slide0">
+								<img src="/static/picture/about/z0.png"/>
+							</div>
+							<div class="slides" id="slide1">
+								<img src="/static/picture/about/z1.png">
+							</div>
+							<div class="slides" id="slide2">
+								<img src="/static/picture/about/z2.png">
+								
+							</div>
+							<div class="slides" id="slide3">
+								44
+							</div>
+							<div class="slides" id="slide4">
+								55
+							</div>
+						</div>
+						
+						<div class="toright">
+							<i class="fa-solid fa-angle-right fa-2xl"></i>
+						</div>
 
-	            <div class="row">
-	                <div class="col-md-6 more-services-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-md-3">
-	                			<div class="more-services-box-icon">
-	                				<i class="fas fa-cloud"></i>
-	                			</div>
-	                		</div>
-	                		<div class="col-md-9">
-	                			<h3>Quis nostrud exerci tat</h3>
-		                    	<p>
-		                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-		                    		Ut wisi enim ad minim veniam, quis nostrud.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	                <div class="col-md-6 more-services-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-md-3">
-	                			<div class="more-services-box-icon">
-	                				<i class="fab fa-pinterest"></i>
-	                			</div>
-	                		</div>
-	                		<div class="col-md-9">
-	                			<h3>Minim veniam quis nostrud</h3>
-		                    	<p>
-		                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-		                    		Ut wisi enim ad minim veniam, quis nostrud.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	            </div>
+					</div>
 
+				</div>
+				<script src="/static/js/z_tutorial.js"></script>
+				
 	        </div>
         </div>
+	</div>
 
-<!-- Call to action -->
-	<div class="call-to-action-container section-container section-container-image-bg" style="overflow:hidden;">
-	        <div class="container">
-	            <div class="row">
-	                <div class="col call-to-action section-description wow fadeInLeftBig">
-	                    <p>
-	                    	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-	                    	aliquip ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud.
-	                    </p>
-	                </div>
-	            </div>
-	            <div class="row">
-	            	<div class="col section-bottom-button wow fadeInUp">
-                        <a class="btn btn-primary btn-link-1 scroll-link" href="#top-content">메인 메뉴로 가기</a>
-	            	</div>
-	            </div>
-	        </div>
-        </div>
-
-<!-- Portfolio -->
-	<div class="portfolio-container section-container">
-	        <div class="container">
-	            <div class="row">
-	                <div class="col portfolio section-description wow fadeIn">
-	                    <h2>How TO USE</h2>
-	                    <div class="divider-1 wow fadeInUp"><span></span></div>
-	                    <p>자동으로 식단을 기록해주는 AI 푸포의 다양한 기능을 사용해보세요</p>
-	                </div>
-	            </div>
-	            <div class="row">
-                	<div class="col-md-4 portfolio-box wow fadeInUp">
-	                	<div class="portfolio-box-image">
-	                		<img src="/static/picture/portfolio/tuto1.jpg" alt="" data-at2x="/static/picture/portfolio/tuto1.jpg">
-	                	</div>
-                		<h3><a href="#">음식 사진을 업로드 해주세요</a> <i class="fas fa-angle-right"></i></h3>
-                		<div class="portfolio-box-date"><i class="far fa-calendar"></i> March 2018</div>
-                		<p>한 상이 수직 위치에서 카메라에 가득 담길 수록 분석 효과가 높아집니다</p>
-                    </div>
-                    <div class="col-md-4 portfolio-box wow fadeInDown">
-	                	<div class="portfolio-box-image">
-	                		<img src="/static/picture/portfolio/tuto2.jpg" alt="" data-at2x="/static/picture/portfolio/tuto2.jpg">
-	                	</div>
-                		<h3><a href="#">AI Food Photos</a> <i class="fas fa-angle-right"></i></h3>
-                		<div class="portfolio-box-date"><i class="far fa-calendar"></i> February 2018</div>
-                		<p>인공지능의 당신의 음식의 종류와 양, 영양 성분을 자동으로 분석합니다</p>
-                    </div>
-                    <div class="col-md-4 portfolio-box wow fadeInUp">
-	                	<div class="portfolio-box-image">
-
-	                		<img  style="margin-bottom:1rem;" src="/static/picture/portfolio/tuto3.jpg" alt="" data-at2x="/static/picture/portfolio/tuto3.jpg">
-	                	</div>
-                		<h3><a href="#">자동 음식 추천 기능</a> <i class="fas fa-angle-right"></i></h3>
-                		<div class="portfolio-box-date"><i class="far fa-calendar"></i> January 2018</div>
-                		<p>분석된 식단에 따라 일일 권장량에 맞춘 영양 밸런스 음식을 추천합니다.</p>
-
-                    </div>
-	            </div>
-	            <div class="row">
-	            	<div class="col section-bottom-button wow fadeInUp">
-                        <a class="btn btn-primary btn-link-3" href="#">Load more</a>
-	            	</div>
-	            </div>
-	        </div>
-        </div>
 
 <!-- Testimonials -->
 	<div class="testimonials-container section-container section-container-image-bg" style="overflow:hidden;">

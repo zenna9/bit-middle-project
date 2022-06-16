@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from telnetlib import AUTHENTICATION
 # mysql 계정정보
 from whateat.mysql import oursql
 
@@ -19,7 +20,6 @@ DEBUG = True
 # ALLOWED_HOSTS = ['127.0.0.1','localhost']
 ALLOWED_HOSTS = oursql.serverhost
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -29,11 +29,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eat',
-    'analysis_photo',
-    'login',
-    'users'
+    'eat.apps.EatConfig',
+    'analysis_photo.apps.AnalysisPhotoConfig',
+    'login.apps.LoginConfig',
+    # # 채은 : 로그인기능 구현을 위한 앱==
+    # 'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
+    # 경준 연습용 'users', AUTH_USER_MODEL = 'users.User'
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,4 +140,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AUTH_USER_MODEL = 'users.User'

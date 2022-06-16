@@ -1,11 +1,10 @@
 
-from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
+from django.shortcuts import render, redirect
 import pymysql
 from datetime import datetime
 from eat.models import login
 from django.views.decorators.csrf import csrf_exempt
-# mysql 계정정보
-from whateat.mysql import oursql
+from whateat.mysql import oursql # mysql 계정정보
 
 
 

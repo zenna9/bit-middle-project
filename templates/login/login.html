@@ -3,15 +3,18 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
-        <meta charset="UTF-8">
+        <!-- 채은 : 22.06.07 head.html과 중복되는 일부 구문 주석처리. 문제없으면 삭제예정 -->
+        <!-- <meta charset="UTF-8"> -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
         <link rel="stylesheet" href="/static/css/login.css">
-        
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>    
 
-        <title>Document</title>
 
         <style>
             /* *{
