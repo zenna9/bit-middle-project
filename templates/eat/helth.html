@@ -58,7 +58,6 @@
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
 <!--	본문 CONTENTS		-->
-<<<<<<< HEAD:templates/eat/helth.html
 <!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
 	<div class="kj-hidden1">
 		<div class="flex-column row kj-mobile">
@@ -66,10 +65,7 @@
 		</div>
 	</div>
 <!-- {#       사이드바(PC 화면일 때) ===============================#} -->
-	<div class="container" style="height:140vh">
-=======
 	<div class="container" style="height:150vh">
->>>>>>> master:eat/templates/helth.html
 		<div class="row profile">
 <!--	프로필 사이드바 col-md-3 -->
 			<div class="col-md-3 kj-hidden">
@@ -134,19 +130,11 @@
 					<div class="col-md-6">
 						<div class="recommend_kcal" style="border-radius:20px; background-color:#F5F5DC; width:100%; height:15rem;">
 							<div style="display:flex; float:left; flex-direction:column; justify-content:flex-start; padding-top:0.5rem; padding-left:0.5rem; ">
-<<<<<<< HEAD:templates/eat/helth.html
-								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">{{chart_data}}</h5>
-								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 섭취영양(%) : </h5>
-								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 부족영양(%) :</h5>
-								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">나에게 부족한 영양소 : </h5>
-								<h5 style="margin-top:0.5rem; padding-bottom:0 !important;">부족한 영양소 추천음식:</h5>
-=======
-								<h5 style="margin-top:0.5rem;">하루 탄단지 비율 : {{chart_data}}</h5>
-								<h5 style="margin-top:0.5rem;">권장량대비 섭취영양(%) : {{chart_data}}</h5>
-								<h5 style="margin-top:0.5rem;">권장량대비 필요영양(%) : {{lack_data}}</h5>
-								<h5 style="margin-top:0.5rem;">나에게 부족한 영양소 : {{lackNf_dec}}</h5>
-								<h5 style="margin-top:0.5rem;">부족한 영양소 추천음식: {{recommend_p}}</h5>
->>>>>>> master:eat/templates/helth.html
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">하루 탄단지 비율 : {{chart_data}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 섭취영양(%) : {{chart_data}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 필요영양(%) : {{lack_data}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">나에게 부족한 영양소 : {{lackNf_dec}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">부족한 영양소 추천음식: {{recommend_p}}</h5>
 							</div>
 						</div>
 					</div>
@@ -185,7 +173,7 @@
 			labels : ['탄수화물', '단백질', '지방'],
 			datasets : [{
 				label : '총 먹은 열량',
-				data : {{chart_data}},
+				data : {{chart_data1}},
 				backgroundColor:["#F88FB2", "#ED5C8B", "#D5255E"]
 			}]
 		},

@@ -215,4 +215,4 @@ def helthinfo(request):
                'chart_label':percent_label,'name':username, 'lack_data': f'탄({lack_percent[0]}), 단({lack_percent[1]}), 지({lack_percent[2]})'}
     context['mydata'] = daily_data # 경준 차트용 데이터
     context.update(rcfoodsinfo)
-    return render(request, 'helth.html', context)
+    return render(request, 'eat/helth.html', context)
