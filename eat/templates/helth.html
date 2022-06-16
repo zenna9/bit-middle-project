@@ -111,11 +111,8 @@
 				</div>
 <!--			부족한 영양소 멘트-->
 				<div class='row' style="border-radius:20px; background-color:#D3D3D3; padding:1rem; margin:0 1rem 0 1rem; height:auto; text-align:center;">
-							<strong style="font-size:1.5rem; margin-bottom:1rem;">당신은 채소류 섭취가더 필요하네요</strong>
-					<p>싱싱한 채소 섭취가 건강에 좋다는 건 누구나 아는 사실이지만
-						바쁜 일상 속에서 골고루 챙겨 먹기란 쉽지 않은 일이다.
-						하지만 육류나 인스턴트식품의 섭취 비율은 높은 반면
-						채소 섭취의 비율이 적어지게 되면 각종 질병에 노출되기 쉽다.</p>
+							<strong style="font-size:1.5rem; margin-bottom:1rem;">당신은 {{lackN1}} 섭취가더 필요하네요</strong>
+					<p>{{rComments}}</p>
 				</div>
 <!--			추천음식 정보 -->
 				<div class='row' style="text-align:center; margin-top:1rem;">
@@ -125,7 +122,7 @@
 								<h5 style="margin-top:0.5rem;">하루 탄단지 비율 : {{chart_data}}</h5>
 								<h5 style="margin-top:0.5rem;">권장량대비 섭취영양(%) : {{chart_data}}</h5>
 								<h5 style="margin-top:0.5rem;">권장량대비 필요영양(%) : {{lack_data}}</h5>
-								<h5 style="margin-top:0.5rem;">나에게 부족한 영양소 : {{LackN}}</h5>
+								<h5 style="margin-top:0.5rem;">나에게 부족한 영양소 : {{lackN1}}, {{lackN2}}</h5>
 								<h5 style="margin-top:0.5rem;">부족한 영양소 추천음식: {{recommendFoods}}</h5>
 							</div>
 						</div>
@@ -133,16 +130,16 @@
 					<div class="col-md-3" style="display:flex; justify-content:center; align-items:center; ">
 						<div style="border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
 						<figure style="padding-top:0.5rem; padding-bottom:0.5rem;">
-							<figcaption>추천음식 1</figcaption>
-							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food1.jpg" alt="receltly_photo1">
+							<figcaption>추천음식1: {{r1}}</figcaption>
+							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/{{r1}}.jpg" alt="receltly_photo1">
 						</figure>
 						</div>
 					</div>
 					<div class="col-md-3" style="display:flex; justify-content:center; align-items:center; ">
 						<div style="border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
 						<figure style="padding-top:0.5rem; padding-bottom:0.5rem;">
-							<figcaption>추천음식 2</figcaption>
-							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food2.jpg" alt="receltly_photo2">
+							<figcaption>추천음식2 : {{r2}}</figcaption>
+							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/{{r2}}.jpg" alt="receltly_photo2">
 						</figure>
 						</div>
 					</div>
