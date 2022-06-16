@@ -47,22 +47,13 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ml-auto">
 			            <li class="nav-item">
-			                <a class="nav-link scroll-link" href="#top-content">Top</a>
+			                <a class="nav-link" href="#top-content">시작하기</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link scroll-link" href="#services">Services</a>
+			                <a class="nav-link" href="#howToUse">사용 방법</a>
 			            </li>
 			            <li class="nav-item">
-			                <a class="nav-link scroll-link" href="#about-us">About</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link scroll-link" href="#portfolio">Work</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link scroll-link" href="#testimonials">Clients</a>
-			            </li>
-			            <li class="nav-item">
-			                <a class="nav-link scroll-link" href="#blog">Blog</a>
+			                <a class="nav-link" href="#introduceUs">만든이</a>
 			            </li>
 			        </ul>
 		</div>
@@ -70,7 +61,7 @@
 </nav>
 
 <!--style='background-image: url("/static/picture/backgrounds/1.jpg")text-shadow:2px 2px 2px black;;-->
-	<div class="top-content" style="overflow:hidden;">
+	<div class="top-content" style="overflow:hidden;" id="top-content">
 		<div class="container" id="maincontainer">
 			<div class="row" >
 				<div class="col-md-8 offset-md-2 text">
@@ -78,8 +69,8 @@
 					<h4 class="wow fadeInLeftBig k_font2" style="font-size:2rem; color:black;">자동 식단관리 웹-앱 어플리케이션 서비스</h4>
 					<div class="description wow fadeInLeftBig">
 						<p style="color:black;">
-                        사용자가 업로드한 음식 사진을 딥러닝 모델로 자동으로 음식을 식별하여 자동으로 식단을 기록하고, <br>
-						사용자의 건강정보와 분석하여서 영양정보를 제공해주는 웹-앱 어플리케이션 입니다.
+                        음식 사진을 딥러닝 모델로 분석해 종류와 양을 식별하여 식단을 기록하고, <br>
+						영양분석 결과와 추천 음식을 알려주는 웹-앱 어플리케이션 입니다.
 						</p>
 					</div>
 					<div class="top-big-link wow fadeInUp">
@@ -91,10 +82,6 @@
 		</div>
 	</div>
 
-
-<!--<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 610px; width: 521px; z-index: -999998; position: absolute;">-->
-<!--<img src="/static/picture/backgrounds/1.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 915px; height: 610px; max-height: none; max-width: none; z-index: -999999; left: -197px; top: 0px;">-->
-<!--</div>-->
 
 <!-- More services -->
 	<div class="more-services-container section-container">
@@ -144,182 +131,94 @@
 	        </div>
         </div>
 	</div>
-
-
-<!-- Testimonials -->
-	<div class="testimonials-container section-container section-container-image-bg" style="overflow:hidden;">
-        	<div class="container">
-        		<div class="row" style="padding-top:3rem;">
-        			<div class="col t_font wow fadeIn" style="color:black; font-size:2rem;">만든 사람들</div>
-        		</div>
-        		<div class="row">
-        			<div class="col-md-10 offset-md-1 testimonial-list wow fadeInUp">
-        				<div class="tab-content" id="myTabContent" style="color:black;">
-        					<div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-        						<div class="testimonial-image">
-                					<img src="/static/picture/testimonials/1.jpg" alt="testimonial-1" data-at2x="/static/picture/testimonials/1.jpg">
-                				</div>
-                				<div class="testimonial-text">
-	                                <p>
-	                                	"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-	                                	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-	                                	Lorem ipsum dolor sit amet."<br>
-	                                	<a href="#" style="color:black;">메인 페이지로 가기</a>
-	                                </p>
-                                </div>
-        					</div>
-        					<div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-        						<div class="testimonial-image">
-                					<img src="/static/picture/testimonials/2.jpg" alt="testimonial-2" data-at2x="/static/picture/testimonials/2.jpg">
-                				</div>
-                				<div class="testimonial-text">
-	                                <p>
-	                                	"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-	                                	ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-	                                	lobortis nisl ut aliquip."<br>
-	                                	<a href="#">Minim Veniam, nostrud.com</a>
-	                                </p>
-                                </div>
-        					</div>
-        					<div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-        						<div class="testimonial-image">
-                					<img src="/static/picture/testimonials/3.jpg" alt="testimonial-3" data-at2x="/static/picture/testimonials/3.jpg">
-                				</div>
-                				<div class="testimonial-text">
-	                                <p>
-	                                	"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-	                                	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-	                                	Lorem ipsum dolor sit amet."<br>
-	                                	<a href="#">Lorem Ipsum, dolor.co.uk</a>
-	                                </p>
-                                </div>
-							</div>
-        					<div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
-        						<div class="testimonial-image">
-                					<img src="/static/picture/testimonials/4.jpg" alt="" data-at2x="/static/picture/testimonials/4.jpg">
-                				</div>
-                				<div class="testimonial-text">
-	                                <p>
-	                                	"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-	                                	ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-	                                	lobortis nisl ut aliquip."<br>
-	                                	<a href="#">Minim Veniam, nostrud.com</a>
-	                                </p>
-                                </div>
-        					</div>
-        				</div>
-
-        				<ul class="nav nav-tabs" id="myTab" role="tablist">
-        					<li class="nav-item" style="backgournd-color:grey;" >
-        						<a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true"></a>
-        					</li>
-        					<li class="nav-item">
-        						<a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"></a>
-        					</li>
-        					<li class="nav-item">
-        						<a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"></a>
-        					</li>
-        					<li class="nav-item">
-        						<a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false"></a>
-        					</li>
-        				</ul>
-
-
-
-        			</div>
-        		</div>
-        	</div>
-        </div >
-
 <!-- Blog -->
-	<div class="blog-container section-container">
-	        <div class="container">
+<div class="blog-container section-container" id="introduceUs">
+	<div class="container">
 
-	            <div class="row">
-	                <div class="col blog section-description wow fadeIn">
-	                    <h2 style="color:black;" class="t_font">역할 분담</h2>
-	                    <div class="divider-1 wow fadeInUp"><span></span></div>
-	                </div>
-	            </div>
+		<div class="row">
+			<div class="col blog section-description wow fadeIn">
+				<h2 style="color:black;" class="t_font">팀원 소개</h2>
+				<div class="divider-1 wow fadeInUp"><span></span></div>
+			</div>
+		</div>
 
-	            <div class="row">
-	                <div class="col-md-6 blog-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-md-3">
-	                			<div class="blog-box-image">
-	                				<img src="/static/picture/blog/1.jpg" alt="" data-at2x="/static/picture/blog/1.jpg">
-	                			</div>
-	                		</div>
-	                		<div class="col-md-9">
-	                			<h3><a href="#">Ut wisi enim ad minim</a> <i class="fas fa-angle-right"></i></h3>
-	                			<div class="blog-box-date"><i class="far fa-calendar"></i> 17 September 2018</div>
-		                    	<p>
-		                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	                <div class="col-md-6 blog-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-md-3">
-	                			<div class="blog-box-image">
-	                				<img src="/static/picture/blog/2.jpg" alt="" data-at2x="/static/picture/blog/2.jpg">
-	                			</div>
-	                		</div>
-	                		<div class="col-md-9">
-	                			<h3><a href="#">Sed do eiusmod tempor</a> <i class="fas fa-angle-right"></i></h3>
-	                			<div class="blog-box-date"><i class="far fa-calendar"></i> 13 August 2018</div>
-		                    	<p>
-		                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	            </div>
+		<div class="row">
+			<div class="col-md-6 blog-box wow fadeInLeft">
+			   <div class="row">
+				  <div class="col-md-3">
+					 <div class="blog-box-image">
+						<img src="/static/picture/blog/1.png" alt="" data-at2x="/static/picture/blog/1.png">
+					 </div>
+				  </div>
+				  <div class="col-md-9">
+					 <h3><a href="#" style="color:black;">김성균 Kim Sung Kyun</a> <i class="fas fa-angle-right"></i></h3>
+					 <div class="blog-box-date" style="color:black;"><i class="far fa-calendar"></i>DL/ML 딥러닝 모델 </div>
+					  <p>
+					스도쿠를 좋아하는 팀의 조장 김박사님. DL/ AI 알고리즘을 홀로 맡아 팀원들에게 알기쉽게 전달해주시고 우리팀의 브레인을 맡고 있다.
+					  </p>
+				  </div>
+			   </div>
+			</div>
+			<div class="col-md-6 blog-box wow fadeInLeft">
+			   <div class="row">
+				  <div class="col-md-3">
+					 <div class="blog-box-image">
+						<img src="/static/picture/blog/2.png" alt="" data-at2x="/static/picture/blog/2.png" style="background-color: white;">
+					 </div>
+				  </div>
+				  <div class="col-md-9">
+					 <h3><a href="#" style="color:black;">정채은 Jeong Chae Eun</a> <i class="fas fa-angle-right"></i></h3>
+					 <div class="blog-box-date" style="color:black;"><i class="far fa-calendar"></i>FE/BE 프론트/백엔드</div>
+					  <p>
+						 체스를 좋아하는 정채은님 자바스크립트를 활용한 프론트개발 능력이 탁월하며 백엔드 서버 구축도 담당하여 미래에 촉망받는 풀스택 개발자로의 성장이 기대된다.
+					  </p>
+				  </div>
+			   </div>
+			</div>
+		</div>
 
-	            <div class="row">
-	                <div class="col-md-6 blog-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-md-3">
-	                			<div class="blog-box-image">
-	                				<img src="/static/picture/blog/3.jpg" alt="" data-at2x="/static/picture/blog/3.jpg">
-	                			</div>
-	                		</div>
-	                		<div class="col-md-9">
-	                			<h3><a href="#">Quis nostrud exerci tat</a> <i class="fas fa-angle-right"></i></h3>
-	                			<div class="blog-box-date"><i class="far fa-calendar"></i> 26 July 2018</div>
-		                    	<p>
-		                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	                <div class="col-md-6 blog-box wow fadeInLeft">
-	                	<div class="row">
-	                		<div class="col-md-3">
-	                			<div class="blog-box-image">
-	                				<img src="/static/picture/blog/4.jpg" alt="" data-at2x="/static/picture/blog/4.jpg">
-	                			</div>
-	                		</div>
-	                		<div class="col-md-9">
-	                			<h3><a href="#">Minim veniam quis nostrud</a> <i class="fas fa-angle-right"></i></h3>
-	                			<div class="blog-box-date"><i class="far fa-calendar"></i> 09 June 2018</div>
-		                    	<p>
-		                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-		                    	</p>
-	                		</div>
-	                	</div>
-	                </div>
-	            </div>
+		<div class="row">
+			<div class="col-md-6 blog-box wow fadeInLeft">
+			   <div class="row">
+				  <div class="col-md-3">
+					 <div class="blog-box-image">
+						<img src="/static/picture/blog/3.png" alt="" data-at2x="/static/picture/blog/3.png">
+					 </div>
+				  </div>
+				  <div class="col-md-9">
+					 <h3><a href="#" style="color:black;">고경준 Ko Kyeong Jun</a> <i class="fas fa-angle-right"></i></h3>
+					 <div class="blog-box-date" style="color:black;"><i class="far fa-calendar"></i>FE/BE 프론트/백엔드</div>
+					  <p>
+						 한번 집중 하면 모든것을 파괴시킬 정도로 강력한 힘을 가지고 있지만 제대로 한번 집중하기 힘든 다소 기복이 있는 팀원. 팀 내에서 백엔드 업무를 맡았음.
+				  </div>
+			   </div>
+			</div>
+			<div class="col-md-6 blog-box wow fadeInLeft">
+			   <div class="row">
+				  <div class="col-md-3">
+					 <div class="blog-box-image">
+						<img src="/static/picture/blog/4.jpg" alt="" data-at2x="/static/picture/blog/4.jpg">
+					 </div>
+				  </div>
+				  <div class="col-md-9">
+					 <h3><a href="#" style="color:black;">안덕현 An Deok Hyun</a> <i class="fas fa-angle-right"></i></h3>
+					 <div class="blog-box-date" style="color:black;"><i class="far fa-calendar"></i>프론트 보조</div>
+					  <p>
+						 한번도 지각 하지 않고 자신의 맡은 바 업무에 묵묵하게 최선을 다하는 성실의 아이콘
+					  </p>
+				  </div>
+			   </div>
+			</div>
+		</div>
 
-	            <div class="row">
-	            	<div class="col section-bottom-button wow fadeInUp" >
-                        <a class="btn btn-primary btn-link-3" href="#">Visit the blog</a>
-	            	</div>
-	            </div>
+		<div class="row">
+		   <div class="col section-bottom-button wow fadeInUp" >
+				 <a class="btn btn-primary btn-link-3" href="#">Visit the blog</a>
+		   </div>
+		</div>
 
-	        </div>
-        </div>
+	</div>
+ </div>
 
 <!--	FOOTER		-->
 <div class="row">
