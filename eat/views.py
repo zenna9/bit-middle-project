@@ -212,9 +212,9 @@ def helthinfo(request):
     
     # 성균 : 음식추천 모듈 가져와서 리턴값에 업데이트
     rcfoodsinfo=recommend_food(request,date)
-    # 리턴값: {영양성분 이름 / 권장량대비 섭취영양 / 권장량대비 부족영양 / 부족영양소 (2종) / 부족영양소 별 추천읍식 (2종)}
-    # 리턴값구성 - recommend_data= {'nameAndEatNf': nameAndEatNf, 'nameAndLackNf': nameAndLackNf, \
-    #      'lackNf_dec':[r1,r2], 'recommend_p': [r1_recommend.index[0],r2_recommend.index[0]]}
+    # 리턴값: {부족영양소 코멘트 / 부족영양소1 / 부족영양소2 / 추천음식 (2종) / 추천음식명1 / 추천음식명2 / 탄단지외 영양소 일일권장량 대비 퍼센트값 리스트 (for 경준)}
+    # 리턴값구성 - recommend_data= {'rComments': comment, 'lackN1':r1, 'lackN2':r2, 'recommendFoods': f'{r1_recommend.index[0]}({r1}:{r1_recommend_p}%), {r2_recommend.index[0]}({r2}:{r2_recommend_p}%)',/
+    #                   'r1': r1_recommend.index[0], 'r2': r2_recommend.index[0], 'N_percent': eat_lst[3:]}
     
     # 추천음식 데이터 recommend_data={{ key값 }}
     # context = {'idx':idx, 'labels':food_labels,'kcal_data':food_kcal, 'salt_data':food_salt}
