@@ -1,31 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<!-- 05.11 헤드에 추가할 내용은 여기 쓰세요-->
-<!--<style>-->
-<!--    *{-->
-<!--        border: 1px solid red;-->
-<!--    }-->
-<!-- Required meta tags -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/static/css/mobile-index.css" />
 </head>
 <body onload="loadfunction('{{date}}','{{percent.per_kcal}}','{{percent.per_tan}}','{{percent.per_dan}}','{{percent.per_ji}}')">
 
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
-
 <!--	본문 CONTENTS		-->
 	<div class="container">
 		<div class="row profile">
-			<div class="col-md-4">
+
+					<!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
+	<div class="kj-hidden1">
+		<div class="flex-column row kj-mobile">
+			{% include 'eat/helth_topbar.html' %}
+		</div>
+	</div>
+		<!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
+			<div class="col-md-4 kj-hidden">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:20px; ">
 					{% include 'eat/myprofile_sidebar.html' %}
 				</div>
 			</div>
 			<!--	이미지 불러오기    -->
 			<div class="col-md-8 col-profile-content">
-				<div style="margin:1rem 0 ; background-color:#e0e0e0; border-radius:20px; text-align:center;">
+				<div class='myphoto_mobile' style="margin:1rem 0 ; background-color:#e0e0e0; border-radius:20px; text-align:center;">
 					{% for i in dietlist|slice:":2" %}
 						<div class="profile_photo">
 						<figure>
@@ -50,11 +51,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-	<pre></pre>
-
     {% include 'footer.html' %}
 </body>
 {% endblock %}

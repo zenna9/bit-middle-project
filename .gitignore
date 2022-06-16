@@ -1,3 +1,7 @@
+# 경준이가 연습하려고 만든파일
+users/
+templates/users
+
 media/
 whateat/settings.py
 analysis_photo/__pycache__/

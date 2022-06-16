@@ -95,6 +95,7 @@
         margin: 1%;
         width: 100%;
     }
+
     .all-hidden {
         display: none;
     }
@@ -179,9 +180,165 @@
         height: 10em;
         margin: 20vh auto 20vh auto !important;
     }
+    /* ==index_null 적용 끝 ============*/
+    /* == helth 적용 끝 ============*/
+    .kj-mobile {
+        background-color:#ffffff;
+        color: black;
+        width: 100%;
+        }
+
+    .kj-topbar1{
+        display:flex;
+        text-align:center !important;
+        width:95%;
+        border-radius:10px;
+        background-color:#e0e0e0;
+        margin:0.5rem 1rem !important;
+    }
+
+    .kj-top-photo {
+        width: 25% ;
+        padding:0.4rem !important;
+        padding-left:1rem !important;
+    }
+
+    .kj-top-buttons {
+        display:inline-block;
+        flex-grow:1;
+        padding-top:0.3rem !important;
+    }
+    .kj-top-button{
+        font-size:1.2rem;
+        color:black;
+        margin-bottom:0.3rem;
+    }
+
+    .kj-side-profile {
+        width:5em; height:5em; object-fit:cover; border-radius: 50%;
+        margin: 0 auto 0 auto !important;
+    }
+
+    .kj-hidden{
+        display:none;
+    }
+
+    .kj-hidden1{
+        display:block;
+    }
+    .kj-menubar1{
+        display:flex;
+        text-align:center;
+        padding-right:1rem !important;
+        padding-left:1rem !important;
+    }
+
+    .kj-menubar2{
+        margin:0.4rem 2rem !important;
+        text-align:center;
+    }
+
+    .kj-list-left{
+        background-color:#e0e0e0;
+        font-weight:500;
+        margin: 0.3rem 0.5rem 1rem 0.5rem !important;
+        padding: 0.3rem 2rem !important;
+        font-size: 1.2rem !important;
+        text-decoration:none;
+        color:black;
+        border-radius:10px;
+        text-align:center;
+    }
+
+    .kj-list-right{
+        background-color:#e0e0e0;
+        font-weight:500;
+        margin: 0.3rem 0.5rem 1rem 0.5rem !important;
+        padding: 0.3rem 2rem !important;
+        font-size: 1.2rem !important;
+        text-decoration:none;
+        color:black;
+        border-radius:10px;
+        text-align:center;
+    }
 
 
-    
-        /* ==index_null 적용 끝 ============*/
+    .kj-sidemenu{
+        font-weight:700;
+        padding: 0.4rem 0!important;
+        font-size: 1.2rem !important;
+        text-decoration:none !important;
+        color:black;
+    }
+    .food_ment{
+        border-radius:20px;
+        background-color:#D3D3D3;
+        padding:1.2rem !important;
+        margin:1rem 1rem !important;
+        height:auto;
+        text-align:center;
+        margin-bottom:1rem !important;
+    }
+    .food_ment_title{
+        margin-bottom:1.2rem !important;
+    }
+    .recommend_kcal{
+        background-color:#D3D3D3 !important;
+        padding:1rem !important;
+        width:95% !important;
+        margin: 1rem 1rem !important;
+    }
+    .recommend_kcal_list{
+        margin-bottom:1rem !important;
+    }
+
+    .helth_info_name{
+        display:none;
+    }
+
+    .recommend_picture_box{
+         margin-top:1rem! important;
+         border-radius:20px;
+         position:relative;
+         width:15rem;
+         height:15rem;
+         border:3px solid black;
+         padding-top:0.5rem;
+         padding-bottom:0.5rem;
+    }
+    .tabcontent-mobile {
+        color: white;
+        display: none;
+        margin-top:1rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        text-align: center;
+    }
+
+    .tabcontent-mobile {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        color:black !important;
+    }
+
+    .tablink{
+        padding-top: 0.5rem !importnat;
+        padding-bottom: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .myphoto_mobile{
+        margin:1rem 1rem !important;
+        background-color:#e0e0e0;
+        border-radius:20px;
+        text-align:center;
+    }
+
+    .profile_photo{
+        margin-top:1rem !important;
+        width:20rem !important;
+        height:20rem !important;
+    }
+
 
 }

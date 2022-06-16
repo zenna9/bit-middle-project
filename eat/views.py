@@ -9,6 +9,7 @@ import pymysql
 import numpy as np
 from whateat.mysql import oursql  # mysql 계정정보
 from datetime import datetime # 경준-0607 건강정보 페이지에서 Footer 이동하려고 만든거
+from users.models import Member
 
 # 채은 : 페이지 접속 시 최초화면
 def index(request) :
@@ -24,11 +25,11 @@ def logindone(request,date):
         print("this is dietlist : =========", dietlist)
         if dietlist.exists():
             loginn = get_object_or_404(login, user_id=idx)
-            sums = diet.objects.filter(date=date).filter(user_id=idx).aggregate(Sum('tan'))
+            sums = diet.objects.filter(date=date,user_id=idx).aggregate(Sum('tan'))
             need_list = ['dang', 'kcal', 'ji', 'dan'] 
 
             for i in need_list :
-                    sums.update(diet.objects.filter(date=date).filter(user_id=idx).aggregate(Sum(i)))
+                    sums.update(diet.objects.filter(date=date, user_id=idx).aggregate(Sum(i)))
             # 당, 칼로리, 지방, 단백질 총계 리스트 = sums
             # ============================================================================
 
@@ -52,6 +53,7 @@ def team_index(request):
 def mypage_index(request, date):
     try : # 사진이 있으면서 날짜를 선택하지 않았을경우
         idx = request.session['idx']
+        date = datetime.today().strftime("%Y-%m-%d")
         username = get_object_or_404(login, user_id=idx).user_name  # USER_NAME
         dietlist = get_list_or_404(diet, user_id=idx, date=date)
         context = {'idx': idx, 'date': date, 'dietlist': dietlist,'name':username}
@@ -64,13 +66,14 @@ def mypage_index(request, date):
 # 전체 사진 보기/ 내 모든 사진을 볼 수 있는 링크/ 내가 올린사진이 없으면 except
 def profile_allphoto(request):
     try:
+        date = datetime.today().strftime("%Y-%m-%d")
         idx = request.session['idx'] #UESR_ID
         dietlist = get_list_or_404(diet, user_id=idx)
         username= get_object_or_404(login, user_id=idx).user_name #USER_NAME
-        context = {'idx': idx, 'dietlist': dietlist, 'date': '나의 모든 사진','name':username}
+        context = {'idx': idx, 'dietlist': dietlist, 'date':date ,'name':username}
         return render(request, "eat/myprofile_all.html", context)
     except:
-        context = {'idx': idx,'name':username}
+        context = {'idx': idx,'name':username,'date':date}
         return render(request, 'eat/myprofile_null.html', context)
 
 def tutorial_page(request):
@@ -82,14 +85,6 @@ def helthinfo(request):
     idx = request.session['idx']
     chart_data = get_list_or_404(diet, user_id=idx)[:5]
     username = get_object_or_404(login, user_id=idx).user_name  # USER_NAME
-    # 1. 어떤 아이디의 모든 영양 정보값 추출
-    # -------------1번까지 데이터 차트 적용 확인--------------------
-    # 2. 어떤 날짜에 해당하는 영양 정보값 더하기
-    # 3. 어떤 아이디에 해당되는 날짜데이터와 영양정보데이터 list 생성하기
-    # 4. 가장 최신의 날짜 3개의 데이터에 해당하는 결과값을 chart에 반영
-    # --------------------여기까지 완료 -----------------------------
-    # 5. 가장 최신의 날짜에 해당하는 탄단지 비율 데이터 찾기
-    # print(chart_data)
     food_labels= [] #날짜 데이터
     food_kcal= [] #kcal 데이터
     food_salt= [] #salt 데이터
@@ -118,8 +113,7 @@ def helthinfo(request):
            "s_salt": food_data3,
         })
 
-    # 경준 MySQL 쿼리문으로 특정 아이디의 최근날짜 3일간 소금, 칼로리합
-    # conn = pymysql.connect(host='192.168.0.29', port=3306, user='user1', passwd='1111', db='bitteam2', charset='utf8')
+    # 경준  정 아이디의 최근식단 3일간 소금, 칼로리량
     # MySQL 데이터 가져오기
     conn = pymysql.connect(host=oursql.s_host, port=3306, user=oursql.s_user, passwd=oursql.s_passwd, db='bitteam2', charset='utf8')
     curs = conn.cursor()
@@ -135,14 +129,13 @@ def helthinfo(request):
     data_list_np = np.array(data_list)  # ARRAY 자료구조
 
 
-    # 두번째 쿼리문 : 특정 아이디의 이름값
+    # 두번째 쿼리문 : low query set 으로 특정 아이디의 이름값
     sql1 = "SELECT `user_name` FROM eat_login WHERE `user_id` = '" + idx + "';"
     curs.execute(sql1)
     # 이름데이터 name test로 저장
     name_test = curs.fetchone()
     # 이름데이터 tuple => str 변환
     name_list = ''.join(name_test)
-
 
     # 특정 아이디의 영양정보(칼로리, 염분섭취량) 와 이름 합치기
     daily_data = []
@@ -210,16 +203,15 @@ def helthinfo(request):
         });
     print('food_percent_data:', food_percent_data[0] , type(food_percent_data[0]))
     percent_label = list(food_percent_data[0].keys())
-    percent_data =list(food_percent_data[0].values())
-    print('percent_label', percent_label, type(percent_label))
-    print('percent_data',percent_data, type(percent_data))
-
+    percent_data=list(food_percent_data[0].values())
+    percent_data=[round(float(percent_data[i])) for i in range(len(percent_data))]
 
     # 추천음식 데이터 recommend_data={{yolo}}
     # context = {'idx':idx, 'labels':food_labels,'kcal_data':food_kcal, 'salt_data':food_salt}
     #  기존에 임시로 띄어놓은 차트에 해당하는 데이터 가져오기
-    context = {'mydata': daily_data, 'date':date,'idx': idx, 'name': name_list, 'labels':date_list, 'kcal_data':kcal_list,
+    context = {'date':date,'idx': idx, 'name': name_list, 'labels':date_list, 'kcal_data':kcal_list,
                'salt_data':salt_list, 'chart_data':percent_data,'chart_label':percent_label,'name':username}
+    context['mydata'] = daily_data
     return render(request, 'eat/helth.html', context)
 
 def home(request):
@@ -236,3 +228,17 @@ def home(request):
     context["member_name"] = membername
 
     return render(request, 'user/login.html', context)
+
+def board(request):
+    context = {}
+
+    if request.session.has_key ('member_no'):
+        memberno = request.session['member_no']
+        membername = request.session['member_name']
+    else:
+        return redirect('/auth/login')
+
+    context["member_no"] = memberno
+    context["member_name"] = membername
+
+    return render(request, 'user/helth.html', context)

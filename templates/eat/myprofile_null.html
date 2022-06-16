@@ -4,7 +4,7 @@
 
 <!-- 05.11 헤드에 추가할 내용은 여기 쓰세요-->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="/static/css/mobile-index.css" />
 <!--    *{-->
 <!--        border: 1px solid red;-->
 <!--    }-->
@@ -64,8 +64,15 @@
 
 <!--	본문 CONTENTS		-->
 	<div class="container">
+				<!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
+	<div class="kj-hidden1">
+		<div class="flex-column row kj-mobile">
+			{% include 'eat/helth_topbar.html' %}
+		</div>
+	</div>
+				<!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
 		<div class="row profile">
-			<div class="col-md-4">
+			<div class="col-md-4 kj-hidden">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
 					{% include 'eat/myprofile_sidebar.html' %}
 				</div>
@@ -74,12 +81,13 @@
 			<div class="col-md-8 col-profile-content" style="text-align:center;">
 				<div class="profile_photo" style="width:30rem; height:30rem; margin:1rem auto 0 auto;">
 					<figure>
+						<h2 style="color:black; margin-top:1rem !important; font-weight:700;">업로드한 사진이 없습니다.</h2>
 						<figcaption class="pragmatic_logo" style="color:black">No Image Avalation</figcaption>
 						<img style="width:100%; height:100%; object-fit:cover;" src="/static/picture/no-image.jpg" alt="receltly_photo1">
 					</figure>
 				</div>
 				<div style="text-align:center; margin:1rem auto;">
-					<span class="span"><a href="#"></a></span>
+					<span class="span"><a href="/m/ain/{{date}}"></a></span>
 				</div>
 			</div>
 		</div>

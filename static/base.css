@@ -255,3 +255,6 @@ details[open] > summary ~ * {
      transition: 0.2s
  }
 
+.kj-hidden1{
+    display:none;
+   }

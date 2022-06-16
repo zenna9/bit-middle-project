@@ -1,14 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{% static 'js/sha1.js' %}" type="text/javascript"></script>
     <!--SweetAlert2-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-
 </head>
 <script>
     const Toast = Swal.mixin({
@@ -87,7 +84,7 @@
                         icon: 'success',
                         title: obj.result_msg
                         });
-                    location.href = "/";
+                    location.href = "/auth/login";
                 }
             }
         };
@@ -98,61 +95,8 @@
 
     </script>
 <body>
-<!--<br>-->
-<!--&lt;!&ndash;템플릿 문법을 사용해서 로그인 여부에 따라 다르게 출력&ndash;&gt;-->
-<!--{% if user.is_authenticated %}-->
-<!--    로그인 성공!-->
-<!--    {{ user.username }} 님 환영합니다.-->
-<!--    <a href="{% url 'user:logout'%}">로그아웃</a>-->
-<!--{% else %}-->
-<!--<h1 class="h3 mb-3 fw-normal pragmatic_logo centered text-center" style="color:black; font-size: 3.5em;">AI FooPo</h1>-->
-<!--<form action="" method="POST">-->
-<!--    {% csrf_token %}-->
-<!--    <div class="row" style="text-align:center;">-->
-<!--        <div>-->
-<!--            <label style="text-align:center; margin-top:2rem;-->
-<!--                font-size:1.2rem; font-weight:900;" for="username">ID</label><br>-->
-<!--            <input id='username' size="30" style="text-align:center;-->
-<!--            margin-bottom:1rem; padding: 0.5rem 0 0.5rem 1rem;-->
-<!--            border:0; border-radius:5px; background-color:#A9A9A9;-->
-<!--            font-size: 1.3rem; color:white; height:3rem;"-->
-<!--                    name='username' type='text'-->
-<!--                   placeholder="ID를 입력하세요"-->
-<!--                   onfocus="this.placeholder=''"-->
-<!--                   onblur="this.placeholder='ID를 입력하세요'">-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <label style="margin-top:1rem;-->
-<!--            font-size:1.2rem; font-weight:900;"-->
-<!--                   for="password">PASSWORD</label>-->
-<!--            <br>-->
-<!--            <input id='password' size="30" style="-->
-<!--            text-align:center;-->
-<!--            margin-bottom:1rem;-->
-<!--            padding: 0.5rem 0 0.5rem 1rem;-->
-<!--            border:0;-->
-<!--            border-radius:5px;-->
-<!--            background-color:#A9A9A9;-->
-<!--            font-size: 1.3rem;-->
-<!--            color:white;-->
-<!--            height:3rem;"-->
-<!--                    name='password' type='password'-->
-<!--                   placeholder="PW를 입력하세요"-->
-<!--                   onfocus="this.placeholder=''"-->
-<!--                   onblur="this.placeholder='PW를 입력하세요'">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="row" style="text-align:center;">-->
-<!--        <div>-->
-<!--            <input style="background-color:#A9A9A9; border-radius:5px; border:none;-->
-<!--            font-size:1.5rem; font-weight:700; color: black; padding:0.5rem 1rem;-->
-<!--            text-decoration: none; margin: 1.5rem 2px; cursor: pointer;"-->
-<!--                   type='submit' value='로그인'>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</form>-->
-<hr>
-<hr>
+{% include 'nav.html' %}
+<!--	본문 CONTENTS		-->
     {% if member_no == None %} <!-- 로그인 안된 상태일때 -->
     <div class="row" style="text-align:center;">
         <div>
@@ -199,9 +143,12 @@
     {% endif %}
     <div style="text-align: center;" >아직 계정이 없으신가요?</div>
     <div style="text-align:center; margin-top:2rem; font-size:2rem;">
-        <a href="{% url 'user:signup' %}">회원가입</a>
+        <li><a href="member_logout">로그아웃</a></li>
+        <li><a href="edit">정보변경</a></li>
+        <li><a href="{% url 'user:signup' %}">회원가입1</a></li>
+        <li><a href="signup">회원가입</a></li>
+        <li><a href="signup">사진 등록하기</a></li>
     </div>
 {% include 'footer.html' %}
-{% endif %}
 </body>
 {% endblock %}

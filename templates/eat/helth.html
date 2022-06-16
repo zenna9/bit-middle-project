@@ -6,14 +6,12 @@
 <!--        border: 1px solid red;-->
 <!--    }-->
 <!--    -->
-<style>
+<style xmlns="http://www.w3.org/1999/html">
 .graph_container{
   display:block;
   width:600px;
 }
-<!--*{-->
-<!--        border: 1px solid red;-->
-<!--    }-->
+
 /* Style the tab buttons */
 .tablink {
   background-color: gray;
@@ -43,8 +41,6 @@
 /* Style each tab content individually */
 #London {background-color:#64D6FF;}
 #Paris {background-color:#73EAA8;}
-
-
 </style>
 
 <!-- CHART JS CDN LINK -->
@@ -53,16 +49,26 @@
 
 <!-- 모바일 CSS적용 태그 -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/static/css/mobile-index.css" />
+<!--<script src="/static/js/index.js "></script> 임포트 해야하는지 물어보기-->
+<!--<script src="/static/js/zen.js "></script>-->
 </head>
 
 <body>
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
 <!--	본문 CONTENTS		-->
-	<div class="container" style="height:130vh">
+<!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
+	<div class="kj-hidden1">
+		<div class="flex-column row kj-mobile">
+			{% include 'eat/helth_topbar.html' %}
+		</div>
+	</div>
+<!-- {#       사이드바(PC 화면일 때) ===============================#} -->
+	<div class="container" style="height:140vh">
 		<div class="row profile">
 <!--	프로필 사이드바 col-md-3 -->
-			<div class="col-md-3">
+			<div class="col-md-3 kj-hidden">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
 					{% include 'eat/myprofile_sidebar.html' %}
 				</div>
@@ -70,20 +76,20 @@
 <!--	건강정보 컨텐츠 col-md-8 -->
 			<div class="col-md-9">
 <!--			회원정보 텍스트-->
-				<div class="row">
+				<div class="row helth_info_name">
 					<div style="margin-top:1rem;">
-						<strong style="font-size:1.5rem;">{{name}}님의 건강 정보입니다.</strong>
+						<strong style="font-size:1.5rem;">{{name}}님 안녕하세요.</strong>
 					</div>
 				</div>
 
 <!--				그래프 컨텐트 메뉴바 -->
 				<div class="row">
-					<div id="London" class="tabcontent" style="padding:1rem; color:black;">
+					<div id="London" class="tabcontent tabcontent-mobile" style="padding:1rem; color:black;">
 						<h2>하루그래프</h2>
 						<p style="margin-bottom:0;">하룻동안 먹은 식사량의 탄단지 비율을 알려주어요</p>
 					</div>
 
-					<div id="Paris" class="tabcontent" style="padding:1rem; color:black;">
+					<div id="Paris" class="tabcontent tabcontent-mobile" style="padding:1rem; color:black;">
 						<h2>주간/월간 그래프</h2>
 						<p style="margin-bottom:0;">주간, 월간 먹은 식사량의 나트륨, 칼로리량을 알려주어요</p>
 					</div>
@@ -112,8 +118,8 @@
 					</div>
 				</div>
 <!--			부족한 영양소 멘트-->
-				<div class='row' style="border-radius:20px; background-color:#D3D3D3; padding:1rem; margin:0 1rem 0 1rem; height:auto; text-align:center;">
-							<strong style="font-size:1.5rem; margin-bottom:1rem;">당신은 채소류 섭취가더 필요하네요</strong>
+				<div class='row food_ment' style="border-radius:20px; background-color:#D3D3D3; padding:1rem; margin:0 1rem 0 1rem; height:auto; text-align:center;">
+					<a class="food_ment_title" style="font-size:1.5rem; margin-bottom:1rem; font-weight:900; color:black; text-decoration:none;">당신은 채소류 섭취가더 필요하네요</a>
 					<p>싱싱한 채소 섭취가 건강에 좋다는 건 누구나 아는 사실이지만
 						바쁜 일상 속에서 골고루 챙겨 먹기란 쉽지 않은 일이다.
 						하지만 육류나 인스턴트식품의 섭취 비율은 높은 반면
@@ -122,33 +128,32 @@
 <!--			추천음식 정보 -->
 				<div class='row' style="text-align:center; margin-top:1rem;">
 					<div class="col-md-6">
-						<div style="border-radius:20px; background-color:#F5F5DC; width:100%; height:15rem;">
+						<div class="recommend_kcal" style="border-radius:20px; background-color:#F5F5DC; width:100%; height:15rem;">
 							<div style="display:flex; float:left; flex-direction:column; justify-content:flex-start; padding-top:0.5rem; padding-left:0.5rem; ">
-								<h5 style="margin-top:0.5rem;">{{chart_data}}</h5>
-								<h5 style="margin-top:0.5rem;">권장량대비 섭취영양(%) : </h5>
-								<h5 style="margin-top:0.5rem;">권장량대비 부족영양(%) :</h5>
-								<h5 style="margin-top:0.5rem;">나에게 부족한 영양소 : </h5>
-								<h5 style="margin-top:0.5rem;">부족한 영양소 추천음식:</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">{{chart_data}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 섭취영양(%) : </h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 부족영양(%) :</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">나에게 부족한 영양소 : </h5>
+								<h5 style="margin-top:0.5rem; padding-bottom:0 !important;">부족한 영양소 추천음식:</h5>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3" style="display:flex; justify-content:center; align-items:center; ">
-						<div style="border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
-						<figure style="padding-top:0.5rem; padding-bottom:0.5rem;">
-							<figcaption>추천음식 1</figcaption>
-							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food1.jpg" alt="receltly_photo1">
-						</figure>
+					<div class="col-md-6" style="padding:0 1rem !important; display:flex; justify-content:center; align-items:center; ">
+						<div style="margin-right:1rem !important; border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
+							<figure style="padding-top:0.5rem !important; padding-bottom:0.5rem;">
+								<figcaption>추천음식 1</figcaption>
+								<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food1.jpg" alt="receltly_photo1">
+							</figure>
+						</div>
+
+						<div class='recommend_picture_box' style="margin-top:1rem; border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
+							<figure style="padding-top:0.5rem !important; padding-top:0.5rem; padding-bottom:0.5rem;">
+								<figcaption>추천음식 2</figcaption>
+								<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food2.jpg" alt="receltly_photo2">
+							</figure>
 						</div>
 					</div>
-					<div class="col-md-3" style="display:flex; justify-content:center; align-items:center; ">
-						<div style="border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
-						<figure style="padding-top:0.5rem; padding-bottom:0.5rem;">
-							<figcaption>추천음식 2</figcaption>
-							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food2.jpg" alt="receltly_photo2">
-						</figure>
-						</div>
-					</div>
-				</div>
+
 <!--			추천음식 정보 끝 -->
 			</div>
 		</div>
@@ -168,7 +173,7 @@
 			labels : ['탄수화물', '단백질', '지방'],
 			datasets : [{
 				label : '총 먹은 열량',
-				data : [100, 200, 300],
+				data : {{chart_data}},
 				backgroundColor:["#F88FB2", "#ED5C8B", "#D5255E"]
 			}]
 		},
@@ -181,7 +186,7 @@
 			plugins : {
 				title : {
 					display : true,
-					text : '일일 영양균형',
+					text : '일일 영양균형 (%)',
 					fontSize : 16,
 					fontColor : 'red',
 					position:'bottom'
@@ -195,7 +200,7 @@
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
-            	label : '최근 업로드한 날짜의 염분 섭취양',
+            	label : '최근 식단의 염분 섭취량 (mg)',
             	data : {{salt_data|safe}},
                 backgroundColor : ["#97A1D9", "#6978C9", "#4A5596"],
             }],
@@ -216,7 +221,7 @@
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
-            	label : '최근 업로드한 날짜의 염분 칼로리양',
+            	label : '최근 식단의 칼로리양 (kcal)',
             	data : {{kcal_data|safe}},
                 backgroundColor : ["#62BEB6", "#0B9A8D", "#077368"],
             }],

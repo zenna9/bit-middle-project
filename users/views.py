@@ -10,23 +10,40 @@ from datetime import datetime
 # Create your views here.
 
 def login_view(request):
-  if request.method == 'POST':
-    username = request.POST["username"]
-    password = request.POST["password"]
-    user = authenticate(username=username, password=password)
-    if user is not None:
-      print('로그인 인증 성공')
-      login(request, user) # 로그인 성공됬을때 나오는 메세지를 따로 만들어야한다.
-    else:
-      print('로그인 인증 실패')
-  return render (request,"users/login.html")
+  # 세션기반 인증 로그인여부 확인 코드
+  context={}
+
+  if request.session.has_key('member_no'):
+    memberno = request.session['member_no']
+    membername = request.session['member_name']
+    print('이미 로그인 되어있음')
+  else:
+    memberno = None
+    membername = None
+    print('로그인 되있지 않을 경우 정상출력')
+
+  context["member_no"] = memberno
+  context["member_name"] = membername
+  # 세션기반 인증 로그인여부 확인 코드
+
+  # if request.method == 'POST':
+  #   username = request.POST["username"]
+  #   password = request.POST["password"]
+  #   user = authenticate(username=username, password=password)
+  #   if user is not None:
+  #     print('로그인 인증 성공')
+  #     login(request, user) # 로그인 성공됬을때 나오는 메세지를 따로 만들어야한다.
+  #   else:
+  #     print('로그인 인증 실패')
+
+  return render (request,"users/login.html", context)
 
 def logout_view(request):
   logout(request)
   return redirect ("user:login")
 
 def signup_view(request):
-
+  # 처음 연습할때 썼던 코드라 사용안함
   if request.method == 'POST':
     print(request.POST)
     username = request.POST["username"]
@@ -45,7 +62,7 @@ def signup_view(request):
     # 회원가입 했을때 로그인 페이지로 전달하기
     return redirect("user:login")
 
-  return render(request, "users/signup.html")
+  return render (request, "users/signup.html")
 
 def member_register(request):
   return render (request, 'users/signup.html', {})
@@ -125,4 +142,71 @@ def member_login(request):
       context['result_msg'] = '로그인에 성공하였습니다.'
 
   return JsonResponse (context, content_type='application/json')
+
+
+@csrf_exempt
+def member_logout(request):
+  context = {}
+
+  request.session.flush()
+  return redirect('/auth/login')
+
+
+
+def member_edit(request):
+  context={}
+  # 세션 기반 로그인 인증 확인 코드 시작
+  if request.session.has_key('member_no'):
+    memberno = request.session['member_no']
+    membername = request.session['member_name']
+  else:
+    return redirect('/auth/login')
+
+  context["member_no"] = memberno
+  context["member_name"] = membername
+  # 세션 기반 로그인 인증 확인 코드 끝
+
+  if 'member_no' in request.session:
+    memberno= request.session['member_no']
+
+    rsMember = Member.objects.get(member_no=memberno)
+
+    context['member_id'] = rsMember.member_id
+    context['member_name'] = rsMember.member_name
+    context['member_email'] = rsMember.member_email
+
+    context['flag'] = '0'
+    context['result_msg'] = '멤버 확인됨'
+
+    return render(request,'users/member_edit.html',context)
+
+  else: # 로그아웃 되어있는 경우
+    return redirect ('/auth/login')
+
+
+@csrf_exempt
+def member_update(request):
+  context = {}
+
+  membername = request.GET['member_name']
+  memberemail = request.GET['member_email']
+
+  if 'member_no' in request.session:
+    memberno= request.session['member_no']
+
+    rsMember = Member.objects.get(member_no=memberno)
+
+    rsMember.member_name = membername
+    rsMember.member_email = memberemail
+    rsMember.save()
+
+    context['flag'] = '0'
+    context['result_msg'] = '회원정보 변경 저장 완료되었습니다.'
+
+  else: # 로그아웃 되어있는 경우
+    context['flag'] = '1'
+    context['result_msg'] = '로그인이 되어있지 않습니다.'
+
+  return JsonResponse(context, content_type='application/json')
+
 
