@@ -173,7 +173,7 @@
 			labels : ['탄수화물', '단백질', '지방'],
 			datasets : [{
 				label : '총 먹은 열량',
-				data : {{chart_data1}},
+				data : {{ chart_data1 }} ,
 				backgroundColor:["#F88FB2", "#ED5C8B", "#D5255E"]
 			}]
 		},
@@ -196,16 +196,34 @@
 	});
 
     let barChartfour = new Chart (chartfour, {
-		type : 'bar',
+
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
+            	type : 'line',
             	label : '최근 식단의 염분 섭취량 (mg)',
+            	data : {{salt_data|safe}},
+                backgroundColor : ["#97A1D9", "#6978C9", "#4A5596"],
+            },
+            {
+            	type : 'bar',
             	data : {{salt_data|safe}},
                 backgroundColor : ["#97A1D9", "#6978C9", "#4A5596"],
             }],
         },
         options : {
+        	plugins:{
+        		title : {
+					display : true,
+					text : '최근 식단의 염분 섭취양 (mg)',
+					fontSize : 16,
+					fontColor :'red',
+					position:'bottom'
+				},
+        		legend: {
+        			display: false
+    			}
+           	},
 		 	maintainAspectRatio: false,
             scales : {
                 responsive : true,
@@ -216,17 +234,36 @@
         }
     });
 
+
+
 	let barChartthree = new Chart (chartthree, {
-		type : 'bar',
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
+            	type : 'line',
+            	label : '최근 식단의 칼로리양 (kcal)',
+            	data : {{kcal_data|safe}},
+                backgroundColor : ["#62BEB6", "#0B9A8D", "#077368"],
+            },{
+            	type : 'bar',
             	label : '최근 식단의 칼로리양 (kcal)',
             	data : {{kcal_data|safe}},
                 backgroundColor : ["#62BEB6", "#0B9A8D", "#077368"],
             }],
         },
         options : {
+        	plugins:{
+        		title : {
+					display : true,
+					text : '최근 식단의 칼로리양 (kcal)',
+					fontSize : 16,
+					fontColor :'red',
+					position:'bottom'
+				},
+        		legend: {
+        			display: false
+    			}
+           	},
         	maintainAspectRatio: false,
             scales : {
                 responsive : true,
@@ -257,12 +294,30 @@
 		type: 'bar',
 		data,
 		options:{
+			plugins:{
+        		title : {
+					display : true,
+					text : '오늘 하루 식단 세부영양소 비율(%)',
+					fontSize : 20,
+					fontColor :'red',
+					position:'bottom'
+				},
+        		legend: {
+        			display: false
+    			}
+           	},
 		 	responsive: true,
 			maintainAspectRatio: false,
 			indexAxis:'y',
 			scales: {
 				y: {
-					beginAtZero: true
+					beginAtZero:true
+				},
+				x: {
+					beginAtZero:true,
+                 	steps: 10,
+                    stepValue: 10,
+                    max: 100
 				}
 			},
 		}
@@ -273,6 +328,7 @@
 		document.getElementById('myChart'),
 		config
 	);
+
 </script>
 
 <!-- 차트 컨텐츠 메뉴바 JS -->
