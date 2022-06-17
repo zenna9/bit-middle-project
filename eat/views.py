@@ -46,13 +46,13 @@ def team_index(request):
 #  날짜별 나의 사진을 볼 수 있는 링크
 def mypage_index(request, date):
     try : # 사진이 있으면서 날짜를 선택하지 않았을경우
+        date = datetime.today().strftime("%Y-%m-%d")
         idx = request.session['idx']
         username = get_object_or_404(login, user_id=idx).user_name  # USER_NAME
         dietlist = get_list_or_404(diet, user_id=idx, date=date)
         context = {'idx': idx, 'date': date, 'dietlist': dietlist,'name':username}
         return render(request, "eat/myprofile.html", context)
     except : # 사진이 없을경우
-        date = datetime.today().strftime("%Y-%m-%d")
         context = {'idx':idx,'date':date, 'name':username}
         return render(request, 'eat/myprofile_null.html', context)
 
@@ -67,7 +67,6 @@ def profile_allphoto(request):
         context = {'idx': idx, 'dietlist': dietlist,'date':date,'name':username}
         return render(request, "eat/myprofile_all.html", context)
     except:
-        date = datetime.today().strftime("%Y-%m-%d")
         context = {'idx': idx,'name':username,'date':date}
         return render(request, 'eat/myprofile_null.html', context)
 
@@ -79,20 +78,45 @@ def helthinfo(request):
     date = datetime.today().strftime("%Y-%m-%d")
     idx = request.session['idx']
     chart_data = get_list_or_404(diet, user_id=idx)[:5]
-    # 주간 데이터
-    start=datetime.today().strftime("%Y-%m-%d")
-    end=(datetime.now()-timedelta(weeks=1)).strftime("%Y-%m-%d")
-    chart4_data =diet.objects.filter(date__range=[end,start]).filter(user_id=idx).values('kcal','salt')
 
-    # 주간 데이터
+    # 주간 염분, 칼로리 섭취량 리스트
+    month_salt = []
+    month_kcal = []
+
+    # 지난 1주간 염분 섭취량 데이터
+    start = (datetime.now()-timedelta(weeks=1)).strftime("%Y-%m-%d")
+    end = datetime.today().strftime("%Y-%m-%d")
+    week1_data = diet.objects.filter(date__range=[start, end],user_id=idx).aggregate(Sum('kcal'),Sum('salt'))
+    month_kcal.append(round(week1_data.get('kcal__sum')))
+    month_salt.append(round(week1_data.get('salt__sum')))
+    print('week1_data:',week1_data, type(week1_data))
+    print('month_salt', month_salt, 'month_kcal', month_kcal)
+
+    # 2주전 염분 섭취량 데이터
+    start2 = (datetime.now() - timedelta(weeks=2)).strftime("%Y-%m-%d")
+    week2_data = diet.objects.filter(date__range=[start2, start],user_id=idx).aggregate(Sum('kcal'),Sum('salt'))
+    month_kcal.append(round(week2_data.get('kcal__sum')))
+    month_salt.append(round(week2_data.get('salt__sum')))
+    print('week2_data:',week2_data,type(week2_data))
+    print('month_salt', month_salt, 'month_kcal', month_kcal)
+
+    # 3주전 염분 섭취량 데이터
+    start3 =(datetime.now() - timedelta(weeks=3)).strftime("%Y-%m-%d")
+    week3_data = diet.objects.filter(date__range=[start3, start3],user_id=idx).aggregate(Sum('kcal'),Sum('salt'))
+    month_kcal.append(round(week3_data.get('kcal__sum')))
+    month_salt.append(round(week3_data.get('salt__sum')))
+    print('week3_data:',week3_data,type(week3_data))
+    print('month_salt', month_salt, 'month_kcal', month_kcal)
+
+    # 주간 탄단지 비율데이터
     conn = pymysql.connect(host=oursql.s_host, port=3306, user=oursql.s_user, passwd=oursql.s_passwd, db='bitteam2',
                            charset='utf8')
     curs = conn.cursor()
     sql4 = "SELECT ROUND((t1.wt/t4.alld)*100) AS 't%',	ROUND((t2.wd/t4.alld)*100) AS 'd%', ROUND((t3.wj/t4.alld)*100) AS 'j%' FROM\
-        (SELECT ROUND(SUM(`tan`),-1) AS wt FROM bitteam2.eat_diet WHERE date BETWEEN '" + end + "' AND '" + start + "' AND user_id = '" + idx + "' GROUP BY user_id ) AS t1,\
-        (SELECT ROUND(SUM(`dan`),-1) AS wd FROM bitteam2.eat_diet WHERE date BETWEEN '" + end + "' AND '" + start + "' AND user_id = '" + idx + "' GROUP BY user_id ) AS t2,\
-        (SELECT ROUND(SUM( `ji`),-1) AS wj FROM bitteam2.eat_diet WHERE date BETWEEN '" + end + "' AND '" + start + "' AND user_id = '" + idx + "' GROUP BY user_id ) AS t3,\
-        (SELECT ROUND(SUM(`tan`)+SUM(`dan`)+SUM(`ji`)) AS alld FROM bitteam2.eat_diet WHERE date BETWEEN '" + end + "' AND '" + start + "' AND user_id = '" + idx + "' GROUP BY user_id ) AS t4;"
+        (SELECT ROUND(SUM(`tan`),-1) AS wt FROM bitteam2.eat_diet WHERE date BETWEEN '" + start + "' AND '" + end + "' AND user_id = '" + idx + "' GROUP BY user_id ) AS t1,\
+        (SELECT ROUND(SUM(`dan`),-1) AS wd FROM bitteam2.eat_diet WHERE date BETWEEN '" + start + "' AND '" + end + "' AND user_id = '" + idx + "' GROUP BY user_id ) AS t2,\
+        (SELECT ROUND(SUM( `ji`),-1) AS wj FROM bitteam2.eat_diet WHERE date BETWEEN '" + start + "' AND '" + end + "' AND user_id = '" + idx + "' GROUP BY user_id ) AS t3,\
+        (SELECT ROUND(SUM(`tan`)+SUM(`dan`)+SUM(`ji`)) AS alld FROM bitteam2.eat_diet WHERE date BETWEEN '" + start + "' AND '" + end + "' AND user_id = '" + idx + "' GROUP BY user_id ) AS t4;"
     curs.execute(sql4)
     # 실행결과 모두 조회해서 dailyinfo에 저장
     chart5_data = curs.fetchall()
@@ -224,15 +248,14 @@ def helthinfo(request):
         });
     percent_label = list(food_percent_data[0].keys())
     percent_data = list(food_percent_data[0].values()) # 하루 탄단지 비율
-
-    percent_data = [round(float(percent_data[i])) for i in range(len(percent_data))]
+    percent_data = [round(float(percent_data[i])) for i in range(len(percent_data))] # float 를 int 형으로 변환
 
     # 성균 : 음식추천 모듈 가져와서 리턴값에 업데이트
     lack_percent = [round(100-(percent_data[i])) for i in range(len(percent_data))]
-    rcfoodsinfo = recommend_food()
-    # 리턴값: {영양성분 이름 / 권장량대비 섭취영양 / 권장량대비 부족영양 / 부족영양소 (2종) / 부족영양소 별 추천읍식 (2종)}
-    # 리턴값구성 - recommend_data= {'nameAndEatNf': nameAndEatNf, 'nameAndLackNf': nameAndLackNf, \
-    #      'lackNf_dec':[r1,r2], 'recommend_p': [r1_recommend.index[0],r2_recommend.index[0]]}
+    rcfoodsinfo=recommend_food(request,date)
+    # 리턴값: {부족영양소 코멘트 / 부족영양소1 / 부족영양소2 / 추천음식 (2종) / 추천음식명1 / 추천음식명2 / 탄단지외 영양소 일일권장량 대비 퍼센트값 리스트 (for 경준)}
+    # 리턴값구성 - recommend_data= {'rComments': comment, 'lackN1':r1, 'lackN2':r2, 'recommendFoods': f'{r1_recommend.index[0]}({r1}:{r1_recommend_p}%), {r2_recommend.index[0]}({r2}:{r2_recommend_p}%)',/
+    #                   'r1': r1_recommend.index[0], 'r2': r2_recommend.index[0], 'N_percent': eat_lst[3:]}
     
     # 추천음식 데이터 recommend_data={{ key값 }}
     # context = {'idx':idx, 'labels':food_labels,'kcal_data':food_kcal, 'salt_data':food_salt}
@@ -243,9 +266,15 @@ def helthinfo(request):
     context = {'mydata': daily_data, 'date':date,'idx': idx, 'name': name_list, 'labels':date_list, 'kcal_data':kcal_list,
                'salt_data':salt_list,'chart_data1':percent_data, 'chart_data':f'탄({percent_data[0]}), 단({percent_data[1]}), 지({percent_data[2]})',
                'chart_label':percent_label,'name':username, 'lack_data': f'탄({lack_percent[0]}), 단({lack_percent[1]}), 지({lack_percent[2]})'}
+
     context['mydata'] = daily_data # 경준 차트용 데이터
     # 0616 주간 탄단지 비율 데이터 추가
     context['weekpercent'] = chart5_data
     # 0617 주간 염분, 칼로리 섭취량 추가
+    context['month_label'] = ['최근1주', '1주전', '2주전']
+    context['mon_kcal'] = month_kcal
+    context['mon_salt'] = month_salt
+
     context.update(rcfoodsinfo)
     return render(request, 'eat/helth.html', context)
+

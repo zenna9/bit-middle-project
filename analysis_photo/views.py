@@ -43,7 +43,6 @@ def f_hp(request, b_hc_id):
     mm=str(previous_url[-5:-3])
     yy=str(previous_url[-8:-6])
     files_Path= DL_DIR / 'media/Uploaded Files' / yy / mm / dd
-    # files_Path 폴더 경로가 없을시 mkdir 코드 추가!
     
     file_name_and_time_lst = []
         # 해당 경로에 있는 파일들의 생성시간을 함께 리스트로 넣어줌. 
@@ -69,7 +68,7 @@ def f_hp(request, b_hc_id):
     opt.hide_conf=False
     opt.hide_labels=False
     opt.imgsz=[416] # 학습시 통일된 이미지 사이즈 고정값
-    opt.iou_thres=0.45 # True labler의 bounding box 영역과 predict으로 감지한 영역이 얼마이상 일치해야 인정하는가 
+    opt.iou_thres=0.45 # True lable의 bounding box 영역과 predict으로 감지한 영역이 얼마이상 일치해야 인정하는가 
     opt.line_thickness=3
     opt.max_det=1000
     opt.name='exp'

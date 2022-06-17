@@ -85,8 +85,6 @@ DATABASES = {
         'PASSWORD': oursql.s_passwd,
         'HOST': oursql.s_host,
         'PORT': '3306'
-
-
     }
 }
 

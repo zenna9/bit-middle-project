@@ -50,8 +50,19 @@
 <!-- 모바일 CSS적용 태그 -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="/static/css/mobile-index.css" />
-<!--<script src="/static/js/index.js "></script> 임포트 해야하는지 물어보기-->
-<!--<script src="/static/js/zen.js "></script>-->
+<script src="/static/js/kj.js "></script>
+<script>
+	var piedata= [{{ chart_data1 }},{{ weekpercent }}]
+	var barlabel = [{{ labels | safe }},{{ month_label | safe }}]
+	var bar1data = [{{ salt_data|safe }},{{ mon_salt }}]
+	var bar2data = [{{ kcal_data|safe }},{{ mon_kcal }}]
+
+	function changedata(){
+		alert("차트가 변경되었습니다.");
+		document.getElementById("chartone").setData(piedata[1]);
+	}
+</script>
+
 </head>
 
 <body>
@@ -94,7 +105,7 @@
 						<p style="margin-bottom:0;">주간, 월간 먹은 식사량의 나트륨, 칼로리량을 알려주어요</p>
 					</div>
 					<button class="tablink" onclick="openCity('London', this, '#64D6FF')" id="defaultOpen">일간 그래프</button>
-					<button class="tablink" onclick="openCity('Paris', this, '#73EAA8')">주간/월간 그래프</button>
+					<button class="tablink" onclick="openCity('Paris', this, '#73EAA8'); ">주간/월간 그래프</button>
 				</div>
 <!--				그래프 컨텐트 차트 -->
 				<div class="row" style="padding: 1rem;">
@@ -118,12 +129,9 @@
 					</div>
 				</div>
 <!--			부족한 영양소 멘트-->
-				<div class='row food_ment' style="border-radius:20px; background-color:#D3D3D3; padding:1rem; margin:0 1rem 0 1rem; height:auto; text-align:center;">
-					<a class="food_ment_title" style="font-size:1.5rem; margin-bottom:1rem; font-weight:900; color:black; text-decoration:none;">당신은 채소류 섭취가더 필요하네요</a>
-					<p>싱싱한 채소 섭취가 건강에 좋다는 건 누구나 아는 사실이지만
-						바쁜 일상 속에서 골고루 챙겨 먹기란 쉽지 않은 일이다.
-						하지만 육류나 인스턴트식품의 섭취 비율은 높은 반면
-						채소 섭취의 비율이 적어지게 되면 각종 질병에 노출되기 쉽다.</p>
+				<div class='row' style="border-radius:20px; background-color:#D3D3D3; padding:1rem; margin:0 1rem 0 1rem; height:auto; text-align:center;">
+							<strong style="font-size:1.5rem; margin-bottom:1rem;">당신은 {{lackN1}} 섭취가더 필요하네요</strong>
+					<p>{{rComments}}</p>
 				</div>
 <!--			추천음식 정보 -->
 				<div class='row' style="text-align:center; margin-top:1rem;">
@@ -133,33 +141,33 @@
 								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">하루 탄단지 비율 : {{chart_data}}</h5>
 								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 섭취영양(%) : {{chart_data}}</h5>
 								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 필요영양(%) : {{lack_data}}</h5>
-								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">나에게 부족한 영양소 : {{lackNf_dec}}</h5>
-								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">부족한 영양소 추천음식: {{recommend_p}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">나에게 부족한 영양소 : {{lackN1}}, {{lackN2}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">부족한 영양소 추천음식: {{recommendFoods}}</h5>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6" style="padding:0 1rem !important; display:flex; justify-content:center; align-items:center; ">
 						<div style="margin-right:1rem !important; border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
 							<figure style="padding-top:0.5rem !important; padding-bottom:0.5rem;">
-								<figcaption>추천음식 1</figcaption>
-								<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food1.jpg" alt="receltly_photo1">
+								<figcaption>추천음식1: {{r1}}</figcaption>
+								<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/{{r1}}.jpg" alt="receltly_photo1">
 							</figure>
 						</div>
 
 						<div class='recommend_picture_box' style="margin-top:1rem; border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
 							<figure style="padding-top:0.5rem !important; padding-top:0.5rem; padding-bottom:0.5rem;">
-								<figcaption>추천음식 2</figcaption>
-								<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/food2.jpg" alt="receltly_photo2">
+								<figcaption>추천음식2 : {{r2}}</figcaption>
+								<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/{{r2}}.jpg" alt="receltly_photo2">
 							</figure>
 						</div>
 					</div>
-
 <!--			추천음식 정보 끝 -->
 			</div>
 		</div>
 	</div>
 <!--	본문 CONTENTS 마무리  -->
     {% include 'footer.html' %}
+
 
 <!-- 차트 컨텐츠 JS-->
 <script>
@@ -173,7 +181,7 @@
 			labels : ['탄수화물', '단백질', '지방'],
 			datasets : [{
 				label : '총 먹은 열량',
-				data : {{ chart_data1 }} ,
+				data : {{ chart_data1 }} , // {{ weekpercent }}
 				backgroundColor:["#F88FB2", "#ED5C8B", "#D5255E"]
 			}]
 		},
@@ -282,7 +290,7 @@
 		labels: labels,
 		datasets: [{
 			label: '오늘 하루 섭취한 나의영양분',
-			data: [12, 19, 3, 5, 2, 3, 8],
+			data: {{ N_percent }},
 			backgroundColor: ["#619ED6", "#6BA547", "#F7D027", "#E48F1B", "#B77EA3", "#E64345"],
 			borderColor: ["#619ED6", "#6BA547", "#F7D027", "#E48F1B", "#B77EA3", "#E64345"],
 			borderWidth: 1
@@ -358,6 +366,8 @@ function openCity(cityName, elmnt, color) {
 
 // Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
+
+// 리스트 바뀌는 함수
 </script>
 </body>
 {% endblock %}
