@@ -94,7 +94,7 @@ def f_hp(request, b_hc_id):
         yolo_return[list(yolo_return.keys())[i]]=f_weight
     # print(resnet_return)
     context = {'k_hc': b_hc, 'idx':request.session['idx'], 'yolo':yolo_return}
-    return render(request, 'your_photo.html', context)
+    return render(request, 'analysis_photo/your_photo.html', context)
 
 # 채은: AI 인식 결과, 사용자가 추가한 메뉴 계산하여 sql 저장 -> 완료 후 메인 페이지로 이동
 def f_upload_at_sql(request):

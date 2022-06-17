@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     # 'allauth.account',
     # 'allauth.socialaccount',
     # 'allauth.socialaccount.providers.google',
-    # #
+    # 경준 연습용 'users', AUTH_USER_MODEL = 'users.User'
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,14 +57,15 @@ ROOT_URLCONF = 'whateat.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [ BASE_DIR / 'templates'],
+        # 'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.debug',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },
@@ -83,8 +85,6 @@ DATABASES = {
         'PASSWORD': oursql.s_passwd,
         'HOST': oursql.s_host,
         'PORT': '3306'
-
-
     }
 }
 
@@ -128,6 +128,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
 STATIC_ROOT = os.path.join('staticfiles') #collectstatics하려고 한거
 
 # Default primary key field type
@@ -136,3 +137,4 @@ STATIC_ROOT = os.path.join('staticfiles') #collectstatics하려고 한거
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

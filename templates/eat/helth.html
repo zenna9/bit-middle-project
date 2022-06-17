@@ -6,14 +6,12 @@
 <!--        border: 1px solid red;-->
 <!--    }-->
 <!--    -->
-<style>
+<style xmlns="http://www.w3.org/1999/html">
 .graph_container{
   display:block;
   width:600px;
 }
-*{
-        border: 1px solid red;
-    }
+
 /* Style the tab buttons */
 .tablink {
   background-color: gray;
@@ -43,50 +41,71 @@
 /* Style each tab content individually */
 #London {background-color:#64D6FF;}
 #Paris {background-color:#73EAA8;}
+</style>
 
-    </style>
 <!-- CHART JS CDN LINK -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
 
 <!-- 모바일 CSS적용 태그 -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/static/css/mobile-index.css" />
+<script src="/static/js/kj.js "></script>
+<script>
+	var piedata= [{{ chart_data1 }},{{ weekpercent }}]
+	var barlabel = [{{ labels | safe }},{{ month_label | safe }}]
+	var bar1data = [{{ salt_data|safe }},{{ mon_salt }}]
+	var bar2data = [{{ kcal_data|safe }},{{ mon_kcal }}]
+
+	function changedata(){
+		alert("차트가 변경되었습니다.");
+		document.getElementById("chartone").setData(piedata[1]);
+	}
+</script>
+
 </head>
 
 <body>
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
 <!--	본문 CONTENTS		-->
+<!-- {#       사이드바(모바일 화면일 때) ===============================#} -->
+	<div class="kj-hidden1">
+		<div class="flex-column row kj-mobile">
+			{% include 'eat/helth_topbar.html' %}
+		</div>
+	</div>
+<!-- {#       사이드바(PC 화면일 때) ===============================#} -->
 	<div class="container" style="height:150vh">
 		<div class="row profile">
 <!--	프로필 사이드바 col-md-3 -->
-			<div class="col-md-3">
+			<div class="col-md-3 kj-hidden">
 				<div style="padding:1rem 1rem; margin:1rem 0 ; background-color:#e0e0e0; border-radius:5%; ">
-					{% include 'myprofile_sidebar.html' %}
+					{% include 'eat/myprofile_sidebar.html' %}
 				</div>
 			</div>
 <!--	건강정보 컨텐츠 col-md-8 -->
 			<div class="col-md-9">
 <!--			회원정보 텍스트-->
-				<div class="row">
+				<div class="row helth_info_name">
 					<div style="margin-top:1rem;">
-						<strong style="font-size:1.5rem;">{{name}}님의 건강 정보입니다.</strong>
+						<strong style="font-size:1.5rem;">{{name}}님 안녕하세요.</strong>
 					</div>
 				</div>
 
 <!--				그래프 컨텐트 메뉴바 -->
 				<div class="row">
-					<div id="London" class="tabcontent" style="padding:1rem; color:black;">
+					<div id="London" class="tabcontent tabcontent-mobile" style="padding:1rem; color:black;">
 						<h2>하루그래프</h2>
 						<p style="margin-bottom:0;">하룻동안 먹은 식사량의 탄단지 비율을 알려주어요</p>
 					</div>
 
-					<div id="Paris" class="tabcontent" style="padding:1rem; color:black;">
+					<div id="Paris" class="tabcontent tabcontent-mobile" style="padding:1rem; color:black;">
 						<h2>주간/월간 그래프</h2>
 						<p style="margin-bottom:0;">주간, 월간 먹은 식사량의 나트륨, 칼로리량을 알려주어요</p>
 					</div>
 					<button class="tablink" onclick="openCity('London', this, '#64D6FF')" id="defaultOpen">일간 그래프</button>
-					<button class="tablink" onclick="openCity('Paris', this, '#73EAA8')">주간/월간 그래프</button>
+					<button class="tablink" onclick="openCity('Paris', this, '#73EAA8'); ">주간/월간 그래프</button>
 				</div>
 <!--				그래프 컨텐트 차트 -->
 				<div class="row" style="padding: 1rem;">
@@ -103,7 +122,7 @@
 <!--			한끼 식사비율 -->
 				<div class="row" style="padding:1rem;">
 					<div>
-						<h4>당신의 식사중 탄단지의 비율은?</h4>
+						<h4>당신의 식사중 세부영양소의 비율은?</h4>
 						<div style="display:block; width:100%; height:200px;">
 							<canvas id="myChart"></canvas>
   						</div>
@@ -117,39 +136,38 @@
 <!--			추천음식 정보 -->
 				<div class='row' style="text-align:center; margin-top:1rem;">
 					<div class="col-md-6">
-						<div style="border-radius:20px; background-color:#F5F5DC; width:100%; height:15rem;">
+						<div class="recommend_kcal" style="border-radius:20px; background-color:#F5F5DC; width:100%; height:15rem;">
 							<div style="display:flex; float:left; flex-direction:column; justify-content:flex-start; padding-top:0.5rem; padding-left:0.5rem; ">
-								<h5 style="margin-top:0.5rem;">하루 탄단지 비율 : {{chart_data}}</h5>
-								<h5 style="margin-top:0.5rem;">권장량대비 섭취영양(%) : {{chart_data}}</h5>
-								<h5 style="margin-top:0.5rem;">권장량대비 필요영양(%) : {{lack_data}}</h5>
-								<h5 style="margin-top:0.5rem;">나에게 부족한 영양소 : {{lackN1}}, {{lackN2}}</h5>
-								<h5 style="margin-top:0.5rem;">부족한 영양소 추천음식: {{recommendFoods}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">하루 탄단지 비율 : {{chart_data}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 섭취영양(%) : {{chart_data}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">권장량대비 필요영양(%) : {{lack_data}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">나에게 부족한 영양소 : {{lackN1}}, {{lackN2}}</h5>
+								<h5 class="recommend_kcal_list" style="margin-top:0.5rem;">부족한 영양소 추천음식: {{recommendFoods}}</h5>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3" style="display:flex; justify-content:center; align-items:center; ">
-						<div style="border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
-						<figure style="padding-top:0.5rem; padding-bottom:0.5rem;">
-							<figcaption>추천음식1: {{r1}}</figcaption>
-							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/{{r1}}.jpg" alt="receltly_photo1">
-						</figure>
+					<div class="col-md-6" style="padding:0 1rem !important; display:flex; justify-content:center; align-items:center; ">
+						<div style="margin-right:1rem !important; border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
+							<figure style="padding-top:0.5rem !important; padding-bottom:0.5rem;">
+								<figcaption>추천음식1: {{r1}}</figcaption>
+								<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/{{r1}}.jpg" alt="receltly_photo1">
+							</figure>
+						</div>
+
+						<div class='recommend_picture_box' style="margin-top:1rem; border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
+							<figure style="padding-top:0.5rem !important; padding-top:0.5rem; padding-bottom:0.5rem;">
+								<figcaption>추천음식2 : {{r2}}</figcaption>
+								<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/{{r2}}.jpg" alt="receltly_photo2">
+							</figure>
 						</div>
 					</div>
-					<div class="col-md-3" style="display:flex; justify-content:center; align-items:center; ">
-						<div style="border-radius:20px; position:relative; width:15rem; height:15rem; border:3px solid black; padding-top:0.5rem; padding-bottom:0.5rem;">
-						<figure style="padding-top:0.5rem; padding-bottom:0.5rem;">
-							<figcaption>추천음식2 : {{r2}}</figcaption>
-							<img style="border-radius:20px; width:10rem; height:10rem; object-fit:cover;" src="/static/picture/{{r2}}.jpg" alt="receltly_photo2">
-						</figure>
-						</div>
-					</div>
-				</div>
 <!--			추천음식 정보 끝 -->
 			</div>
 		</div>
 	</div>
 <!--	본문 CONTENTS 마무리  -->
     {% include 'footer.html' %}
+
 
 <!-- 차트 컨텐츠 JS-->
 <script>
@@ -163,7 +181,7 @@
 			labels : ['탄수화물', '단백질', '지방'],
 			datasets : [{
 				label : '총 먹은 열량',
-				data : [100, 200, 300],
+				data : {{ chart_data1 }} , // {{ weekpercent }}
 				backgroundColor:["#F88FB2", "#ED5C8B", "#D5255E"]
 			}]
 		},
@@ -176,7 +194,7 @@
 			plugins : {
 				title : {
 					display : true,
-					text : '일일 영양균형',
+					text : '일일 영양균형 (%)',
 					fontSize : 16,
 					fontColor : 'red',
 					position:'bottom'
@@ -186,16 +204,34 @@
 	});
 
     let barChartfour = new Chart (chartfour, {
-		type : 'bar',
+
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
-            	label : '최근 업로드한 날짜의 염분 섭취양',
+            	type : 'line',
+            	label : '최근 식단의 염분 섭취량 (mg)',
+            	data : {{salt_data|safe}},
+                backgroundColor : ["#97A1D9", "#6978C9", "#4A5596"],
+            },
+            {
+            	type : 'bar',
             	data : {{salt_data|safe}},
                 backgroundColor : ["#97A1D9", "#6978C9", "#4A5596"],
             }],
         },
         options : {
+        	plugins:{
+        		title : {
+					display : true,
+					text : '최근 식단의 염분 섭취양 (mg)',
+					fontSize : 16,
+					fontColor :'red',
+					position:'bottom'
+				},
+        		legend: {
+        			display: false
+    			}
+           	},
 		 	maintainAspectRatio: false,
             scales : {
                 responsive : true,
@@ -206,17 +242,36 @@
         }
     });
 
+
+
 	let barChartthree = new Chart (chartthree, {
-		type : 'bar',
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
-            	label : '최근 업로드한 날짜의 염분 칼로리양',
+            	type : 'line',
+            	label : '최근 식단의 칼로리양 (kcal)',
+            	data : {{kcal_data|safe}},
+                backgroundColor : ["#62BEB6", "#0B9A8D", "#077368"],
+            },{
+            	type : 'bar',
+            	label : '최근 식단의 칼로리양 (kcal)',
             	data : {{kcal_data|safe}},
                 backgroundColor : ["#62BEB6", "#0B9A8D", "#077368"],
             }],
         },
         options : {
+        	plugins:{
+        		title : {
+					display : true,
+					text : '최근 식단의 칼로리양 (kcal)',
+					fontSize : 16,
+					fontColor :'red',
+					position:'bottom'
+				},
+        		legend: {
+        			display: false
+    			}
+           	},
         	maintainAspectRatio: false,
             scales : {
                 responsive : true,
@@ -235,7 +290,7 @@
 		labels: labels,
 		datasets: [{
 			label: '오늘 하루 섭취한 나의영양분',
-			data: [12, 19, 3, 5, 2, 3, 8],
+			data: {{ N_percent }},
 			backgroundColor: ["#619ED6", "#6BA547", "#F7D027", "#E48F1B", "#B77EA3", "#E64345"],
 			borderColor: ["#619ED6", "#6BA547", "#F7D027", "#E48F1B", "#B77EA3", "#E64345"],
 			borderWidth: 1
@@ -247,12 +302,30 @@
 		type: 'bar',
 		data,
 		options:{
+			plugins:{
+        		title : {
+					display : true,
+					text : '오늘 하루 식단 세부영양소 비율(%)',
+					fontSize : 20,
+					fontColor :'red',
+					position:'bottom'
+				},
+        		legend: {
+        			display: false
+    			}
+           	},
 		 	responsive: true,
 			maintainAspectRatio: false,
 			indexAxis:'y',
 			scales: {
 				y: {
-					beginAtZero: true
+					beginAtZero:true
+				},
+				x: {
+					beginAtZero:true,
+                 	steps: 10,
+                    stepValue: 10,
+                    max: 100
 				}
 			},
 		}
@@ -263,6 +336,7 @@
 		document.getElementById('myChart'),
 		config
 	);
+
 </script>
 
 <!-- 차트 컨텐츠 메뉴바 JS -->
@@ -292,6 +366,8 @@ function openCity(cityName, elmnt, color) {
 
 // Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
+
+// 리스트 바뀌는 함수
 </script>
 </body>
 {% endblock %}
