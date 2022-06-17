@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/eat.iml" filepath="$PROJECT_DIR$/.idea/eat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/bit-middle-project.iml" filepath="$PROJECT_DIR$/.idea/bit-middle-project.iml" />
     </modules>
   </component>
 </project>
