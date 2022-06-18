@@ -68,5 +68,5 @@ def register_submit(request):
     logins.recommend_kcal = (float(logins.user_height)-100)*0.9*momen
     logins.save()
 
-    return redirect('login:register_succ.html')
+    return redirect('/lg/success')
     # return redirect('/lg/success')

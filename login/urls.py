@@ -14,7 +14,7 @@ urlpatterns = [
     path('logining/', views.logining, name='logining'),
     path('register/', views.register, name='register'),
     path('register/submit', views.register_submit, name='register_submit'),
-    path('success/', TemplateView.as_view(template_name='register_succ.html'), name='mmm'),
+    path('success/', TemplateView.as_view(template_name='login/register_succ.html'), name='mmm'),
     
 
 ]
