@@ -23,7 +23,7 @@ def logining(request):
     date = datetime.today().strftime("%Y-%m-%d") # 날짜데이터 전처리
 
     if not data:  # 데이터가 없으면 로그인 실패 페이지
-        return render(request, 'login_fail.html')
+        return render(request, 'login/login_fail.html')
     else:
         request.session['idx']= user_id
         return redirect ('/m/ain/'+date)
@@ -33,7 +33,7 @@ def logining(request):
 
 # 채은 : 최초 접속 로그인 페이지
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'eat/index.html')
 
 # 채은 : 회원가입 버튼 눌렀을 경우
 def register(request):
@@ -41,7 +41,7 @@ def register(request):
     idxs = []
     for i in range(len(query_ids)):
         idxs.append(query_ids[i]['user_id'])
-    return render(request, 'register.html', {'idxs' : idxs})
+    return render(request, 'login/register.html', {'idxs' : idxs})
 
 # 채은 : 회원가입 폼 제출 시 , sql에 정보 저장
 def register_submit(request):
@@ -69,3 +69,4 @@ def register_submit(request):
     logins.save()
 
     return redirect('/lg/success')
+    # return redirect('/lg/success')

@@ -1,0 +1,59 @@
+<!-- zenna : 메인페이지 사이드바 -->
+<div class="row">
+    <div class='kj-topbar1'>
+        <div class="kj-top-photo">
+            <img class = "kj-side-profile" src="/static/picture/no_profile.jpg" style="width:100%; height:100%; object-fit:cover !important;"/>
+        </div>
+        <div class="kj-top-buttons">
+    <!--        <input type="button" class="zenbtn1" value="내 사진 보기" onClick="location.href=/m/ain/mypage'"/>-->
+    <!--        <input type="button" class="zenbtn1" value="나의 건강정보" onClick="location.href=/m/ain/helthinfo'"/>-->
+            <div style="margin-top:1rem !important; height:auto;">
+                <!-- SIDEBAR USER 회원정보 -->
+                <div class="kj-top-button" style="margin-bottom:0.5rem !important;">{{ name }}님 의 건강정보 입니다.</div>
+                <div class="kj-top-button">설정 날짜 : {{ date }}</div>
+                <!-- SIDEBAR USER 회원정보 -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 나의 피드보기 메뉴  -->
+<div class="row" style="height:6rem;">
+    <div class="kj-menubar1">
+        <div style="width:50%; text-align:center !important;">
+            <div class="kj-list-left">날짜별 보기</div>
+            <form style='height:2.5rem; font-size:1rem; text-align:center;'
+                  action="parameter" enctype="multipart/form-data">
+                <input style='font-size:1rem;'type="date" name="today" id="kj_calender1"
+                       class="btn zen_calender" onchange="change_cal1('{{idx}}')">
+            </form>
+        </div>
+        <div style="flex-grow:1;">
+            <div class="kj-list-right">전체 사진</div>
+            <form style='text-align:center;' action="parameter" enctype="multipart/form-data">
+                <input style='height:2rem; cursor:pointer; border-radius:5px; font-size:1rem; width:8rem;' type="button" class="zenbtn1" value="전체 사진보기"
+                       onClick="location.href='/m/ain/mypage';">
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--  -->
+<div class="row" style="text-align:center; margin-top:1rem !important;">
+    <div class="list-group" style="margin-top:2rem; margin-bottom:1rem;">
+        <a href="/m/ain/{{date}}" class="list-group-item list-group-item-action kj-sidemenu" id="sidebar_menu1">메인으로 가기</a>
+        <a href="/m/ain/{{date}}" class="list-group-item list-group-item-action kj-sidemenu" id="sidebar_menu2">업로드 하기</a>
+        <a href="/m/ain/mypage" class="list-group-item list-group-item-action kj-sidemenu" id="sidebar_menu3">나의 사진 보기</a>
+    </div>
+</div>
+
+<footer class="all-hidden">
+    <form action="{% url 'analysis_photo:f_fu' %}" id="form_to_upload" class="no_margin" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file" class="ment">
+            <img src="/static/picture/camera.png" style="object-fit:contain ;width: 100%;" class="zenbtn5"/>
+        </label>
+        <input type="file" name="i_fu" onchange="gosubmit()" class="upload_button_zen form-control" id="file" style="display:none">
+        <input type="hidden" name="idx" value="{{idx}}" />
+        <div style="height: 10px;"></div>
+    </form>
+</footer>

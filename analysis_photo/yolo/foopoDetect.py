@@ -129,7 +129,7 @@ def runs(
         w_lst=list(df_n['중량(g)'][df_n['음 식 명'] == fname])
         q4_weight=round(float(w_lst[0]))
         q4_weights.append(q4_weight)
-        
+
     rList = [4] # 기본값인 Q4로 고정, 이후 resnet 리턴값으로 업데이트
 
     result={}
