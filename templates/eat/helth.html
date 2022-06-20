@@ -52,19 +52,15 @@
 <link rel="stylesheet" href="/static/css/mobile-index.css" />
 <script src="/static/js/kj.js "></script>
 <script>
-	var piedata= [{{ chart_data1 }},{{ weekpercent }}]
-	var barlabel = [{{ labels | safe }},{{ month_label | safe }}]
-	var bar1data = [{{ salt_data|safe }},{{ mon_salt }}]
-	var bar2data = [{{ kcal_data|safe }},{{ mon_kcal }}]
+	function changedata() {
 
-	function changedata(){
-		alert("차트가 변경되었습니다.");
-		document.getElementById("chartone").setData(piedata[1]);
+		var piedata= [{{ chart_data1 }},{{ weekpercent }}]
+		var barlabel = [{{ labels|safe }},{{ month_label|safe }}]
+		var bar1data = [{{ salt_data|safe }},{{ mon_salt }}]
+		var bar2data = [{{ kcal_data|safe }},{{ mon_kcal }}]
 	}
 </script>
-
 </head>
-
 <body>
 <!--	HEADER NAV BAR		-->
 {% include 'nav.html' %}
@@ -104,8 +100,8 @@
 						<h2>주간/월간 그래프</h2>
 						<p style="margin-bottom:0;">주간, 월간 먹은 식사량의 나트륨, 칼로리량을 알려주어요</p>
 					</div>
-					<button class="tablink" onclick="openCity('London', this, '#64D6FF')" id="defaultOpen">일간 그래프</button>
-					<button class="tablink" onclick="openCity('Paris', this, '#73EAA8'); ">주간/월간 그래프</button>
+					<button class="tablink" onclick="openCity('London', this, '#64D6FF'); changedata1();" id="defaultOpen">일간 그래프</button>
+					<button id='1' class="tablink" onclick="openCity('Paris', this, '#73EAA8'); changedata(); ">주간/월간 그래프</button>
 				</div>
 <!--				그래프 컨텐트 차트 -->
 				<div class="row" style="padding: 1rem;">
@@ -168,14 +164,10 @@
 <!--	본문 CONTENTS 마무리  -->
     {% include 'footer.html' %}
 
-
 <!-- 차트 컨텐츠 JS-->
 <script>
 	let chartone = document.getElementById('chartone').getContext('2d');
-	let chartfour = document.getElementById('chartfour').getContext('2d');
-	let chartthree = document.getElementById('chartthree').getContext('2d');
-
-	let barChart = new Chart(chartone, {
+	var config = {
 		type : 'pie',
 		data : {
 			labels : ['탄수화물', '단백질', '지방'],
@@ -201,11 +193,26 @@
 				}
 			}
 		}
+	}
+	let barChart = new Chart(chartone, config);
+
+	$("#defaultOpen").click(function() {
+	var data = barChart.config.data;
+	data.datasets[0].data = {{ chart_data1 }};
+	barChart.update();
 	});
 
-    let barChartfour = new Chart (chartfour, {
+	$("#1").click(function() {
+	var data = barChart.config.data;
+	data.datasets[0].data = {{ weekpercent }};
+	barChart.update();
+	});
 
-		data : {
+</script>
+<script>
+	let chartfour = document.getElementById('chartfour').getContext('2d');
+    var config = {
+    	data : {
 			labels : {{labels|safe}},
             datasets : [{
             	type : 'line',
@@ -240,11 +247,26 @@
                 }
             }
         }
-    });
+    }
+    var barChartfour = new Chart (chartfour, config);
 
+    $("#defaultOpen").click(function() {
+	var data = barChartfour.config.data;
+	data.datasets[0].data = {{ salt_data|safe }} ;
+	data.labels = {{ labels|safe }};
+	barChartfour.update();
+	});
 
-
-	let barChartthree = new Chart (chartthree, {
+	$("#1").click(function() {
+	var data = barChartfour.config.data;
+	data.datasets[0].data = {{ mon_salt }} ;
+	data.labels = {{ month_label|safe }};
+	barChartfour.update();
+	});
+</script>
+<script>
+	let chartthree = document.getElementById('chartthree').getContext('2d');
+	var config = {
 		data : {
 			labels : {{labels|safe}},
             datasets : [{
@@ -280,7 +302,21 @@
                 }
             }
         }
-    });
+	}
+	let barChartthree = new Chart (chartthree, config);
+	$("#defaultOpen").click(function() {
+	var data = barChartthree.config.data;
+	data.datasets[0].data = {{ kcal_data|safe }} ;
+	data.labels = {{ labels|safe }};
+	barChartthree.update();
+	});
+
+	$("#1").click(function() {
+	var data = barChartthree.config.data;
+	data.datasets[0].data = {{ mon_kcal }} ;
+	data.labels = {{ month_label|safe }};
+	barChartthree.update();
+	});
 </script>
 <!--		하루 탄단지 비율 -->
 <script>
@@ -298,7 +334,7 @@
 	};
 
 	// config block #options
-	const config ={
+	var config ={
 		type: 'bar',
 		data,
 		options:{
@@ -332,11 +368,7 @@
 	};
 
 	// render block
-	const myChart = new Chart(
-		document.getElementById('myChart'),
-		config
-	);
-
+	var myChart = new Chart( document.getElementById('myChart'),	config );
 </script>
 
 <!-- 차트 컨텐츠 메뉴바 JS -->
